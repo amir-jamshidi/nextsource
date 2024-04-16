@@ -2,9 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 
 const Header = () => {
-    
+
     return (
-        <header>
+       
+       <header>
             <div className='h-20 bg-secondary flex'>
                 <div className='flex-1'></div>
                 <div className='flex-1 flex-center'>
