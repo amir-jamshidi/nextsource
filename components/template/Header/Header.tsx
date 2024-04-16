@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 const Header = () => {
+    
     return (
         <header>
             <div className='h-20 bg-secondary flex'>
