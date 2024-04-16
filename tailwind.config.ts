@@ -8,13 +8,6 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    fontFamily: {
-
-    },
-    // colors: {
-    //   'primary': '',
-    //   'secondary': ''
-    // },
     screens: {
       'sm': '640px',
       'md': '768px',
@@ -27,6 +20,15 @@ const config: Config = {
         padding: {
           DEFAULT: '8px'
         }
+      },
+      fontFamily: {
+        mo: ['var(--font-mo-medium)'],
+        'morabba': 'morabba',
+        'morabba-bold': 'morabba-bold',
+        'morabba-light': 'morabba-light',
+        'dana': 'dana',
+        'dana-bold': 'dana-bold',
+        'dana-light': 'dana-light'
       }
     },
   },

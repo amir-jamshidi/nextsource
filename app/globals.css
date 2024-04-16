@@ -40,7 +40,7 @@
     /* Postitions */
 
     .flex-center {
-        @apply flex justify-center
+        @apply flex justify-center items-center
     }
 
     .flex-between {
@@ -48,4 +48,55 @@
     }
 
     /* Colors */
+
+    .bg-primary {
+        @apply bg-gradient-to-r from-orange-500 to-amber-500
+    }
+
+    .bg-secondary {
+        @apply bg-gradient-to-r from-slate-800 to-gray-800
+    }
+
+    .bg-background {
+        @apply bg-gradient-to-tl bg-no-repeat h-screen from-gray-900 to-gray-950
+    }
+
+    /* Amimations */
+    .hover-btn {
+        @apply transition-all scale-105
+    }
+}
+
+@font-face {
+    font-family: 'morabba';
+    src: url('/fonts/mo-medium.woff');
+}
+
+@font-face {
+    font-family: 'morabba-light';
+    src: url('/fonts/mo-light.woff');
+}
+
+@font-face {
+    font-family: 'morabba-bold';
+    src: url('/fonts/mo-bold.woff');
+}
+
+@font-face {
+    font-family: 'dana';
+    src: url('/fonts/dana-medium.woff');
+}
+
+@font-face {
+    font-family: 'dana-light';
+    src: url('/fonts/dana-light.woff');
+}
+
+@font-face {
+    font-family: 'dana-bold';
+    src: url('/fonts/dana-demi-bold.woff');
+}
+
+* {
+    font-family: 'morabba';
 }
