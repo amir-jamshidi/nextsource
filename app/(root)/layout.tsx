@@ -1,3 +1,4 @@
+import Header from '@/components/template/Header/Header'
 import React from 'react'
 
 interface ILayoutProps {
@@ -7,6 +8,7 @@ interface ILayoutProps {
 const layout = ({ children }: ILayoutProps) => {
     return (
         <>
+            <Header />
             {children}
         </>
     )

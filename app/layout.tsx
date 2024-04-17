@@ -26,7 +26,6 @@ export default function RootLayout({
     <html lang="en" dir="rtl" className={`dark`}>
       <body className="bg-background">
         <ThemeProvider>
-          <Header />
           {children}
         </ThemeProvider>
       </body>
