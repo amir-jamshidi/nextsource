@@ -58,7 +58,7 @@
     }
 
     .bg-background {
-        @apply bg-gradient-to-tl bg-no-repeat h-screen from-gray-900 to-gray-950
+        @apply bg-gradient-to-br bg-no-repeat from-gray-900 to-gray-950
     }
 
     /* Amimations */

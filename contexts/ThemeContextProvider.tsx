@@ -10,7 +10,9 @@ interface IThemeContextProvider {
 
 interface IThemeProvider {
     theme: string;
-    changeTheme: () => void
+    changeTheme: () => void;
+    isOpenSidebar: boolean,
+    handleSetIsOpenSidebar: (status: boolean) => void
 }
 
 const ThemeContextProvider = createContext<IThemeProvider | null>(null);
@@ -19,10 +21,15 @@ const ThemeContextProvider = createContext<IThemeProvider | null>(null);
 const ThemeProvider = ({ children }: IThemeContextProvider) => {
 
     const [theme, setTheme] = useState('light');
+    const [isOpenSidebar, setIsOpenSidebar] = useState(false);
 
     const changeTheme = () => {
         setTheme(theme => theme === 'dark' ? 'light' : 'dark');
         localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
+    }
+
+    const handleSetIsOpenSidebar = (status: boolean) => {
+        setIsOpenSidebar(status)
     }
 
     useEffect(() => {
@@ -35,7 +42,7 @@ const ThemeProvider = ({ children }: IThemeContextProvider) => {
 
     return (
         <>
-            <ThemeContextProvider.Provider value={{ theme, changeTheme }}>
+            <ThemeContextProvider.Provider value={{ theme, changeTheme, isOpenSidebar, handleSetIsOpenSidebar }}>
                 {children}
             </ThemeContextProvider.Provider>
         </>
