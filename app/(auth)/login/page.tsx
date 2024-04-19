@@ -1,8 +1,12 @@
 import React from 'react'
+import LoginButton from './LoginButton'
 
 const page = () => {
     return (
-        <div>LOGIN</div>
+        <div>
+            <LoginButton />
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+        </div>
     )
 }
 

@@ -1,4 +1,5 @@
-import React from "react"
+import Header from '@/components/template/Header/Header'
+import React from 'react'
 
 interface ILayoutProps {
     children: React.ReactNode
@@ -6,7 +7,10 @@ interface ILayoutProps {
 
 const layout = ({ children }: ILayoutProps) => {
     return (
-        <>{children}ss</>
+        <>
+            <Header />
+            {children}
+        </>
     )
 }
 
