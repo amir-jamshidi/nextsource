@@ -51,6 +51,14 @@ const productSchema = new Schema<IProduct>({
     size: {
         type: Number,
         required: true
+    },
+    isFree: {
+        type: Boolean,
+        required: true
+    },
+    links: {
+        type: [String],
+        required: true
     }
 })
 

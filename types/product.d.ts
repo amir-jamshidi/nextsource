@@ -9,8 +9,10 @@ export interface IProduct extends Document {
     href: string,
     buyCount: number,
     isPlan: boolean,
+    isFree: boolean,
     isOff: boolean,
     precentOff: number,
     photo: string,
-    size: number
+    size: number,
+    links: []
 }
