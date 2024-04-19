@@ -38,7 +38,7 @@ const planSchema = new Schema<IPlan>({
         type: Number,
         required: true
     }
-});
+}, { timestamps: true });
 
 const planModel = models.Plan || model('Plan', planSchema);
 

@@ -60,7 +60,7 @@ const productSchema = new Schema<IProduct>({
         type: [String],
         required: true
     }
-})
+}, { timestamps: true })
 
 const productModel = models.Product || model('Product', productSchema);
 

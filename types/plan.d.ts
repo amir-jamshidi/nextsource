@@ -1,4 +1,6 @@
-export interface IPlan {
+import { Document } from "mongoose";
+
+export interface IPlan extends Document {
     title: string,
     caption: string,
     photo: string,
