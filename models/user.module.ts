@@ -4,11 +4,12 @@ import { model, models, Schema } from 'mongoose'
 const userSchema = new Schema<IUser>({
     fullname: {
         type: String,
+        default: 'کاربرجدید',
         required: true
     },
     email: {
         type: String,
-        required: true
+        default: "",
     },
     phone: {
         type: String,
@@ -16,7 +17,8 @@ const userSchema = new Schema<IUser>({
     },
     role: {
         type: String,
-        enum: ['USER', 'ADMIN', 'SELLER']
+        enum: ['USER', 'ADMIN', 'SELLER'],
+        default: "USER"
     },
     money: {
         type: Number,
