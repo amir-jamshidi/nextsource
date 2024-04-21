@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken'
 
-export default function TokenGenerator(phone: string) {
+export default function TokenGenerator(_id: string) {
     try {
         const JWTSECRET = process.env.JWTSECRET || '';
-        const token = jwt.sign({ phone }, JWTSECRET, { expiresIn: '10d' });
+        const token = jwt.sign({ _id }, JWTSECRET, { expiresIn: '10d' });
         return token
     } catch (error) {
-        console.log(error);
+        throw new Error('Token Generator')
     }
 }

@@ -1,11 +1,10 @@
+import FormParents from '@/components/template/Login/FormParents'
 import React from 'react'
-import LoginButton from './LoginButton'
 
 const page = () => {
     return (
-        <div>
-            <LoginButton />
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+        <div className='h-max flex-center'>
+            <FormParents />
         </div>
     )
 }

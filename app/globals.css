@@ -61,9 +61,18 @@
         @apply bg-gradient-to-br bg-no-repeat from-gray-900 to-gray-950
     }
 
+    .bg-button {
+        @apply bg-gradient-to-br bg-no-repeat from-green-500 to-emerald-500
+    }
+
     /* Amimations */
     .hover-btn {
         @apply transition-all scale-105
+    }
+
+    /* Sizees */
+    .h-max {
+        height: calc(100vh - 88px);
     }
 }
 

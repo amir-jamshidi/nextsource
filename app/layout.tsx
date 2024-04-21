@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from 'react-hot-toast'
 import "./globals.css";
 import ThemeProvider from "@/contexts/ThemeContextProvider";
 import localFont from 'next/font/local'
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className="bg-background">
         <ThemeProvider>
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
