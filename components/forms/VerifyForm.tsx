@@ -31,6 +31,7 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
       .then(result => {
         if (!result.state) return toast.error(result.message);
         //Redirect
+        
       })
       .catch(_ => { toast.error('خطای ناشناخته') })
       .finally(() => { setIsLoading(false) })
