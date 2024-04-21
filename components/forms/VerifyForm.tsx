@@ -46,6 +46,7 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
             <FingerprintRounded className='text-700-300' />
           </span>
           <input {...register('code')}
+            autoComplete='off'
             type="text"
             className='w-full py-2 bg-gray-900  rounded-xl border-none outline-none text-700-300'
             placeholder='کد تایید پنچ رقمی' />
