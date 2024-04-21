@@ -65,6 +65,10 @@
         @apply bg-gradient-to-br bg-no-repeat from-green-500 to-emerald-500
     }
 
+    .bg-blue {
+        @apply bg-gradient-to-r bg-no-repeat from-cyan-950 to-blue-950
+    }
+
     /* Amimations */
     .hover-btn {
         @apply transition-all scale-105
@@ -74,6 +78,7 @@
     .h-max {
         height: calc(100vh - 88px);
     }
+
 }
 
 @font-face {

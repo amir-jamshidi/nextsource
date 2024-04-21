@@ -17,9 +17,10 @@ export const LoginUser = async (phone: string) => {
         const code = codeGenerator();
         const expireTime = timeGenerator(5);
         const verify = await verifyModel.create({ phone, code, expireTime });
+        if (!verify) throw new Error('خطای ناشناخته')
+        return { state: true, message: "کد تایید ارسال شد" }
     } catch (error) {
-        console.log(error);
-        return error
+        throw new Error('خطای ناشناخته')
     }
 }
 
