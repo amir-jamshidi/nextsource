@@ -66,7 +66,7 @@
     }
 
     .bg-blue {
-        @apply bg-gradient-to-r bg-no-repeat from-cyan-950 to-blue-950
+        @apply bg-gradient-to-r bg-no-repeat from-cyan-950/50 to-blue-950/50 backdrop-blur-sm
     }
 
     /* Amimations */
@@ -113,4 +113,11 @@
 
 * {
     font-family: 'morabba';
+}
+
+.bg-login {
+    background-image: url('/assets/pat2.png');
+    background-size: 300px;
+    opacity: 0.2;
+
 }

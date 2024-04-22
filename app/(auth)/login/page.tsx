@@ -5,7 +5,8 @@ import React from 'react'
 
 const page = () => {
     return (
-        <div className='h-screen flex-center flex-col'>
+        <div className='h-screen flex-center flex-col '>
+            <div className='bg-login absolute inset-0 z-[-1]'></div>
             <FormParents />
             <Link href={'/'}>
                 <div className='w-72 py-3 px-4 rounded-full bg-blue mt-5 transition-all flex items-center justify-center'>
