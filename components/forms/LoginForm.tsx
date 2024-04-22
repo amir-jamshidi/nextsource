@@ -1,5 +1,6 @@
 'use client'
-import { useForm, SubmitHandler } from "react-hook-form"
+
+import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { LoginSchema } from "@/libs/Schemas"
 import { LoginUser } from "@/actions/user.action"
@@ -12,6 +13,7 @@ interface LoginFormProps {
 }
 
 const LoginForm = ({ handleChangeState }: LoginFormProps) => {
+
     const [isLoading, setIsLoading] = useState(false);
 
     const {
@@ -23,6 +25,7 @@ const LoginForm = ({ handleChangeState }: LoginFormProps) => {
     })
 
     const handleLoginForm = ({ phone }: { phone: string }) => {
+
         setIsLoading(true)
         LoginUser(phone)
             .then(res => {
@@ -36,7 +39,6 @@ const LoginForm = ({ handleChangeState }: LoginFormProps) => {
             .finally(() => {
                 setIsLoading(true)
             })
-
     }
 
     return (

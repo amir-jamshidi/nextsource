@@ -1,4 +1,5 @@
 'use client'
+
 import { FingerprintRounded } from '@mui/icons-material'
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -6,7 +7,6 @@ import { VerifyFormSchema } from "@/libs/Schemas"
 import { VerifyCodeUser } from "@/actions/user.action"
 import toast from "react-hot-toast"
 import { useState } from "react"
-import ToastPromise from "@/libs/ToastPromise"
 import { useRouter } from 'next/navigation'
 
 interface VerifyFormProps {
@@ -30,7 +30,6 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
   const handleVerifyForm = ({ code }: { code: string }) => {
 
     setIsLoading(true);
-
     VerifyCodeUser(phone, Number(code))
       .then(result => {
         if (!result.state) return toast.error(result.message);
