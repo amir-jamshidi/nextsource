@@ -98,17 +98,17 @@
 
 @font-face {
     font-family: 'dana';
-    src: url('/fonts/dana-medium.woff');
+    src: url('/fonts/dana-medium.ttf');
 }
 
 @font-face {
     font-family: 'dana-light';
-    src: url('/fonts/dana-light.woff');
+    src: url('/fonts/dana-light.ttf');
 }
 
 @font-face {
     font-family: 'dana-bold';
-    src: url('/fonts/dana-demi-bold.woff');
+    src: url('/fonts/dana-demi-bold.ttf');
 }
 
 * {
