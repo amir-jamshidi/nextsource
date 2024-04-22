@@ -69,6 +69,10 @@
         @apply bg-gradient-to-r bg-no-repeat from-cyan-950/50 to-blue-950/50 backdrop-blur-sm
     }
 
+    .bg-header {
+        @apply bg-gradient-to-r bg-no-repeat from-gray-800 to-blue-950
+    }
+
     /* Amimations */
     .hover-btn {
         @apply transition-all scale-105
@@ -118,6 +122,6 @@
 .bg-login {
     background-image: url('/assets/pat2.png');
     background-size: 300px;
-    opacity: 0.2;
-
+    background-position: center;
+    opacity: 0.1;
 }

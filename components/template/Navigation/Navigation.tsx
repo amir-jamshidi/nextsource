@@ -8,7 +8,7 @@ const Navigation = () => {
     const themeContext = useThemeProvider()
 
     return (
-        <aside className={`flex transition-all absolute backdrop-blur-3xl top-0 w-full ${themeContext?.isOpenSidebar ? "right-0 opacity-100" : "-right-[100%] invisible opacity-0"}`}>
+        <aside className={`flex lg:hidden transition-all absolute backdrop-blur-3xl top-0 w-full ${themeContext?.isOpenSidebar ? "right-0 opacity-100" : "-right-[100%] invisible opacity-0"}`}>
             <div className='w-80 bg-gray-50 h-screen'>
                 <CloseSidebarButton />
             </div>

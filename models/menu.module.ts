@@ -14,4 +14,4 @@ const menuSchema = new Schema<IMenu>({
 
 const menuModel = models.Menu || model('Menu', menuSchema);
 
-export default menuSchema
+export default menuModel

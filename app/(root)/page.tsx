@@ -1,11 +1,10 @@
+import menuModel from '@/models/menu.module'
 import React from 'react'
 
-const page = () => {
+const page = async () => {
+  // await menuModel.create({ title: 'بک اند', href: '/backend' })
   return (
-    <>سورس
-      سلام
-      <div className='container font-mo'>عالیه فکر میکنم</div>
-      <button className='bg-primary hover:hover-btn text-white px-2 py-1 rounded-lg'>اضافه کن به سبد من</button>
+    <>
     </>
   )
 }
