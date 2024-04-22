@@ -7,6 +7,7 @@ import { VerifyCodeUser } from "@/actions/user.action"
 import toast from "react-hot-toast"
 import { useState } from "react"
 import ToastPromise from "@/libs/ToastPromise"
+import { useRouter } from 'next/navigation'
 
 interface VerifyFormProps {
   phone: string
@@ -15,6 +16,8 @@ interface VerifyFormProps {
 const VerifyForm = ({ phone }: VerifyFormProps) => {
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const {
     register,
@@ -25,23 +28,28 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
   })
 
   const handleVerifyForm = ({ code }: { code: string }) => {
+
     setIsLoading(true);
 
-    const promise = VerifyCodeUser(phone, Number(code))
+    VerifyCodeUser(phone, Number(code))
       .then(result => {
         if (!result.state) return toast.error(result.message);
-        //Redirect
-        
+        toast.success('ورود به حساب موفق')
+        router.push('/');
       })
       .catch(_ => { toast.error('خطای ناشناخته') })
       .finally(() => { setIsLoading(false) })
-
   }
 
   return (
     <div className='w-96 bg-blue px-4 py-6 rounded-xl flex-center flex-col'>
-      <h1 className='text-800-200 font-morabba text-xl'>تایید شماره تلفن</h1>
-      <form className='w-full mt-4 flex flex-col gap-1' onSubmit={handleSubmit(handleVerifyForm)}>
+      <h1 className='text-800-200 font-morabba text-xl mb-2'>تایید شماره همراه</h1>
+      <div>
+        {Object.entries(errors).map(error => (
+          <span className='text-sm text-red-700' key={error[0]}>{error[1].message}</span>
+        ))}
+      </div>
+      <form className='w-full mt-3 flex flex-col gap-1' onSubmit={handleSubmit(handleVerifyForm)}>
         <div className='bg-gray-900 rounded-xl px-2 flex items-center gap-x-1.5'>
           <span>
             <FingerprintRounded className='text-700-300' />
