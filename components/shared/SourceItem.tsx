@@ -6,7 +6,7 @@ import { ICategory } from './../../types/category.d';
 const SourceItem = ({ product }: { product: IProduct }) => {
     return (
         <div className="bg-blue rounded-xl px-2 py-2">
-            <div className="rounded-xl overflow-hidden -mt-8 relative">
+            <div className="rounded-xl overflow-hidden -mt-8 relative h-44">
                 {product.isPlan && (
                     <span className="absolute bg-blue top-1 right-1 rounded px-2 text-gray-300">
                         <StarRateRounded className="text-amber-500" />
@@ -18,7 +18,7 @@ const SourceItem = ({ product }: { product: IProduct }) => {
                         {product.precentOff}%
                     </span>
                 )}
-                <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} width={300} height={300} style={{ objectFit: 'contain' }} alt="" />
+                <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
             </div>
             <div className="flex-center mt-2">
                 <p className="text-800-200 text-sm">{product.title}</p>

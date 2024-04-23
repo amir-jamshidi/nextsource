@@ -32,7 +32,7 @@ const LatestProductsSection = async () => {
   return (
     <div className="mb-20">
       <SctionTitle title="جدیدترین سورس ها" />
-      <div className="grid grid-cols-4 pt-16 gap-y-10 gap-x-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 pt-16 gap-y-10 gap-x-2">
         {products.map(product => (
           <SourceItem key={JSON.stringify(product._id)} product={product} />
         ))}
