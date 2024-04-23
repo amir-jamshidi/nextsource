@@ -7,7 +7,15 @@ const categorySchema = new Schema<ICategory>({
         type: String,
         required: true
     },
+    titleEn: {
+        type: String,
+        required: true
+    },
     caption: {
+        type: String,
+        required: true
+    },
+    type: {
         type: String,
         required: true
     },
@@ -18,7 +26,7 @@ const categorySchema = new Schema<ICategory>({
     },
     photo: {
         type: String,
-        required: true
+        required: false
     }
 
 }, { timestamps: true });
