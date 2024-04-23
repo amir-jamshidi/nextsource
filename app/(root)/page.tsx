@@ -1,10 +1,11 @@
-import menuModel from '@/models/menu.module'
-import React from 'react'
+import HeroSection from '@/components/template/Main/HeroSection/HeroSection'
 
 const page = async () => {
-  // await menuModel.create({ title: 'بک اند', href: '/backend' })
   return (
     <>
+      <div className='container'>
+        <HeroSection />
+      </div>
     </>
   )
 }

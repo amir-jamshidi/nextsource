@@ -69,8 +69,8 @@
         @apply bg-gradient-to-r bg-no-repeat from-cyan-950/50 to-blue-950/50 backdrop-blur-sm
     }
 
-    .bg-header {
-        @apply bg-gradient-to-r bg-no-repeat from-gray-800 to-blue-950
+    .bg-blue-full {
+        @apply bg-gradient-to-r bg-no-repeat from-cyan-950 to-blue-950
     }
 
     /* Amimations */

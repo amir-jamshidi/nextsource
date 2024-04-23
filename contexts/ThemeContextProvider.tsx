@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { QueryClient, QueryClientProvider } from 'react-query'
 import React from 'react'
 
 
@@ -42,9 +43,11 @@ const ThemeProvider = ({ children }: IThemeContextProvider) => {
 
     return (
         <>
-            <ThemeContextProvider.Provider value={{ theme, changeTheme, isOpenSidebar, handleSetIsOpenSidebar }}>
-                {children}
-            </ThemeContextProvider.Provider>
+            <QueryClientProvider client={new QueryClient({})}>
+                <ThemeContextProvider.Provider value={{ theme, changeTheme, isOpenSidebar, handleSetIsOpenSidebar }}>
+                    {children}
+                </ThemeContextProvider.Provider>
+            </QueryClientProvider>
         </>
     )
 }

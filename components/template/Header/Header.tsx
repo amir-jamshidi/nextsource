@@ -26,7 +26,7 @@ const Header = async () => {
                             </h1>
                         </div>
                         <div className='flex-1 flex-center'>
-                            <div className='bg-gray-900 rounded-lg w-full flex items-center px-2 gap-x-1.5'>
+                            <div className='bg-gray-900 rounded-xl w-full flex items-center px-2 gap-x-1.5'>
                                 <span>
                                     <SearchRounded className='text-gray-400' />
                                 </span>
@@ -48,7 +48,7 @@ const Header = async () => {
                 <div className='container'>
                     <div className='h-14 bg-secondary mt-2 max-w-4xl rounded-xl mx-auto flex-center gap-x-1'>
                         {menus.map(menu => (
-                            <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg font-morabba-bold'>{menu.title}</p>
+                            <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg'>{menu.title}</p>
                         ))}
                     </div>
                 </div>

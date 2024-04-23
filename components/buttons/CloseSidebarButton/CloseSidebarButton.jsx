@@ -1,12 +1,16 @@
 "use client";
+
 import { useThemeProvider } from "@/contexts/ThemeContextProvider";
+import { CloseRounded } from "@mui/icons-material";
+
 
 const CloseSidebarButton = () => {
   const themeProvider = useThemeProvider();
-
   return (
     <button onClick={() => themeProvider?.handleSetIsOpenSidebar(false)}>
-      CloseSidebarButton
+      <span className="w-9 h-9 flex-center bg-gray-700 rounded-full">
+        <CloseRounded className="text-gray-300" />
+      </span>
     </button>
   );
 };
