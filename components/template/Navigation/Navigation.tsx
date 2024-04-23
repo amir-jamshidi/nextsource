@@ -7,10 +7,8 @@ import { getMenus } from "@/actions/menu.action";
 import { DarkModeRounded, SearchRounded } from "@mui/icons-material";
 
 const Navigation = () => {
-
     const themeContext = useThemeProvider()
-    const { data = [], isLoading } = useQuery(["main-menus"], () => getMenus());
-
+    const { data = [] } = useQuery(["main-menus"], () => getMenus());
     return (
         <aside className={`flex lg:hidden transition-all fixed backdrop-blur-3xl top-0 w-full ${themeContext?.isOpenSidebar ? "right-0 opacity-100" : "-right-[100%] invisible opacity-0"} z-10`}>
             <div className='w-80 bg-secondary h-screen '>
@@ -44,5 +42,4 @@ const Navigation = () => {
         </aside>
     )
 }
-
 export default Navigation
