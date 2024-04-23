@@ -1,5 +1,6 @@
 import { getLatestProducts } from "@/actions/product.action"
 import SctionTitle from "@/components/shared/SctionTitle"
+import SourceContainer from "@/components/shared/SourceContainer"
 import SourceItem from "@/components/shared/SourceItem"
 import categoryModel from "@/models/category.module"
 import productModel from "@/models/product.module"
@@ -30,14 +31,14 @@ const LatestProductsSection = async () => {
 
 
   return (
-    <div className="mb-20">
+    <section className="mb-16">
       <SctionTitle title="جدیدترین سورس ها" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 pt-16 gap-y-10 gap-x-2">
+      <SourceContainer>
         {products.map(product => (
           <SourceItem key={JSON.stringify(product._id)} product={product} />
         ))}
-      </div>
-    </div>
+      </SourceContainer>
+    </section>
   )
 }
 

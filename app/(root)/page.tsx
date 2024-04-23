@@ -1,3 +1,4 @@
+import BestSellerSection from '@/components/template/Main/BestSellerSection/BestSellerSection'
 import HeroSection from '@/components/template/Main/HeroSection/HeroSection'
 import LatestProductsSection from '@/components/template/Main/LatestProducts/LatestProductsSection'
 
@@ -6,7 +7,8 @@ const page = async () => {
     <>
       <div className='container'>
         <HeroSection />
-        <LatestProductsSection/>
+        <LatestProductsSection />
+        <BestSellerSection />
       </div>
     </>
   )
