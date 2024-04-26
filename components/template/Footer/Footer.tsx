@@ -12,10 +12,9 @@ const Footer = () => {
                     </div>
                     <div className="flex-1 flex items-center justify-end">
                         <span className="flex-center w-10 h-10 rounded-full bg-gray-700">
-                            <KeyboardArrowUpRounded className="text-gray-400"/>
+                            <KeyboardArrowUpRounded className="text-gray-400" />
                         </span>
                     </div>
-
                 </div>
             </div>
         </footer>

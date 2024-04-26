@@ -36,3 +36,25 @@ export const getPopularProducts = async () => {
         throw new Error('Error To Fetch Products');
     }
 }
+
+export const getPopularFrontProducts = async () => {
+    try {
+        connectToDB();
+        const products = await productModel.find({}).limit(4).lean();
+        if (!products) throw new Error('Error To Fetch Products');
+        return products
+    } catch (error) {
+        throw new Error('Error To Fetch Products')
+    }
+}
+
+export const getPopularBackProducts = async () => {
+    try {
+        connectToDB();
+        const products = await productModel.find({}).limit(4).lean();
+        if (!products) throw new Error('Error To Fetch Products');
+        return products
+    } catch (error) {
+        throw new Error('Error To Fetch Products')
+    }
+}
