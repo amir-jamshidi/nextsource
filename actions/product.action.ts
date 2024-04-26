@@ -4,6 +4,8 @@ import connectToDB from "@/database/db"
 import categoryModel from "@/models/category.module";
 import productModel from "@/models/product.module";
 
+/* Main Page */
+
 export const getLatestProducts = async () => {
     try {
         await connectToDB();
@@ -56,5 +58,18 @@ export const getPopularBackProducts = async () => {
         return products
     } catch (error) {
         throw new Error('Error To Fetch Products')
+    }
+}
+
+/* Single Page */
+
+export const getProductByHref = async (href: string) => {
+    try {
+        connectToDB();
+        const product = productModel.findOne({ href }).lean();
+        if (!product) return false
+        return product
+    } catch (error) {
+        throw new Error('Error To Fetch Product')
     }
 }
