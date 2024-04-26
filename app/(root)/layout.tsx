@@ -1,3 +1,4 @@
+import Footer from '@/components/template/Footer/Footer'
 import Header from '@/components/template/Header/Header'
 import React from 'react'
 
@@ -10,6 +11,7 @@ const layout = ({ children }: ILayoutProps) => {
         <>
             <Header />
             {children}
+            <Footer />
         </>
     )
 }

@@ -10,6 +10,14 @@ import { IProduct } from "@/types/product"
 
 const LatestProductsSection = async () => {
 
+  // await categoryModel.create({
+  //   title: 'پی دبیلو ای ',
+  //   titleEn: 'PWA',
+  //   caption: 'pwa ...',
+  //   type: 'front',
+  //   href: 'pwa'
+  // })
+
   // await productModel.create({
   //   title: 'سورس فروشگاه آموزشی',
   //   description: 'توی این سورس تمامی قابلیت های یک فروشگاه آنلاین آموزشی وجود داره همینطور قابلیت خرید اشتراک ویژه هم در این سورس پیاده سازی شده و کاملا در دنیای واقعی کاربرد دارد',

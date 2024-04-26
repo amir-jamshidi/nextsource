@@ -17,7 +17,7 @@ const Header = async () => {
             <Navigation />
             <header className='hidden lg:flex mt-6 flex-col'>
                 <div className='container'>
-                    <div className='h-20 bg-secondary rounded-xl flex px-4'>
+                    <div className='h-20 bg-blue rounded-3xl flex px-8'>
                         <div className='flex-1 flex justify-start items-center'>
                             <h1 className='text-gray-200 text-xl font-morabba-bold'>
                                 نکستــ
@@ -46,7 +46,7 @@ const Header = async () => {
                     </div>
                 </div>
                 <div className='container'>
-                    <div className='h-14 bg-secondary mt-2 max-w-4xl rounded-xl mx-auto flex-center gap-x-1'>
+                    <div className='h-14 bg-blue mt-2 max-w-4xl rounded-3xl mx-auto flex-center gap-x-1'>
                         {menus.map(menu => (
                             <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg'>{menu.title}</p>
                         ))}
@@ -56,7 +56,7 @@ const Header = async () => {
 
             <header className='mt-4 mx-1 lg:hidden'>
                 <div className="container">
-                    <div className='h-20 bg-secondary flex rounded-xl px-3 lg:px-4'>
+                    <div className='h-20 bg-blue flex rounded-xl px-3 lg:px-4'>
                         <div className='flex-1 flex  items-center justify-start '>
                             <OpenSidebarButton />
                         </div>
