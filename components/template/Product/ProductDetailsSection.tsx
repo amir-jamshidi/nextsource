@@ -10,10 +10,11 @@ import React from 'react'
 
 interface ProductDetailsSectionProps {
     product: IProduct,
-    isHavPlanUser: boolean | IUser
+    isHavPlanUser: boolean | IUser,
+    isAccessToSourceUser: boolean
 }
 
-const ProductDetailsSection = ({ product, isHavPlanUser }: ProductDetailsSectionProps) => {
+const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }: ProductDetailsSectionProps) => {
     return (
         <section className='bg-blue px-6 py-6 rounded-xl mt-4'>
             <div className='grid grid-cols-2'>
@@ -56,11 +57,33 @@ const ProductDetailsSection = ({ product, isHavPlanUser }: ProductDetailsSection
                             <button className='bg-blue w-9 h-9 rounded-full flex-center'>
                                 <FavoriteRounded className='text-red-500' />
                             </button>
-                            <button className='bg-button py-1.5 px-12 rounded-full text-gray-100'>خرید این سورس کد</button>
+                            {((product.isPlan && isHavPlanUser) || isAccessToSourceUser) && (
+                                <span className='bg-blue py-1.5 px-12 rounded-full text-gray-100'>شما به این سورس دسترسی دارید</span>
+                            )}
+                            {(!product.isPlan || !isHavPlanUser) && (
+                                <button className='bg-button py-1.5 px-12 rounded-full text-gray-100'>خرید این سورس کد</button>
+                            )}
+
                         </div>
                         <div className='flex gap-x-1'>
-                            <p className='font-dana-bold text-green-500'>{product.price.toLocaleString()}</p>
-                            <p className='text-green-500'>تومــان</p>
+                            {!product.isFree && !product.isOff && (
+                                <>
+                                    <p className='font-dana-bold text-green-500'>{product.price.toLocaleString()}</p>
+                                    <p className='text-green-500'>تومــان</p>
+                                </>)}
+                            {product.isFree && (
+                                <>
+                                    <p className='font-dana-bold text-green-500 line-through'>{product.price.toLocaleString()}</p>
+                                    <p className='text-red-500'>رایگــان</p>
+                                </>)}
+                            {product.isOff && !product.isFree && (
+                                <>
+                                    <p className='font-dana-bold text-red-500 line-through'>{product.price.toLocaleString()}</p>
+                                    <p className="font-dana text-green-500">{Math.round(Number(product.price) - Number((product.price * product.precentOff) / 100)).toLocaleString()}</p>
+                                    <p className='text-green-500'>تومــان</p>
+                                </>
+                            )}
+
                         </div>
                     </div>
                 </div>

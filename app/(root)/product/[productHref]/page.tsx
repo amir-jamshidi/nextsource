@@ -3,6 +3,7 @@ import BreadCrump from '@/components/shared/BreadCrump';
 import ProductCommentsSection from '@/components/template/Product/ProductCommentsSection';
 import ProductDetailsSection from '@/components/template/Product/ProductDetailsSection';
 import ProductMoreDetailsSection from '@/components/template/Product/ProductMoreDetailsSection';
+import isAccessToSource from '@/middlewares/isAccessToSource';
 import isHavPlan from '@/middlewares/isHavPlan';
 import { IProduct } from '@/types/product';
 import { IUser } from '@/types/user';
@@ -14,9 +15,8 @@ import React from 'react'
 const Product = async ({ params: { productHref } }: { params: { productHref: string } }) => {
 
     const [product, isHavPlanUser]: [product: IProduct, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isHavPlan()])
-
     if (!product) return notFound();
-
+    const accessToSource = await isAccessToSource(product._id);
 
     // const addresses = [
     //     { title: product.title, href: product.href },
@@ -27,7 +27,7 @@ const Product = async ({ params: { productHref } }: { params: { productHref: str
         <section>
             <div className='container px-6'>
                 <BreadCrump />
-                <ProductDetailsSection product={product} isHavPlanUser={isHavPlanUser} />
+                <ProductDetailsSection product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
                 <ProductMoreDetailsSection product={product} />
                 <ProductCommentsSection />
             </div>
