@@ -26,14 +26,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }:
                     <div className='mt-2'>
                         <p className='line-clamp-3 text-justify text-gray-400'>{product.description}</p>
                     </div>
-                    <div className='flex items-center mt-4 gap-x-1'>
-                        <p className='text-gray-300'>تکنولوژی های استفاده شده : </p>
-                        <div className='flex items-center gap-x-1'>
-                            {product.categoryID.map((category: ICategory) => (
-                                <TagItem tag={category} />
-                            ))}
-                        </div>
-                    </div>
+
                     {product.isPlan && (
                         <div className='mt-2 flex gap-x-0.5 items-center'>
                             <p className='text-amber-500'>دسترسی رایگان برای اعضای ویژه سایت 🍸 </p>
@@ -52,7 +45,15 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }:
                         <p className='text-gray-300'>آخرین اپدیت سورس کد</p>
                         <p className='text-green-500'>{product.updatedAt?.toLocaleDateString('fa-IR')}</p>
                     </div>
-                    <div className='flex justify-between items-center mt-4'>
+                    <div className='flex items-center mt-4 gap-x-1'>
+                        <p className='text-gray-300'>تکنولوژی های استفاده شده : </p>
+                        <div className='flex items-center gap-x-1'>
+                            {product.categoryID.map((category: ICategory) => (
+                                <TagItem tag={category} />
+                            ))}
+                        </div>
+                    </div>
+                    <div className='flex justify-between items-center mt-4 bg-gray-800/30 rounded-xl px-3 py-2'>
                         <div className='flex items-center gap-x-1'>
                             <button className='bg-blue w-9 h-9 rounded-full flex-center'>
                                 <FavoriteRounded className='text-red-500' />
@@ -87,7 +88,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }:
                         </div>
                     </div>
                 </div>
-                <div className='flex-center relative h-80 rounded-xl'>
+                <div className='flex-center relative rounded-xl'>
                     <Image className='w-full rounded-xl' style={{ objectFit: 'cover' }} src={'https://sabzlearn.ir/wp-content/uploads/2024/01/IMAGE-1402-10-21-20_14_43-1-768x432.webp'} fill={true} alt='Photo' />
                 </div>
             </div>

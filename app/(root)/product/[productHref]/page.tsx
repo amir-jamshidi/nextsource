@@ -2,6 +2,7 @@ import { getProductByHref } from '@/actions/product.action'
 import BreadCrump from '@/components/shared/BreadCrump';
 import ProductCommentsSection from '@/components/template/Product/ProductCommentsSection';
 import ProductDetailsSection from '@/components/template/Product/ProductDetailsSection';
+import ProductLinksSection from '@/components/template/Product/ProductLinksSection';
 import ProductMoreDetailsSection from '@/components/template/Product/ProductMoreDetailsSection';
 import isAccessToSource from '@/middlewares/isAccessToSource';
 import isHavPlan from '@/middlewares/isHavPlan';
@@ -28,6 +29,9 @@ const Product = async ({ params: { productHref } }: { params: { productHref: str
             <div className='container px-6'>
                 <BreadCrump />
                 <ProductDetailsSection product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
+                {(isHavPlanUser && product.isPlan) || accessToSource && (
+                    <ProductLinksSection product={product} />
+                )}
                 <ProductMoreDetailsSection product={product} />
                 <ProductCommentsSection />
             </div>
