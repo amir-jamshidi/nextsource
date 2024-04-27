@@ -14,5 +14,7 @@ export interface IProduct extends Document {
     precentOff: number,
     photo: string,
     size: number,
-    links: []
+    links: [],
+    readonly createdAt?: Date
+    readonly updatedAt?: Date
 }

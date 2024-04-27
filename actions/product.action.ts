@@ -66,7 +66,7 @@ export const getPopularBackProducts = async () => {
 export const getProductByHref = async (href: string) => {
     try {
         connectToDB();
-        const product = productModel.findOne({ href }).lean();
+        const product = productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).lean();
         if (!product) return false
         return product
     } catch (error) {
