@@ -1,19 +1,23 @@
 import TagItem from '@/components/shared/TagItem'
 import { ICategory } from '@/types/category'
 import { IProduct } from '@/types/product'
+import { IUser } from '@/types/user'
 import { FavoriteRounded } from '@mui/icons-material'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
+
 interface ProductDetailsSectionProps {
-    product: IProduct
+    product: IProduct,
+    isHavPlanUser: boolean | IUser
 }
 
-const ProductDetailsSection = ({ product }: ProductDetailsSectionProps) => {
+const ProductDetailsSection = ({ product, isHavPlanUser }: ProductDetailsSectionProps) => {
     return (
         <section className='bg-blue px-6 py-6 rounded-xl mt-4'>
             <div className='grid grid-cols-2'>
-                <div className='px-4'>
+                <div className='px-4 py-4'>
                     <div className='flex-center'>
                         <p className='text-gray-200 text-lg'>{product.title}</p>
 
@@ -29,9 +33,13 @@ const ProductDetailsSection = ({ product }: ProductDetailsSectionProps) => {
                             ))}
                         </div>
                     </div>
-                    <div className='mt-2'>
-                        <p className='text-amber-500'>دسترسی رایگان برای اعضای ویژه سایت 🍸 </p>
-                    </div>
+                    {product.isPlan && (
+                        <div className='mt-2 flex gap-x-0.5 items-center'>
+                            <p className='text-amber-500'>دسترسی رایگان برای اعضای ویژه سایت 🍸 </p>
+                            {!isHavPlanUser && <Link className='text-blue-500 text-sm' href={'/plan'}>خرید پلن</Link>}
+                            {isHavPlanUser && <p></p>}
+                        </div>
+                    )}
                     <div className='mt-2'>
                         <p className='text-gray-300'>تا این لحظه <span className='mx-0.5 font-dana-bold text-blue-500'>{product.buyCount}</span> نسخه به فروش رسیده</p>
                     </div>
