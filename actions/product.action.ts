@@ -4,6 +4,7 @@ import connectToDB from "@/database/db"
 import categoryModel from "@/models/category.module";
 import productModel from "@/models/product.module";
 import { IProduct } from "@/types/product";
+import mongoose from "mongoose";
 
 /* Main Page */
 
@@ -68,7 +69,7 @@ export const getProductByHref = async (href: string) => {
     try {
         connectToDB();
         const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).lean() as IProduct
-        if (!product) throw new Error('Error To Fetch Product')
+        if (!product) return false;
         return product
     } catch (error) {
         throw new Error('Error To Fetch Product')
@@ -80,8 +81,9 @@ export const getProductByHref = async (href: string) => {
 export const getProductByID = async (id: string) => {
     try {
         connectToDB();
+        if (!mongoose.Types.ObjectId.isValid(id)) return false
         const product = await productModel.findOne({ _id: id }).populate({ path: 'categoryID', model: categoryModel }).lean() as IProduct
-        if (!product) throw new Error('Error To Fetch Product')
+        if (!product) return false
         return product
     } catch (error) {
         throw new Error('Error To Fetch Product')

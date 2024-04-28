@@ -5,16 +5,26 @@ import orderModel from "@/models/order.module"
 import productModel from "@/models/product.module";
 import { IProduct } from "@/types/product";
 import { IUser } from "@/types/user";
-import { revalidatePath } from "next/cache";
+import mongoose from "mongoose";
 
 export const newOrder = async (productID: string) => {
     try {
         connectToDB();
+
+        //Check isValid ObjectID
+        if (!mongoose.Types.ObjectId.isValid(productID)) return { state: false, message: 'خطای امنیتی' }
+
+        //Check User Login
         const isLoginUser = await isLogin() as IUser;
+        if (!isLoginUser) return { state: false, message: 'خطای دسترسی غیرمجاز' }
+
+
+        //Ckeck Buy Before
         const product = await productModel.findOne({ _id: productID }).lean() as IProduct;
+        const isBuyCourseBefore = await orderModel.findOne({ productID: product._id, userID: isLoginUser._id });
+        if (isBuyCourseBefore) return { state: false, message: 'قبلا این دوره رو خریدی' };
 
         let price = 0;
-
         if (product.isFree && product.isOff) price = 0;
         if (!product.isOff && !product.isFree) price = product.price
         if (product.isOff && !product.isFree) price = Math.floor((product.price) - (product.price * product.precentOff) / 100)
@@ -29,12 +39,12 @@ export const newOrder = async (productID: string) => {
             percentOff: product.precentOff,
         })
 
-        if (!order) throw Error('Error to new order');
+        //Check Create Document
+        if (!order) return { state: false, message: 'خطای ناشناخته' }
 
-        // revalidatePath('/')
+        return { state: true, message: 'پرداخت موفق' }
 
     } catch (error) {
-        console.log(error);
-        throw new Error('Error to new order');
+        throw new Error('خطای ناشناخته')
     }
 }

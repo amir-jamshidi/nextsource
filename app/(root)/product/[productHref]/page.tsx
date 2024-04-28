@@ -15,7 +15,7 @@ import React from 'react'
 
 const Product = async ({ params: { productHref } }: { params: { productHref: string } }) => {
 
-    const [product, isHavPlanUser]: [product: IProduct, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isHavPlan()])
+    const [product, isHavPlanUser]: [product: IProduct | boolean, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isHavPlan()])
     if (!product) return notFound();
     const accessToSource = await isAccessToSource(product._id);
 

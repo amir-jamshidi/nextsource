@@ -2,6 +2,7 @@
 
 import { newOrder } from "@/actions/order.action"
 import ToastPromise from "@/libs/ToastPromise"
+import { notFound } from "next/navigation"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
@@ -13,11 +14,12 @@ const CartBuyButton = ({ productID, isAccessToSourceUser }: { productID: string,
     const handleBuyProduct = async () => {
         try {
             setIsLoading(true)
-            await newOrder(productID)
+            const result = await newOrder(productID)
             setIsLoading(false)
-            toast.success('پرداخت موفق')
+            if (!result.state) return toast.error(result.message)
+            toast.success('پرداخت موفق');
         } catch (error) {
-            throw new Error('Error To Send new Order');
+            toast.error('خطای ناشناخته');
         }
     }
 

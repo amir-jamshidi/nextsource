@@ -83,6 +83,10 @@
         height: calc(100vh - 88px);
     }
 
+    .h-cart {
+        height: calc((100vh - 168px));
+    }
+
 }
 
 @font-face {
