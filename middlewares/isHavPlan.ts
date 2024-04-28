@@ -9,7 +9,7 @@ const isHavPlan = async () => {
         const isHavPlanUser = await orderPlanModel.findOne({ userID: user._id }) as IOrderPlan
         if (!isHavPlanUser) return false;
         if (Date.now() > isHavPlanUser.expireTime) return false;
-        return user
+        return true
     } catch (error) {
         console.log(error);
         return false

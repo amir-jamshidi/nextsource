@@ -3,6 +3,7 @@ import { DownloadRounded, StarRateRounded } from "@mui/icons-material"
 import Image from "next/image"
 import { ICategory } from './../../types/category.d';
 import Link from "next/link";
+import OffItem from "./OffItem";
 
 const SourceItem = ({ product }: { product: IProduct }) => {
     return (
@@ -16,9 +17,7 @@ const SourceItem = ({ product }: { product: IProduct }) => {
                         </span>
                     )}
                     {product.isOff && (
-                        <span className="absolute top-1 left-1 font-dana bg-red-500/50 text-gray-300 rounded-full flex-center w-8 h-8 text-xs ">
-                            {product.precentOff}%
-                        </span>
+                        <OffItem precent={product.precentOff} />
                     )}
                     <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>

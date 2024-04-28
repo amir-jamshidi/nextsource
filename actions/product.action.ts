@@ -74,3 +74,16 @@ export const getProductByHref = async (href: string) => {
         throw new Error('Error To Fetch Product')
     }
 }
+
+/* Cart Page */
+
+export const getProductByID = async (id: string) => {
+    try {
+        connectToDB();
+        const product = await productModel.findOne({ _id: id }).populate({ path: 'categoryID', model: categoryModel }).lean() as IProduct
+        if (!product) throw new Error('Error To Fetch Product')
+        return product
+    } catch (error) {
+        throw new Error('Error To Fetch Product')
+    }
+}

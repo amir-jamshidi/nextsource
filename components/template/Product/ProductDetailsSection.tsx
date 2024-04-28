@@ -26,7 +26,6 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }:
                     <div className='mt-2'>
                         <p className='line-clamp-3 text-justify text-gray-400'>{product.description}</p>
                     </div>
-
                     {product.isPlan && (
                         <div className='mt-2 flex gap-x-0.5 items-center'>
                             <p className='text-amber-500'>دسترسی رایگان برای اعضای ویژه سایت 🍸 </p>
@@ -61,10 +60,11 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }:
                             {((product.isPlan && isHavPlanUser) || isAccessToSourceUser) && (
                                 <span className='bg-blue py-1.5 px-12 rounded-full text-gray-100'>شما به این سورس دسترسی دارید</span>
                             )}
-                            {(!product.isPlan || !isHavPlanUser) && (
-                                <button className='bg-button py-1.5 px-12 rounded-full text-gray-100'>خرید این سورس کد</button>
+                            {(!product.isPlan || !isHavPlanUser) && !isAccessToSourceUser && (
+                                <Link href={`/cart/${product._id}`}>
+                                    <button className='bg-button py-1.5 px-12 rounded-full text-gray-100'>خرید سورس کد</button>
+                                </Link>
                             )}
-
                         </div>
                         <div className='flex gap-x-1'>
                             {!product.isFree && !product.isOff && (

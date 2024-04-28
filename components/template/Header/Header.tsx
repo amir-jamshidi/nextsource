@@ -19,11 +19,13 @@ const Header = async () => {
                 <div className='container'>
                     <div className='h-20 bg-blue rounded-3xl flex px-8'>
                         <div className='flex-1 flex justify-start items-center'>
-                            <h1 className='text-gray-200 text-xl font-morabba-bold'>
-                                نکستــ
-                                {" "}
-                                سورس
-                            </h1>
+                            <Link href={'/'}>
+                                <h1 className='text-gray-200 text-xl font-morabba-bold'>
+                                    نکستــ
+                                    {" "}
+                                    سورس
+                                </h1>
+                            </Link>
                         </div>
                         <div className='flex-1 flex-center'>
                             <div className='bg-gray-900 rounded-xl w-full flex items-center px-2 gap-x-1.5'>

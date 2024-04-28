@@ -1,3 +1,5 @@
+'use server'
+
 import connectToDB from "@/database/db";
 import VerifyToken from "@/libs/VerifyToken";
 import userModel from "@/models/user.module";
