@@ -25,7 +25,7 @@ const CommentItem = ({ comment }: { comment: IComment }) => {
                             </>
                         ))}
                     </div>
-                    <p className='text-sm text-center text-gray-400'>{new Date(comment.createdAt).toLocaleDateString('fa-IR')}</p>
+                    <p className='text-sm text-center text-gray-400'>{comment.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
             </div>
             <div className='flex-1 pl-2'>
