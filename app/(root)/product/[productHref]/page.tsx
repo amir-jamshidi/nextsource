@@ -6,6 +6,7 @@ import ProductCommentsSection from '@/components/template/Product/ProductComment
 import ProductDetailsSection from '@/components/template/Product/ProductDetailsSection';
 import ProductLinksSection from '@/components/template/Product/ProductLinksSection';
 import ProductMoreDetailsSection from '@/components/template/Product/ProductMoreDetailsSection';
+import ProductRelatedSection from '@/components/template/Product/ProductRelatedSection';
 import isAccessToSource from '@/middlewares/isAccessToSource';
 import isHavPlan from '@/middlewares/isHavPlan';
 import { IProduct } from '@/types/product';
@@ -35,8 +36,10 @@ const Product = async ({ params: { productHref } }: { params: { productHref: str
                     <ProductLinksSection product={product} />
                 )}
                 <ProductMoreDetailsSection product={product} />
+                <ProductRelatedSection />
                 <ProductCommentsSection />
                 <CommentForm />
+
             </div>
         </section>
     )
