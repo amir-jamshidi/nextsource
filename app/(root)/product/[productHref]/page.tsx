@@ -1,4 +1,6 @@
+import { getComments } from '@/actions/comment.action';
 import { getProductByHref } from '@/actions/product.action'
+import CommentForm from '@/components/forms/CommentForm';
 import BreadCrump from '@/components/shared/BreadCrump';
 import ProductCommentsSection from '@/components/template/Product/ProductCommentsSection';
 import ProductDetailsSection from '@/components/template/Product/ProductDetailsSection';
@@ -34,6 +36,7 @@ const Product = async ({ params: { productHref } }: { params: { productHref: str
                 )}
                 <ProductMoreDetailsSection product={product} />
                 <ProductCommentsSection />
+                <CommentForm />
             </div>
         </section>
     )

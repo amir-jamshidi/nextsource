@@ -7,6 +7,11 @@ const commentSchema = new Schema<IComment>({
         required: true,
         ref: 'User'
     },
+    productID: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
+        required: true
+    },
     body: {
         type: String,
         required: true
@@ -23,7 +28,7 @@ const commentSchema = new Schema<IComment>({
         type: String,
         default: ''
     },
-    answerID: {
+    answerUserID: {
         type: Schema.Types.ObjectId,
         required: false
     }

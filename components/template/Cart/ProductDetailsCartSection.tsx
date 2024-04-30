@@ -4,11 +4,14 @@ import { CheckRounded } from '@mui/icons-material'
 import Image from 'next/image'
 import React from 'react'
 import CartBuyButton from './CartBuyButton'
+
 interface ProductDetailsCartSectionProps {
     product: IProduct,
     isAccessToSourceUser: boolean
 }
-const ProductDetailsCartSection = ({ product, isAccessToSourceUser }: ProductDetailsCartSectionProps) => {
+
+const ProductDetailsCartSection = async ({ product, isAccessToSourceUser }: ProductDetailsCartSectionProps) => {
+
     return (
         <div className='flex flex-col'>
             <div className='w-96 bg-blue rounded-xl py-2 px-4 mt-8'>
