@@ -46,10 +46,9 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
                 <ProductCommentsSection productID={product._id} comment={commentPage} />
                 <CommentForm isLoginUser={isLoginUser} productID={JSON.parse(JSON.stringify(product._id))} />
 
-                <Link scroll={false} href={`/product/${productHref}?comments=2`}>Comments</Link>
             </div>
         </section >
     )
 }
 
-export default Product
+export default Product 
