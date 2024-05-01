@@ -42,3 +42,12 @@ export const addNewComment = async (body: string, rate: number, productID: strin
         throw new Error('خطای ناشناخته')
     }
 }
+
+export const getCommentsCount = async (productID: string) => {
+    try {
+        const commentsCount = await commentModel.find({ productID }).countDocuments()
+        return commentsCount
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}

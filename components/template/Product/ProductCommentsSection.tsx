@@ -7,10 +7,11 @@ import React from 'react'
 
 interface ProductCommentsSectionProps {
     comment: string,
-    productID: string
+    productID: string,
+    children: React.ReactNode
 }
 
-const ProductCommentsSection = async ({ comment, productID }: ProductCommentsSectionProps) => {
+const ProductCommentsSection = async ({ comment, productID, children }: ProductCommentsSectionProps) => {
 
     const comments = await getComments(Number(comment), productID) as IComment[]
 
@@ -38,6 +39,9 @@ const ProductCommentsSection = async ({ comment, productID }: ProductCommentsSec
                 {comments.map(comment => (
                     <CommentItem key={comment._id} comment={comment} />
                 ))}
+            </div>
+            <div className='flex-center'>
+                {children}
             </div>
         </section>
     )

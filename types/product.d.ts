@@ -15,6 +15,7 @@ export interface IProduct extends Document {
     photo: string,
     size: number,
     links: [],
+    preView: string
     readonly createdAt?: Date
     readonly updatedAt?: Date
 }

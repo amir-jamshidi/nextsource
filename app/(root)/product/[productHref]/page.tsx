@@ -1,4 +1,4 @@
-import { getComments } from '@/actions/comment.action';
+import { getComments, getCommentsCount } from '@/actions/comment.action';
 import { getProductByHref } from '@/actions/product.action'
 import CommentForm from '@/components/forms/CommentForm';
 import BreadCrump from '@/components/shared/BreadCrump';
@@ -16,6 +16,7 @@ import React from 'react'
 import isLogin from '@/middlewares/isLogin';
 import isHasToFavorite from '@/middlewares/isHasToFavorite';
 import Link from 'next/link';
+import CommentMoreButton from '@/components/buttons/CommentMoreButton/CommentMoreButton';
 
 
 
@@ -24,7 +25,7 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
 
     const [product, isLoginUser, isHavPlanUser]: [product: IProduct | boolean, isLoginUser: boolean | IUser, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isLogin(), isHavPlan()])
     if (!product) return notFound();
-    const [accessToSource, isHasToFav]: [accessToSource: boolean, isHasToFav: boolean] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id)]);
+    const [accessToSource, isHasToFav, commentsCount]: [accessToSource: boolean, isHasToFav: boolean, commentsCount: number] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id), getCommentsCount(product._id)]);
     const commentPage = comments || '1'
     // const addresses = [
     //     { title: product.title, href: product.href },
@@ -40,7 +41,9 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
                 )}
                 <ProductMoreDetailsSection product={product} />
                 <ProductRelatedSection />
-                <ProductCommentsSection productID={product._id} comment={commentPage} />
+                <ProductCommentsSection productID={product._id} comment={commentPage} >
+                    <CommentMoreButton commentsCount={commentsCount} params={productHref} commentPage={Number(commentPage)} />
+                </ProductCommentsSection>
                 <CommentForm isLoginUser={isLoginUser} productID={JSON.parse(JSON.stringify(product._id))} />
 
             </div>

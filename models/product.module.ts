@@ -1,5 +1,6 @@
 import { IProduct } from '@/types/product';
 import { model, models, Schema } from 'mongoose'
+import { deflate } from 'zlib';
 
 const productSchema = new Schema<IProduct>({
     title: {
@@ -59,6 +60,10 @@ const productSchema = new Schema<IProduct>({
     links: {
         type: [String],
         required: true
+    },
+    preView: {
+        type: String,
+        deflate: ''
     }
 }, { timestamps: true })
 

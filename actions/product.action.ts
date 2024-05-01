@@ -67,7 +67,7 @@ export const getPopularBackProducts = async () => {
 
 export const getProductByHref = async (href: string) => {
     try {
-        connectToDB();
+        await connectToDB();
         const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).lean() as IProduct
         if (!product) return false;
         return product
@@ -80,12 +80,22 @@ export const getProductByHref = async (href: string) => {
 
 export const getProductByID = async (id: string) => {
     try {
-        connectToDB();
+        await connectToDB();
         if (!mongoose.Types.ObjectId.isValid(id)) return false
         const product = await productModel.findOne({ _id: id }).populate({ path: 'categoryID', model: categoryModel }).lean() as IProduct
         if (!product) return false
         return product
     } catch (error) {
         throw new Error('Error To Fetch Product')
+    }
+}
+
+export const getRelatedProducts = async (id: string) => {
+    try {
+        await connectToDB();
+        const products = await productModel.find({}).lean() as IProduct[];
+        return products
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
     }
 }
