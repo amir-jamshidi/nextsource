@@ -15,14 +15,18 @@ import { notFound } from 'next/navigation';
 import React from 'react'
 import isLogin from '@/middlewares/isLogin';
 import isHasToFavorite from '@/middlewares/isHasToFavorite';
+import Link from 'next/link';
 
 
 
-const Product = async ({ params: { productHref } }: { params: { productHref: string } }) => {
+const Product = async ({ params: { productHref }, searchParams: { comments } }: { params: { productHref: string }, searchParams: { comments: string } }) => {
+
 
     const [product, isLoginUser, isHavPlanUser]: [product: IProduct | boolean, isLoginUser: boolean | IUser, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isLogin(), isHavPlan()])
     if (!product) return notFound();
     const [accessToSource, isHasToFav]: [accessToSource: boolean, isHasToFav: boolean] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id)]);
+
+    const commentPage = comments || '1'
 
     // const addresses = [
     //     { title: product.title, href: product.href },
@@ -39,11 +43,12 @@ const Product = async ({ params: { productHref } }: { params: { productHref: str
                 )}
                 <ProductMoreDetailsSection product={product} />
                 <ProductRelatedSection />
-                <ProductCommentsSection />
+                <ProductCommentsSection productID={product._id} comment={commentPage} />
                 <CommentForm isLoginUser={isLoginUser} productID={JSON.parse(JSON.stringify(product._id))} />
 
+                <Link scroll={false} href={`/product/${productHref}?comments=2`}>Comments</Link>
             </div>
-        </section>
+        </section >
     )
 }
 

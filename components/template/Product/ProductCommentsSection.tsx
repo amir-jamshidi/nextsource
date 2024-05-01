@@ -1,17 +1,21 @@
 import { getComments } from '@/actions/comment.action'
 import CommentItem from '@/components/shared/CommentItem'
-import ProductSectionTitle from '@/components/shared/ProductSectionTitle'
 import { IComment } from '@/types/comment'
 import { StarRounded } from '@mui/icons-material'
 import React from 'react'
 
-const ProductCommentsSection = async () => {
-    const comments = await getComments(10, '') as IComment[]
+
+interface ProductCommentsSectionProps {
+    comment: string,
+    productID: string
+}
+
+const ProductCommentsSection = async ({ comment, productID }: ProductCommentsSectionProps) => {
+
+    const comments = await getComments(Number(comment), productID) as IComment[]
 
     return (
         <section className='bg-blue px-6 py-6 rounded-xl mt-8'>
-
-
             <div className="flex-center flex">
                 <div className=' flex text-sm items-center gap-x-1 w-32'>
                     <p className='text-gray-400'>تا الان</p>

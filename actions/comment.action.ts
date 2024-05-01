@@ -16,7 +16,7 @@ interface AddComment {
 export const getComments = async (limit: number, productID: string) => {
     try {
         await connectToDB();
-        const comments = await commentModel.find({}).populate({ path: 'userID', model: userModel }).populate({ path: 'answerUserID', model: userModel }).lean();
+        const comments = await commentModel.find({ productID }).populate({ path: 'userID', model: userModel }).populate({ path: 'answerUserID', model: userModel }).limit((limit * 5)).lean();
         return comments
     } catch (error) {
         console.log(error);

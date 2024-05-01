@@ -3,7 +3,6 @@ import { IUser } from '@/types/user'
 import Image from 'next/image'
 import React from 'react'
 
-
 interface CommentAnswerContentProps {
     answerUser: IUser,
     comment: IComment
