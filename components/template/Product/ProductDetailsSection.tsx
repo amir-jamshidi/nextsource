@@ -1,8 +1,11 @@
+import BackButton from '@/components/buttons/BackButton/BackButton'
+import FavoriteButton from '@/components/buttons/FavoriteButton/FavoriteButton'
+import OffItem from '@/components/shared/OffItem'
 import TagItem from '@/components/shared/TagItem'
 import { ICategory } from '@/types/category'
 import { IProduct } from '@/types/product'
 import { IUser } from '@/types/user'
-import { FavoriteRounded } from '@mui/icons-material'
+import { StarRounded } from '@mui/icons-material'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -11,10 +14,12 @@ import React from 'react'
 interface ProductDetailsSectionProps {
     product: IProduct,
     isHavPlanUser: boolean | IUser,
-    isAccessToSourceUser: boolean
+    isAccessToSourceUser: boolean,
+    isHasToFav: boolean
 }
 
-const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }: ProductDetailsSectionProps) => {
+const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav }: ProductDetailsSectionProps) => {
+
     return (
         <section className='bg-blue px-6 py-6 rounded-xl mt-4'>
             <div className='grid grid-cols-2'>
@@ -48,15 +53,13 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }:
                         <p className='text-gray-300'>تکنولوژی های استفاده شده : </p>
                         <div className='flex items-center gap-x-1'>
                             {product.categoryID.map((category: ICategory) => (
-                                <TagItem tag={category} />
+                                <TagItem key={category._id} tag={category} />
                             ))}
                         </div>
                     </div>
                     <div className='flex justify-between items-center mt-4 bg-gray-800/30 rounded-xl px-3 py-2'>
                         <div className='flex items-center gap-x-1'>
-                            <button className='bg-blue w-9 h-9 rounded-full flex-center'>
-                                <FavoriteRounded className='text-red-500' />
-                            </button>
+                            <FavoriteButton productID={product._id} isHasToFav={isHasToFav} />
                             {((product.isPlan && isHavPlanUser) || isAccessToSourceUser) && (
                                 <span className='bg-blue py-1.5 px-12 rounded-full text-gray-100'>شما به این سورس دسترسی دارید</span>
                             )}
@@ -90,6 +93,12 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser }:
                 </div>
                 <div className='flex-center relative rounded-xl'>
                     <Image className='w-full rounded-xl' style={{ objectFit: 'cover' }} src={'https://sabzlearn.ir/wp-content/uploads/2024/01/IMAGE-1402-10-21-20_14_43-1-768x432.webp'} fill={true} alt='Photo' />
+                    <BackButton />
+                    {product.isOff && <OffItem pos='right-1 top-1' precent={product.precentOff} />}
+                    <div className='absolute bottom-1 left-1 bg-gray-800/30 rounded px-1 flex items-center'>
+                        <span className='font-dana-bold text-amber-500 pt-0.5'>4.5</span>
+                        <StarRounded className='text-amber-500' />
+                    </div>
                 </div>
             </div>
         </section>

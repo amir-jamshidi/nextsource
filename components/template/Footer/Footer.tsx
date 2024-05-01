@@ -1,4 +1,4 @@
-import { KeyboardArrowUpRounded } from "@mui/icons-material"
+import ScrollToTop from "@/components/buttons/ScrollToTop/ScrollToTop"
 
 const Footer = () => {
     return (
@@ -11,9 +11,7 @@ const Footer = () => {
                         <p className="text-sm text-gray-400">طراحی شده توسط امیرحسین جمشیدی</p>
                     </div>
                     <div className="flex-1 flex items-center justify-end">
-                        <span className="flex-center w-10 h-10 rounded-full bg-gray-700">
-                            <KeyboardArrowUpRounded className="text-gray-400" />
-                        </span>
+                        <ScrollToTop />
                     </div>
                 </div>
             </div>

@@ -13,14 +13,16 @@ import { IProduct } from '@/types/product';
 import { IUser } from '@/types/user';
 import { notFound } from 'next/navigation';
 import React from 'react'
+import isLogin from '@/middlewares/isLogin';
+import isHasToFavorite from '@/middlewares/isHasToFavorite';
 
 
 
 const Product = async ({ params: { productHref } }: { params: { productHref: string } }) => {
 
-    const [product, isHavPlanUser]: [product: IProduct | boolean, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isHavPlan()])
+    const [product, isLoginUser, isHavPlanUser]: [product: IProduct | boolean, isLoginUser: boolean | IUser, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isLogin(), isHavPlan()])
     if (!product) return notFound();
-    const accessToSource = await isAccessToSource(product._id);
+    const [accessToSource, isHasToFav]: [accessToSource: boolean, isHasToFav: boolean] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id)]);
 
     // const addresses = [
     //     { title: product.title, href: product.href },
@@ -31,14 +33,14 @@ const Product = async ({ params: { productHref } }: { params: { productHref: str
         <section>
             <div className='container px-6'>
                 <BreadCrump />
-                <ProductDetailsSection product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
+                <ProductDetailsSection isHasToFav={isHasToFav} product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
                 {(isHavPlanUser && product.isPlan) || accessToSource && (
                     <ProductLinksSection product={product} />
                 )}
                 <ProductMoreDetailsSection product={product} />
                 <ProductRelatedSection />
                 <ProductCommentsSection />
-                <CommentForm />
+                <CommentForm isLoginUser={isLoginUser} productID={JSON.parse(JSON.stringify(product._id))} />
 
             </div>
         </section>

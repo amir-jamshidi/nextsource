@@ -10,6 +10,7 @@ export interface IComment extends Document {
     isAnswer: boolean,
     answerContent: string,
     answerUserID: Types.ObjectId | IUser,
+    isAccept: boolean
     createdAt?: Date,
     updatedAt?: Date
 }

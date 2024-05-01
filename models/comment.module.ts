@@ -30,7 +30,11 @@ const commentSchema = new Schema<IComment>({
     },
     answerUserID: {
         type: Schema.Types.ObjectId,
-        required: false
+        required: false,
+    },
+    isAccept: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true });
 

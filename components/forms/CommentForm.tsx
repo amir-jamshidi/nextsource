@@ -3,16 +3,36 @@ import React, { useState } from 'react'
 import ProductSectionTitle from '../shared/ProductSectionTitle'
 import { Rating } from '@mui/material'
 import toast from 'react-hot-toast'
+import { addNewComment } from '@/actions/comment.action'
+import { IUser } from '@/types/user'
+import { useRouter } from 'next/navigation'
 
-const CommentForm = () => {
+interface CommentFormProps {
+    productID: string,
+    isLoginUser: boolean | IUser
+}
+
+const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
 
     const [body, setBody] = useState('')
     const [rate, setRate] = useState(0);
 
-    const handleSubmitForm = (e: React.FormEvent) => {
+    const router = useRouter();
+
+    const handleSubmitForm = async (e: React.FormEvent) => {
         e.preventDefault();
         if (body.trim().length < 3) return toast.error('متن نظر حداقل سه کاراکتر باید باشه')
         if (rate === 0 || rate > 5) return toast.error('لطفا امتیاز به سورس رو مشخص کن')
+        try {
+            const result = await addNewComment(body, rate, productID)
+            if (!result.state) return toast.error(result.message);
+            toast.success(result.message);
+            setBody('');
+            setRate(0);
+            router.refresh();
+        } catch (error) {
+            toast.error('خطای ناشناخته')
+        }
     }
 
     return (
@@ -24,7 +44,7 @@ const CommentForm = () => {
                     <div dir='ltr' className='w-full bg-gray-800/30 flex-center py-3 rounded-xl'>
                         <Rating name="text-feedback" value={rate} onChange={(e, value) => setRate(Number(value))} />
                     </div>
-                    <input type="submit" value="فرستادن" className='w-full py-3 bg-blue rounded-xl text-gray-300' />
+                    <input disabled={!isLoginUser} type="submit" value={!isLoginUser ? 'لطفا وارد حساب شو' : 'فرستادن'} className={`${!isLoginUser ? 'cursor-not-allowed' : 'cursor-pointer'} w-full py-3 bg-blue rounded-xl text-gray-300`} />
                 </form>
             </div>
         </section>
