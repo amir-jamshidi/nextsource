@@ -25,7 +25,6 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
     const [product, isLoginUser, isHavPlanUser]: [product: IProduct | boolean, isLoginUser: boolean | IUser, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isLogin(), isHavPlan()])
     if (!product) return notFound();
     const [accessToSource, isHasToFav]: [accessToSource: boolean, isHasToFav: boolean] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id)]);
-
     const commentPage = comments || '1'
 
     // const addresses = [
