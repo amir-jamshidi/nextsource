@@ -96,7 +96,7 @@ export const getRelatedProducts = async (id: string) => {
     try {
         await connectToDB();
         const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean() as IProduct[];
-        return JSON.parse(JSON.stringify(products))
+        return JSON.parse(JSON.stringify(products)) as IProduct[]
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

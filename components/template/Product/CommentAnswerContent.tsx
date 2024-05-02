@@ -16,8 +16,9 @@ const CommentAnswerContent = ({ answerUser, comment }: CommentAnswerContentProps
                     <div className='w-12 h-12 relative'>
                         <Image className='rounded-full' style={{ objectFit: 'cover' }} src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} fill={true} alt='' />
                     </div>
-                    <div>
+                    <div className='flex flex-col items-center mt-0.5'>
                         <p className='text-sm text-gray-400 line-clamp-1 text-center'>{answerUser.fullname}</p>
+                        <p className='text-sm text-green-500'>{answerUser.role === 'ADMIN' ? 'مدیریت' : answerUser.role == 'SELLER' ? 'فروشنده' : 'کاربر'}</p>
                     </div>
                 </div>
                 <div className='flex-1'>
