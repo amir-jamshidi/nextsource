@@ -3,6 +3,7 @@ import connectToDB from "@/database/db"
 import isLogin from "@/middlewares/isLogin";
 import orderModel from "@/models/order.module"
 import productModel from "@/models/product.module";
+import userModel from "@/models/user.module";
 import { IProduct } from "@/types/product";
 import { IUser } from "@/types/user";
 import mongoose from "mongoose";
@@ -41,6 +42,9 @@ export const newOrder = async (productID: string) => {
 
         //Check Create Document
         if (!order) return { state: false, message: 'خطای ناشناخته' }
+
+        //Handle CashBack
+        await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: +product.cashBack } });
 
         return { state: true, message: 'پرداخت موفق' }
 
