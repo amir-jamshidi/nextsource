@@ -1,4 +1,4 @@
-import {Document} from "mongoose";
+import { Document } from "mongoose";
 
 export interface ICategory extends Document {
     title: string,
@@ -6,5 +6,4 @@ export interface ICategory extends Document {
     photo: string,
     titleEn: string
     caption: string
-    type: string
 }

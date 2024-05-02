@@ -1,9 +1,10 @@
 import { Document, Types } from "mongoose";
+import { ICategory } from "./category";
 
 export interface IProduct extends Document {
     title: string,
     description: string,
-    categoryID: [],
+    categoryID: Types.ObjectId | ICategory,
     creatorID: Types.ObjectId,
     price: number,
     href: string,
@@ -15,7 +16,8 @@ export interface IProduct extends Document {
     photo: string,
     size: number,
     links: [],
-    preView: string
+    preView: string,
+    tags: []
     readonly createdAt?: Date
     readonly updatedAt?: Date
 }

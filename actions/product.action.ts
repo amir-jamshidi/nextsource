@@ -3,6 +3,7 @@
 import connectToDB from "@/database/db"
 import categoryModel from "@/models/category.module";
 import productModel from "@/models/product.module";
+import tagModel from "@/models/tag.module";
 import { IProduct } from "@/types/product";
 import mongoose from "mongoose";
 
@@ -11,7 +12,7 @@ import mongoose from "mongoose";
 export const getLatestProducts = async () => {
     try {
         await connectToDB();
-        const products = await productModel.find({}).limit(8).populate({ path: 'categoryID', model: categoryModel }).sort({ _id: -1 }).lean();
+        const products = await productModel.find({}).limit(8).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ _id: -1 }).lean();
         if (!products) return [];
         return products
     } catch (error) {
@@ -22,7 +23,7 @@ export const getLatestProducts = async () => {
 export const getBestSellerProdcuts = async () => {
     try {
         await connectToDB();
-        const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).sort({ buyCount: -1 }).lean();
+        const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean();
         if (!products) return [];
         return products
     } catch (error) {
@@ -33,7 +34,7 @@ export const getBestSellerProdcuts = async () => {
 export const getPopularProducts = async () => {
     try {
         connectToDB();
-        const products = await productModel.find({}).limit(4).lean();
+        const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean();
         if (!products) throw new Error('Error To Fetch Products');
         return products;
     } catch (error) {
@@ -44,7 +45,7 @@ export const getPopularProducts = async () => {
 export const getPopularFrontProducts = async () => {
     try {
         connectToDB();
-        const products = await productModel.find({}).limit(4).lean();
+        const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean();
         if (!products) throw new Error('Error To Fetch Products');
         return products
     } catch (error) {
@@ -55,7 +56,7 @@ export const getPopularFrontProducts = async () => {
 export const getPopularBackProducts = async () => {
     try {
         connectToDB();
-        const products = await productModel.find({}).limit(4).lean();
+        const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean();
         if (!products) throw new Error('Error To Fetch Products');
         return products
     } catch (error) {
@@ -68,7 +69,7 @@ export const getPopularBackProducts = async () => {
 export const getProductByHref = async (href: string) => {
     try {
         await connectToDB();
-        const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).lean() as IProduct
+        const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).lean() as IProduct
         if (!product) return false;
         return product
     } catch (error) {
@@ -93,7 +94,7 @@ export const getProductByID = async (id: string) => {
 export const getRelatedProducts = async (id: string) => {
     try {
         await connectToDB();
-        const products = await productModel.find({}).lean() as IProduct[];
+        const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean() as IProduct[];
         return products
     } catch (error) {
         throw new Error('خطای ناشناخته')

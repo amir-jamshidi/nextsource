@@ -8,10 +8,11 @@ import React from 'react'
 interface ProductCommentsSectionProps {
     comment: string,
     productID: string,
-    children: React.ReactNode
+    children: React.ReactNode,
+    commnetsCount: number
 }
 
-const ProductCommentsSection = async ({ comment, productID, children }: ProductCommentsSectionProps) => {
+const ProductCommentsSection = async ({ comment, productID, commnetsCount, children }: ProductCommentsSectionProps) => {
 
     const comments = await getComments(Number(comment), productID) as IComment[]
 
@@ -20,7 +21,7 @@ const ProductCommentsSection = async ({ comment, productID, children }: ProductC
             <div className="flex-center flex">
                 <div className=' flex text-sm items-center gap-x-1 w-32'>
                     <p className='text-gray-400'>تا الان</p>
-                    <span className='text-amber-500 font-dana-bold pt-0.5'>38</span>
+                    <span className='text-amber-500 font-dana-bold pt-0.5'>{commnetsCount}</span>
                     <p className='text-gray-400'>نظر ثبت شده</p>
                 </div>
                 <span className="flex-1 h-px bg-gray-800 inline-block"></span>

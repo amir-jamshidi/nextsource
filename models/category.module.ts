@@ -15,10 +15,6 @@ const categorySchema = new Schema<ICategory>({
         type: String,
         required: true
     },
-    type: {
-        type: String,
-        required: true
-    },
     href: {
         type: String,
         required: true,

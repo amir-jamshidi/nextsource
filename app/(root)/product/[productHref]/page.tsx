@@ -17,6 +17,7 @@ import isLogin from '@/middlewares/isLogin';
 import isHasToFavorite from '@/middlewares/isHasToFavorite';
 import Link from 'next/link';
 import CommentMoreButton from '@/components/buttons/CommentMoreButton/CommentMoreButton';
+import tagModel from '@/models/tag.module';
 
 
 
@@ -27,21 +28,21 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
     if (!product) return notFound();
     const [accessToSource, isHasToFav, commentsCount]: [accessToSource: boolean, isHasToFav: boolean, commentsCount: number] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id), getCommentsCount(product._id)]);
     const commentPage = comments || '1'
-    // const addresses = [
-    //     { title: product.title, href: product.href },
-    //     { title: product.categoryID[0].title , href : pro}
-    // ]
+
+
+    const addresses = [{ title: product.categoryID.title, href: product.categoryID?.href }, { title: product.title, href: product.href }]
+
     return (
         <section>
             <div className='container px-6'>
-                <BreadCrump />
+                <BreadCrump addresses={addresses} />
                 <ProductDetailsSection isHasToFav={isHasToFav} product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
                 {(isHavPlanUser && product.isPlan) || accessToSource && (
                     <ProductLinksSection product={product} />
                 )}
                 <ProductMoreDetailsSection product={product} />
-                <ProductRelatedSection />
-                <ProductCommentsSection productID={product._id} comment={commentPage} >
+                <ProductRelatedSection productID={product._id} />
+                <ProductCommentsSection productID={product._id} comment={commentPage} commnetsCount={commentsCount} >
                     <CommentMoreButton commentsCount={commentsCount} params={productHref} commentPage={Number(commentPage)} />
                 </ProductCommentsSection>
                 <CommentForm isLoginUser={isLoginUser} productID={JSON.parse(JSON.stringify(product._id))} />

@@ -4,6 +4,7 @@ import Image from "next/image"
 import { ICategory } from './../../types/category.d';
 import Link from "next/link";
 import OffItem from "./OffItem";
+import { ITag } from "@/types/tag";
 
 const SourceItem = ({ product }: { product: IProduct }) => {
     return (
@@ -27,9 +28,11 @@ const SourceItem = ({ product }: { product: IProduct }) => {
                 <div className="px-2 mt-1">
                     <p className="text-600-400 text-sm text-justify line-clamp-2">{product.description}</p>
                     <div className=" mt-2 mb-1.5 rounded bg-blsue flex gap-x-0.5">
-                        {product.categoryID.slice(0, 3).map((category: ICategory) => (
-                            <span className="text-xs bg-gray-800/90 rounded-xl px-1.5 text-gray-300" key={JSON.stringify(category._id)}>{category.title}</span>
-                        ))}
+                        {product.tags && (<>
+                            {product.tags.slice(0, 3).map((tag: ITag) => (
+                                <span className="text-xs bg-gray-800/90 rounded-xl px-1.5 text-gray-300" key={JSON.parse(JSON.stringify(tag._id))}>{tag.title}</span>
+                            ))}
+                        </>)}
                     </div>
                 </div>
                 <div className="mt-2 pt-2 mb-1 border-t border-t-gray-700/40 mx-3 flex justify-between">

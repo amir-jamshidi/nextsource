@@ -2,7 +2,7 @@
 
 import { newOrder } from "@/actions/order.action"
 import ToastPromise from "@/libs/ToastPromise"
-import { notFound } from "next/navigation"
+import { notFound, useRouter } from "next/navigation"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
@@ -11,6 +11,8 @@ const CartBuyButton = ({ productID, isAccessToSourceUser }: { productID: string,
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const router = useRouter();
+
     const handleBuyProduct = async () => {
         try {
             setIsLoading(true)
@@ -18,6 +20,8 @@ const CartBuyButton = ({ productID, isAccessToSourceUser }: { productID: string,
             setIsLoading(false)
             if (!result.state) return toast.error(result.message)
             toast.success('پرداخت موفق');
+            router.back();
+            router.refresh();
         } catch (error) {
             toast.error('خطای ناشناخته');
         }

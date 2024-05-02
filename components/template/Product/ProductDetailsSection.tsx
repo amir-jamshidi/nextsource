@@ -4,8 +4,9 @@ import OffItem from '@/components/shared/OffItem'
 import TagItem from '@/components/shared/TagItem'
 import { ICategory } from '@/types/category'
 import { IProduct } from '@/types/product'
+import { ITag } from '@/types/tag'
 import { IUser } from '@/types/user'
-import { StarRounded } from '@mui/icons-material'
+import { InsertLinkRounded, StarRounded } from '@mui/icons-material'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -21,7 +22,7 @@ interface ProductDetailsSectionProps {
 const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav }: ProductDetailsSectionProps) => {
 
     return (
-        <section className='bg-blue px-6 py-6 rounded-xl mt-4'>
+        <section className='bg-blue px-6 py-6 rounded-xl mt-2'>
             <div className='grid grid-cols-2'>
                 <div className='px-4 py-4'>
                     <div className='flex-center'>
@@ -52,8 +53,8 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     <div className='flex items-center mt-4 gap-x-1'>
                         <p className='text-gray-300'>تکنولوژی های استفاده شده : </p>
                         <div className='flex items-center gap-x-1'>
-                            {product.categoryID.map((category: ICategory) => (
-                                <TagItem key={category._id} tag={category} />
+                            {product.tags.map((tag: ITag) => (
+                                <TagItem key={tag._id} tag={tag} />
                             ))}
                         </div>
                     </div>
@@ -99,6 +100,13 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                         <span className='font-dana-bold text-amber-500 pt-0.5'>4.5</span>
                         <StarRounded className='text-amber-500' />
                     </div>
+                    {product.preView && (
+                        <div className='absolute bottom-1 right-1 w-10 h-10 rounded-full bg-green-500 flex-center'>
+                            <a href={product.preView}>
+                                <InsertLinkRounded className='text-gray-300' />
+                            </a>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>
