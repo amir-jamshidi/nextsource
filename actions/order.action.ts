@@ -44,8 +44,10 @@ export const newOrder = async (productID: string) => {
         if (!order) return { state: false, message: 'خطای ناشناخته' }
 
         //Handle CashBack
-        await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: +product.cashBack } });
-
+        if (!product.isFree) {
+            await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: +product.cashBack } });
+            await userModel.findOneAndUpdate({ _id: product.creatorID }, { $inc: { money: + ((price - product.cashBack) - ((price - product.cashBack) * 20 / 100)) } })
+        }
         return { state: true, message: 'پرداخت موفق' }
 
     } catch (error) {
