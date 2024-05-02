@@ -4,6 +4,7 @@ import connectToDB from "@/database/db"
 import categoryModel from "@/models/category.module";
 import productModel from "@/models/product.module";
 import tagModel from "@/models/tag.module";
+import userModel from "@/models/user.module";
 import { IProduct } from "@/types/product";
 import mongoose from "mongoose";
 
@@ -69,7 +70,7 @@ export const getPopularBackProducts = async () => {
 export const getProductByHref = async (href: string) => {
     try {
         await connectToDB();
-        const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).lean() as IProduct
+        const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).populate({ path: 'creatorID', model: userModel, select: 'fullname' }).lean() as IProduct
         if (!product) return false;
         return product
     } catch (error) {
@@ -95,7 +96,7 @@ export const getRelatedProducts = async (id: string) => {
     try {
         await connectToDB();
         const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean() as IProduct[];
-        return products
+        return JSON.parse(JSON.stringify(products))
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

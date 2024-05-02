@@ -61,7 +61,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     </div>
                     <div className='flex justify-between items-center mt-4 bg-gray-800/30 rounded-xl px-3 py-2'>
                         <div className='flex items-center gap-x-1'>
-                            <FavoriteButton productID={product._id} isHasToFav={isHasToFav} />
+                            <FavoriteButton productID={JSON.parse(JSON.stringify(product._id))} isHasToFav={isHasToFav} />
                             {((product.isPlan && isHavPlanUser) || isAccessToSourceUser) && (
                                 <span className='bg-blue py-1.5 px-12 rounded-full text-gray-100'>شما به این سورس دسترسی دارید</span>
                             )}

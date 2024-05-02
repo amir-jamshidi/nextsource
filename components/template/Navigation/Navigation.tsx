@@ -7,6 +7,7 @@ import { getMenus } from "@/actions/menu.action";
 import { DarkModeRounded, SearchRounded } from "@mui/icons-material";
 
 const Navigation = () => {
+
     const themeContext = useThemeProvider()
     const { data = [] } = useQuery(["main-menus"], () => getMenus());
     return (
@@ -26,7 +27,7 @@ const Navigation = () => {
                 </div>
                 <div className="flex flex-col my-4 px-3 mx-2 divide-y divide-gray-700/40">
                     {data.map(menu => (
-                        <p key={JSON.stringify(menu._id)} className="text-700-300  px-3 py-2">{menu.title}</p>
+                        <p key={String(menu._id)} className="text-700-300  px-3 py-2">{menu.title}</p>
                     ))}
                 </div>
                 <div className="border-t border-t-gray-700/40 flex-center pt-3">

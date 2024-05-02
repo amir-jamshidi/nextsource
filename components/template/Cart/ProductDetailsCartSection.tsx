@@ -73,7 +73,7 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser }: Prod
                     </div>
                 </div>
             </div>
-            <CartBuyButton isAccessToSourceUser={isAccessToSourceUser} productID={product._id} />
+            <CartBuyButton isAccessToSourceUser={isAccessToSourceUser} productID={JSON.parse(JSON.stringify(product._id))} />
         </div>
     )
 }

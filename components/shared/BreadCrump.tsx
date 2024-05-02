@@ -11,10 +11,10 @@ const BreadCrump = ({ addresses }: BreadCrumpProps) => {
         <div className='flex mt-6 lg:mt-14 items-center text-sm rounded-xl px-4 bg-blue py-3'>
             <p className='text-gray-300'>صفحه اصلی</p>
             {addresses?.map(address => (
-                <>
+                <div key={address.title} className='flex'>
                     <ArrowLeftRounded className='text-gray-400' />
                     <p className='text-gray-300'>{address.title}</p>
-                </>
+                </div>
             ))}
         </div>
     )

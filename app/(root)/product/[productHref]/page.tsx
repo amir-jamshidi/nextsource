@@ -19,6 +19,7 @@ import Link from 'next/link';
 import CommentMoreButton from '@/components/buttons/CommentMoreButton/CommentMoreButton';
 import tagModel from '@/models/tag.module';
 import { ICategory } from '@/types/category';
+import ProductDetailsCarts from '@/components/template/Product/ProductDetailsCarts';
 
 
 
@@ -39,15 +40,16 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
             <div className='container px-6'>
                 <BreadCrump addresses={addresses} />
                 <ProductDetailsSection commentsCount={commentsCount} isHasToFav={isHasToFav} product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
+                <ProductDetailsCarts commentsCount={commentsCount} product={product} />
                 {(isHavPlanUser && product.isPlan) || accessToSource && (
                     <ProductLinksSection product={product} />
                 )}
                 <ProductMoreDetailsSection product={product} />
-                <ProductCommentsSection productID={product._id} comment={commentPage} rate={product.rate} commnetsCount={commentsCount} >
+                <ProductCommentsSection productID={JSON.parse(JSON.stringify(product._id))} comment={commentPage} rate={product.rate} commnetsCount={commentsCount} >
                     <CommentMoreButton commentsCount={commentsCount} params={productHref} commentPage={Number(commentPage)} />
                 </ProductCommentsSection>
                 <CommentForm isLoginUser={isLoginUser} productID={JSON.parse(JSON.stringify(product._id))} />
-                <ProductRelatedSection productID={product._id} />
+                <ProductRelatedSection productID={JSON.parse(JSON.stringify(product._id))} />
 
             </div>
         </section >

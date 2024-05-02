@@ -17,8 +17,6 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
     const [body, setBody] = useState('')
     const [rate, setRate] = useState(0);
 
-    const router = useRouter();
-
     const handleSubmitForm = async (e: React.FormEvent) => {
         e.preventDefault();
         if (body.trim().length < 3) return toast.error('متن نظر حداقل سه کاراکتر باید باشه')

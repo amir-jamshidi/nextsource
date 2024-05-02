@@ -25,7 +25,7 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
                 className="mySwiper"
             >
                 {products?.map((product) => (
-                    <SwiperSlide className='overflow-auto'>
+                    <SwiperSlide key={product._id} className='overflow-auto'>
                         <div className='pt-12'>
                             <SourceItem product={product} />
                         </div>

@@ -21,7 +21,7 @@ const CommentItem = ({ comment }: { comment: IComment }) => {
                     <div className='flex'>
                         {Array.from({ length: 5 }, (_, i) => i + 1).map(i => (
                             <>
-                                {comment.rate >= i ? (<StarRounded sx={{ fontSize: 16 }} className='text-amber-500' />) : (<StarRounded sx={{ fontSize: 16 }} className='text-gray-700' />)}
+                                {comment.rate >= i ? (<StarRounded key={i} sx={{ fontSize: 16 }} className='text-amber-500' />) : (<StarRounded key={i} sx={{ fontSize: 16 }} className='text-gray-700' />)}
                             </>
                         ))}
                     </div>
