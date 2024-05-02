@@ -16,10 +16,11 @@ interface ProductDetailsSectionProps {
     product: IProduct,
     isHavPlanUser: boolean | IUser,
     isAccessToSourceUser: boolean,
-    isHasToFav: boolean
+    isHasToFav: boolean,
+    commentsCount: number
 }
 
-const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav }: ProductDetailsSectionProps) => {
+const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav, commentsCount }: ProductDetailsSectionProps) => {
 
     return (
         <section className='bg-blue px-6 py-6 rounded-xl mt-2'>
@@ -96,10 +97,12 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     <Image className='w-full rounded-xl' style={{ objectFit: 'cover' }} src={'https://sabzlearn.ir/wp-content/uploads/2024/01/IMAGE-1402-10-21-20_14_43-1-768x432.webp'} fill={true} alt='Photo' />
                     <BackButton />
                     {product.isOff && <OffItem pos='right-1 top-1' precent={product.precentOff} />}
-                    <div className='absolute bottom-1 left-1 bg-gray-800/30 rounded px-1 flex items-center'>
-                        <span className='font-dana-bold text-amber-500 pt-0.5'>4.5</span>
-                        <StarRounded className='text-amber-500' />
-                    </div>
+                    {commentsCount > 0 && (
+                        <div className='absolute bottom-1 left-1 bg-gray-800/30 rounded px-1 flex items-center'>
+                            <span className='font-dana-bold text-amber-500 pt-0.5'>{Number(product.rate / commentsCount).toFixed(1)}</span>
+                            <StarRounded className='text-amber-500' />
+                        </div>
+                    )}
                     {product.preView && (
                         <div className='absolute bottom-1 right-1 w-10 h-10 rounded-full bg-green-500 flex-center'>
                             <a href={product.preView}>

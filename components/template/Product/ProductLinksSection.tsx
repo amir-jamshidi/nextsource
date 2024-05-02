@@ -15,7 +15,7 @@ const ProductLinksSection = ({ product }: ProductLinksSectionProps) => {
                     <div key={link} className="bg-gray-800/30 px-3 py-2 rounded-xl flex justify-between items-center hover:bg-gray-800/70 transition-colors">
                         <div className="flex gap-x-1 text-gray-300">
                             <span>
-                                <InsertLinkRounded className="text-gray-400"/>
+                                <InsertLinkRounded className="text-gray-400" />
                             </span>
                             <p>لینک دانلود</p>
                             <span className="font-dana-bold">{i + 1}</span>

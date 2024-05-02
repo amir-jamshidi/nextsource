@@ -17,7 +17,9 @@ export interface IProduct extends Document {
     size: number,
     links: [],
     preView: string,
-    tags: []
+    tags: [],
+    rate: number,
+    cashBack: number
     readonly createdAt?: Date
     readonly updatedAt?: Date
 }

@@ -69,6 +69,14 @@ const productSchema = new Schema<IProduct>({
         type: [Schema.Types.ObjectId],
         required: true,
         ref: 'Tag'
+    },
+    rate: {
+        type: Number,
+        default: 0
+    },
+    cashBack: {
+        type: Number,
+        required: true
     }
 }, { timestamps: true })
 

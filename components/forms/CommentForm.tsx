@@ -29,7 +29,6 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
             toast.success(result.message);
             setBody('');
             setRate(0);
-            router.refresh();
         } catch (error) {
             toast.error('خطای ناشناخته')
         }

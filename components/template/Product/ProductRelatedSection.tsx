@@ -15,6 +15,7 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
 
     return (
         <div className='w-full mt-6'>
+            <SctionTitle title='سورس های مرتبط' isShowMore={false} />
             <Swiper
                 slidesPerView={4}
                 spaceBetween={10}
@@ -25,7 +26,7 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
             >
                 {products?.map((product) => (
                     <SwiperSlide className='overflow-auto'>
-                        <div className='pt-8'>
+                        <div className='pt-12'>
                             <SourceItem product={product} />
                         </div>
                     </SwiperSlide>
