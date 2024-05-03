@@ -1,4 +1,5 @@
 import { getProductByID } from '@/actions/product.action'
+import Modal from '@/components/shared/Modal';
 import ProductDetailsCartSection from '@/components/template/Cart/ProductDetailsCartSection';
 import isAccessToSource from '@/middlewares/isAccessToSource';
 import isHavPlan from '@/middlewares/isHavPlan';
