@@ -8,7 +8,7 @@ import { IProduct } from "@/types/product";
 import { IUser } from "@/types/user";
 import mongoose from "mongoose";
 
-export const newOrder = async (productID: string) => {
+export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') => {
     try {
         connectToDB();
 
@@ -25,10 +25,18 @@ export const newOrder = async (productID: string) => {
         const isBuyCourseBefore = await orderModel.findOne({ productID: product._id, userID: isLoginUser._id });
         if (isBuyCourseBefore) return { state: false, message: 'قبلا این دوره رو خریدی' };
 
+
         let price = 0;
         if (product.isFree && product.isOff) price = 0;
         if (!product.isOff && !product.isFree) price = product.price
         if (product.isOff && !product.isFree) price = Math.floor((product.price) - (product.price * product.precentOff) / 100)
+
+        //Check Wallet
+        if (action === 'WALLET') {
+            if (isLoginUser.money < price) return { state: false, message: 'موجودی کیف پول کافی نیست' }
+            await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: -price } });
+        }
+
 
         const order = await orderModel.create({
             userID: isLoginUser._id,
@@ -38,6 +46,8 @@ export const newOrder = async (productID: string) => {
             totalPrice: price,
             isOff: product.isOff,
             percentOff: product.precentOff,
+            action,
+            cashBack: (action === 'WALLET' || product.isFree) ? 0 : product.cashBack
         })
 
         //Check Create Document
@@ -45,9 +55,13 @@ export const newOrder = async (productID: string) => {
 
         //Handle CashBack
         if (!product.isFree) {
-            await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: +product.cashBack } });
-            await userModel.findOneAndUpdate({ _id: product.creatorID }, { $inc: { money: + ((price - product.cashBack) - ((price - product.cashBack) * 20 / 100)) } })
+            if (action === 'ONLINE') {
+                await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: +product.cashBack } });
+                await userModel.findOneAndUpdate({ _id: product.creatorID }, { $inc: { money: + ((price - product.cashBack) - ((price - product.cashBack) * 20 / 100)) } })
+            }
+            await userModel.findOneAndUpdate({ _id: product.creatorID }, { $inc: { money: + ((price) - ((price) * 20 / 100)) } })
         }
+
         return { state: true, message: 'پرداخت موفق' }
 
     } catch (error) {

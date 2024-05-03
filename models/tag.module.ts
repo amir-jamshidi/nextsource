@@ -21,6 +21,11 @@ const tagSchema = new Schema<ITag>({
     sourceCount: {
         type: Number,
         default: 0,
+    },
+    products: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Product',
+        default: []
     }
 }, { timestamps: true })
 

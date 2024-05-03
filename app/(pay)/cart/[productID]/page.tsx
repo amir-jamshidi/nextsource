@@ -23,7 +23,7 @@ const page = async ({ params: { productID } }: { params: { productID: string } }
         <section>
             <div className='container px-6'>
                 <div className='flex-center h-cart'>
-                    <ProductDetailsCartSection product={product} isAccessToSourceUser={isAccessToSourceUser} />
+                    <ProductDetailsCartSection money={isLoginUser.money} product={product} isAccessToSourceUser={isAccessToSourceUser} />
                 </div>
             </div>
         </section>

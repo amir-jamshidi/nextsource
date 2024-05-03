@@ -7,10 +7,11 @@ import CartBuyButton from './CartBuyButton'
 
 interface ProductDetailsCartSectionProps {
     product: IProduct,
-    isAccessToSourceUser: boolean
+    isAccessToSourceUser: boolean,
+    money: number
 }
 
-const ProductDetailsCartSection = async ({ product, isAccessToSourceUser }: ProductDetailsCartSectionProps) => {
+const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money }: ProductDetailsCartSectionProps) => {
 
     return (
         <div className='flex flex-col'>
@@ -73,7 +74,7 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser }: Prod
                     </div>
                 </div>
             </div>
-            <CartBuyButton isAccessToSourceUser={isAccessToSourceUser} productID={JSON.parse(JSON.stringify(product._id))} />
+            <CartBuyButton isFree={product.isFree} money={money} isAccessToSourceUser={isAccessToSourceUser} productID={JSON.parse(JSON.stringify(product._id))} />
         </div>
     )
 }

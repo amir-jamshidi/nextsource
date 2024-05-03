@@ -17,7 +17,6 @@ const isLogin = async () => {
         if (!user) return false
         return user
     } catch (error) {
-        console.log(error);
         return false
     }
 }

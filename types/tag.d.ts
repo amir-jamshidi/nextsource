@@ -5,7 +5,8 @@ export interface ITag extends Document {
     title: string,
     titleEn: string
     sourceCount: number,
-    href: string
+    href: string,
+    products: []
     createdAt?: Date,
     updatedAt?: Date
 }

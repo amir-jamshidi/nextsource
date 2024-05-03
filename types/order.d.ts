@@ -7,6 +7,8 @@ export interface IOrder extends Document {
     count: number,
     totalPrice: number,
     isOff: boolean,
-    percentOff: number
+    percentOff: number,
+    action: string,
+    cashBack: number
 }
 

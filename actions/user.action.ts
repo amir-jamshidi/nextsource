@@ -6,6 +6,7 @@ import timeGenerator from "@/libs/TimeGenerator";
 import TokenGenerator from "@/libs/TokenGenerator";
 import userModel from "@/models/user.module";
 import verifyModel from "@/models/verify.module";
+import { IUser } from "@/types/user";
 import { IVerify } from "@/types/verify";
 import { cookies } from "next/headers";
 
@@ -29,7 +30,7 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
 
         connectToDB();
         //Check User Register Before 
-        const isRegisterBefore = await userModel.findOne({ phone }).lean();
+        const isRegisterBefore = await userModel.findOne({ phone }).lean() as IUser;
         const verifyDocument = await verifyModel.findOneAndUpdate({ phone }, { $inc: { times: +1 } }, { new: true }).lean() as IVerify;
         if (verifyDocument.times > 3) return { state: false, message: "لطفا بعدا تلاش کن" }
 
@@ -41,7 +42,7 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
             // Set Cookie And Token
             cookies().set({
                 name: 'token',
-                value: TokenGenerator(loginUser._id),
+                value: TokenGenerator(isRegisterBefore._id),
                 expires: Date.now() + 1000 * 60 * 60 * 24 * 15
                 , httpOnly: true
             })

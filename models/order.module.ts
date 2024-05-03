@@ -31,6 +31,15 @@ const orderSchema = new Schema<IOrder>({
     percentOff: {
         type: Number,
         default: 0
+    },
+    action: {
+        type: String,
+        enum: ['ONLINE', 'WALLET'],
+        required: true
+    },
+    cashBack: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true });
 
