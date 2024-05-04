@@ -46,7 +46,6 @@ const ProductCommentsSection = async ({ comment, productID, commnetsCount, child
                     )}
                 </div>
             </div>
-
             <div className='flex flex-col gap-y-1 mt-6'>
                 {comments.length > 0 ? (
                     <>
