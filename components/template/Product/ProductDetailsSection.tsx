@@ -31,35 +31,9 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
 
                     </div>
                     <div className='mt-2'>
-                        <p className='line-clamp-3 text-justify text-gray-400'>{product.description}</p>
+                        <p className='line-clamp-5 text-justify text-gray-400'>{product.description}</p>
                     </div>
-                    {product.isPlan && (
-                        <div className='mt-2 flex gap-x-0.5 items-center'>
-                            <p className='text-amber-500'>دسترسی رایگان برای اعضای ویژه سایت 🍸 </p>
-                            {!isHavPlanUser && <Link className='text-blue-500 text-sm' href={'/plan'}>خرید پلن</Link>}
-                            {isHavPlanUser && <p></p>}
-                        </div>
-                    )}
-                    <div className='mt-2'>
-                        <p className='text-gray-300'>تا این لحظه <span className='mx-0.5 font-dana-bold text-blue-500'>{product.buyCount}</span> نسخه به فروش رسیده</p>
-                    </div>
-                    <div className='flex mt-2 gap-x-1'>
-                        <p className='text-gray-300'>حجم سورس کد</p>
-                        <p className='font-dana-bold text-blue-500'>{product.size}Mb</p>
-                    </div>
-                    <div className='flex items-center mt-2 gap-x-1'>
-                        <p className='text-gray-300'>آخرین اپدیت سورس کد</p>
-                        <p className='text-green-500'>{product.updatedAt?.toLocaleDateString('fa-IR')}</p>
-                    </div>
-                    <div className='flex items-center mt-4 gap-x-1'>
-                        <p className='text-gray-300'>تکنولوژی های استفاده شده : </p>
-                        <div className='flex items-center gap-x-1'>
-                            {product.tags.map((tag: ITag) => (
-                                <TagItem key={tag._id} tag={tag} />
-                            ))}
-                        </div>
-                    </div>
-                    <div className='flex justify-between items-center mt-4 bg-gray-800/30 rounded-xl px-3 py-2'>
+                    <div className='flex justify-between items-center  bg-gray-800/30 rounded-xl px-3 py-2 mt-20'>
                         <div className='flex items-center gap-x-1'>
                             <FavoriteButton productID={JSON.parse(JSON.stringify(product._id))} isHasToFav={isHasToFav} />
                             {((product.isPlan && isHavPlanUser) || isAccessToSourceUser) && (

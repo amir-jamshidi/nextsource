@@ -62,6 +62,8 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
             await userModel.findOneAndUpdate({ _id: product.creatorID }, { $inc: { money: + ((price) - ((price) * 20 / 100)) } })
         }
 
+        await productModel.findOneAndUpdate({ _id: product._id }, { $inc: { buyCount: +1 } }).lean()
+
         return { state: true, message: 'پرداخت موفق' }
 
     } catch (error) {

@@ -12,7 +12,7 @@ const SourceItem = ({ product }: { product: IProduct }) => {
             <div className="bg-blue rounded-xl px-2 py-2">
                 <div className="rounded-xl overflow-hidden -mt-8 relative h-44">
                     {product.isPlan && (
-                        <span className="absolute bg-blue top-1 right-1 rounded px-2 text-gray-300">
+                        <span className="absolute bg-blue top-1 right-1 rounded px-2 text-gray-300 z-[4]">
                             <StarRateRounded className="text-amber-500" />
                             <span className="text-xs">دسترسی رایگان برای اعضای ویژه</span>
                         </span>

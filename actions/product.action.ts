@@ -78,6 +78,18 @@ export const getProductByHref = async (href: string) => {
     }
 }
 
+export const getRelatedProducts = async (id: string) => {
+    try {
+        await connectToDB();
+        const product = await productModel.findOne({ _id: id });
+        const products = await productModel.find({ categoryID: product.categoryID }).limit(8).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean() as IProduct[];
+        const filterProducts = products.filter(p => String(p._id) !== String(id));
+        return JSON.parse(JSON.stringify(filterProducts)) as IProduct[]
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
 /* Cart Page */
 
 export const getProductByID = async (id: string) => {
@@ -89,15 +101,5 @@ export const getProductByID = async (id: string) => {
         return product
     } catch (error) {
         throw new Error('Error To Fetch Product')
-    }
-}
-
-export const getRelatedProducts = async (id: string) => {
-    try {
-        await connectToDB();
-        const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean() as IProduct[];
-        return JSON.parse(JSON.stringify(products)) as IProduct[]
-    } catch (error) {
-        throw new Error('خطای ناشناخته')
     }
 }

@@ -9,6 +9,11 @@ const menuSchema = new Schema<IMenu>({
     href: {
         type: String,
         required: true
+    },
+    products: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Product',
+        default: []
     }
 }, { timestamps: true })
 

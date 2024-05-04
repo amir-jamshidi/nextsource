@@ -1,12 +1,14 @@
 import { ArrowLeftRounded } from '@mui/icons-material'
+import Link from 'next/link'
 import React from 'react'
 
 interface SectionTitleProps {
     title: string,
-    isShowMore?: boolean
+    isShowMore?: boolean,
+    href?: string
 }
 
-const SctionTitle = ({ title, isShowMore = true }: SectionTitleProps) => {
+const SctionTitle = ({ title, isShowMore = true, href }: SectionTitleProps) => {
     return (
         <div className="flex items-center relative">
             <span className="flex-1 h-px bg-gray-700/50 inline-block"></span>
@@ -15,9 +17,9 @@ const SctionTitle = ({ title, isShowMore = true }: SectionTitleProps) => {
 
             {isShowMore && (
                 <div className='absolute left-0'>
-                    <span className='p-3 rounded-full inline-block bg-blue'>
+                    <Link href={`${href}`} className='p-3 rounded-full inline-block bg-blue'>
                         <ArrowLeftRounded className='text-gray-200' />
-                    </span>
+                    </Link>
                 </div>)}
         </div>
     )

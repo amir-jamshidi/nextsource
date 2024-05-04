@@ -39,7 +39,7 @@ const CartBuyButton = ({ productID, isAccessToSourceUser, money, isFree }: { pro
                     <button onClick={() => setIsShowModal(false)} className="bg-red-500/60 rounded-full text-sm text-gray-100 px-2 py-1.5">نه نمیخوام</button>
                 </div>
             </Modal>
-            
+
             <div className="flex flex-col">
                 {isAccessToSourceUser ? (
                     <span className={`bg-blue w-96 inline-block cursor-not-allowed text-center rounded-xl py-2.5 text-gray-200 mt-1`}>

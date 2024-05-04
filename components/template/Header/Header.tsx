@@ -6,6 +6,7 @@ import OpenSidebarButton from '../../buttons/OpenSidebarButton/OpenSidebarButton
 import { DarkModeRounded, PersonRounded, SearchRounded, VpnKeyOutlined } from '@mui/icons-material';
 import isLogin from '@/middlewares/isLogin';
 import { getMenus } from '@/actions/menu.action';
+import { IProduct } from '@/types/product';
 
 const Header = async () => {
 
@@ -36,13 +37,13 @@ const Header = async () => {
                             </div>
                         </div>
                         <div className='flex-1 flex justify-end items-center gap-x-1 '>
-                            <span className='w-10 h-10 rounded-full flex-center bg-gray-700'>
+                            <span className='w-10 h-10 rounded-full flex-center bg-blue border border-gray-300/10 cursor-pointer'>
                                 <DarkModeRounded className='text-gray-300' />
                             </span>
                             {!isLoginUser ? (
-                                <Link href={'/login'} className='text-gray-200 text-sm rounded-xl px-4 py-2.5 bg-gray-700'>ورود یا عضویت</Link>
+                                <Link href={'/login'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>ورود یا عضویت</Link>
                             ) : (
-                                <Link href={'/panel'} className='text-gray-200 text-sm rounded-xl px-4 py-2.5 bg-gray-700'>پنل کاربری</Link>
+                                <Link href={'/panel'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>پنل کاربری</Link>
                             )}
                         </div>
                     </div>
@@ -50,11 +51,23 @@ const Header = async () => {
                 <div className='container'>
                     <div className='h-14 bg-blue mt-2 max-w-4xl rounded-3xl mx-auto flex-center gap-x-1'>
                         {menus.map(menu => (
-                            <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg'>{menu.title}</p>
+                            <div className='relative'>
+                                <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg' > {menu.title}</p>
+                                {menu.products.length > 0 && (
+                                    <div className="flex flex-col text-gray-300 gap-y-1 absolute top-12 bg-blue w-60 rounded-xl px-2 py-2">
+                                        {menu.products.map((product: IProduct) =>
+                                            <Link href={product.href} className=''>
+                                                {product.title}
+                                            </Link>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
                         ))}
                     </div>
                 </div>
-            </header>
+            </header >
 
             <header className='mt-4 mx-1 lg:hidden'>
                 <div className="container">
