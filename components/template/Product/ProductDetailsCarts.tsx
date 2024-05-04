@@ -12,6 +12,7 @@ interface ProductDetailsCartsProps {
 const ProductDetailsCarts = ({ product, commentsCount }: ProductDetailsCartsProps) => {
 
     const creator = product.creatorID as IUser
+
     return (
         <section className='mt-8'>
             <div className='grid grid-cols-4 gap-x-1 gap-y-1'>
