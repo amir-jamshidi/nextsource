@@ -82,19 +82,21 @@ const Header = async () => {
 
                         <div className='flex-1 flex-center'>
                             <p className='text-lg  text-gray-200 font-morabba-bold'>نکستــ</p>
-                            <Image priority alt='NextSource Logo App' src={'/assets/logo.svg'} width={64} height={64} />
+                            <Link href={'/'} className='w-16 h-16'>
+                                <Image priority alt='NextSource Logo App' src={'/assets/logo.svg'} width={64} height={64} />
+                            </Link>
                             <p className='text-lg  text-gray-200 font-morabba-bold'>ــسورس</p>
                         </div>
 
                         <div className='flex-1 flex justify-end items-center'>
                             {!isLoginUser ? (
                                 <Link href={'/login'} className='flex'>
-                                    <span className='inline-block h-10 w-10 bg-gray-700 rounded-full p-2'>
+                                    <span className='flex flex-center h-10 w-10 bg-blue border border-gray-300/10 rounded-full p-2'>
                                         <VpnKeyOutlined className='text-gray-300' />
                                     </span>
                                 </Link>) : (
                                 <Link href={'/panel'} className='flex'>
-                                    <span className='inline-block h-10 w-10 bg-gray-700 rounded-full p-2'>
+                                    <span className='flex flex-center h-10 w-10 bg-gray-700 bg-blue border border-gray-300/10  rounded-full p-2'>
                                         <PersonRounded className='text-gray-300' />
                                     </span>
                                 </Link>)}
