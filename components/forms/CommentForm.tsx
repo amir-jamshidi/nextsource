@@ -33,7 +33,7 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
     }
 
     return (
-        <section className="bg-blue px-6 py-6 rounded-xl mt-8">
+        <section className="bg-blue md:px-6 md:py-6 px-3 py-4 rounded-xl mt-8">
             <ProductSectionTitle title='ارسال نظر' />
             <div className='w-full mt-4'>
                 <form onSubmit={handleSubmitForm} className='flex flex-col gap-1'>

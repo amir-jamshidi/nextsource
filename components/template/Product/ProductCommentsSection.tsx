@@ -18,15 +18,17 @@ const ProductCommentsSection = async ({ comment, productID, commnetsCount, child
     const comments = await getComments(Number(comment), productID) as IComment[]
 
     return (
-        <section className='bg-blue px-6 py-6 rounded-xl mt-8'>
+        <section className="bg-blue md:px-6 md:py-6 px-3 py-4 rounded-xl mt-8">
             <div className="flex-center flex">
-                <div className=' flex text-sm items-center gap-x-1 w-32'>
-                    {commnetsCount > 0 ? (<><p className='text-gray-400'>تا الان</p>
+                <div className=' flex text-sm items-center gap-x-1 w-14 md:w-32'>
+                    {commnetsCount > 0 ? (<><p className='text-gray-400 hidden md:inline-block'>تا الان</p>
                         <span className='text-amber-500 font-dana-bold pt-0.5'>{commnetsCount}</span>
-                        <p className='text-gray-400'>نظر ثبت شده</p></>) :
+                        <p className='text-gray-400 hidden md:inline-block'>نظر ثبت شده</p>
+                        <p className='text-gray-400 inline-block md:hidden'>نظر</p>
+                    </>) :
                         (
                             <>
-                                <p className='text-gray-400'>تا الان نظری ثبت نشده</p>
+                                <p className='text-gray-400 md:block hidden'>تا الان نظری ثبت نشده</p>
                             </>
                         )}
 
@@ -34,15 +36,15 @@ const ProductCommentsSection = async ({ comment, productID, commnetsCount, child
                 <span className="flex-1 h-px bg-gray-800 inline-block"></span>
                 <p className="text-gray-300 text-sm">نظرات</p>
                 <span className="flex-1 h-px bg-gray-800 inline-block"></span>
-                <div className=' flex text-sm items-center gap-x-1 w-32 justify-end'>
+                <div className=' flex text-sm items-center gap-x-1 w-14 md:w-32 justify-end'>
                     {commnetsCount > 0 ? (<>
-                        <p className='text-gray-400'>امتیاز کاربران : </p>
+                        <p className='text-gray-400 hidden md:inline-block'>امتیاز کاربران : </p>
                         <div className='flex items-center'>
                             <span className='text-amber-500 font-dana-bold pt-0.5'>{Number(rate / commnetsCount).toFixed(1)}</span>
                             <StarRounded className='text-amber-500' fontSize='small' />
                         </div>
                     </>) : (
-                        <p className='text-gray-400'>تا الان امتیازی ثبت نشده</p>
+                        <p className='text-gray-400 md:block hidden'>تا الان امتیازی ثبت نشده</p>
                     )}
                 </div>
             </div>

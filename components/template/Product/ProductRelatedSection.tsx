@@ -17,7 +17,31 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
         <div className='w-full mt-6'>
             <SctionTitle title='سورس های مرتبط' isShowMore={false} />
             <Swiper
-                slidesPerView={4}
+                breakpoints={{
+
+                    640: {
+                       
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    },
+
+                    768: {
+                        
+                        slidesPerView: 2,
+                        spaceBetween: 10
+
+                    },
+                    1024: {
+                    
+                        slidesPerView: 4,
+                        spaceBetween: 10
+                    },
+                    1280: {
+                     
+                        slidesPerView: 4,
+                        spaceBetween: 10
+                    }
+                }}
                 spaceBetween={10}
                 pagination={{
                     clickable: true,
@@ -32,7 +56,7 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+        </div >
     );
 }
 
