@@ -56,6 +56,7 @@ export default ThemeProvider
 
 
 export const useThemeProvider = () => {
-    if (ThemeContextProvider === null) return
-    return useContext(ThemeContextProvider);
+    const context = useContext(ThemeContextProvider);
+    if (context === undefined) throw new Error('Error To Access The Context Api');
+    return context
 }

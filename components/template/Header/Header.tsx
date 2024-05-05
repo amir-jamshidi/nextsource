@@ -7,6 +7,7 @@ import { DarkModeRounded, PersonRounded, SearchRounded, VpnKeyOutlined } from '@
 import isLogin from '@/middlewares/isLogin';
 import { getMenus } from '@/actions/menu.action';
 import { IProduct } from '@/types/product';
+import ToggleThemeButton from '@/components/buttons/ToggleThemeButton/ToggleThemeButton';
 
 const Header = async () => {
 
@@ -37,9 +38,7 @@ const Header = async () => {
                             </div>
                         </div>
                         <div className='flex-1 flex justify-end items-center gap-x-1 '>
-                            <span className='w-10 h-10 rounded-full flex-center bg-blue border border-gray-300/10 cursor-pointer'>
-                                <DarkModeRounded className='text-gray-300' />
-                            </span>
+                            <ToggleThemeButton />
                             {!isLoginUser ? (
                                 <Link href={'/login'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>ورود یا عضویت</Link>
                             ) : (
