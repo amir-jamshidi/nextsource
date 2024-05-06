@@ -22,7 +22,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
     return (
         <section className='bg-blue md:px-6 md:py-6 px-3 py-3 rounded-xl mt-2'>
             <div className='grid grid-cols-1 lg:grid-cols-2'>
-                <div className='lg:px-4 px-0 py-4 order-2 lg:order-1'>
+                <div className='lg:px-4 px-2 py-4 order-2 lg:order-1'>
                     <div className='flex-center'>
                         <p className='text-gray-200 text-lg'>{product.title}</p>
 

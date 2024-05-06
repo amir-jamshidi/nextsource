@@ -20,7 +20,7 @@ const ProductMoreDetailsSection = ({ product }: ProductMoreDetailsSectionProps) 
                     <p className="text-gray-400 text-justify text-sm md:text-base">{product.description}</p>
                 </div>
             </div>
-            <div className='flex items-center mt-4 gap-x-1'>
+            <div className='flex items-center mt-4 gap-x-1 px-2'>
                 <p className='text-gray-300 text-sm hidden lg:flex'>تکنولوژی های استفاده شده : </p>
                 <p className='text-gray-300 text-sm lg:hidden flex'>تکنولوژی ها : </p>
                 <div className='flex flex-wrap items-center gap-x-1 text-sm'>
@@ -29,7 +29,7 @@ const ProductMoreDetailsSection = ({ product }: ProductMoreDetailsSectionProps) 
                     ))}
                 </div>
             </div>
-            <div className='flex items-center mt-4 gap-x-1'>
+            <div className='flex items-center mt-4 gap-x-1 px-2'>
                 <p className='text-gray-300 text-sm'>دسته بندی : </p>
                 <p className="text-sm bg-amber-500 rounded px-2 text-white">{category.title}</p>
             </div>
