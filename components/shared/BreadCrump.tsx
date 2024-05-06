@@ -1,6 +1,5 @@
 import { ArrowLeftRounded } from '@mui/icons-material'
 import Link from 'next/link'
-import React from 'react'
 
 interface BreadCrumpProps {
     addresses?: { title: string, href: string }[]

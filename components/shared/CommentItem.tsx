@@ -2,8 +2,7 @@ import { IComment } from '@/types/comment'
 import { IUser } from '@/types/user'
 import { StarRounded } from '@mui/icons-material'
 import Image from 'next/image'
-import React from 'react'
-import CommentAnswerContent from '../template/Product/CommentAnswerContent'
+import CommentAnswerContent from '@/components/template/Product/CommentAnswerContent'
 
 const CommentItem = ({ comment }: { comment: IComment }) => {
 

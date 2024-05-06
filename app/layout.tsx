@@ -2,13 +2,6 @@ import type { Metadata } from "next";
 import { Toaster } from 'react-hot-toast'
 import "./globals.css";
 import ThemeProvider from "@/contexts/ThemeContextProvider";
-import localFont from 'next/font/local'
-import Header from "@/components/template/Header/Header";
-
-// const morabba = localFont({
-//   src: '../public/fonts/mo-medium.woff',
-//   variable: '--font-mo-medium'
-// })
 
 export const metadata: Metadata = {
   title: "نکست سورس | صفحه اصلی",

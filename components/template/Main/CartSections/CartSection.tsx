@@ -1,6 +1,5 @@
 import LinkButton from "@/components/shared/LinkButton"
 
-
 const CartSection = () => {
     return (
         <section className="mt-16">

@@ -8,7 +8,7 @@ interface SectionTitleProps {
     href?: string
 }
 
-const SctionTitle = ({ title, isShowMore = true, href }: SectionTitleProps) => {
+const SectionTitle = ({ title, isShowMore = true, href }: SectionTitleProps) => {
     return (
         <div className="flex items-center relative">
             <span className="flex-1 h-px bg-gray-700/50 inline-block"></span>
@@ -25,4 +25,4 @@ const SctionTitle = ({ title, isShowMore = true, href }: SectionTitleProps) => {
     )
 }
 
-export default SctionTitle
+export default SectionTitle

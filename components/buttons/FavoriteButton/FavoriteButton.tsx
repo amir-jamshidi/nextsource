@@ -2,7 +2,7 @@
 import { addToFavorites, removeFromFavorite } from '@/actions/favorite.action'
 import { FavoriteRounded } from '@mui/icons-material'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 interface FavoriteButtonProps {

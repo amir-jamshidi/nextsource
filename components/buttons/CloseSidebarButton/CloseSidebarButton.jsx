@@ -3,7 +3,6 @@
 import { useThemeProvider } from "@/contexts/ThemeContextProvider";
 import { CloseRounded } from "@mui/icons-material";
 
-
 const CloseSidebarButton = () => {
   const themeProvider = useThemeProvider();
   return (

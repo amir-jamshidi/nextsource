@@ -1,14 +1,13 @@
 import { IComment } from '@/types/comment'
 import { IUser } from '@/types/user'
 import Image from 'next/image'
-import React from 'react'
-
 interface CommentAnswerContentProps {
     answerUser: IUser,
     comment: IComment
 }
 
 const CommentAnswerContent = ({ answerUser, comment }: CommentAnswerContentProps) => {
+
     return (
         <div className='bg-blue px-2 py-3 mx-2 mt-3 mb-1 rounded-xl'>
             <div className='flex flex-col md:flex-row'>

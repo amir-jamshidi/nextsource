@@ -1,7 +1,5 @@
-import { ICategory } from '@/types/category'
 import { ITag } from '@/types/tag'
 import Link from 'next/link'
-import React from 'react'
 
 interface TagItemProps {
     tag: ITag

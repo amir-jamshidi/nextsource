@@ -1,7 +1,6 @@
 import { IProduct } from "@/types/product"
 import { DownloadRounded, StarRateRounded } from "@mui/icons-material"
 import Image from "next/image"
-import { ICategory } from './../../types/category.d';
 import Link from "next/link";
 import OffItem from "./OffItem";
 import { ITag } from "@/types/tag";
@@ -60,7 +59,6 @@ const SourceItem = ({ product }: { product: IProduct }) => {
                                 <p className="text-green-500">تومان</p>
                             </>
                         )}
-
                     </div>
                 </div>
             </div>

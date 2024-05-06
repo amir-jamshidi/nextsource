@@ -23,7 +23,6 @@ const CartBuyButton = ({ productID, isAccessToSourceUser, money, isFree }: { pro
             if (!result.state) return toast.error(result.message)
             toast.success('پرداخت موفق');
             router.back();
-            router.refresh();
         } catch (error) {
             toast.error('خطای ناشناخته');
         }

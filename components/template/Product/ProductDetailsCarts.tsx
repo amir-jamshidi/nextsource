@@ -2,7 +2,6 @@ import CartDetailsItem from '@/components/shared/CartDetailsItem'
 import { IProduct } from '@/types/product'
 import { IUser } from '@/types/user'
 import { StarRounded } from '@mui/icons-material'
-import React from 'react'
 
 interface ProductDetailsCartsProps {
     product: IProduct,

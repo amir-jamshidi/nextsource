@@ -17,7 +17,7 @@ export const getLatestProducts = async () => {
         if (!products) return [];
         return products
     } catch (error) {
-        throw new Error('Error To Fetch Products');
+        throw new Error('خطای ناشناخته');
     }
 }
 
@@ -28,40 +28,40 @@ export const getBestSellerProdcuts = async () => {
         if (!products) return [];
         return products
     } catch (error) {
-        throw new Error('Error To Fetch Products');
+        throw new Error('خطای ناشناخته');
     }
 }
 
 export const getPopularProducts = async () => {
     try {
-        connectToDB();
+        await connectToDB();
         const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean();
-        if (!products) throw new Error('Error To Fetch Products');
+        if (!products) throw new Error('خطای ناشناخته');
         return products;
     } catch (error) {
-        throw new Error('Error To Fetch Products');
+        throw new Error('خطای ناشناخته');
     }
 }
 
 export const getPopularFrontProducts = async () => {
     try {
-        connectToDB();
+        await connectToDB();
         const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean();
-        if (!products) throw new Error('Error To Fetch Products');
+        if (!products) throw new Error('خطای ناشناخته');
         return products
     } catch (error) {
-        throw new Error('Error To Fetch Products')
+        throw new Error('خطای ناشناخته')
     }
 }
 
 export const getPopularBackProducts = async () => {
     try {
-        connectToDB();
+        await connectToDB();
         const products = await productModel.find({}).limit(4).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).sort({ buyCount: -1 }).lean();
-        if (!products) throw new Error('Error To Fetch Products');
+        if (!products) throw new Error('خطای ناشناخته');
         return products
     } catch (error) {
-        throw new Error('Error To Fetch Products')
+        throw new Error('خطای ناشناخته')
     }
 }
 
@@ -74,7 +74,7 @@ export const getProductByHref = async (href: string) => {
         if (!product) return false;
         return product
     } catch (error) {
-        throw new Error('Error To Fetch Product')
+        throw new Error('خطای ناشناخته')
     }
 }
 
@@ -100,6 +100,6 @@ export const getProductByID = async (id: string) => {
         if (!product) return false
         return product
     } catch (error) {
-        throw new Error('Error To Fetch Product')
+        throw new Error('خطای ناشناخته')
     }
 }

@@ -2,7 +2,6 @@ import { getComments } from '@/actions/comment.action'
 import CommentItem from '@/components/shared/CommentItem'
 import { IComment } from '@/types/comment'
 import { StarRounded } from '@mui/icons-material'
-import React from 'react'
 
 
 interface ProductCommentsSectionProps {
@@ -21,11 +20,15 @@ const ProductCommentsSection = async ({ comment, productID, commnetsCount, child
         <section className="bg-blue md:px-6 md:py-6 px-3 py-4 rounded-xl mt-8">
             <div className="flex-center flex">
                 <div className=' flex text-sm items-center gap-x-1 w-14 md:w-32'>
-                    {commnetsCount > 0 ? (<><p className='text-gray-400 hidden md:inline-block'>تا الان</p>
-                        <span className='text-amber-500 font-dana-bold pt-0.5'>{commnetsCount}</span>
-                        <p className='text-gray-400 hidden md:inline-block'>نظر ثبت شده</p>
-                        <p className='text-gray-400 inline-block md:hidden'>نظر</p>
-                    </>) :
+                    {commnetsCount > 0 ?
+                        (
+                            <>
+                                <p className='text-gray-400 hidden md:inline-block'>تا الان</p>
+                                <span className='text-amber-500 font-dana-bold pt-0.5'>{commnetsCount}</span>
+                                <p className='text-gray-400 hidden md:inline-block'>نظر ثبت شده</p>
+                                <p className='text-gray-400 inline-block md:hidden'>نظر</p>
+                            </>
+                        ) :
                         (
                             <>
                                 <p className='text-gray-400 md:block hidden'>تا الان نظری ثبت نشده</p>

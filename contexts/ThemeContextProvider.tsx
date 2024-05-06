@@ -4,7 +4,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import React from 'react'
 
-
 interface IThemeContextProvider {
     children: React.ReactNode
 }
@@ -17,7 +16,6 @@ interface IThemeProvider {
 }
 
 const ThemeContextProvider = createContext<IThemeProvider | null>(null);
-
 
 const ThemeProvider = ({ children }: IThemeContextProvider) => {
 
@@ -53,7 +51,6 @@ const ThemeProvider = ({ children }: IThemeContextProvider) => {
 }
 
 export default ThemeProvider
-
 
 export const useThemeProvider = () => {
     const context = useContext(ThemeContextProvider);

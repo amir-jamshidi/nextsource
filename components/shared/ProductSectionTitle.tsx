@@ -1,4 +1,3 @@
-
 interface ProductSectionTitleProps {
     title: string
 }

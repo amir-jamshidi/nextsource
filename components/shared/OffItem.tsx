@@ -1,4 +1,3 @@
-
 const OffItem = ({ precent, pos }: { precent: number, pos?: string }) => {
 
     return (

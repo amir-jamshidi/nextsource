@@ -2,7 +2,6 @@ import OffItem from '@/components/shared/OffItem'
 import { IProduct } from '@/types/product'
 import { CheckRounded } from '@mui/icons-material'
 import Image from 'next/image'
-import React from 'react'
 import CartBuyButton from './CartBuyButton'
 
 interface ProductDetailsCartSectionProps {

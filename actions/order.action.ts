@@ -1,4 +1,5 @@
 'use server'
+
 import connectToDB from "@/database/db"
 import isLogin from "@/middlewares/isLogin";
 import orderModel from "@/models/order.module"
@@ -25,7 +26,7 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
         const isBuyCourseBefore = await orderModel.findOne({ productID: product._id, userID: isLoginUser._id });
         if (isBuyCourseBefore) return { state: false, message: 'قبلا این دوره رو خریدی' };
 
-
+        //Price Logic
         let price = 0;
         if (product.isFree && product.isOff) price = 0;
         if (!product.isOff && !product.isFree) price = product.price
@@ -37,7 +38,7 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
             await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: -price } });
         }
 
-
+        //Create Order
         const order = await orderModel.create({
             userID: isLoginUser._id,
             productID,
@@ -61,9 +62,10 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
             }
             await userModel.findOneAndUpdate({ _id: product.creatorID }, { $inc: { money: + ((price) - ((price) * 20 / 100)) } })
         }
-
+        //Add To BuyCount
         await productModel.findOneAndUpdate({ _id: product._id }, { $inc: { buyCount: +1 } }).lean()
 
+        //Response
         return { state: true, message: 'پرداخت موفق' }
 
     } catch (error) {

@@ -13,7 +13,7 @@ import { cookies } from "next/headers";
 
 export const LoginUser = async (phone: string) => {
     try {
-        connectToDB();
+        await connectToDB();
         await verifyModel.deleteMany({ phone });
         const code = codeGenerator();
         const expireTime = timeGenerator(5);
@@ -27,8 +27,7 @@ export const LoginUser = async (phone: string) => {
 
 export const VerifyCodeUser = async (phone: string, code: number) => {
     try {
-
-        connectToDB();
+        await connectToDB();
         //Check User Register Before 
         const isRegisterBefore = await userModel.findOne({ phone }).lean() as IUser;
         const verifyDocument = await verifyModel.findOneAndUpdate({ phone }, { $inc: { times: +1 } }, { new: true }).lean() as IVerify;
@@ -66,6 +65,6 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
         }
 
     } catch (error) {
-        throw new Error('Error To Verify Code');
+        throw new Error('خطای ناشناخته');
     }
 }

@@ -1,7 +1,7 @@
 import { NewReleases, VerifiedRounded } from '@mui/icons-material'
-import React from 'react'
 
 const LoginStatusSection = ({ isShowVerify }: { isShowVerify: boolean }) => {
+
     return (
         <div className="mb-4 flex w-60 items-center">
             <div className="flex flex-col items-center relative">

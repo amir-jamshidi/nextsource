@@ -1,5 +1,5 @@
 import { getBestSellerProdcuts } from '@/actions/product.action'
-import SctionTitle from '@/components/shared/SctionTitle'
+import SectionTitle from '@/components/shared/SectionTitle'
 import SourceContainer from '@/components/shared/SourceContainer';
 import SourceItem from '@/components/shared/SourceItem';
 import { IProduct } from '@/types/product';
@@ -11,7 +11,7 @@ const BestSellerSection = async () => {
 
     return (
         <>
-            <SctionTitle title='پرفروش های اخیر' />
+            <SectionTitle title='پرفروش های اخیر' />
             <SourceContainer>
                 {products.map(product => (
                     <SourceItem key={JSON.stringify(product._id)} product={product} />

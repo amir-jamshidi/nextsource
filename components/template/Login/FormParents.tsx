@@ -6,6 +6,7 @@ import { useState } from "react"
 import LoginStatusSection from "./LoginStatusSection";
 
 const FormParents = () => {
+    
     const [isShowVerify, setIsShowVerify] = useState(false);
     const [phone, setPhone] = useState('')
 

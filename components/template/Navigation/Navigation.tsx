@@ -10,9 +10,11 @@ import Link from "next/link";
 import { IProduct } from "@/types/product";
 
 const Navigation = () => {
+
     const [isOpen, setIsOpen] = useState(-1);
     const themeContext = useThemeProvider()
     const { data: menus = [] } = useQuery(["main-menus"], () => getMenus());
+
     return (
         <aside className={`flex lg:hidden transition-all fixed backdrop-blur-3xl top-0 w-full ${themeContext?.isOpenSidebar ? "right-0 opacity-100" : "-right-[100%] invisible opacity-0"} z-10`}>
             <div className='w-80 bg-blue-full h-screen '>

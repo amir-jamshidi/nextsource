@@ -5,7 +5,7 @@ import React from 'react'
 
 const ScrollToTop = () => {
     return (
-        <button onClick={() => { window.scrollTo(0, 0) }} className="flex-center w-10 h-10 rounded-full bg-gray-700">
+        <button onClick={() => window.scrollTo(0, 0)} className="flex-center w-10 h-10 rounded-full bg-gray-700">
             <KeyboardArrowUpRounded className="text-gray-400" />
         </button>
     )

@@ -1,10 +1,7 @@
 import BackButton from '@/components/buttons/BackButton/BackButton'
 import FavoriteButton from '@/components/buttons/FavoriteButton/FavoriteButton'
 import OffItem from '@/components/shared/OffItem'
-import TagItem from '@/components/shared/TagItem'
-import { ICategory } from '@/types/category'
 import { IProduct } from '@/types/product'
-import { ITag } from '@/types/tag'
 import { IUser } from '@/types/user'
 import { InsertLinkRounded, StarRounded } from '@mui/icons-material'
 import Image from 'next/image'
@@ -23,7 +20,7 @@ interface ProductDetailsSectionProps {
 const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav, commentsCount }: ProductDetailsSectionProps) => {
 
     return (
-        <section className='bg-blue px-6 py-6 rounded-xl mt-2'>
+        <section className='bg-blue md:px-6 md:py-6 px-3 py-3 rounded-xl mt-2'>
             <div className='grid grid-cols-1 lg:grid-cols-2'>
                 <div className='lg:px-4 px-0 py-4 order-2 lg:order-1'>
                     <div className='flex-center'>
@@ -33,7 +30,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     <div className='mt-2'>
                         <p className='line-clamp-5 text-justify text-gray-400'>{product.description}</p>
                     </div>
-                    <div className='flex justify-between items-center  bg-gray-800/30 rounded-xl px-3 py-2 mt-20'>
+                    <div className='flex justify-between items-center  bg-gray-800/30 rounded-xl px-3 py-2 mt-14 md:mt-20'>
                         <div className='flex items-center gap-x-1'>
                             <FavoriteButton productID={JSON.parse(JSON.stringify(product._id))} isHasToFav={isHasToFav} />
                             {((product.isPlan && isHavPlanUser) || isAccessToSourceUser) && (
@@ -44,7 +41,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                             )}
                             {(!product.isPlan || !isHavPlanUser) && !isAccessToSourceUser && (
                                 <Link href={`/cart/${product._id}`}>
-                                    <button className='bg-button py-1.5 px-12 rounded-full text-gray-100'>خرید سورس کد</button>
+                                    <button className='bg-button text-sm md:text-base py-1.5 px-3 md:px-6 lg:px-12 rounded-full text-gray-100'>خرید سورس کد</button>
                                 </Link>
                             )}
                         </div>
@@ -70,8 +67,6 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                         </div>
                     </div>
                 </div>
-
-
                 <div className='flex-center relative rounded-xl order-1 lg:order-2 h-72 lg:h-auto'>
                     <Image className='w-full rounded-xl' style={{ objectFit: 'cover' }} src={'https://sabzlearn.ir/wp-content/uploads/2024/01/IMAGE-1402-10-21-20_14_43-1-768x432.webp'} fill={true} alt='Photo' />
                     <BackButton />

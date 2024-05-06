@@ -11,6 +11,7 @@ interface CartDetailsItemProps {
 
 
 const CartDetailsItem = ({ title, value, color = 'text-blue-500', icon, isNumber = true, text = '' }: CartDetailsItemProps) => {
+    
     return (
         <div className='h-20 bg-blue rounded-xl flex-center gap-0.5'>
             <p className='text-gray-300'>{title}</p>

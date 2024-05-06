@@ -8,12 +8,6 @@ import userModel from "@/models/user.module";
 import { IUser } from "@/types/user";
 import { Types } from "mongoose";
 
-interface AddComment {
-    body: string,
-    rate: number,
-    productID: string
-}
-
 export const getComments = async (limit: number, productID: string) => {
     try {
         await connectToDB();

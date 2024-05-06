@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
+
 const HeroSection = () => {
+
     return (
         <div className="my-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10">

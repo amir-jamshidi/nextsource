@@ -4,7 +4,6 @@ import { ICategory } from "@/types/category"
 import { IProduct } from "@/types/product"
 import { ITag } from "@/types/tag"
 
-
 interface ProductMoreDetailsSectionProps {
     product: IProduct
 }

@@ -1,48 +1,42 @@
 'use client'
-import SctionTitle from '@/components/shared/SctionTitle'
+
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import { useQuery } from 'react-query';
 import { getRelatedProducts } from '@/actions/product.action';
+import SectionTitle from '@/components/shared/SectionTitle'
 import SourceItem from '@/components/shared/SourceItem';
-import { IProduct } from '@/types/product';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 const ProductRelatedSection = ({ productID }: { productID: string }) => {
 
     const { data: products } = useQuery(['relatedProduct', productID], () => getRelatedProducts(productID));
 
-
-
     return (
         <div className='w-full mt-6'>
-            <SctionTitle title='سورس های مرتبط' isShowMore={false} />
+            <SectionTitle title='سورس های مرتبط' isShowMore={false} />
             <Swiper
                 breakpoints={{
-
                     640: {
-                       
                         slidesPerView: 1,
-                        spaceBetween: 10
+                        spaceBetween: 8
                     },
-
                     768: {
-                        
                         slidesPerView: 2,
-                        spaceBetween: 10
-
+                        spaceBetween: 8
                     },
                     1024: {
-                    
+
                         slidesPerView: 4,
-                        spaceBetween: 10
+                        spaceBetween: 8
                     },
                     1280: {
-                     
+
                         slidesPerView: 4,
-                        spaceBetween: 10
+                        spaceBetween: 8
                     }
                 }}
-                spaceBetween={10}
+                spaceBetween={8}
                 pagination={{
                     clickable: true,
                 }}
