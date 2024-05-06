@@ -37,7 +37,7 @@ const ProductCommentsSection = async ({ comment, productID, commnetsCount, child
 
                 </div>
                 <span className="flex-1 h-px bg-gray-800 inline-block"></span>
-                <p className="text-gray-300 text-sm">نظرات</p>
+                <p className="text-gray-300 text-sm mx-2">نظرات</p>
                 <span className="flex-1 h-px bg-gray-800 inline-block"></span>
                 <div className=' flex text-sm items-center gap-x-1 w-14 md:w-32 justify-end'>
                     {commnetsCount > 0 ? (<>
