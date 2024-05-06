@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Search = () => {
+interface SearchProps {
+    searchParams: { q: string },
+
+}
+
+const Search = ({ searchParams }: SearchProps) => {
+    console.log(searchParams.q);
     return (
-        <div>Search</div>
+        <div></div>
     )
 }
 
