@@ -103,3 +103,16 @@ export const getProductByID = async (id: string) => {
         throw new Error('خطای ناشناخته')
     }
 }
+
+/* Search Page */
+
+export const getProductByQuery = async (query: string, filter?: string) => {
+    try {
+        await connectToDB();
+        const regex = new RegExp(query, 'i');
+        const products = await productModel.find({ title: regex }).lean();
+        return products
+    } catch (error) {
+        throw new Error('خطای ناشناخته');
+    }
+}

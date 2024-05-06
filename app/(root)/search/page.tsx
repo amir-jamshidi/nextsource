@@ -1,3 +1,8 @@
+import { getProductByQuery } from '@/actions/product.action'
+import SourceContainer from '@/components/shared/SourceContainer';
+import SourceItem from '@/components/shared/SourceItem';
+import SearchInput from '@/components/template/Search/SearchInput';
+import { IProduct } from '@/types/product';
 import React from 'react'
 
 interface SearchProps {
@@ -5,10 +10,23 @@ interface SearchProps {
 
 }
 
-const Search = ({ searchParams }: SearchProps) => {
-    console.log(searchParams.q);
+const Search = async ({ searchParams }: SearchProps) => {
+
+    const result = await getProductByQuery(searchParams.q) as IProduct[];
+
+
+
     return (
-        <div></div>
+        <div className='container'>
+            <div>
+                <SearchInput />
+            </div>
+            <SourceContainer>
+                {result.map(product => (
+                    <SourceItem product={product} />
+                ))}
+            </SourceContainer>
+        </div>
     )
 }
 
