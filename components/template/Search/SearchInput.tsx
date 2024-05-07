@@ -23,11 +23,14 @@ const SearchInput = ({ }) => {
             // if (!filter && value) return router.replace(`?q=${value}`);
             // if (filter && value) return router.replace(`?filter=${filter}&q=${value}`);
             // if (!filter && !value) return router.replace(`/search`);
+
             router.replace(`/search?${value && 'q=' + value}${filter && '&filter=' + filter}`)
+
         }, 600)
         return () => clearTimeout(timmer);
     }, [value, searchParams, path, query, filter, filterParam])
 
+    
     return (
         <div className="">
             <div className="h-20 bg-blue rounded-xl mt-14 flex-center">
@@ -45,6 +48,11 @@ const SearchInput = ({ }) => {
             </div>
         </div>
     )
+}
+
+
+const navigateURL = () => {
+
 }
 
 export default SearchInput
