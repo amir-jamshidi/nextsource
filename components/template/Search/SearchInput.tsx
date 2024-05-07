@@ -23,7 +23,7 @@ const SearchInput = ({ }) => {
             if (!filter && value) return router.replace(`?q=${value}`);
             if (filter && value) return router.replace(`?filter=${filter}&q=${value}`);
             if (!filter && !value) return router.replace(`/search`);
-        }, 650)
+        }, 600)
         return () => clearTimeout(timmer);
     }, [value, searchParams, path, query, filter, filterParam])
 
