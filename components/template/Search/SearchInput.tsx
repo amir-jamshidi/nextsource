@@ -1,7 +1,7 @@
 'use client'
 
 import { filters } from "@/constants/filters";
-import { SearchRounded } from "@mui/icons-material";
+import { SearchRounded, VpnLock } from "@mui/icons-material";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react";
@@ -19,16 +19,17 @@ const SearchInput = ({ }) => {
 
     useEffect(() => {
         const timmer = setTimeout(() => {
-            if (filter && !value) return router.replace(`?filter=${filter}`);
-            if (!filter && value) return router.replace(`?q=${value}`);
-            if (filter && value) return router.replace(`?filter=${filter}&q=${value}`);
-            if (!filter && !value) return router.replace(`/search`);
+            // if (filter && !value) return router.replace(`?filter=${filter}`);
+            // if (!filter && value) return router.replace(`?q=${value}`);
+            // if (filter && value) return router.replace(`?filter=${filter}&q=${value}`);
+            // if (!filter && !value) return router.replace(`/search`);
+            router.replace(`/search?${value && 'q=' + value}${filter && '&filter=' + filter}`)
         }, 600)
         return () => clearTimeout(timmer);
     }, [value, searchParams, path, query, filter, filterParam])
 
     return (
-        <div>
+        <div className="">
             <div className="h-20 bg-blue rounded-xl mt-14 flex-center">
                 <div className="bg-gray-800/50 rounded-xl w-2/3 flex items-center">
                     <input className="py-3 text-gray-300 rounded-xl bg-transparent border-none outline-none flex-1 px-2.5" placeholder="دنبال چی هستی ؟ برام بنویس" onChange={(e) => setValue(e.target.value)} value={value}></input>

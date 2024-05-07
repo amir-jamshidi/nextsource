@@ -6,13 +6,13 @@ import { IProduct } from '@/types/product';
 import React from 'react'
 
 interface SearchProps {
-    searchParams: { q: string },
+    searchParams: { q: string, filter: string },
 
 }
 
-const Search = async ({ searchParams }: SearchProps) => {
+const Search = async ({ searchParams: { q = '', filter = '' } }: SearchProps) => {
 
-    const result = await getProductByQuery(searchParams.q) as IProduct[];
+    const result = await getProductByQuery(q, filter) as IProduct[];
 
 
 

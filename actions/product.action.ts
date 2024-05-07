@@ -108,9 +108,18 @@ export const getProductByID = async (id: string) => {
 
 export const getProductByQuery = async (query: string, filter?: string) => {
     try {
+        console.log(query, filter);
+        const sort: any = {}
+
+        if (filter === 'newest') sort['_id'] = -1
+        if (filter === 'expensive') sort['price'] = -1
+        if (filter === 'inexpensive') sort['price'] = 1
+        if (filter === 'bestseller') sort['buyCount'] = -1
+        if (filter === 'popular') sort['buyCount'] = -1
+
         await connectToDB();
         const regex = new RegExp(query, 'i');
-        const products = await productModel.find({ title: regex }).lean();
+        const products = await productModel.find({ title: regex }).sort(sort).lean();
         return products
     } catch (error) {
         throw new Error('خطای ناشناخته');
