@@ -12,20 +12,26 @@ interface SearchProps {
 
 const Search = async ({ searchParams: { q = '', filter = '' } }: SearchProps) => {
 
-    const result = await getProductByQuery(q, filter) as IProduct[];
+    const products = await getProductByQuery(q, filter) as IProduct[];
 
 
 
     return (
         <div className='container'>
             <div>
-                <SearchInput />
+                <SearchInput productCount={products.length} />
             </div>
-            <SourceContainer>
-                {result.map(product => (
+            {products.length > 0 ? (<SourceContainer>
+                {products.map(product => (
                     <SourceItem product={product} />
                 ))}
-            </SourceContainer>
+            </SourceContainer>) : (
+                <div className='flex-center justify-center flex-col gap-y-1.5 pt-24 pb-16'>
+                    <p className='text-xl text-gray-300'>سورسی پیدا نشد</p>
+                    <p className='text-base text-gray-400'>اگه دنبال سورسی هستی که پیداش نمیکنی میتونی درخواست سورس بدی</p>
+                </div>
+            )}
+
         </div>
     )
 }

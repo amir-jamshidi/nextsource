@@ -108,7 +108,7 @@ export const getProductByID = async (id: string) => {
 
 export const getProductByQuery = async (query: string, filter?: string) => {
     try {
-        console.log(query, filter);
+
         const sort: any = {}
 
         if (filter === 'newest') sort['_id'] = -1
@@ -116,6 +116,7 @@ export const getProductByQuery = async (query: string, filter?: string) => {
         if (filter === 'inexpensive') sort['price'] = 1
         if (filter === 'bestseller') sort['buyCount'] = -1
         if (filter === 'popular') sort['buyCount'] = -1
+
 
         await connectToDB();
         const regex = new RegExp(query, 'i');
