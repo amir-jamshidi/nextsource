@@ -53,7 +53,8 @@ const SearchInput = ({ }) => {
 
 const navigateURL = () => {
 
-    
+
 }
+
 
 export default SearchInput
