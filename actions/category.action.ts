@@ -13,3 +13,15 @@ export const getPopularCategories = async () => {
         throw new Error('خطای ناشناخته')
     }
 }
+
+/* Categories Page */
+
+export const getCategories = async () => {
+    try {
+        await connectToDB();
+        const categories = await categoryModel.find().lean();
+        return categories;
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}

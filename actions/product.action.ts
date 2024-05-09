@@ -130,11 +130,22 @@ export const getProductByQuery = async (query: string, filter?: string) => {
 
 /* Tag Page */
 
-export const getProductsByTagHref = async (tagHref: string) => {
+export const getProductsByTagHref = async (tagHref: string, filter: string) => {
     try {
         await connectToDB();
-        const products = await tagModel.findOne({ href: tagHref }).populate({ path: 'products', model: productModel }).lean();
+
+        const sort: any = {}
+        console.log(filter);
+        if (filter === 'newest') sort['_id'] = -1
+        if (filter === 'expensive') sort['price'] = -1
+        if (filter === 'inexpensive') sort['price'] = 1
+        if (filter === 'bestseller') sort['buyCount'] = -1
+        if (filter === 'popular') sort['buyCount'] = -1
+
+        const products = await tagModel.findOne({ href: tagHref }).populate({ path: 'products', model: 'Product', options: { sort } }).lean();
+        
         return products
+
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

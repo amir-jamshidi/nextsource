@@ -7,12 +7,13 @@ import { ITag } from "@/types/tag";
 import { notFound } from "next/navigation";
 
 interface tagProps {
-    params: { tagHref: string }
+    params: { tagHref: string },
+    searchParams: { filter: string }
 }
 
-const page = async ({ params: { tagHref } }: tagProps) => {
+const page = async ({ params: { tagHref }, searchParams: { filter = '' } }: tagProps) => {
 
-    const details = await getProductsByTagHref(tagHref) as ITag;
+    const details = await getProductsByTagHref(tagHref, filter) as ITag;
     if (!details) return notFound();
 
     return (
