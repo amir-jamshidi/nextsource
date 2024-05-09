@@ -1,8 +1,7 @@
 'use client'
 
 import { filters } from "@/constants/filters";
-import { SearchRounded, VpnLock } from "@mui/icons-material";
-import Link from "next/link";
+import { SearchRounded } from "@mui/icons-material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react";
 
@@ -19,13 +18,11 @@ const SearchInput = ({ }) => {
 
     useEffect(() => {
         const timmer = setTimeout(() => {
-            // if (filter && !value) return router.replace(`?filter=${filter}`);
-            // if (!filter && value) return router.replace(`?q=${value}`);
-            // if (filter && value) return router.replace(`?filter=${filter}&q=${value}`);
-            // if (!filter && !value) return router.replace(`/search`);
-
-            router.replace(`/search?${value && 'q=' + value}${filter && '&filter=' + filter}`)
-
+            const url = urlCreator([
+                { name: 'q', value: value },
+                { name: 'filter', value: filter },
+            ]);
+            router.push(url, { scroll: false });
         }, 600)
         return () => clearTimeout(timmer);
     }, [value, searchParams, path, query, filter, filterParam])
@@ -50,12 +47,14 @@ const SearchInput = ({ }) => {
     )
 }
 
-
-const navigateURL = () => {
-
-
+const urlCreator = (values: { name: string, value: string }[]): string => {
+    const result = values.reduce((str, val) => {
+        if (val.value) {
+            return `${str}${str.includes('?') ? '&' : '?'}${val.name}=${val.value}`
+        }
+        return str
+    }, '');
+    return result
 }
-
-
 
 export default SearchInput
