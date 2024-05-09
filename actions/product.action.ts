@@ -7,6 +7,7 @@ import tagModel from "@/models/tag.module";
 import userModel from "@/models/user.module";
 import { IProduct } from "@/types/product";
 import mongoose from "mongoose";
+import { escape } from "querystring";
 
 /* Main Page */
 
@@ -119,10 +120,22 @@ export const getProductByQuery = async (query: string, filter?: string) => {
 
 
         await connectToDB();
-        const regex = new RegExp(query, 'i');
+        var regex = new RegExp(query.replace(/([.\*+?^${}()|[\]\\])/g, '\\$1'), 'g');
         const products = await productModel.find({ title: regex }).sort(sort).lean();
         return products
     } catch (error) {
         throw new Error('خطای ناشناخته');
+    }
+}
+
+/* Tag Page */
+
+export const getProductsByTagHref = async (tagHref: string) => {
+    try {
+        await connectToDB();
+        const products = await tagModel.findOne({ href: tagHref }).populate({ path: 'products', model: productModel }).lean();
+        return products
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
     }
 }

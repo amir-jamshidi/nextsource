@@ -7,11 +7,12 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react";
 
 
-interface SearchInputProps {
-    productCount: number
+interface FilterSectionProps {
+    productCount?: number,
+    isShowSearch?: boolean,
 }
 
-const SearchInput = ({ productCount }: SearchInputProps) => {
+const FilterSection = ({ productCount, isShowSearch = true }: FilterSectionProps) => {
 
 
     const router = useRouter();
@@ -25,11 +26,13 @@ const SearchInput = ({ productCount }: SearchInputProps) => {
 
     useEffect(() => {
         const timmer = setTimeout(() => {
+
             const url = urlCreator([
                 { name: 'q', value: search },
                 { name: 'filter', value: filter },
             ]);
-            router.push(url, { scroll: false });
+            console.log(url);
+            router.replace(`${pathName}/${url}`, { scroll: false });
         }, 600)
         return () => clearTimeout(timmer);
     }, [search, searchParams, pathName, searchQuery, filter, filterParam])
@@ -40,17 +43,19 @@ const SearchInput = ({ productCount }: SearchInputProps) => {
 
     return (
         <div className="">
-            <div className="h-20 bg-blue rounded-xl mt-14 flex-center">
-                <div className="bg-gray-800/50 rounded-xl w-2/3 flex items-center">
-                    <span className="w-10 flex-center">
-                        <SearchRounded className="text-gray-400" />
-                    </span>
-                    <input className="py-3 text-gray-300 rounded-xl bg-transparent border-none outline-none flex-1 pl-2.5" placeholder="دنبال چی هستی ؟ برام بنویس" onChange={(e) => setSearch(e.target.value)} value={search}></input>
-                    <span className="w-10 flex-center cursor-pointer" onClick={handleClearInput}>
-                        <CloseRounded className="text-gray-400" />
-                    </span>
+            {isShowSearch && (
+                <div className="h-20 bg-blue rounded-xl mt-14 flex-center">
+                    <div className="bg-gray-800/50 rounded-xl w-2/3 flex items-center">
+                        <span className="w-10 flex-center">
+                            <SearchRounded className="text-gray-400" />
+                        </span>
+                        <input className="py-3 text-gray-300 rounded-xl bg-transparent border-none outline-none flex-1 pl-2.5" placeholder="دنبال چی هستی ؟ برام بنویس" onChange={(e) => setSearch(e.target.value)} value={search}></input>
+                        <span className="w-10 flex-center cursor-pointer" onClick={handleClearInput}>
+                            <CloseRounded className="text-gray-400" />
+                        </span>
+                    </div>
                 </div>
-            </div>
+            )}
             <div className="h-14 bg-blue rounded-xl flex items-center mt-2 px-4">
                 <div className="w-32 flex gap-x-1 items-center">
                     <span className="text-gray-300">تعداد</span>
@@ -75,7 +80,8 @@ const urlCreator = (values: { name: string, value: string }[]): string => {
         }
         return str
     }, '');
+    console.log(result);
     return result
 }
 
-export default SearchInput
+export default FilterSection

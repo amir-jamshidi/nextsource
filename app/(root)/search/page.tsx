@@ -1,7 +1,7 @@
 import { getProductByQuery } from '@/actions/product.action'
 import SourceContainer from '@/components/shared/SourceContainer';
 import SourceItem from '@/components/shared/SourceItem';
-import SearchInput from '@/components/template/Search/SearchInput';
+import FilterSection from '@/components/shared/FilterSection';
 import { IProduct } from '@/types/product';
 import React from 'react'
 
@@ -14,12 +14,10 @@ const Search = async ({ searchParams: { q = '', filter = '' } }: SearchProps) =>
 
     const products = await getProductByQuery(q, filter) as IProduct[];
 
-
-
     return (
         <div className='container'>
             <div>
-                <SearchInput productCount={products.length} />
+                <FilterSection productCount={products.length} />
             </div>
             {products.length > 0 ? (<SourceContainer>
                 {products.map(product => (
