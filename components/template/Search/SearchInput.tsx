@@ -31,7 +31,6 @@ const SearchInput = ({ }) => {
     }, [value, searchParams, path, query, filter, filterParam])
 
     
-    
     return (
         <div className="">
             <div className="h-20 bg-blue rounded-xl mt-14 flex-center">
