@@ -8,6 +8,7 @@ import userModel from "@/models/user.module";
 import { IProduct } from "@/types/product";
 import mongoose from "mongoose";
 import { escape } from "querystring";
+import { ICategory } from './../types/category.d';
 
 /* Main Page */
 
@@ -135,7 +136,6 @@ export const getProductsByTagHref = async (tagHref: string, filter: string) => {
         await connectToDB();
 
         const sort: any = {}
-        console.log(filter);
         if (filter === 'newest') sort['_id'] = -1
         if (filter === 'expensive') sort['price'] = -1
         if (filter === 'inexpensive') sort['price'] = 1
@@ -143,9 +143,31 @@ export const getProductsByTagHref = async (tagHref: string, filter: string) => {
         if (filter === 'popular') sort['buyCount'] = -1
 
         const products = await tagModel.findOne({ href: tagHref }).populate({ path: 'products', model: 'Product', options: { sort } }).lean();
-        
+
         return products
 
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
+/* Category */
+
+export const getProductsByCategoryHref = async (ctaegoryHref: string, filter: string) => {
+    try {
+        await connectToDB();
+
+        const sort: any = {}
+        if (filter === 'newest') sort['_id'] = -1
+        if (filter === 'expensive') sort['price'] = -1
+        if (filter === 'inexpensive') sort['price'] = 1
+        if (filter === 'bestseller') sort['buyCount'] = -1
+        if (filter === 'popular') sort['buyCount'] = -1
+
+        const category = await categoryModel.findOne({ href: ctaegoryHref }).lean() as ICategory;
+        if (!category) return { products: null, category: null };
+        const products = await productModel.find({ categoryID: category._id }).sort(sort).lean() as IProduct[];
+        return { products, category }
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

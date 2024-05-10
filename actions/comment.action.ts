@@ -14,7 +14,7 @@ export const getComments = async (limit: number, productID: string) => {
         const comments = await commentModel.find({ productID, isAccept: true }).populate({ path: 'userID', model: userModel }).populate({ path: 'answerUserID', model: userModel }).limit((limit * 5)).lean();
         return comments
     } catch (error) {
-        console.log(error);
+
         throw new Error('خطای ناشناخته');
     }
 }
