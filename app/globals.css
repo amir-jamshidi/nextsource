@@ -72,6 +72,9 @@
     .bg-blue-full {
         @apply bg-gradient-to-r bg-no-repeat from-cyan-950/80 to-blue-950/80
     }
+    .bg-blue-max {
+        @apply bg-gradient-to-r bg-no-repeat from-cyan-950/95 to-blue-950/95
+    }
 
     /* Amimations */
     .hover-btn {

@@ -1,0 +1,46 @@
+'use client'
+
+import { urlCreator } from "@/libs/UrlCreator";
+import { useRouter, useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react";
+
+interface ShowMoreButtonProps {
+    productCount: number
+}
+
+const ShowMoreButton = ({ productCount }: ShowMoreButtonProps) => {
+
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const pageParam = Number(searchParams.get('page')) || null;
+    const [page, setPage] = useState(pageParam)
+
+    useEffect(() => {
+        const newUrl = urlCreator({
+            params: searchParams.toString(),
+            key: 'page',
+            value: page ? String(page) : null
+        });
+        router.push(newUrl, { scroll: false });
+    }, [page])
+
+    useEffect(() => { setPage(pageParam) }, [pageParam])
+
+    const handlePageNavigate = () => {
+        setPage(prev => prev ? prev + 1 : 2);
+    }
+
+    const pageP = pageParam ? Number(pageParam) : 1
+
+    return (
+        <>
+            {(pageP * 4) < productCount && (
+                <div className="flex justify-center mt-6">
+                    <button onClick={handlePageNavigate} className="bg-blue rounded-full px-3 py-2 text-gray-300 mt-5">مشاهده بیشتر</button>
+                </div>
+            )}
+        </>
+    )
+}
+
+export default ShowMoreButton

@@ -46,7 +46,7 @@ const Header = async () => {
                         </div>
                     </div>
                 </div>
-                <div className='container'>
+                <div className='container z-10'>
                     <div className='h-14 bg-blue mt-2 max-w-4xl rounded-3xl mx-auto flex-center gap-x-1'>
                         {menus.map(menu => (
                             <div className='relative group cursor-pointer'>
@@ -54,10 +54,10 @@ const Header = async () => {
                                     <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg' > {menu.title}</p>
                                 </Link>
                                 {menu.products.length > 0 && (
-                                    <div className=" group-hover:visible invisible top-0 mt-8 absolute pt-4">
-                                        <div className='bg-blue flex flex-col text-gray-300 gap-y-1.5 backdrop-blur-2xl w-60 rounded-xl px-3 py-3'>
+                                    <div className="group-hover:visible invisible top-0 mt-8 absolute pt-4">
+                                        <div className='bg-blue-max flex flex-col text-gray-300 gap-y-1.5 backdrop-blur-2xl w-60 rounded-xl px-3 py-3'>
                                             {menu.products.map((product: IProduct) =>
-                                                <Link href={product.href} className='backd'>
+                                                <Link href={product.href} className='z-10'>
                                                     {product.title}
                                                 </Link>
                                             )}
@@ -65,7 +65,6 @@ const Header = async () => {
                                     </div>
                                 )}
                             </div>
-
                         ))}
                     </div>
                 </div>
