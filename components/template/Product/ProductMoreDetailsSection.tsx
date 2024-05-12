@@ -1,3 +1,4 @@
+import CategorySmalItem from "@/components/shared/CategorySmalItem"
 import ProductSectionTitle from "@/components/shared/ProductSectionTitle"
 import TagItem from "@/components/shared/TagItem"
 import { ICategory } from "@/types/category"
@@ -29,9 +30,8 @@ const ProductMoreDetailsSection = ({ product }: ProductMoreDetailsSectionProps) 
                     ))}
                 </div>
             </div>
-            <div className='flex items-center mt-4 gap-x-1 px-2'>
-                <p className='text-gray-300 text-sm'>دسته بندی : </p>
-                <p className="text-sm bg-amber-500 rounded px-2 text-white">{category.title}</p>
+            <div className=''>
+                <CategorySmalItem category={category} />
             </div>
         </section>
     )
