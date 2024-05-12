@@ -1,5 +1,6 @@
 import { getProductsByCategoryHref } from '@/actions/product.action'
 import FilterSection from '@/components/shared/FilterSection';
+import PageTitle from '@/components/shared/PageTitle';
 import SourceContainer from '@/components/shared/SourceContainer';
 import SourceItem from '@/components/shared/SourceItem';
 import { ICategory } from '@/types/category';
@@ -17,10 +18,7 @@ const Category = async ({ params: { categoryHref }, searchParams: { filter } }: 
     if (!products || !category) return notFound();
     return (
         <div className="container">
-            <div className="pt-8 flex flex-center gap-y-1 flex-col">
-                <h1 className="text-gray-200 text-2xl">{category.title}</h1>
-                <h2 className="text-gray-400 text-xl">{category.titleEn}</h2>
-            </div>
+            <PageTitle title={category.title} titleEn={category.titleEn} />
             <FilterSection productCount={products.length} />
             <SourceContainer>
                 {products.map((product: IProduct) => (

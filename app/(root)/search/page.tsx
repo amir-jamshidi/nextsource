@@ -6,6 +6,7 @@ import { IProduct } from '@/types/product';
 import React from 'react'
 import SearchSection from '@/components/shared/SearchSection';
 import ShowMoreButton from '@/components/shared/ShowMoreButton';
+import PageTitle from '@/components/shared/PageTitle';
 
 interface SearchProps {
     searchParams: { q: string, filter: string, page: number },
@@ -19,6 +20,7 @@ const Search = async ({ searchParams: { q = '', filter = '', page = 1 } }: Searc
     return (
         <div className='container'>
             <div>
+                <PageTitle title='جستحو سورس' titleEn='Search' />
                 <SearchSection />
                 <FilterSection margin={false} productCount={products.length} />
             </div>

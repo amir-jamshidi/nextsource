@@ -1,5 +1,6 @@
 import { getProducts, getProductsCount } from '@/actions/product.action'
 import FilterSection from '@/components/shared/FilterSection'
+import PageTitle from '@/components/shared/PageTitle'
 import ShowMoreButton from '@/components/shared/ShowMoreButton'
 import SourceContainer from '@/components/shared/SourceContainer'
 import SourceItem from '@/components/shared/SourceItem'
@@ -16,10 +17,7 @@ const Products = async ({ searchParams: { page, filter } }: ProductsProps) => {
     const productsCount = await getProductsCount();
     return (
         <div className='container'>
-            <div className="pt-8 flex flex-center gap-y-1 flex-col">
-                <h1 className="text-gray-200 text-2xl">همه سورس ها</h1>
-                <h2 className="text-gray-400 text-xl">All Sources</h2>
-            </div>
+            <PageTitle title={'همه سورس ها'} titleEn='All Sources' />
             <FilterSection productCount={products.length} />
             <SourceContainer>
                 {products.map(product => (

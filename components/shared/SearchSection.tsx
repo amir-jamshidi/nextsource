@@ -33,7 +33,7 @@ const SearchSection = () => {
     }
 
     return (
-        <div className="h-20 bg-blue rounded-xl mt-14 flex-center">
+        <div className="h-20 bg-blue rounded-xl mt-8 flex-center">
             <div className="bg-gray-800/50 rounded-xl w-2/3 flex items-center">
                 <span className="w-10 flex-center">
                     <SearchRounded className="text-gray-400" />

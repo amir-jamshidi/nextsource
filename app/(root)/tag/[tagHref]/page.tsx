@@ -1,5 +1,6 @@
 import { getProductsByTagHref } from "@/actions/product.action"
 import FilterSection from "@/components/shared/FilterSection";
+import PageTitle from "@/components/shared/PageTitle";
 import SearchSection from "@/components/shared/SearchSection";
 import SourceContainer from "@/components/shared/SourceContainer";
 import SourceItem from "@/components/shared/SourceItem";
@@ -19,10 +20,7 @@ const page = async ({ params: { tagHref }, searchParams: { filter = '' } }: tagP
 
     return (
         <div className="container">
-            <div className="mt-8 flex flex-center gap-y-1 flex-col">
-                <h1 className="text-gray-200 text-2xl">{details.title}</h1>
-                <h2 className="text-gray-400 text-xl">{details.titleEn}</h2>
-            </div>
+            <PageTitle title={details.title} titleEn={details.titleEn} />
             <FilterSection productCount={details.products.length} />
             <div>
                 {details.products.length > 0 ? (
