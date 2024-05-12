@@ -10,7 +10,7 @@ const LatestProductsSection = async () => {
 
   return (
     <section className="mb-16">
-      <SectionTitle title="جدیدترین سورس ها" />
+      <SectionTitle title="جدیدترین سورس ها" href="/products" />
       <SourceContainer>
         {products.map(product => (
           <SourceItem key={JSON.stringify(product._id)} product={product} />

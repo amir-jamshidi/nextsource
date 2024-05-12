@@ -5,12 +5,12 @@ import SourceItem from '@/components/shared/SourceItem'
 import { IProduct } from '@/types/product'
 
 const PopularBackProductsSection = async () => {
-    
+
     const products = await getPopularBackProducts() as IProduct[];
-    
+
     return (
         <section className='mt-16'>
-            <SectionTitle title='محبوب ترین سورس های بک اند' />
+            <SectionTitle title='محبوب ترین سورس های بک اند' href='/category/back-end?filter=popular' />
             <SourceContainer>
                 {products.map(product => (
                     <SourceItem key={product._id} product={product} />

@@ -1,5 +1,6 @@
 'use client'
 
+import { PRODUCTS_LIMIT } from "@/constants/productsLimitCount";
 import { urlCreator } from "@/libs/UrlCreator";
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react";
@@ -34,7 +35,7 @@ const ShowMoreButton = ({ productCount }: ShowMoreButtonProps) => {
 
     return (
         <>
-            {(pageP * 4) < productCount && (
+            {(pageP * PRODUCTS_LIMIT) < productCount && (
                 <div className="flex justify-center mt-6">
                     <button onClick={handlePageNavigate} className="bg-blue rounded-full px-3 py-2 text-gray-300 mt-5">مشاهده بیشتر</button>
                 </div>

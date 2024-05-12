@@ -10,7 +10,7 @@ const PopularProductsSection = async () => {
 
     return (
         <section className='mt-16'>
-            <SectionTitle title='محبوب ترین سورس های اخیر' />
+            <SectionTitle title='محبوب ترین سورس های اخیر' href='/products?filter=popular' />
             <SourceContainer>
                 {products.map(product => (
                     <SourceItem key={JSON.stringify(product._id)} product={product} />

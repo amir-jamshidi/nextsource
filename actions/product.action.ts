@@ -8,6 +8,7 @@ import userModel from "@/models/user.module";
 import { IProduct } from "@/types/product";
 import mongoose from "mongoose";
 import { ICategory } from './../types/category.d';
+import { PRODUCTS_LIMIT } from "@/constants/productsLimitCount";
 
 /* Main Page */
 
@@ -122,7 +123,7 @@ export const getProductByQuery = async (query: string, filter?: string, page: nu
         await connectToDB();
         var regex = new RegExp(query.replace(/([.\*+?^${}()|[\]\\])/g, '\\$1'), 'g');
         const productsCount = await productModel.find({ title: regex }).countDocuments();
-        const products = await productModel.find({ title: regex }).limit(page * 4).sort(sort).lean() as IProduct[];
+        const products = await productModel.find({ title: regex }).limit(page * PRODUCTS_LIMIT).sort(sort).lean() as IProduct[];
         return { products, productsCount }
     } catch (error) {
         throw new Error('خطای ناشناخته');
@@ -153,7 +154,7 @@ export const getProductsByTagHref = async (tagHref: string, filter: string) => {
 
 /* Category Page */
 
-export const getProductsByCategoryHref = async (ctaegoryHref: string, filter: string) => {
+export const getProductsByCategoryHref = async (ctaegoryHref: string, filter: string, page: number = 1) => {
     try {
         await connectToDB();
 
@@ -165,9 +166,10 @@ export const getProductsByCategoryHref = async (ctaegoryHref: string, filter: st
         if (filter === 'popular') sort['buyCount'] = -1
 
         const category = await categoryModel.findOne({ href: ctaegoryHref }).lean() as ICategory;
-        if (!category) return { products: null, category: null };
-        const products = await productModel.find({ categoryID: category._id }).sort(sort).lean() as IProduct[];
-        return { products, category }
+        if (!category) return { products: null, category: null, productsCount: 0 };
+        const productsCount = await productModel.find({ categoryID: category._id }).countDocuments() as number;
+        const products = await productModel.find({ categoryID: category._id }).limit(page * PRODUCTS_LIMIT).sort(sort).lean() as IProduct[];
+        return { products, category, productsCount }
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }
@@ -186,7 +188,7 @@ export const getProducts = async (page: number = 1, filter: string = '') => {
         if (filter === 'bestseller') sort['buyCount'] = -1
         if (filter === 'popular') sort['buyCount'] = -1
 
-        const products = await productModel.find().sort(sort).limit(page * 4).lean();
+        const products = await productModel.find().sort(sort).limit(page * PRODUCTS_LIMIT).lean();
         return products
     } catch (error) {
         throw new Error('خطای ناشناخته')

@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react";
 
 interface FilterSectionProps {
-    productCount?: number,
+    productCount: number,
     margin?: boolean
 }
 
@@ -18,7 +18,6 @@ const FilterSection = ({ productCount, margin = true }: FilterSectionProps) => {
     const searchParams = useSearchParams();
 
     const filterParam = searchParams.get('filter') || ''
-
     const [filter, setFilter] = useState(filterParam);
 
 
@@ -32,6 +31,7 @@ const FilterSection = ({ productCount, margin = true }: FilterSectionProps) => {
     }, [filter, filterParam])
 
 
+    if (productCount <= 0) return null
 
     return (
         <div className={`h-14 bg-blue rounded-xl flex items-center px-4 ${margin ? 'mt-8' : 'mt-2'}`}>

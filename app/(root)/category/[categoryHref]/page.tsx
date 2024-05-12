@@ -1,6 +1,8 @@
 import { getProductsByCategoryHref } from '@/actions/product.action'
 import FilterSection from '@/components/shared/FilterSection';
+import NoItemSection from '@/components/shared/NoItemSection';
 import PageTitle from '@/components/shared/PageTitle';
+import ShowMoreButton from '@/components/shared/ShowMoreButton';
 import SourceContainer from '@/components/shared/SourceContainer';
 import SourceItem from '@/components/shared/SourceItem';
 import PopularProductsSection from '@/components/template/Main/PopularProductsSection/PopularProductsSection';
@@ -11,11 +13,12 @@ import React from 'react'
 
 interface CategoryProps {
     params: { categoryHref: string },
-    searchParams: { filter: string }
+    searchParams: { filter: string, page: number }
 }
 
-const Category = async ({ params: { categoryHref }, searchParams: { filter } }: CategoryProps) => {
-    const { products, category }: { products: IProduct[] | null, category: ICategory | null } = await getProductsByCategoryHref(categoryHref, filter)
+const Category = async ({ params: { categoryHref }, searchParams: { filter, page } }: CategoryProps) => {
+    const { products, category, productsCount }: { products: IProduct[] | null, category: ICategory | null, productsCount: number } = await getProductsByCategoryHref(categoryHref, filter, page)
+
     if (!products || !category) return notFound();
     return (
         <div className="container">
@@ -28,12 +31,10 @@ const Category = async ({ params: { categoryHref }, searchParams: { filter } }: 
                             <SourceItem product={product} />
                         ))}
                     </SourceContainer>
+                    <ShowMoreButton productCount={productsCount} />
                 </>
             ) : (
-                <div className='flex-center justify-center flex-col gap-y-1.5 pt-24 pb-16'>
-                    <p className='text-xl text-gray-300'>سورسی پیدا نشد</p>
-                    <p className='text-base text-gray-400'>اگه دنبال سورسی هستی که پیداش نمیکنی میتونی درخواست سورس بدی</p>
-                </div>
+                <NoItemSection />
             )}
             <PopularProductsSection />
 

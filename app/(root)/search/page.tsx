@@ -7,6 +7,7 @@ import React from 'react'
 import SearchSection from '@/components/shared/SearchSection';
 import ShowMoreButton from '@/components/shared/ShowMoreButton';
 import PageTitle from '@/components/shared/PageTitle';
+import NoItemSection from '@/components/shared/NoItemSection';
 
 interface SearchProps {
     searchParams: { q: string, filter: string, page: number },
@@ -29,10 +30,7 @@ const Search = async ({ searchParams: { q = '', filter = '', page = 1 } }: Searc
                     <SourceItem product={product} />
                 ))}
             </SourceContainer>) : (
-                <div className='flex-center justify-center flex-col gap-y-1.5 pt-24 pb-16'>
-                    <p className='text-xl text-gray-300'>سورسی پیدا نشد</p>
-                    <p className='text-base text-gray-400'>اگه دنبال سورسی هستی که پیداش نمیکنی میتونی درخواست سورس بدی</p>
-                </div>
+                <NoItemSection />
             )}
 
             <ShowMoreButton productCount={productsCount} />

@@ -50,7 +50,7 @@ const Header = async () => {
                     <div className='h-14 bg-blue mt-2 max-w-4xl rounded-3xl mx-auto flex-center gap-x-1'>
                         {menus.map(menu => (
                             <div className='relative group cursor-pointer'>
-                                <Link href={''}>
+                                <Link href={menu.href}>
                                     <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg' > {menu.title}</p>
                                 </Link>
                                 {menu.products.length > 0 && (

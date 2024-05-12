@@ -15,10 +15,6 @@ const sellerSchema = new Schema<ISeller>({
         type: String,
         required: true
     },
-    fatherName: {
-        type: String,
-        required: true
-    },
     nationalPhoto: {
         type: String,
         required: true
@@ -26,7 +22,20 @@ const sellerSchema = new Schema<ISeller>({
     isActive: {
         type: Boolean,
         default: true
+    },
+    score: {
+        type: Number,
+        default: 0
+    },
+    sellCount: {
+        type: Number,
+        default: 0
+    },
+    href: {
+        type: String,
+        required: true
     }
+
 }, { timestamps: true })
 
 const sellerModel = models.Seller || model('Seller', sellerSchema);

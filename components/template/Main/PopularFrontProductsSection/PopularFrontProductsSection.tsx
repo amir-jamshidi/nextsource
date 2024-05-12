@@ -11,7 +11,7 @@ const PopularFrontProductsSection = async () => {
 
     return (
         <section className='mt-16'>
-            <SectionTitle title='محبوب ترین سورس های فرانت اند' />
+            <SectionTitle title='محبوب ترین سورس های فرانت اند' href='/category/front-end?filter=popular' />
             <SourceContainer>
                 {products.map(product => (
                     <SourceItem key={JSON.stringify(product._id)} product={product} />

@@ -11,7 +11,7 @@ const BestSellerSection = async () => {
 
     return (
         <>
-            <SectionTitle title='پرفروش های اخیر' />
+            <SectionTitle title='پرفروش های اخیر' href='/products?filter=bestseller' />
             <SourceContainer>
                 {products.map(product => (
                     <SourceItem key={JSON.stringify(product._id)} product={product} />
