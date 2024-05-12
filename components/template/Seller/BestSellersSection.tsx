@@ -1,4 +1,5 @@
 import SectionTitle from "@/components/shared/SectionTitle"
+import SellerItem from "@/components/shared/SellerItem"
 import { ISeller } from "@/types/seller"
 import Image from "next/image"
 
@@ -12,10 +13,7 @@ const BestSellersSection = ({ sellers }: BestSellersSectionProps) => {
             <SectionTitle isShowMore={false} title="برترین فروشنده ها" />
             <div className="grid grid-cols-5 mt-8">
                 {sellers.map((seller) => (
-                    <div className="h-44 bg-blue-light rounded-xl flex-center">
-                        {/* <Image  /> */}
-                        <p className="text-gray-200">{seller.userID.fullname}</p>
-                    </div>
+                    <SellerItem seller={seller} />
                 ))}
             </div>
         </div>
