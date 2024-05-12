@@ -10,7 +10,7 @@ const PageTitle = ({ title, titleEn }: PageTitleProps) => {
         <div className="pt-8 flex flex-center gap-y-1 flex-col">
             <h1 className="text-gray-200 text-2xl">{title}</h1>
             {titleEn && (
-                <h2 className="text-gray-400 text-xl">{titleEn}</h2>
+                <h2 className="text-gray-400 text-lg">{titleEn}</h2>
             )}
         </div>
     )

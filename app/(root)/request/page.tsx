@@ -1,8 +1,11 @@
+import PageTitle from '@/components/shared/PageTitle'
 import React from 'react'
 
 const Request = () => {
     return (
-        <div>Request</div>
+        <div className='container'>
+            <PageTitle title='درخواست سورس' titleEn='Request Source'/>
+        </div>
     )
 }
 

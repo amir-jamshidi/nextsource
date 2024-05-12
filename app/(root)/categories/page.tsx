@@ -1,20 +1,24 @@
 import { getCategories } from '@/actions/category.action'
+import { getPopularTags } from '@/actions/tag.action';
 import CategoryItem from '@/components/shared/CategoryItem';
+import PageTitle from '@/components/shared/PageTitle';
+import PopularTagSection from '@/components/shared/PopularTagSection';
 import { ICategory } from '@/types/category';
+import { ITag } from '@/types/tag';
 import React from 'react'
 
 const Categories = async () => {
     const categories = await getCategories() as ICategory[];
+    const tags = await getPopularTags() as ITag[];
     return (
         <div className='container'>
-            <div className='mt-16 flex-center'>
-                <h1 className='text-gray-200 text-2xl'>دسته بندی ها</h1>
-            </div>
+            <PageTitle title='دسته بندی ها' titleEn='Categories' />
             <div className='grid grid-cols-4 gap-2 mt-8'>
                 {categories.map((category: ICategory) => (
                     <CategoryItem href={category.href} title={category.title} titleEn={category.titleEn} key={category._id} />
                 ))}
             </div>
+            <PopularTagSection tags={tags} />
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import { getProductsByTagHref } from "@/actions/product.action"
+import { getPopularTags } from "@/actions/tag.action";
 import FilterSection from "@/components/shared/FilterSection";
 import PageTitle from "@/components/shared/PageTitle";
+import PopularTagSection from "@/components/shared/PopularTagSection";
 import SearchSection from "@/components/shared/SearchSection";
 import SourceContainer from "@/components/shared/SourceContainer";
 import SourceItem from "@/components/shared/SourceItem";
@@ -16,6 +18,7 @@ interface tagProps {
 const page = async ({ params: { tagHref }, searchParams: { filter = '' } }: tagProps) => {
 
     const details = await getProductsByTagHref(tagHref, filter) as ITag;
+    const tags = await getPopularTags() as ITag[];
     if (!details) return notFound();
 
     return (
@@ -37,6 +40,7 @@ const page = async ({ params: { tagHref }, searchParams: { filter = '' } }: tagP
                 )}
 
             </div>
+            <PopularTagSection tags={tags} />
         </div>
     )
 }
