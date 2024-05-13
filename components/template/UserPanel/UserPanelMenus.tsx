@@ -1,9 +1,15 @@
+'use client'
 
 import { userPanelMenus } from '@/constants/userPanelMenus'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 
 const UserPanelMenus = () => {
+
+    const pathName = usePathname();
+    console.log(pathName);
+
     return (
         <nav>
             <div className='container'>
@@ -11,8 +17,8 @@ const UserPanelMenus = () => {
                     {userPanelMenus.map(menu => (
                         <Link href={`/p-user/${menu.href}`}>
                             <div className='w-28 flex-center gap-x-1 bg-gray-800/40 py-1 rounded-xl'>
-                                <p className='text-sm text-gray-300'>{menu.title}</p>
-                                <span className='text-gray-400'>
+                                <p className={`${pathName.includes(menu.href) ? 'text-amber-500' : 'text-gray-300'} text-sm`}>{menu.title}</p>
+                                <span className={`${pathName.includes(menu.href) ? 'text-amber-500' : 'text-gray-400'}`}>
                                     {menu.icon}
                                 </span>
                             </div>
