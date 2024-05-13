@@ -49,3 +49,15 @@ export const getFavorites = async () => {
         throw new Error('خطای ناشناخته')
     }
 }
+
+/* User Panel */
+
+export const getMyFavorites = async (userID: string) => {
+    try {
+        await connectToDB();
+        const favorites = await favoriteModel.find({ userID }).lean();
+        return favorites
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
