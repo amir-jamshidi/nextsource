@@ -80,7 +80,7 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
 export const getMyOrders = async (userID: string) => {
     try {
         await connectToDB();
-        const orders = await orderModel.find({ userID }).lean() as IOrder[];
+        const orders = await orderModel.find({ userID }).populate({ path: 'productID', model: productModel }).lean() as IOrder[];
         return orders;
     } catch (error) {
         throw new Error('خطای ناشناخته')

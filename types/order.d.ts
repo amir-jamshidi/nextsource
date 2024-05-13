@@ -9,6 +9,8 @@ export interface IOrder extends Document {
     isOff: boolean,
     percentOff: number,
     action: string,
-    cashBack: number
+    cashBack: number,
+    createdAt?: Date
+    updatedAt?: Date
 }
 
