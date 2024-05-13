@@ -1,8 +1,11 @@
+import UserPanelTitle from '@/components/shared/UserPanelTitle'
 import React from 'react'
 
 const Dashboard = () => {
     return (
-        <div>Dashboard</div>
+        <div className='container'>
+            <UserPanelTitle title='داشبـــورد' />
+        </div>
     )
 }
 

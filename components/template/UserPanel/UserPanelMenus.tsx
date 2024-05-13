@@ -8,7 +8,6 @@ import React from 'react'
 const UserPanelMenus = () => {
 
     const pathName = usePathname();
-    console.log(pathName);
 
     return (
         <nav>

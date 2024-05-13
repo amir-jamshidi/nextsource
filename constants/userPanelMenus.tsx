@@ -1,4 +1,4 @@
-import { AttachMoneyRounded, DashboardRounded, EmojiEventsRounded, FavoriteRounded, HelpRounded, HomeRounded, InfoRounded, MonetizationOnRounded, QuestionMarkRounded, SendRounded, ShoppingCartRounded } from "@mui/icons-material";
+import { DashboardRounded, EmojiEventsRounded, FavoriteRounded, HelpRounded, HomeRounded, InfoRounded, MonetizationOnRounded, SendRounded, ShoppingCartRounded } from "@mui/icons-material";
 
 export const userPanelMenus = [
     {
@@ -47,6 +47,6 @@ export const userPanelMenus = [
         id: 8,
         title: 'مشخصات',
         href: '/infos',
-        icon: <InfoRounded fontSize="small"/>
+        icon: <InfoRounded fontSize="small" />
     },
 ]
