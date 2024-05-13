@@ -41,7 +41,7 @@ const Header = async () => {
                             {!isLoginUser ? (
                                 <Link href={'/login'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>ورود یا عضویت</Link>
                             ) : (
-                                <Link href={'/panel'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>پنل کاربری</Link>
+                                <Link href={'/p-user/dashboard'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>پنل کاربری</Link>
                             )}
                         </div>
                     </div>
