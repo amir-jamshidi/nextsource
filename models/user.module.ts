@@ -27,6 +27,14 @@ const userSchema = new Schema<IUser>({
     profile: {
         type: String,
         default: ''
+    },
+    bio: {
+        type: String,
+        default: ''
+    },
+    technologies: {
+        type: [String],
+        default: []
     }
 }, { timestamps: true })
 

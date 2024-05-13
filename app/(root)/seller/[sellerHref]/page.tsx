@@ -24,12 +24,15 @@ const page = async ({ params: { sellerHref }, searchParams: { page } }: SellerPr
     return (
         <div className='container'>
             <PageTitle titleEn='فروشنده' title={user.fullname} />
-            <SellerDetailsSection seller={seller} />
-            <SourceContainer>
-                {products.map(product => (
-                    <SourceItem product={product} />
-                ))}
-            </SourceContainer>
+            <div className='flex mt-16 gap-x-2'>
+                <SellerDetailsSection seller={seller} />
+                <div className='flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  gap-y-10 gap-x-2'>
+                    {products.map(product => (
+                        <SourceItem product={product} />
+                    ))}
+                </div>
+
+            </div>
             <ShowMoreButton productCount={productsCount} />
             <BestSellersSection sellers={bestSellers} />
         </div>
