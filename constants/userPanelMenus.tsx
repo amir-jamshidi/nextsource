@@ -39,7 +39,7 @@ export const userPanelMenus = [
     },
     {
         id: 7,
-        title: 'بخش مالی',
+        title: 'کیف پول',
         href: '/wallet',
         icon: <MonetizationOnRounded fontSize="small" />
     },

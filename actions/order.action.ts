@@ -5,6 +5,7 @@ import isLogin from "@/middlewares/isLogin";
 import orderModel from "@/models/order.module"
 import productModel from "@/models/product.module";
 import userModel from "@/models/user.module";
+import { IOrder } from "@/types/order";
 import { IProduct } from "@/types/product";
 import { IUser } from "@/types/user";
 import mongoose from "mongoose";
@@ -68,6 +69,19 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
         //Response
         return { state: true, message: 'پرداخت موفق' }
 
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
+
+/* User Panel */
+
+export const getMyOrders = async (userID: string) => {
+    try {
+        await connectToDB();
+        const orders = await orderModel.find({ userID }).lean() as IOrder[];
+        return orders;
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }
