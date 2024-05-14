@@ -77,12 +77,20 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
 
 /* User Panel */
 
-export const getMyOrders = async () => {
+export const getMyOrders = async (filter: string) => {
     try {
         await connectToDB();
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false
-        const orders = await orderModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel }).lean() as IOrder[];
+
+        const sort: any = {};
+         if (!filter) sort['_id'] = -1;
+        if (filter === 'newest') sort['_id'] = -1;
+        if (filter === 'oldest') sort['_id'] = 1;
+        if (filter === 'expensive') sort['totalPrice'] = -1;
+        if (filter === 'inexpensive') sort['totalPrice'] = 1;
+
+        const orders = await orderModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel }).sort(sort).lean() as IOrder[];
         return orders;
     } catch (error) {
         throw new Error('خطای ناشناخته')
