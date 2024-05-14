@@ -77,11 +77,25 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
 
 /* User Panel */
 
-export const getMyOrders = async (userID: string) => {
+export const getMyOrders = async () => {
     try {
         await connectToDB();
-        const orders = await orderModel.find({ userID }).populate({ path: 'productID', model: productModel }).lean() as IOrder[];
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false
+        const orders = await orderModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel }).lean() as IOrder[];
         return orders;
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
+export const getOrder = async (orderID: string) => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false
+        const order = await orderModel.findOne({ _id: orderID, userID: isLoginUser._id }).populate({ path: 'productID', model: productModel }) as IOrder
+        return order
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

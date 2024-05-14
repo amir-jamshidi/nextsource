@@ -3,6 +3,8 @@ import React from 'react'
 import LogoutButton from '@/components/buttons/LogoutButton/LogoutButton'
 import isLogin from '@/middlewares/isLogin'
 import { notFound } from 'next/navigation'
+import { NotificationsRounded } from '@mui/icons-material'
+import NotificationButton from '@/components/buttons/NotificationButton/NotificationButton'
 
 const UserPanelHeader = async () => {
 
@@ -23,7 +25,8 @@ const UserPanelHeader = async () => {
                 <div className='flex-1 flex-center text-lg text-gray-200'>
                     <h2>پنل کاربری</h2>
                 </div>
-                <div className='flex-1 flex justify-end items-center'>
+                <div className='flex-1 flex justify-end items-center gap-x-1'>
+                    <NotificationButton />
                     <ToggleThemeButton />
                 </div>
             </div>

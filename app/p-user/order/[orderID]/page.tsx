@@ -1,15 +1,19 @@
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
-import UserPanelTitle from '@/components/shared/UserPanelTitle'
+import OrderDetails from '@/components/template/UserPanel/Order/OrderDetails'
 import React from 'react'
 
-const page = () => {
+
+interface OrderProps {
+  params: { orderID: string }
+}
+
+const page = ({ params: { orderID } }: OrderProps) => {
+
+
   return (
-    <div className='container'>
-      <UserPanelTitle title='جزئیـــات سفارش' />
-      <UserPanelPageContainer>
-        ss
-      </UserPanelPageContainer>
-    </div>
+    <UserPanelPageContainer title='جزئیـــات سفارش'>
+      <OrderDetails orderID={orderID} />
+    </UserPanelPageContainer>
   )
 }
 

@@ -40,6 +40,10 @@ const orderSchema = new Schema<IOrder>({
     cashBack: {
         type: Number,
         default: 0
+    },
+    code: {
+        type: String,
+        default: () => `OR${Math.floor(Math.random() * 99999)}${Date.now()}`
     }
 }, { timestamps: true });
 
