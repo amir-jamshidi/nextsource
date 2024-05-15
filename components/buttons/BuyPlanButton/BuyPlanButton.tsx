@@ -16,8 +16,7 @@ const BuyPlanButton = ({ isHavPlan, planID }: BuyPlanButtonProps) => {
 
     const handleBuyPlan = () => {
         if (isHavPlan) return toast.error('شما پلن فعال دارید');
-        router.push(`/p-user/plan/${planID}`)
-
+        router.push(`/plan/${planID}`)
     }
     return (
         <button disabled={isHavPlan ? true : false} onClick={handleBuyPlan} className={`${isHavPlan ? 'cursor-not-allowed' : ''} bg-blue px-6 py-1.5 rounded-2xl text-gray-200 text-justify`}>خرید پلن</button>
