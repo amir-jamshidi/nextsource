@@ -3,6 +3,8 @@
 import connectToDB from "@/database/db";
 import isLogin from "@/middlewares/isLogin"
 import favoriteModel from "@/models/favorite.module";
+import productModel from "@/models/product.module";
+import { IFavorite } from "@/types/favorite";
 import { IUser } from "@/types/user";
 import { Types } from "mongoose";
 
@@ -52,12 +54,22 @@ export const getFavorites = async () => {
 
 /* User Panel */
 
-export const getMyFavorites = async (userID: string) => {
+export const getMyFavorites = async (filter: string) => {
     try {
         await connectToDB();
-        const favorites = await favoriteModel.find({ userID }).lean();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false;
+
+        const sort: any = {};
+        if (!filter) sort['_id'] = -1;
+        if (filter === 'newest') sort['_id'] = -1;
+        if (filter === 'oldest') sort['_id'] = 1;
+        if (filter === 'expensive') sort['price'] = -1;
+        if (filter === 'inexpensive') sort['price'] = 1;
+
+        const favorites = await favoriteModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel, sort: sort }).lean() as IFavorite[];
         return favorites
-    } catch (error) {
+    } catch (err) {
         throw new Error('خطای ناشناخته')
     }
 }

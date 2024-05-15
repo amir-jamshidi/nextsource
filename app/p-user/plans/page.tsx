@@ -1,15 +1,14 @@
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
-import UserPanelTitle from '@/components/shared/UserPanelTitle'
+import PlanStatusSection from '@/components/template/UserPanel/Plans/PlanStatusSection'
+import PlansSection from '@/components/template/UserPanel/Plans/PlansSection'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className='container'>
-      <UserPanelTitle title='پلـــن ها' />
-      <UserPanelPageContainer>
-        ss
-      </UserPanelPageContainer>
-    </div>
+    <UserPanelPageContainer title='پلـــن ها' >
+      <PlanStatusSection />
+      <PlansSection />
+    </UserPanelPageContainer>
   )
 }
 

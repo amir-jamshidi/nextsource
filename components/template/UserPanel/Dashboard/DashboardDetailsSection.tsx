@@ -1,6 +1,9 @@
+import { getPlans } from '@/actions/plan.action'
 import React from 'react'
 
-const DashboardDetailsSection = () => {
+const DashboardDetailsSection = async () => {
+
+
   return (
     <div>DashboardDetailsSection</div>
   )

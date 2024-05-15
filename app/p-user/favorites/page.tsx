@@ -1,15 +1,20 @@
+import { getMyFavorites } from '@/actions/favorite.action'
+import UserPanelFilterSection from '@/components/shared/UserPanelFilterSection'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
-import UserPanelTitle from '@/components/shared/UserPanelTitle'
+import FavoritesSection from '@/components/template/UserPanel/Favorites/FavoritesSection'
+import { notFound } from 'next/navigation'
 import React from 'react'
 
-const page = () => {
+const page = async ({ searchParams: { filter = '' } }) => {
+
+    const favorites = await getMyFavorites(filter);
+    if (!favorites) return notFound();
+
     return (
-        <div className='container'>
-            <UserPanelTitle title='علاقـــه مندی ها' />
-            <UserPanelPageContainer>
-                ss
-            </UserPanelPageContainer>
-        </div>
+        <UserPanelPageContainer title='علاقـــه مندی ها'>
+            <UserPanelFilterSection productsCount={favorites.length} />
+            <FavoritesSection favorites={favorites} />
+        </UserPanelPageContainer>
     )
 }
 

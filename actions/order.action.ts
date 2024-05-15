@@ -84,7 +84,7 @@ export const getMyOrders = async (filter: string) => {
         if (!isLoginUser) return false
 
         const sort: any = {};
-         if (!filter) sort['_id'] = -1;
+        if (!filter) sort['_id'] = -1;
         if (filter === 'newest') sort['_id'] = -1;
         if (filter === 'oldest') sort['_id'] = 1;
         if (filter === 'expensive') sort['totalPrice'] = -1;

@@ -8,7 +8,7 @@ import { IProduct } from '@/types/product';
 const BestSellerSection = async () => {
 
     const products = await getBestSellerProdcuts() as IProduct[];
-
+    
     return (
         <>
             <SectionTitle title='پرفروش های اخیر' href='/products?filter=bestseller' />
