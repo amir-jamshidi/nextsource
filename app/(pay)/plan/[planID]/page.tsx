@@ -1,13 +1,25 @@
+import { getPlanByID } from '@/actions/plan.action'
+import PlanDetailsSection from '@/components/template/PlanCart/PlanDetailsSection';
+import { notFound } from 'next/navigation';
 import React from 'react'
 
 interface PlanProps {
     params: { planID: string }
 }
 
-const page = ({ params: { planID } } : PlanProps) => {
+const page = async ({ params: { planID } }: PlanProps) => {
+
+    const planDetails = await getPlanByID(planID);
+    if (!planDetails) return notFound();
     
     return (
-        <div>page</div>
+        <section>
+            <div className='container px-6'>
+                <div className='flex-center h-cart'>
+                    <PlanDetailsSection planDetails={planDetails} />
+                </div>
+            </div>
+        </section>
     )
 }
 

@@ -13,6 +13,18 @@ const orderPlanSchema = new Schema<IOrderPlan>({
     expireTime: {
         type: Number,
         required: true
+    },
+    action: {
+        type: String,
+        required: true
+    },
+    orderNumber: {
+        type: String,
+        default: () => `ORP${Math.floor(Math.random() * 99999)}${Date.now()}`
+    },
+    price: {
+        type: Number,
+        required: true
     }
 }, { timestamps: true });
 
