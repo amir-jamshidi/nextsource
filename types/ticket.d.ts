@@ -7,5 +7,7 @@ export interface ITicket extends Document {
     file: string[],
     isAnswer: boolean,
     answerContent: string,
-    userID: Types.ObjectId
+    userID: Types.ObjectId,
+    createdAt?: Date,
+    updatedAt?: Date
 }

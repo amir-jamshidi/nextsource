@@ -14,11 +14,11 @@ const PlansSection = async () => {
                     <div className='plan-background absolute inset-0 -z-10'></div>
                     <div className='flex-1 flex flex-col items-start justify-between'>
                         <div className='flex items-center gap-x-1.5 '>
-                            <h2 className='text-gray-200 text-2xl'>{plan.title}</h2>
+                            <h2 className='text-gray-200 text-xl'>{plan.title}</h2>
                             <p className='text-xl -mb-1.5'>{plan.color === 'GOLD' ? '🥇' : plan.color === "SILVER" ? '🥈' : '🥉'}</p>
-                            <p className='text-gray-200 text-2xl'>{plan.time}</p>
+                            <p className='text-gray-200 text-xl'>{plan.time}</p>
                         </div>
-                        <p className='text-gray-300 mt-2'>{plan.caption}</p>
+                        <p className='text-gray-300'>{plan.caption}</p>
                         <div className='flex items-center justify-between w-full'>
                             <BuyPlanButton planID={plan._id} isHavPlan={isHavPlanUser} />
                             <div className='flex items-center gap-x-1'>

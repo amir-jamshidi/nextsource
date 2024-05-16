@@ -21,7 +21,7 @@ const PlanDetailsSection = async ({ planDetails }: PlanDetailsSectionProps) => {
             <div className={`${planDetails.color === 'GOLD' ? 'bg-amber-500/70' : planDetails.color === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} rounded-2xl py-4 relative`}>
                 <div className='plan-background absolute inset-0 -z-10'></div>
                 <div className='flex flex-col items-center px-4'>
-                    <span className='mb-2'>
+                    <span className='-mt-[70px]'>
                         <EmojiEventsRounded className={`${planDetails.color === 'GOLD' ? 'text-amber-500' : planDetails.color === "SILVER" ? 'text-neutral-400' : 'text-orange-600'}`} sx={{ width: 150, height: 150 }} />
                     </span>
                     <div className='flex flex-col justify-center gap-y-2 items-center gap-x-1'>

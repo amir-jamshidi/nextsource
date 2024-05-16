@@ -6,15 +6,16 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
 interface UserPanelFilterSectionProps {
-    productsCount: number
+    productsCount?: number,
+    filters: { id: number, title: string, href: string }[]
 }
 
-const UserPanelFilterSection = ({ productsCount }: UserPanelFilterSectionProps) => {
+const UserPanelFilterSection = ({ productsCount, filters }: UserPanelFilterSectionProps) => {
 
     const searchParams = useSearchParams();
     const router = useRouter();
 
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState(() => searchParams.get('filter') || '');
 
     useEffect(() => {
         const newUrl = urlCreator({
@@ -36,7 +37,7 @@ const UserPanelFilterSection = ({ productsCount }: UserPanelFilterSectionProps) 
                 )}
             </div>
             <div className='flex-1 flex-center gap-x-1'>
-                {userPanelFilter.map(fil => (
+                {filters.map(fil => (
                     <p onClick={() => setFilter(prev => prev === fil.href ? '' : fil.href)} className={`${filter === fil.href ? 'text-amber-500' : 'text-gray-300'} text-sm w-20 bg-blue-light text-center py-1 rounded-xl cursor-pointer`}>{fil.title}</p>
                 ))}
             </div>
