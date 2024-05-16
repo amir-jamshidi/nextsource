@@ -20,3 +20,15 @@ export const getMyTickets = async (filter: string) => {
         throw new Error('خطای ناشناخته')
     }
 }
+
+export const getTicketByID = async (ticketID: string) => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false;
+        const ticket = await ticketModel.findOne({ _id: ticketID, userID: isLoginUser._id }).lean();
+        return ticket
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}

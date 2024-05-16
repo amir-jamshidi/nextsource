@@ -1,15 +1,20 @@
+import { getTicketByID } from '@/actions/ticket.action'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
-import UserPanelTitle from '@/components/shared/UserPanelTitle'
+import TicketDetailsSection from '@/components/template/UserPanel/Ticket/TicketDetailsSection'
 import React from 'react'
 
-const page = () => {
+interface TicketProps {
+  params: { ticketID: string }
+}
+
+const page = async ({ params: { ticketID } }: TicketProps) => {
+
+  const ticket = await getTicketByID(ticketID);
+  console.log(ticket);
   return (
-    <div className='container'>
-      <UserPanelTitle title='جزئیـــات تیکت' />
-      <UserPanelPageContainer>
-        ss
-      </UserPanelPageContainer>
-    </div>
+    <UserPanelPageContainer title='جزئیـــات تیکت'>
+      <TicketDetailsSection />
+    </UserPanelPageContainer>
   )
 }
 

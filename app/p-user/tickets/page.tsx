@@ -13,7 +13,7 @@ const page = async ({ searchParams: { filter = '' } }) => {
 
   return (
     <UserPanelPageContainer title='تیکـــت ها'>
-      <UserPanelFilterSection productsCount={tickets.length} filters={userPanelTicketFilter} />
+      <UserPanelFilterSection title="تیکت" productsCount={tickets.length} filters={userPanelTicketFilter} />
       <TicketsSection tickets={tickets} />
     </UserPanelPageContainer>
   )

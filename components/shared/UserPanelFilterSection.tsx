@@ -7,10 +7,11 @@ import { useEffect, useState } from "react"
 
 interface UserPanelFilterSectionProps {
     productsCount?: number,
-    filters: { id: number, title: string, href: string }[]
+    filters: { id: number, title: string, href: string }[],
+    title: string
 }
 
-const UserPanelFilterSection = ({ productsCount, filters }: UserPanelFilterSectionProps) => {
+const UserPanelFilterSection = ({ productsCount, filters, title = "سورس" }: UserPanelFilterSectionProps) => {
 
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -32,7 +33,7 @@ const UserPanelFilterSection = ({ productsCount, filters }: UserPanelFilterSecti
                 {productsCount && (
                     <>
                         <p className="font-dana-bold text-gray-300 text-sm">{productsCount}</p>
-                        <p className="text-gray-300 text-sm">دوره</p>
+                        <p className="text-gray-300 text-sm">{title}</p>
                     </>
                 )}
             </div>

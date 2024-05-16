@@ -13,7 +13,7 @@ const page = async ({ searchParams: { filter = '' } }) => {
 
     return (
         <UserPanelPageContainer title='علاقـــه مندی ها'>
-            <UserPanelFilterSection filters={userPanelFilter} productsCount={favorites.length} />
+            <UserPanelFilterSection title='علاقه مندی' filters={userPanelFilter} productsCount={favorites.length} />
             <FavoritesSection favorites={favorites} />
         </UserPanelPageContainer>
     )
