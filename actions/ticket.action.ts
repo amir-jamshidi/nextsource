@@ -1,9 +1,12 @@
+'use server'
 import connectToDB from "@/database/db"
+import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin";
 import orderModel from "@/models/order.module";
 import sectionModel from "@/models/section.module";
 import ticketModel from "@/models/ticket.module";
 import { ITicket } from "@/types/ticket";
+import { Schema, Types } from "mongoose";
 
 export const getMyTickets = async (filter: string) => {
     try {
@@ -32,5 +35,24 @@ export const getTicketByID = async (ticketID: string) => {
         return ticket
     } catch (error) {
         throw new Error('خطای ناشناخته')
+    }
+}
+
+export const addNewTicket = async (body: string, sectionID: string, order: string) => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return MessageCreator(false, 'دسترسی غیرمجاز')
+        const orderID = Types.ObjectId.isValid(order) ? order : null;
+        await ticketModel.create({
+            body,
+            sectionID,
+            userID: isLoginUser._id,
+            orderID
+        })
+        return MessageCreator(true, 'تیکت شما ارسال شد');
+    } catch (error) {
+        console.log(error.message);
+        throw new Error('خطای ناشناخته');
     }
 }

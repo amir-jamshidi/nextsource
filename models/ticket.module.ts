@@ -15,7 +15,7 @@ const ticketSchema = new Schema<ITicket>({
     orderID: {
         type: Schema.Types.ObjectId,
         ref: 'Order',
-        required: true
+        required: false
     },
     userID: {
         type: Schema.Types.ObjectId,
