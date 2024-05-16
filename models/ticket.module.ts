@@ -33,6 +33,10 @@ const ticketSchema = new Schema<ITicket>({
     answerContent: {
         type: String,
         default: ''
+    },
+    code: {
+        type: String,
+        default: () => `TK${Math.floor(Math.random() * 9999)}${Date.now()}`
     }
 
 }, { timestamps: true });

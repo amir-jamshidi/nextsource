@@ -1,6 +1,7 @@
 import { getTicketByID } from '@/actions/ticket.action'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import TicketDetailsSection from '@/components/template/UserPanel/Ticket/TicketDetailsSection'
+import { notFound } from 'next/navigation'
 import React from 'react'
 
 interface TicketProps {
@@ -10,10 +11,11 @@ interface TicketProps {
 const page = async ({ params: { ticketID } }: TicketProps) => {
 
   const ticket = await getTicketByID(ticketID);
-  console.log(ticket);
+  if (!ticket) return notFound();
+  
   return (
     <UserPanelPageContainer title='جزئیـــات تیکت'>
-      <TicketDetailsSection />
+      <TicketDetailsSection ticket={ticket} />
     </UserPanelPageContainer>
   )
 }

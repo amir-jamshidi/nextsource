@@ -1,5 +1,7 @@
 import connectToDB from "@/database/db"
 import isLogin from "@/middlewares/isLogin";
+import orderModel from "@/models/order.module";
+import sectionModel from "@/models/section.module";
 import ticketModel from "@/models/ticket.module";
 import { ITicket } from "@/types/ticket";
 
@@ -26,7 +28,7 @@ export const getTicketByID = async (ticketID: string) => {
         await connectToDB();
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false;
-        const ticket = await ticketModel.findOne({ _id: ticketID, userID: isLoginUser._id }).lean();
+        const ticket: ITicket | null = await ticketModel.findOne({ _id: ticketID, userID: isLoginUser._id }).populate({ path: 'orderID', model: orderModel }).populate({ path: 'sectionID', model: sectionModel }).lean();
         return ticket
     } catch (error) {
         throw new Error('خطای ناشناخته')

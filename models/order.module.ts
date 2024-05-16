@@ -43,7 +43,7 @@ const orderSchema = new Schema<IOrder>({
     },
     code: {
         type: String,
-        default: () => `OR${Math.floor(Math.random() * 99999)}${Date.now()}`
+        default: () => `OR${Math.floor(Math.random() * 999)}${Date.now()}`
     }
 }, { timestamps: true });
 

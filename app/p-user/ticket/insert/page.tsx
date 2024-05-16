@@ -1,15 +1,12 @@
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
-import UserPanelTitle from '@/components/shared/UserPanelTitle'
+import InsertTicketSection from '@/components/template/UserPanel/Ticket/InsertTicketSection'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className='container'>
-      <UserPanelTitle title='ارســـال تیکت' />
-      <UserPanelPageContainer>
-        ss
-      </UserPanelPageContainer>
-    </div>
+    <UserPanelPageContainer title='ارســـال تیکت'>
+      <InsertTicketSection />
+    </UserPanelPageContainer>
   )
 }
 

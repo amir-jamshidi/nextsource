@@ -1,3 +1,4 @@
+'use server'
 import connectToDB from "@/database/db"
 import sectionModel from "@/models/section.module";
 
