@@ -8,10 +8,11 @@ import { useEffect, useState } from "react"
 interface UserPanelFilterSectionProps {
     productsCount?: number,
     filters: { id: number, title: string, href: string }[],
-    title: string
+    title: string,
+    children?: React.ReactNode
 }
 
-const UserPanelFilterSection = ({ productsCount, filters, title = "سورس" }: UserPanelFilterSectionProps) => {
+const UserPanelFilterSection = ({ productsCount, filters, title = "سورس", children }: UserPanelFilterSectionProps) => {
 
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -26,10 +27,11 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس" }: 
         })
         router.replace(newUrl, { scroll: false });
     }, [filter])
-
+ 
+    
     return (
-        <div className="flex bg-gray-800/40 h-12 rounded-xl mb-4 px-4">
-            <div className="w-32 flex justify-start items-center gap-x-1">
+        <div className="flex bg-blue-light h-12 rounded-xl mb-4 ">
+            <div className="w-32 flex justify-start items-center gap-x-1 pr-4">
                 {productsCount && (
                     <>
                         <p className="font-dana-bold text-gray-300 text-sm">{productsCount}</p>
@@ -42,7 +44,9 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس" }: 
                     <p onClick={() => setFilter(prev => prev === fil.href ? '' : fil.href)} className={`${filter === fil.href ? 'text-amber-500' : 'text-gray-300'} text-sm w-20 bg-blue-light text-center py-1 rounded-xl cursor-pointer`}>{fil.title}</p>
                 ))}
             </div>
-            <div className="w-32"></div>
+            <div className="w-32">
+                {children}
+            </div>
         </div>
     )
 }

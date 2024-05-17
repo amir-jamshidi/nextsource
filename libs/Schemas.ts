@@ -9,7 +9,7 @@ export const VerifyFormSchema = Yup.object({
 })
 
 export const TicketSchema = Yup.object({
-    sectionID: Yup.string().required().min(5),
-    body: Yup.string().required().min(5),
+    sectionID: Yup.string().required('وارد کردن سکشن مورد نظر اجباریه').min(5, 'وارد کردن سکشن مورد نظر اجباریه'),
+    body: Yup.string().required('وارد کردن متن تیکت اجباریه').min(15, 'متن تیکت حداقل باید پانزده کاراکتر باشه'),
     orderID: Yup.string().required()
 })

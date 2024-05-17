@@ -52,7 +52,6 @@ export const addNewTicket = async (body: string, sectionID: string, order: strin
         })
         return MessageCreator(true, 'تیکت شما ارسال شد');
     } catch (error) {
-        console.log(error.message);
         throw new Error('خطای ناشناخته');
     }
 }
