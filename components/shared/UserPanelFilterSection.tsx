@@ -28,6 +28,7 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس", ch
         router.replace(newUrl, { scroll: false });
     }, [filter])
  
+
     
     return (
         <div className="flex bg-blue-light h-12 rounded-xl mb-4 ">
