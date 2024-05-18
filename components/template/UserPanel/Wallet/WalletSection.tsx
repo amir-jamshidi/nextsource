@@ -26,18 +26,25 @@ const WalletSection = async () => {
                 </div>
             </div>
 
-            <div className='bg-gray-700 p-4 mt-4 rounded-2xl w-4/5'>
-                {buys.map(buy => (
-                    <div className='flex justify-between'>
-                        <p></p>
-                        <div className='flex text-sm items-center gap-x-0.5'>
-                           
-                            <p className='font-dana-bold text-red-500'>{Number(buy.totalPrice).toLocaleString()}</p>
-                            <span>-</span>
-                            <p>تومان</p>
+            <div className='bg-blue-light p-4 mt-4 rounded-2xl w-4/5'>
+                <div className='text-green-500 text-sm flex justify-center'>
+                    <p>خریــد ها</p>
+                </div>
+                <div className=' flex flex-col gap-y-1 mt-4'>
+                    {buys.map(buy => (
+                        <div className='flex justify-between bg-gray-900 p-2 rounded-xl'>
+                            <div className="text-sm flex items-center">
+                                <p className='text-gray-300 border-l border-gray-800 pl-2 ml-2'>خرید سورس</p>
+                                <p className='text-green-500 mt-1'>{buy.createdAt.toLocaleDateString('fa-IR')}</p>
+                            </div>
+                            <div className='flex text-sm items-center gap-x-0.5'>
+                                <p className='font-dana-bold text-red-500'>{Number(buy.totalPrice).toLocaleString()}</p>
+                                <span className='text-red-500'>-</span>
+                                <p className='text-red-500'>تومان</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     )
