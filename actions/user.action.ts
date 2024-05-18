@@ -4,6 +4,8 @@ import connectToDB from "@/database/db";
 import codeGenerator from "@/libs/CodeGenerator";
 import timeGenerator from "@/libs/TimeGenerator";
 import TokenGenerator from "@/libs/TokenGenerator";
+import isLogin from "@/middlewares/isLogin";
+import orderModel from "@/models/order.module";
 import userModel from "@/models/user.module";
 import verifyModel from "@/models/verify.module";
 import { IUser } from "@/types/user";
@@ -66,5 +68,17 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
 
     } catch (error) {
         throw new Error('خطای ناشناخته');
+    }
+}
+
+export const getWalletBuys = async () => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false;
+        const buys = await orderModel.find({ action: 'WALLET', userID: isLoginUser._id }).lean();
+        return buys
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
     }
 }
