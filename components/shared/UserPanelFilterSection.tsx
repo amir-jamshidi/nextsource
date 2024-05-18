@@ -1,8 +1,8 @@
 'use client'
 
-import { userPanelFilter } from "@/constants/userPanelFilter"
+
 import { urlCreator } from "@/libs/UrlCreator"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
 interface UserPanelFilterSectionProps {
@@ -27,7 +27,7 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس", ch
         })
         router.replace(newUrl, { scroll: false });
     }, [filter])
- 
+
     return (
         <div className="flex bg-blue-light h-12 rounded-xl mb-4 ">
             <div className="w-32 flex justify-start items-center gap-x-1 pr-4">

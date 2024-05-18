@@ -1,15 +1,12 @@
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
-import UserPanelTitle from '@/components/shared/UserPanelTitle'
+import WalletSection from '@/components/template/UserPanel/Wallet/WalletSection'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className='container'>
-      <UserPanelTitle title='کیـــف پول' />
-      <UserPanelPageContainer>
-        ss
-      </UserPanelPageContainer>
-    </div>
+    <UserPanelPageContainer title='کیـــف پول'>
+        <WalletSection/>
+    </UserPanelPageContainer>
   )
 }
 
