@@ -65,6 +65,7 @@ const WalletSection = async () => {
                                         <span className='text-green-500'>+</span>
                                         <p className='text-green-500'>تومان</p>
                                     </div>
+
                                     
                                 </div>
                             )}
