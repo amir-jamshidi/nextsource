@@ -1,15 +1,15 @@
-import { getWalletBuys } from '@/actions/user.action';
+import { getWalletDeposit, getWalletWithdraw } from '@/actions/user.action';
 import isLogin from '@/middlewares/isLogin'
-import { RemoveRounded } from '@mui/icons-material';
 import { notFound } from 'next/navigation';
 import React from 'react'
 
 const WalletSection = async () => {
     const isLoginUser = await isLogin();
     if (!isLoginUser) return notFound();
-    const buys = await getWalletBuys();
-    if (!buys) return notFound();
-    console.log(buys);
+    const withdraws = await getWalletWithdraw();
+    const deposits = await getWalletDeposit();
+    if (!withdraws || !deposits) return notFound();
+
 
     return (
         <div className="flex flex-col items-center">
@@ -27,18 +27,18 @@ const WalletSection = async () => {
             </div>
 
             <div className='bg-blue-light p-4 mt-4 rounded-2xl w-4/5'>
-                <div className='text-green-500 text-sm flex justify-center'>
-                    <p>خریــد ها</p>
+                <div className='text-red-500 text-sm flex justify-center'>
+                    <p>برداشتی هــا</p>
                 </div>
                 <div className=' flex flex-col gap-y-1 mt-4'>
-                    {buys.map(buy => (
+                    {withdraws.map(withdraw => (
                         <div className='flex justify-between bg-gray-900 p-2 rounded-xl'>
                             <div className="text-sm flex items-center">
-                                <p className='text-gray-300 border-l border-gray-800 pl-2 ml-2'>خرید سورس</p>
-                                <p className='text-green-500 mt-1'>{buy.createdAt.toLocaleDateString('fa-IR')}</p>
+                                <p className='text-gray-300 border-l border-gray-800 pl-2 ml-2'>{withdraw.title}</p>
+                                <p className='text-green-500 mt-1'>{withdraw.createdAt.toLocaleDateString('fa-IR')}</p>
                             </div>
                             <div className='flex text-sm items-center gap-x-0.5'>
-                                <p className='font-dana-bold text-red-500'>{Number(buy.totalPrice).toLocaleString()}</p>
+                                <p className='font-dana-bold text-red-500'>{Number(withdraw.price).toLocaleString()}</p>
                                 <span className='text-red-500'>-</span>
                                 <p className='text-red-500'>تومان</p>
                             </div>

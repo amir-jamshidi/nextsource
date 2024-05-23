@@ -5,9 +5,12 @@ import codeGenerator from "@/libs/CodeGenerator";
 import timeGenerator from "@/libs/TimeGenerator";
 import TokenGenerator from "@/libs/TokenGenerator";
 import isLogin from "@/middlewares/isLogin";
+import depositModel from "@/models/deposit.module";
 import orderModel from "@/models/order.module";
+import orderPlanModel from "@/models/orderPlan.module";
 import userModel from "@/models/user.module";
 import verifyModel from "@/models/verify.module";
+import withdrawModel from "@/models/withdraw.module";
 import { IUser } from "@/types/user";
 import { IVerify } from "@/types/verify";
 import { cookies } from "next/headers";
@@ -71,13 +74,35 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
     }
 }
 
-export const getWalletBuys = async () => {
+export const getWalletWithdraw = async () => {
     try {
         await connectToDB();
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false;
-        const buys = await orderModel.find({ action: 'WALLET', userID: isLoginUser._id }).lean();
-        return buys
+
+        const orders = await orderModel.find({ action: 'WALLET', userID: isLoginUser._id }).lean();
+        const ordersPlan = await orderPlanModel.find({ action: 'WALLET', userID: isLoginUser._id })
+        const withdraws = await withdrawModel.find({ userID: isLoginUser._id })
+
+        const ordersArr = orders.map(order => { return { title: 'خرید سورس کد', price: order.totalPrice, createdAt: order.createdAt } })
+        const ordersPlanArr = ordersPlan.map(order => { return { title: 'خرید پلن', price: order.price, createdAt: order.createdAt } })
+        const withdrawsArr = withdraws.map(withdraw => { return { title: 'واریز به حساب', price: withdraw.price, createdAt: withdraw.createdAt } })
+
+        return [...ordersArr, ...ordersPlanArr, ...withdrawsArr];
+
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
+export const getWalletDeposit = async () => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false;
+        const cashBacks = (await orderModel.find({ userID: isLoginUser._id }).lean()).map(order => { return { title: 'کش بک', price: order.cashBack, createdAt: order.createdAt } });
+        const deposits = (await depositModel.find({ userID: isLoginUser._id }).lean()).map(deposit => { return { title: 'واریز از کارت', price: deposit.price, createdAt: deposit.createdAt } });
+        return [...cashBacks, ...deposits]
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }
