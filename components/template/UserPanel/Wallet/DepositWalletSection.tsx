@@ -1,0 +1,39 @@
+'use client'
+
+import { AttachMoneyRounded } from '@mui/icons-material'
+import React, { useState } from 'react'
+import toast from 'react-hot-toast';
+
+const DepositWalletSection = () => {
+
+    const [price, setPrice] = useState(0);
+
+    const handleSubmitForm = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (price < 100000) return toast.error('حداقل مبلغ باید صدهزار تومان باشد')
+    }
+
+    return (
+        <div className='mt-4'>
+            <form action="" onSubmit={handleSubmitForm}>
+                <div className='flex items-center gap-x-2'>
+                    <div className='bg-gray-900 flex-1 text-sm rounded-xl flex items-center px-2 h-10 gap-x-1'>
+                        <span className="rounded">
+                            <AttachMoneyRounded className="text-gray-400" />
+                        </span>
+                        <input value={price} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder='مبلغ واریزی شما' className={`font-dana-bold bg-gray-900 text-gray-300 border-none outline-none px-0.5 w-full`} />
+
+                    </div>
+                    <button className="bg-green-500 h-10 px-4 text-sm rounded-xl text-gray-200">شارژ کیف پول</button>
+                </div>
+            </form>
+            <div className='flex items-center gap-x-0.5 text-sm text-gray-400 px-3 mt-2'>
+                <p>مبلغ</p>
+                <p className='font-dana-bold'>{price.toLocaleString()}</p>
+                <p>تومــان</p>
+            </div>
+        </div>
+    )
+}
+
+export default DepositWalletSection
