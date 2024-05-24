@@ -60,7 +60,7 @@ const WalletSection = async () => {
                         <div className='text-red-500 text-sm flex justify-center'>
                             <p>برداشت از کیف پول</p>
                         </div>
-                        <WithdrawWalletSection accounts={JSON.parse(JSON.stringify(accounts))} />
+                        <WithdrawWalletSection money={isLoginUser.money} accounts={JSON.parse(JSON.stringify(accounts))} />
                     </div>
                 </div>
 
