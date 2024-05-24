@@ -13,3 +13,10 @@ export const TicketSchema = Yup.object({
     body: Yup.string().required('وارد کردن متن تیکت اجباریه').min(15, 'متن تیکت حداقل باید پانزده کاراکتر باشه'),
     orderID: Yup.string().required()
 })
+
+export const AccountSchema = Yup.object({
+    cardNumber: Yup.string().required().min(16, '').max(16, ''),
+    cardBank: Yup.string().required().min(3, ''),
+    cardShaba: Yup.string().required().min(24, '').max(26, ''),
+    cardName: Yup.string().required().min(5, '')
+})

@@ -14,6 +14,11 @@ const withdrawSchema = new Schema<IWithdraw>({
     isSuccess: {
         type: Boolean,
         required: true
+    },
+    accountID: {
+        type: Schema.Types.ObjectId,
+        ref: 'Account',
+        required: true
     }
 }, { timestamps: true });
 
