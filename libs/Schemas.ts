@@ -15,8 +15,8 @@ export const TicketSchema = Yup.object({
 })
 
 export const AccountSchema = Yup.object({
-    cardNumber: Yup.string().required().min(16, '').max(16, ''),
-    cardBank: Yup.string().required().min(3, ''),
-    cardShaba: Yup.string().required().min(24, '').max(26, ''),
-    cardName: Yup.string().required().min(5, '')
+    cardNumber: Yup.string().required('لطفا شماره کارت را وارد کنید').min(16, 'شماره کارت باید شانزده رقم باشه').max(16, 'شماره کارت باید شانزده رقم باشه'),
+    cardBank: Yup.string().required('لطفا نام بانک را وارد کنید').min(3, 'نام بانک حداقل باید سه کاراکتر باشه'),
+    cardShaba: Yup.string().required('لطفا شماره شبا را وارد کنید').min(24, 'شماره شبا باید 26 رقم باشه').max(26, 'شماره شبا باید 26 رقم باشه'),
+    cardName: Yup.string().required('لطفا نام خود را وارد کنید').min(5, 'نام کامل شما باید حداقل باید پنج کاراکتر باشه')
 })
