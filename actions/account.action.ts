@@ -1,6 +1,7 @@
 import connectToDB from "@/database/db";
 import isLogin from "@/middlewares/isLogin";
 import accountModel from "@/models/account.module";
+import { IAccount } from "@/types/Account";
 
 export const addNewAccount = async () => {
     try {
@@ -15,7 +16,7 @@ export const getAccounts = async () => {
         await connectToDB();
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false;
-        const accounts = await accountModel.find({ userID: isLoginUser._id }).lean();
+        const accounts = await accountModel.find({ userID: isLoginUser._id }).lean() as IAccount[];
         return accounts
     } catch (error) {
         throw new Error('خطای ناشناخته')

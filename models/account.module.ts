@@ -27,7 +27,7 @@ const accountSchema = new Schema<IAccount>({
         type: Boolean,
         required: true
     }
-})
+}, { timestamps: true })
 
 const accountModel = models.Account || model('Account', accountSchema);
 

@@ -1,6 +1,8 @@
 'use client'
 
+import { newDeposit } from '@/actions/deposit.action';
 import { AttachMoneyRounded } from '@mui/icons-material'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 
@@ -8,9 +10,16 @@ const DepositWalletSection = () => {
 
     const [price, setPrice] = useState(0);
 
-    const handleSubmitForm = (e: React.FormEvent) => {
+    const router = useRouter();
+
+    const handleSubmitForm = async (e: React.FormEvent) => {
         e.preventDefault();
         if (price < 100000) return toast.error('حداقل مبلغ باید صدهزار تومان باشد')
+        const res = await newDeposit(price);
+        if (!res.state) return toast.error(res.message);
+        toast.success(res.message);
+        setPrice(0);
+        router.refresh();
     }
 
     return (
@@ -21,13 +30,13 @@ const DepositWalletSection = () => {
                         <span className="rounded">
                             <AttachMoneyRounded className="text-gray-400" />
                         </span>
-                        <input value={price} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder='مبلغ واریزی شما' className={`font-dana-bold bg-gray-900 text-gray-300 border-none outline-none px-0.5 w-full`} />
+                        <input value={Number(price)} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder='مبلغ واریزی شما' className={`font-dana-bold bg-gray-900 text-gray-300 border-none outline-none px-0.5 w-full`} />
 
                     </div>
                     <button className="bg-green-500 h-10 px-4 text-sm rounded-xl text-gray-200">شارژ کیف پول</button>
                 </div>
             </form>
-            <div className='flex items-center gap-x-0.5 text-sm text-gray-400 px-3 mt-2'>
+            <div className='flex justify-center items-center gap-x-0.5 text-sm text-gray-400 px-3 mt-3'>
                 <p>مبلغ</p>
                 <p className='font-dana-bold'>{price.toLocaleString()}</p>
                 <p>تومــان</p>
