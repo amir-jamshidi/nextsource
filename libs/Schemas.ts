@@ -20,3 +20,9 @@ export const AccountSchema = Yup.object({
     cardShaba: Yup.string().required('لطفا شماره شبا را وارد کنید').min(24, 'شماره شبا باید 26 رقم باشه').max(26, 'شماره شبا باید 26 رقم باشه'),
     cardName: Yup.string().required('لطفا نام خود را وارد کنید').min(5, 'نام کامل شما باید حداقل باید پنج کاراکتر باشه')
 })
+
+export const RequestSchema = Yup.object({
+    title: Yup.string().required('وارد کردن عنوان اجباریه').min(4, 'عنوان درخواست حداقل باید چهار کاراکتر باشه'),
+    caption: Yup.string().required('وارد کردن توضیحات اجباریه').min(16, 'توضحیات حداقل باید شانزده کاراکتر باشه'),
+    price: Yup.string().required('وارد کردن مبلغ پیشنهادی اجباریه').min(6, 'حداقل مبلغ باید صدهزار تومان باشد')
+})

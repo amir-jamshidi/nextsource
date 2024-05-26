@@ -16,7 +16,8 @@ const InsertTicketSection = () => {
     const { data = [] } = useQuery(['sections'], () => getSections());
     const { data: orders = [] } = useQuery(['orders'], () => getMyOrders(''));
 
-    const { handleSubmit,
+    const {
+        handleSubmit,
         register,
         formState: { errors }
     } = useForm({
@@ -74,7 +75,7 @@ const InsertTicketSection = () => {
                     </div>
                 </div>
                 <div className="mt-1 bg-gray-900 mb-1 border border-gray-800 rounded-xl">
-                    <textarea {...register('body')} placeholder="متن تیکت شما ..." className="min-h-44 max-h-52 w-full bg-gray-900 rounded-xl text-sm outline-none border-none text-gray-200 p-3"/>
+                    <textarea {...register('body')} placeholder="متن تیکت شما ..." className="min-h-44 max-h-52 w-full bg-gray-900 rounded-xl text-sm outline-none border-none text-gray-200 p-3" />
                 </div>
                 <button className="bg-blue w-full rounded-xl py-2.5 text-gray-200">ارسال تیکت</button>
             </form>
