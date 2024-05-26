@@ -10,11 +10,14 @@ import toast from "react-hot-toast";
 import { useQuery } from "react-query"
 import OrderInputItem from "./OrderInputItem";
 import BackButton from "@/components/buttons/BackButton/BackButton";
+import { useRouter } from "next/navigation";
 
 const InsertTicketSection = () => {
 
     const { data = [] } = useQuery(['sections'], () => getSections());
     const { data: orders = [] } = useQuery(['orders'], () => getMyOrders(''));
+
+    const router = useRouter();
 
     const {
         handleSubmit,
@@ -29,6 +32,7 @@ const InsertTicketSection = () => {
             const res = await addNewTicket(body, sectionID, orderID)
             if (!res.state) return toast.error(res.message);
             toast.success(res.message);
+            router.push('/p-user/tickets');
         } catch (error) {
             throw new Error('خطای ناشناخته')
         }

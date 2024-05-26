@@ -1,9 +1,11 @@
 'use server'
 import connectToDB from "@/database/db";
+import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin"
 import requestModel from "@/models/request.module";
 import { IRequest } from "@/types/request";
 import { Schema, Types } from "mongoose";
+import { title } from "process";
 
 export const getMyRequests = async (filter: string) => {
     try {
@@ -41,9 +43,20 @@ export const getRequest = async (requestID: string) => {
     }
 }
 
-export const addNewRequest = async () => {
+export const addNewRequest = async (values: { caption: string, price: string, title: string }) => {
     try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return MessageCreator(false, 'خطای دسترسی');
 
+        await requestModel.create({
+            userID: isLoginUser._id,
+            title: values.title,
+            caption: values.caption,
+            price: Number(values.price)
+        })
+
+        return MessageCreator(true, 'درخواست شما ثبت شد')
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

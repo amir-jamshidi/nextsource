@@ -1,11 +1,16 @@
 'use client'
 
+import { addNewRequest } from "@/actions/request.action"
 import BackButton from "@/components/buttons/BackButton/BackButton"
 import { RequestSchema } from "@/libs/Schemas"
 import { yupResolver } from "@hookform/resolvers/yup"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
+import toast from "react-hot-toast"
 
 const InsertRequestSection = () => {
+
+    const router = useRouter();
 
     const {
         register,
@@ -14,11 +19,12 @@ const InsertRequestSection = () => {
         watch
     } = useForm({ resolver: yupResolver(RequestSchema) })
 
-
-
     const handleSubmitForm = async (values: { caption: string, price: string, title: string }) => {
-        try {   
-            
+        try {
+            const res = await addNewRequest(values);
+            if (!res.state) return toast.error(res.message);
+            toast.success(res.message);
+            router.push('/p-user/requests');
         } catch (error) {
             throw new Error('خطای ناشناخته')
         }
@@ -46,7 +52,7 @@ const InsertRequestSection = () => {
                     <div className="bg-gray-900 border border-gray-800 rounded-xl px-3 flex items-center gap-x-2">
                         <input {...register('price')} type="number" className="h-10 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="مبلغ پیشنهادی"></input>
                         <div className="text-sm flex items-center text-gray-400 gap-x-0.5 min-w-32 justify-end">
-                            <p className="font-dana-bold">{Number(watch('price')).toLocaleString()}</p>
+                            <p className="font-dana-bold">{watch('price') ? Number(watch('price')).toLocaleString() : '0'}</p>
                             <p>تومان</p>
                         </div>
                     </div>

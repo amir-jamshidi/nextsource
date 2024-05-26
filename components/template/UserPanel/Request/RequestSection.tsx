@@ -12,7 +12,7 @@ const RequestSection = ({ requests }: RequestSectionProps) => {
         <div className='grid grid-cols-4 gap-1'>
             {requests.map(request => (
                 <div key={request._id} className=' bg-blue-light rounded-2xl p-3'>
-                    <div className='flex flex-col gap-y-1.5 items-center'>
+                    <div className='flex flex-col gap-y-1.5 items-center h-[88px]'>
                         <p className='text-sm line-clamp-1 text-gray-200'>{request.title}</p>
                         <p className="line-clamp-3 text-sm text-gray-300 text-justify">{request.caption}</p>
                     </div>
