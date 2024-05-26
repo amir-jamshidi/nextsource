@@ -7,7 +7,8 @@ export interface IRequest extends Document {
     caption: string,
     price: number,
     isAnswer: boolean,
-    answerContent: string
+    answerContent: string,
+    code: string,
     createdAt?: Date,
     updatedAt?: Date
 }

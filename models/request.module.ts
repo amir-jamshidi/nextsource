@@ -21,6 +21,10 @@ const requestSchema = new Schema<IRequest>({
     answerContent: {
         type: String,
         default: ''
+    },
+    code: {
+        type: String,
+        default: () => `RQ${Date.now()}`
     }
 }, { timestamps: true });
 
