@@ -33,7 +33,7 @@ const NotificationButton = async () => {
                                     </div>
                                     <div className='flex gap-x-2'>
                                         {notif.href && (<Link className='text-green-500' href={`${notif.href}`}>دیدن</Link>)}
-                                        <SeeNotificationButton notificationID={notif._id} />
+                                        <SeeNotificationButton notificationID={JSON.parse(JSON.stringify(notif._id))} />
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,5 @@
 import { getTotoalOrders } from '@/actions/order.action';
 import { getPlanDetails } from '@/actions/orderPlan.action';
-import { getPlans } from '@/actions/plan.action'
 import { getDashboard } from '@/actions/user.action'
 import OrderItem from '@/components/shared/OrderItem';
 import RequestItem from '@/components/shared/RequestItem';
@@ -14,13 +13,29 @@ const DashboardDetailsSection = async () => {
   const isLoginUser = await isLogin();
   const isHavPlan = await getPlanDetails();
   const result = await getDashboard();
+
   const totalPrice = await getTotoalOrders();
   if (!result || !isLoginUser) return notFound();
-  const { orders, tickets, requests } = result
+  const { orders, tickets, requests, orderCount, ticketCount, requestCount } = result
 
   return (
     <div>
-      
+      <div className='h-12 bg-blue-light rounded-xl flex-center text-gray-100'>
+        <p>خوش اومـــدی {isLoginUser.fullname} جـــان</p>
+      </div>
+
+      <div className='mt-8 grid grid-cols-3 gap-x-2'>
+        <div className='h-32 bg-blue-light flex-center rounded-2xl text-gray-200'>
+          <p >شما تا الان {orderCount.toLocaleString('fa')} سورس تهیه کردید </p>
+        </div>
+        <div className='h-32 bg-blue-light flex-center rounded-2xl text-gray-200'>
+          <p >شما تا الان {ticketCount.toLocaleString('fa')} تیکت ارسال کردید </p>
+        </div>
+        <div className='h-32 bg-blue-light flex-center rounded-2xl text-gray-200'>
+          <p >شما تا الان {requestCount.toLocaleString('fa')} درخواست ارسال کردید </p>
+        </div>
+      </div>
+
       <div className='mt-8'>
         <div className=' flex items-center gap-x-2 text-sm'>
           <span className='flex h-px bg-gray-800 flex-1'></span>

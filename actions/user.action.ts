@@ -125,9 +125,14 @@ export const getDashboard = async () => {
 
         if (!orders || !tickets || !requests) return false
 
-        return { orders, tickets, requests };
+
+        const orderCount = await orderModel.find({ userID: isLoginUser._id }).countDocuments()
+        const ticketCount = await ticketModel.find({ userID: isLoginUser._id }).countDocuments()
+        const requestCount = await requestModel.find({ userID: isLoginUser._id }).countDocuments()
+
+        return { orders, tickets, requests, orderCount, ticketCount, requestCount };
 
     } catch (error) {
-
+        throw new Error('خطای ناشناخته')
     }
 }
