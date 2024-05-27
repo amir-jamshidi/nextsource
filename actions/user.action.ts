@@ -8,9 +8,14 @@ import isLogin from "@/middlewares/isLogin";
 import depositModel from "@/models/deposit.module";
 import orderModel from "@/models/order.module";
 import orderPlanModel from "@/models/orderPlan.module";
+import requestModel from "@/models/request.module";
+import ticketModel from "@/models/ticket.module";
 import userModel from "@/models/user.module";
 import verifyModel from "@/models/verify.module";
 import withdrawModel from "@/models/withdraw.module";
+import { IOrder } from "@/types/order";
+import { IRequest } from "@/types/request";
+import { ITicket } from "@/types/ticket";
 import { IUser } from "@/types/user";
 import { IVerify } from "@/types/verify";
 import { cookies } from "next/headers";
@@ -105,5 +110,24 @@ export const getWalletDeposit = async () => {
         return [...cashBacks, ...deposits]
     } catch (error) {
         throw new Error('خطای ناشناخته')
+    }
+}
+
+export const getDashboard = async () => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false;
+
+        const orders = await orderModel.find({ userID: isLoginUser._id }).limit(4).lean() as IOrder[];
+        const tickets = await ticketModel.find({ userID: isLoginUser._id }).limit(4).lean() as ITicket[];
+        const requests = await requestModel.find({ userID: isLoginUser._id }).limit(4).lean() as IRequest[];
+
+        if (!orders || !tickets || !requests) return false
+
+        return { orders, tickets, requests };
+
+    } catch (error) {
+
     }
 }

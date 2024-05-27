@@ -13,7 +13,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
     const product = order.productID as IProduct
 
     return (
-        <div className='bg-gray-800/40 py-2 px-2 rounded-xl'>
+        <div className='bg-blue-light py-2 px-2 rounded-xl'>
             <div className='w-full h-36 relative'>
                 <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
             </div>
