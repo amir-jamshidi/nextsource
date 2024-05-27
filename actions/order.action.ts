@@ -116,3 +116,17 @@ export const getOrder = async (orderID: string) => {
         throw new Error('خطای ناشناخته')
     }
 }
+
+/* Dashboard */
+
+export const getTotoalOrders = async () => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false;
+        const totalPrice = (await orderModel.find({ userID: isLoginUser._id })).reduce((total, order) => order.price + total, 0)
+        return totalPrice
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
