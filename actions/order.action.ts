@@ -2,6 +2,7 @@
 
 import connectToDB from "@/database/db"
 import isLogin from "@/middlewares/isLogin";
+import notificationModel from "@/models/notification.module";
 import orderModel from "@/models/order.module"
 import productModel from "@/models/product.module";
 import userModel from "@/models/user.module";
@@ -65,6 +66,13 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
         }
         //Add To BuyCount
         await productModel.findOneAndUpdate({ _id: product._id }, { $inc: { buyCount: +1 } }).lean()
+
+        //Notification
+        await notificationModel.create({
+            userID: isLoginUser._id,
+            title: 'خرید سورس',
+            body: 'سفارش شما با موفقیت ثبت شد'
+        });
 
         //Response
         return { state: true, message: 'پرداخت موفق' }
