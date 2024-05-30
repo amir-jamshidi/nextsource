@@ -18,7 +18,7 @@ const WalletSection = async () => {
 
     return (
         <div className="flex flex-col items-center">
-            <div className='h-12 rounded-2xl bg-blue-light flex items-center px-4'>
+            <div className='h-12 rounded-2xl bg-blue-light flex items-center px-4 w-full justify-center'>
                 <div className='flex items-center text-sm gap-x-1 border-l border-gray-800 pl-2'>
                     <p className='text-gray-300'>موجودی کیف پول : </p>
                     <p className='font-dana-bold text-green-500 pt-0.5'>{isLoginUser.money.toLocaleString()}</p>

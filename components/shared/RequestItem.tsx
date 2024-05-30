@@ -9,9 +9,9 @@ interface RequestItemProps {
 const RequestItem = ({ request }: RequestItemProps) => {
     return (
         <div className=' bg-blue-light rounded-2xl p-3'>
-            <div className='flex flex-col gap-y-1.5 items-center h-[88px]'>
+            <div className='flex flex-col gap-y-1.5 items-center h-[72px]'>
                 <p className='text-sm line-clamp-1 text-gray-200'>{request.title}</p>
-                <p className="line-clamp-3 text-sm text-gray-300 text-justify">{request.caption}</p>
+                <p className="text-sm  line-clamp-2 text-gray-300 text-justify">{request.caption}</p>
             </div>
             <div className='mt-2 pt-2 border-t border-t-gray-800 flex justify-between items-center'>
                 <div className="flex text-sm gap-x-0.5 text-gray-300">

@@ -1,4 +1,5 @@
 import { getMyRequests } from '@/actions/request.action'
+import AddSectionUserPanel from '@/components/shared/AddSectionUserPanel'
 import UserPanelFilterSection from '@/components/shared/UserPanelFilterSection'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import RequestSection from '@/components/template/UserPanel/Request/RequestSection'
@@ -17,15 +18,11 @@ const page = async ({ searchParams: { filter = '' } }) => {
 
   return (
     <UserPanelPageContainer title='درخواست ها'>
+
       <UserPanelFilterSection filters={userPanelTicketFilter} title='درخواست' productsCount={requests.length}>
-        <div className='flex justify-end items-center h-full pl-2'>
-          <Link href={`/p-user/request/insert`}>
-            <span className='w-10 h-10 rounded-full flex-center'>
-              <AddRounded className="text-gray-300" />
-            </span>
-          </Link>
-        </div>
+        <AddSectionUserPanel href='/p-user/request/insert' title='ارسال درخواست' />
       </UserPanelFilterSection>
+
       <RequestSection requests={requests} />
     </UserPanelPageContainer>
   )

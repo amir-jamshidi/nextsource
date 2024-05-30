@@ -85,7 +85,7 @@ const DashboardDetailsSection = async () => {
           <span className='flex h-px bg-gray-800 flex-1'></span>
         </div>
         {requests.length > 0 ? (
-          <div className="grid grid-cols-4 gap-2 mt-8">
+          <div className="grid grid-cols-3 gap-2 mt-8">
             {requests.map(request => (
               <RequestItem request={request} />
             ))}

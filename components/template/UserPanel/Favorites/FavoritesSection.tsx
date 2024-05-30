@@ -1,4 +1,5 @@
 import { getFavorites } from '@/actions/favorite.action'
+import NoItemUserPanel from '@/components/shared/NoItemUserPanel'
 import SourceContainer from '@/components/shared/SourceContainer'
 import SourceItem from '@/components/shared/SourceItem'
 import { IFavorite } from '@/types/favorite'
@@ -10,11 +11,18 @@ interface FavoritesSectionProps {
 const FavoritesSection = async ({ favorites }: FavoritesSectionProps) => {
 
     return (
-        <SourceContainer margin={false}>
-            {favorites.map(fav => (
-                <SourceItem key={fav._id} product={fav.productID as IProduct} />
-            ))}
-        </SourceContainer>
+        <>
+            {favorites.length > 0 ? (
+                <SourceContainer margin={false}>
+                    {favorites.map(fav => (
+                        <SourceItem key={fav._id} product={fav.productID as IProduct} />
+                    ))}
+                </SourceContainer>
+            ) : (
+                <NoItemUserPanel title='چیزی به علاقه مندی اضافه نکردی' margin={false} />
+            )}
+
+        </>
     )
 }
 
