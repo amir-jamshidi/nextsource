@@ -34,7 +34,7 @@ const DashboardDetailsSection = async () => {
         </div>
       </div>
 
-      <div className='mt-8 grid grid-cols-3 gap-x-2 text-sm'>
+      <div className='mt-8 grid grid-cols-3 gap-2 text-sm'>
         <div className='h-32 bg-blue-light flex-center rounded-2xl text-gray-200'>
           <p >شما تا الان {orderCount.toLocaleString('fa')} سورس تهیه کردید </p>
         </div>
@@ -53,7 +53,7 @@ const DashboardDetailsSection = async () => {
           <span className='flex h-px bg-gray-800 flex-1'></span>
         </div>
         {orders.length > 0 ? (
-          <div className="grid grid-cols-4 gap-x-2 mt-8">
+          <div className="grid grid-cols-4 gap-2 mt-8">
             {orders.map(order => (
               <OrderItem order={order} />
             ))}
@@ -69,7 +69,7 @@ const DashboardDetailsSection = async () => {
           <span className='flex h-px bg-gray-800 flex-1'></span>
         </div>
         {tickets.length > 0 ? (
-          <div className="grid grid-cols-2 gap-2 gap-x-2 mt-8">
+          <div className="grid grid-cols-3 gap-2 mt-8">
             {tickets.map(ticket => (
               <TicketItem ticket={ticket} />
             ))}
@@ -85,7 +85,7 @@ const DashboardDetailsSection = async () => {
           <span className='flex h-px bg-gray-800 flex-1'></span>
         </div>
         {requests.length > 0 ? (
-          <div className="grid grid-cols-4 gap-2 gap-x-2 mt-8">
+          <div className="grid grid-cols-4 gap-2 mt-8">
             {requests.map(request => (
               <RequestItem request={request} />
             ))}

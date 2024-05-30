@@ -40,7 +40,7 @@ const TicketDetailsSection = ({ ticket }: { ticket: ITicket }) => {
                         </p>
                     </div>
                 </div>
-                {ticket.answerContent && (
+                {ticket.answerContent ? (
                     <>
                         <div className='flex items-center gap-x-3  my-5'>
                             <span className='h-px bg-gray-800 flex flex-1'></span>
@@ -57,6 +57,10 @@ const TicketDetailsSection = ({ ticket }: { ticket: ITicket }) => {
                             </div>
                         </div>
                     </>
+                ) : (
+                    <div className='flex-center mt-8 mb-4'>
+                        <p className='text-amber-500 text-sm'>در انتظار پاسخ ...</p>
+                    </div>
                 )}
 
             </div>

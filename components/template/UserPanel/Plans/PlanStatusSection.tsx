@@ -7,12 +7,40 @@ const PlanStatusSection = async () => {
 
     return (
         <div className='h-12 bg-blue-light rounded-2xl mb-4 flex-center'>
-            {!isHavPlanUser && <p className='text-gray-300 text-sm'>شما هیچ پلن فعالی ندارید</p>}
+            {!isHavPlanUser &&
+                (
+                    <div className="flex gap-x-4">
+                        <div className='flex justify-between  items-end flex-col'>
+                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-24 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
+                        </div>
+                        <p className='text-red-500 text-sm '>شما هیچ پلن فعالی ندارید</p>
+                        <div className='flex justify-between  items-start flex-col'>
+                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-24 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
+                        </div>
+                    </div>
+                )
+            }
             {isHavPlanUser &&
-                <div className='flex gap-x-1 text-sm'>
-                    <p className='text-gray-300'>شما تا تاریخ</p>
-                    <p className='text-gray-300'>{new Date(isHavPlanUser.expireTime).toLocaleDateString('fa-IR')}</p>
-                    <p className='text-gray-300'>پلن دارید</p>
+                <div className=' flex gap-x-4 '>
+                    <div className='flex justify-between items-end flex-col'>
+                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-24 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
+                    </div>
+                    <div className='flex gap-x-1 text-sm'>
+                        <p className='text-amber-500'>شما تا تاریخ</p>
+                        <p className='text-amber-500'>{new Date(isHavPlanUser.expireTime).toLocaleDateString('fa-IR')}</p>
+                        <p className='text-amber-500'>پلن فعال دارید</p>
+                    </div>
+                    <div className='flex justify-between items-start flex-col'>
+                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-24 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
+                    </div>
                 </div>
             }
         </div>
