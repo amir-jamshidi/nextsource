@@ -19,6 +19,7 @@ import { ITicket } from "@/types/ticket";
 import { IUser } from "@/types/user";
 import { IVerify } from "@/types/verify";
 import { cookies } from "next/headers";
+import { MessageCreator } from '@/libs/MessageCreator';
 
 
 export const LoginUser = async (phone: string) => {
@@ -132,6 +133,22 @@ export const getDashboard = async () => {
 
         return { orders, tickets, requests, orderCount, ticketCount, requestCount };
 
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
+export const changeInfos = async (fullname: string, email: string, bio: string) => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return MessageCreator(false, 'خطای دسترسی')
+        await userModel.findOneAndUpdate({ _id: isLoginUser }, {
+            bio,
+            fullname,
+            email
+        })
+        return MessageCreator(true, 'اطلاعات حساب شما ویرایش شد')
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

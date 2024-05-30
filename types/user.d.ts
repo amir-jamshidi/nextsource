@@ -8,5 +8,7 @@ export interface IUser extends Document {
     role: string,
     money: number
     bio: string,
-    technologies: string[]
+    technologies: string[],
+    createdAt?: Date,
+    updatedAt?: Date
 }

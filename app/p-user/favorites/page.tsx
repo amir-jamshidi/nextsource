@@ -2,7 +2,7 @@ import { getMyFavorites } from '@/actions/favorite.action'
 import UserPanelFilterSection from '@/components/shared/UserPanelFilterSection'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import FavoritesSection from '@/components/template/UserPanel/Favorites/FavoritesSection'
-import { userPanelFilter } from '@/constants/userPanelFilter'
+import { userPanelTicketFilter } from '@/constants/userPanelTicketsFilter'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
@@ -13,7 +13,7 @@ const page = async ({ searchParams: { filter = '' } }) => {
 
     return (
         <UserPanelPageContainer title='علاقـــه مندی ها'>
-            <UserPanelFilterSection title='علاقه مندی' filters={userPanelFilter} productsCount={favorites.length} />
+            <UserPanelFilterSection title='علاقه مندی' filters={userPanelTicketFilter} productsCount={favorites.length} />
             <FavoritesSection favorites={favorites} />
         </UserPanelPageContainer>
     )

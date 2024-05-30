@@ -64,10 +64,8 @@ export const getMyFavorites = async (filter: string) => {
         if (!filter) sort['_id'] = -1;
         if (filter === 'newest') sort['_id'] = -1;
         if (filter === 'oldest') sort['_id'] = 1;
-        if (filter === 'expensive') sort['price'] = -1;
-        if (filter === 'inexpensive') sort['price'] = 1;
 
-        const favorites = await favoriteModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel, sort: sort }).lean() as IFavorite[];
+        const favorites = await favoriteModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel }).sort(sort).lean() as IFavorite[];
         return favorites
     } catch (err) {
         throw new Error('خطای ناشناخته')
