@@ -16,7 +16,7 @@ const page = async ({ searchParams: { filter = '' } }) => {
 
   return (
     <UserPanelPageContainer title='سفـــارش ها' >
-      <UserPanelFilterSection title='سفارش' filters={userPanelFilter} productsCount={orders.length} />
+        <UserPanelFilterSection title='سفارش' filters={userPanelFilter} productsCount={orders.length > 0 ? orders.length : undefined} />    
       <OrdersDetailsSection orders={orders} />
     </UserPanelPageContainer>
   )

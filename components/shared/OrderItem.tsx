@@ -17,10 +17,10 @@ const OrderItem = ({ order }: OrderItemProps) => {
             <div className='w-full h-36 relative'>
                 <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
             </div>
-            <div className='flex-center mt-2'>
+            <div className='flex-center mt-3'>
                 <p className='text-sm text-gray-300'>{product.title}</p>
             </div>
-            <div className='flex justify-between mt-2 px-1.5'>
+            <div className='flex justify-between mt-3 px-1.5'>
                 <div>
                     <p className='text-sm text-gray-400'>{order.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
@@ -31,9 +31,9 @@ const OrderItem = ({ order }: OrderItemProps) => {
                     )}
                 </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-3">
                 <Link href={`/p-user/order/${order._id}`}>
-                    <button className='w-full bg-gray-900 rounded-xl text-gray-300 py-1'>جزئیات</button>
+                    <button className='w-full bg-green-500/50 text-sm rounded-xl text-gray-300 py-2'>جزئیات</button>
                 </Link>
             </div>
         </div>

@@ -28,10 +28,12 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس", ch
         router.replace(newUrl, { scroll: false });
     }, [filter])
 
+    if (!productsCount) return null
+
     return (
         <div className="flex bg-blue-light h-12 rounded-xl mb-4 ">
             <div className="w-32 flex justify-start items-center gap-x-1 pr-4">
-                {productsCount && (
+                {productsCount !== 0 && (
                     <>
                         <p className="font-dana-bold text-gray-300 text-sm">{productsCount}</p>
                         <p className="text-gray-300 text-sm">{title}</p>
