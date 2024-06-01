@@ -15,17 +15,25 @@ const ShowRequestSection = ({ request }: ShowRequestSectionProps) => {
                     <p>تاریخ ایجاد : </p>
                     <p className='font-dana-bold -mb-0.5'>{request.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
-                <div className='flex text-gray-300 gap-x-1 text-sm px-2 border-x border-x-gray-700 mx-2'>
+                <div className='flex text-gray-300 gap-x-1 text-sm px-2 border-r md:border-x border-x-gray-700 mx-2'>
                     <p>وضعیت درخواست : </p>
                     <p className={`${request.isAnswer ? 'text-green-500' : 'text-amber-500'}`}>{request.isAnswer ? 'پاسخ داده شد' : 'بدون پاسخ'}</p>
                 </div>
-                <div className='flex text-gray-300 gap-x-1 text-sm items-center'>
+                <div className='hidden md:flex text-gray-300 gap-x-1 text-sm items-center'>
                     <p>شناسه درخواست : </p>
                     <p className='font-dana-bold -mb-0.5'>{request.code}</p>
                 </div>
 
                 <BackButton bg={false} />
             </div>
+
+            <div className='flex md:hidden h-12 bg-blue-light rounded-2xl mt-4 px-4'>
+                <div className='flex text-gray-300 gap-x-1 text-sm items-center'>
+                    <p>شناسه درخواست : </p>
+                    <p className='font-dana-bold -mb-0.5'>{request.code}</p>
+                </div>
+            </div>
+
             <div className='mt-4 bg-blue-light p-4 rounded-2xl'>
                 <div className='flex gap-x-2'>
                     <span className='flex-center shrink-0 w-12 h-12 rounded-full bg-gray-800/60 text-sm text-gray-400 border border-gray-700'>شما</span>
