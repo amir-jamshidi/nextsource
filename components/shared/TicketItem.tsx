@@ -7,6 +7,7 @@ interface TicketItemProps {
 }
 
 const TicketItem = ({ ticket }: TicketItemProps) => {
+    
     return (
         <div className=' bg-blue-light rounded-2xl p-3'>
             <div className='flex flex-col gap-y-1.5 items-center h-[46px]'>
