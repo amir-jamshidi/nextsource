@@ -8,16 +8,18 @@ interface TicketItemProps {
 
 const TicketItem = ({ ticket }: TicketItemProps) => {
     return (
-        <div className='h-[116px] bg-blue-light rounded-2xl p-4 flex flex-col justify-between'>
-            <p className='text-justify text-gray-200 text-sm line-clamp-2'>{ticket.body}</p>
-            <div className='border-t border-t-gray-800 pt-2.5 flex items-center justify-between'>
-                <div className="flex items-center gap-x-1 text-gray-300 text-sm">
-                    <p>ایجاد شده در</p>
-                    <p className='font-dana'>{ticket.createdAt?.toLocaleDateString('fa-IR')}</p>
+        <div className=' bg-blue-light rounded-2xl p-3'>
+            <div className='flex flex-col gap-y-1.5 items-center h-[46px]'>
+                <p className="text-sm  line-clamp-2 text-gray-300 text-justify">{ticket.body}</p>
+            </div>
+            <div className='mt-2 pt-2 border-t border-t-gray-800 flex justify-between items-center'>
+                <div className="flex text-sm gap-x-0.5 text-gray-300">
+                    <p>ثبت شده در</p>
+                    <p>{ticket.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
-                <div className='flex items-center gap-x-2 text-sm'>
-                    <span className={`${ticket.isAnswer ? 'text-green-500' : 'text-amber-500'} `}>{ticket.isAnswer ? 'پاسخ داده شد' : 'بدون پاسخ'}</span>
-                    <Link href={`/p-user/ticket/${ticket._id}`} className='px-2 rounded-xl text-gray-300 '>مشاهده</Link>
+                <div className="flex gap-1 items-center">
+                    {ticket.isAnswer ? <p className='text-sm text-green-500'>پاسخ داده شد</p> : <p className='text-sm text-amber-500'>بدون پاسخ</p>}
+                    <Link href={`/p-user/ticket/${ticket._id}`} className='text-gray-300 text-sm'>مشاهده</Link>
                 </div>
             </div>
         </div>

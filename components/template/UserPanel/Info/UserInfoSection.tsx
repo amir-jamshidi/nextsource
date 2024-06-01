@@ -34,9 +34,14 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
   return (
     <div>
       <div className='h-12 bg-blue rounded-xl flex-center'>
-        <p className='text-gray-300'>شما از تاریخ {user.createdAt?.toLocaleDateString('fa-IR')} و ساعت  {user.createdAt?.toLocaleTimeString('fa-IR')} کنار مایی :))</p>
+        <p className='text-gray-300 text-sm'>شما از تاریخ {user.createdAt?.toLocaleDateString('fa-IR')} و ساعت  {user.createdAt?.toLocaleTimeString('fa-IR')} کنار مایی :))</p>
       </div>
-      <form className="mt-8" onSubmit={handleSubmitForm}>
+      <div className="flex-center mt-6 gap-x-3 mx-4">
+        <span className='flex-1 h-px bg-gray-800'></span>
+        <p className="text-sm text-gray-300">ویرایش اطلاعات حساب من</p>
+        <span className='flex-1 h-px bg-gray-800'></span>
+      </div>
+      <form className="mt-6" onSubmit={handleSubmitForm}>
         <div className='grid grid-cols-3 gap-1'>
           <div className='h-12 bg-gray-900 rounded-xl border border-gray-800'>
             <input onChange={(e) => setFullname(e.target.value)} value={fullname} type="text" className='h-full w-full text-sm bg-gray-900 outline-none border-none text-gray-200 px-2 rounded-xl' placeholder='نام کامل شما' />
@@ -49,7 +54,7 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
           </div>
         </div>
         <div className='w-full mt-1 rounded-2xl border bg-gray-900 border-gray-800'>
-          <textarea onChange={(e) => setBio(e.target.value)} value={bio} placeholder='بیوگرافی شما' className=' bg-gray-900 border-gray-100 rounded-2xl p-3 border-none outline-none text-gray-200 text-sm min-h-20 max-h-32 w-full'></textarea>
+          <textarea onChange={(e) => setBio(e.target.value)} value={bio} placeholder='بیوگرافی شما' className=' bg-gray-900 border-gray-100 rounded-2xl p-3 border-none outline-none text-gray-200 text-sm min-h-32 max-h-40 w-full'></textarea>
         </div>
         <input type="submit" className='h-12 w-full bg-blue mt-1 rounded-xl text-green-500 cursor-pointer' value='ثبت تغییــرات' />
       </form>

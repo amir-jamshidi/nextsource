@@ -20,6 +20,7 @@ import { IUser } from "@/types/user";
 import { IVerify } from "@/types/verify";
 import { cookies } from "next/headers";
 import { MessageCreator } from '@/libs/MessageCreator';
+import productModel from "@/models/product.module";
 
 
 export const LoginUser = async (phone: string) => {
@@ -120,9 +121,9 @@ export const getDashboard = async () => {
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false;
 
-        const orders = await orderModel.find({ userID: isLoginUser._id }).limit(4).lean() as IOrder[];
-        const tickets = await ticketModel.find({ userID: isLoginUser._id }).limit(4).lean() as ITicket[];
-        const requests = await requestModel.find({ userID: isLoginUser._id }).limit(4).lean() as IRequest[];
+        const orders = await orderModel.find({ userID: isLoginUser._id }).limit(4).populate({ path: 'productID', model: productModel }).lean() as IOrder[];
+        const tickets = await ticketModel.find({ userID: isLoginUser._id }).limit(3).lean() as ITicket[];
+        const requests = await requestModel.find({ userID: isLoginUser._id }).limit(3).lean() as IRequest[];
 
         if (!orders || !tickets || !requests) return false
 
