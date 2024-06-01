@@ -26,7 +26,7 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس", ch
             value: filter ? filter : null
         })
         router.replace(newUrl, { scroll: false });
-    }, [filter])
+    }, [filter, router, searchParams])
 
     if (!productsCount) return null
 
@@ -35,14 +35,14 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس", ch
             <div className="w-32 flex justify-start items-center gap-x-1 pr-4">
                 {productsCount !== 0 && (
                     <>
-                        <p className="font-dana-bold text-gray-300 text-sm">{productsCount}</p>
-                        <p className="text-gray-300 text-sm">{title}</p>
+                        <p className="font-dana-bold text-gray-300 text-xs md:text-sm ">{productsCount}</p>
+                        <p className="text-gray-300 text-xs md:text-sm ">{title}</p>
                     </>
                 )}
             </div>
             <div className='flex-1 flex-center gap-x-1'>
                 {filters.map(fil => (
-                    <p onClick={() => setFilter(prev => prev === fil.href ? '' : fil.href)} className={`${filter === fil.href ? 'text-amber-500' : 'text-gray-300'} text-sm w-20 bg-blue-light text-center py-1 rounded-xl cursor-pointer`}>{fil.title}</p>
+                    <p key={fil.id} onClick={() => setFilter(prev => prev === fil.href ? '' : fil.href)} className={`${filter === fil.href ? 'text-amber-500' : 'text-gray-300'} text-sm w-14 md:w-20 bg-blue-light text-center py-1 rounded-xl cursor-pointer`}>{fil.title}</p>
                 ))}
             </div>
             <div className="w-32">

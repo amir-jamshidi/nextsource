@@ -33,7 +33,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
             </div>
             <div className="mt-3">
                 <Link href={`/p-user/order/${order._id}`}>
-                    <button className='w-full bg-green-500/50 text-sm rounded-xl text-gray-300 py-2'>جزئیات</button>
+                    <button className='w-full bg-blue-max text-sm rounded-xl text-gray-300 py-2'>جزئیات</button>
                 </Link>
             </div>
         </div>

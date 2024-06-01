@@ -9,7 +9,7 @@ const OrdersDetailsSection = async ({ orders }: { orders: IOrder[] }) => {
     return (
         <>
             {orders.length > 0 ? (
-                <div className='grid grid-cols-4 gap-2'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
                     {orders.map(order => (
                         <OrderItem key={order._id} order={order} />
                     ))}

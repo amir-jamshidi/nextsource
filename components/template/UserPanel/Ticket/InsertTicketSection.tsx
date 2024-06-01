@@ -42,12 +42,11 @@ const InsertTicketSection = () => {
         <div>
             <div className="h-12 rounded-2xl mb-4 bg-blue-light relative flex items-center px-4">
                 <BackButton bg={false} />
-                {/* <p className="text-sm text-gray-400">وارد کردن بخش ارسالی و متن تیکت اجباریه</p> */}
                 <div className="flex gap-x-1">
                     {Object.entries(errors).length > 0 && (
                         <>
                             {Object.entries(errors).map(err => (
-                                <p className="text-sm  py-0.5 bg-red-500 text-white rounded-lg px-3">{err[1].message}</p>
+                                <p key={err[1].message} className="text-sm  py-0.5 bg-red-500 text-white rounded-lg px-3">{err[1].message}</p>
                             ))}
                         </>
                     )}
@@ -59,7 +58,7 @@ const InsertTicketSection = () => {
                         <select {...register('sectionID')} className='w-full outline-none border-none py-3.5 text-gray-200 bg-gray-900 text-sm rounded-xl'>
                             <option value={'-1'}>بخش ارسالی</option>
                             {data.map(section => (
-                                <option value={String(section._id)}>{section.title}</option>
+                                <option key={String(section._id)} value={String(section._id)}>{section.title}</option>
                             ))}
                         </select>
                     </div>
