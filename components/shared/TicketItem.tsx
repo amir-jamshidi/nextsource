@@ -26,4 +26,5 @@ const TicketItem = ({ ticket }: TicketItemProps) => {
     )
 }
 
+
 export default TicketItem
