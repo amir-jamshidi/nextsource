@@ -23,9 +23,10 @@ const DashboardDetailsSection = async () => {
   return (
     <div>
       <div className='h-12 flex items-center text-sm bg-blue-light rounded-xl flex-center text-gray-100 px-4'>
-        <div className='flex-1 flex justify-start gap-x-1'>
+        <div className='flex-1 flex items-center justify-start gap-x-1'>
+          <span className='w-2 h-2 rounded-full bg-green-500 flex'></span>
           <p className='hidden md:flex'>امروز</p>
-          <p className="text-xs">{new Date().toLocaleString('fa', { weekday: 'long' })}</p>
+          <p className="text-xs md:text-sm">{new Date().toLocaleString('fa', { weekday: 'long' })}</p>
         </div>
         <div className='flex-1 flex justify-center'>
           <p className='line-clamp-1 hidden md:flex'>خوش اومـــدی {isLoginUser.fullname} جـــان</p>
@@ -51,9 +52,9 @@ const DashboardDetailsSection = async () => {
       <div className='mt-5 md:mt-8'>
         <DashboardTitleSection title="سفارش هــای اخیـر" />
         {orders.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-5 md:mt-8">
             {orders.map(order => (
-              <OrderItem order={order} />
+              <OrderItem key={order._id} order={order} />
             ))}
           </div>
         ) : (<NoItemUserPanel title="تا الان سفارشی ثبت نکردی" />)}
@@ -63,9 +64,9 @@ const DashboardDetailsSection = async () => {
       <div className='mt-5 md:mt-8'>
         <DashboardTitleSection title='تیکت هـای اخیـر' />
         {tickets.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-5 md:mt-8">
             {tickets.map(ticket => (
-              <TicketItem ticket={ticket} />
+              <TicketItem key={ticket._id} ticket={ticket} />
             ))}
           </div>
         ) : (<NoItemUserPanel title="تا الان تیکتی نفرستادی" />)}
@@ -75,9 +76,9 @@ const DashboardDetailsSection = async () => {
       <div className='mt-5 md:mt-8'>
         <DashboardTitleSection title='درخواست هـای اخیـر' />
         {requests.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-5 md:mt-8">
             {requests.map(request => (
-              <RequestItem request={request} />
+              <RequestItem key={request.title} request={request} />
             ))}
           </div>)
           : (<NoItemUserPanel title='تا الان درخواستی ثبت نکردی' />)}
@@ -85,10 +86,9 @@ const DashboardDetailsSection = async () => {
       </div>
 
 
-
       <div className='mt-5 md:mt-8'>
         <DashboardTitleSection title='بخش مالــی' />
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-2 mt-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-2 mt-5 md:mt-8'>
           <div className='bg-gradient-to-r from-green-500 to-emerald-500 h-32 rounded-2xl flex-center gap-x-1 text-gray-100 text-sm'>
             <p>موجودی کیف پول</p>
             <p>{isLoginUser.money.toLocaleString('fa')}</p>
