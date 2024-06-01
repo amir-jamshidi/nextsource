@@ -2,6 +2,7 @@ import { ITicket } from '@/types/ticket'
 import Link from 'next/link'
 import React from 'react'
 
+
 interface TicketItemProps {
     ticket: ITicket
 }
