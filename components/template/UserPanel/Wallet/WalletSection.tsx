@@ -20,22 +20,24 @@ const WalletSection = async () => {
 
     return (
         <div className="flex flex-col items-center">
+
             <div className='h-12 rounded-2xl bg-blue-light flex items-center px-4 w-full justify-center'>
-                <div className='flex items-center text-sm gap-x-1 border-l border-gray-800 pl-2'>
-                    <p className='text-gray-300'>موجودی کیف پول : </p>
+                <div className='flex items-center text-xs md:text-sm gap-x-1 border-l border-gray-800 pl-2'>
+                    <p className='text-gray-300 hidden md:flex'>موجودی کیف پول : </p>
+                    <p className='text-gray-300 flex md:hidden'>موجودی : </p>
                     <p className='font-dana-bold text-green-500 pt-0.5'>{isLoginUser.money.toLocaleString()}</p>
-                    <p className='text-gray-300'>تومــان</p>
+                    <p className='text-gray-300'>تومان</p>
                 </div>
-                <div className='flex items-center text-sm gap-x-1 border-gray-800 mr-2'>
-                    <p className='text-gray-300'>موجودی قابل برداشت : </p>
+                <div className='flex items-center text-xs md:text-sm gap-x-1 border-gray-800 mr-2'>
+                    <p className='text-gray-300 hidden md:flex'>موجودی قابل برداشت : </p>
+                    <p className='text-gray-300 flex md:hidden'>قابل برداشت : </p>
                     <p className='font-dana-bold text-green-500 pt-0.5'>{isLoginUser.money.toLocaleString()}</p>
                     <p className='text-gray-300'>تومــان</p>
                 </div>
             </div>
 
 
-            <div className='grid grid-cols-2 gap-x-2 w-full'>
-
+            <div className='grid grid-cols-1  lg:grid-cols-2 gap-x-2 w-full'>
                 <div>
                     <div className='bg-blue-light p-4 mt-4 rounded-2xl '>
                         <div className='text-red-500 text-sm flex justify-center'>
@@ -45,7 +47,7 @@ const WalletSection = async () => {
                             {withdraws.length > 0 ? (
                                 <>
                                     {withdraws.map(withdraw => (
-                                        <WithdrawItem withdraw={withdraw} />
+                                        <WithdrawItem key={withdraw.createdAt} withdraw={withdraw} />
                                     ))}
                                 </>
                             ) : (
@@ -74,7 +76,7 @@ const WalletSection = async () => {
                             {deposits.length > 0 ? (
                                 <>
                                     {deposits.map(deposit => (
-                                        <DepositItem deposit={deposit} />
+                                        <DepositItem key={deposit.createdAt} deposit={deposit} />
                                     ))}
                                 </>
                             ) : (

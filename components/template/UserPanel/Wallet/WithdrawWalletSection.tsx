@@ -55,9 +55,9 @@ const WithdrawWalletSection = ({ accounts, money }: WithdrawWalletSectionProps) 
                         <p>تومـان</p>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 mt-4 gap-1'>
+                <div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-1'>
                     {accounts.map(account => (
-                        <div onClick={() => setAccountID(account._id)} className={`${accountID === account._id ? 'bg-green-500 text-gray-200' : 'bg-blue text-gray-300'} transition-colors cursor-pointer p-3 rounded-xl text-sm shadow-md flex flex-col items-center gap-y-1.5`}>
+                        <div key={account._id} onClick={() => setAccountID(account._id)} className={`${accountID === account._id ? 'bg-green-500 text-gray-200' : 'bg-blue text-gray-300'} transition-colors cursor-pointer p-3 rounded-xl text-sm shadow-md flex flex-col items-center gap-y-1.5`}>
                             <p className=''>{account.cardBank}</p>
                             <p className='font-dana-bold '>{account.cardNumber.replace(/\D+/g, '').match(/.{1,4}/g)?.join(' - ')}</p>
                             <p className=' font-dana-bold'>{account.cardShaba}</p>
