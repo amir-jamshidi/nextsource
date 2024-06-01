@@ -14,9 +14,9 @@ const RequestSection = ({ requests }: RequestSectionProps) => {
     return (
         <>
             {requests.length > 0 ? (
-                <div className='grid grid-cols-3 gap-2'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
                     {requests.map(request => (
-                        <RequestItem request={request} />
+                        <RequestItem key={request._id} request={request} />
                     ))}
                 </div>
             ) : (

@@ -34,18 +34,18 @@ const InsertRequestSection = () => {
         <div>
             <div className="h-12 rounded-2xl mb-4 bg-blue-light relative flex items-center px-4">
                 <BackButton bg={false} />
-                <div className="flex gap-x-1">
+                <div className="flex flex-wrap gap-1">
                     {Object.entries(errors).length > 0 && (
                         <>
                             {Object.entries(errors).map(err => (
-                                <p className="text-sm  py-0.5 bg-red-500 text-white rounded-lg px-3">{err[1].message}</p>
+                                <p key={err[1].message} className="text-xs md:text-sm py-0.5 bg-red-500 text-white rounded-lg px-3">{err[1].message}</p>
                             ))}
                         </>
                     )}
                 </div>
             </div>
             <form onSubmit={handleSubmit(handleSubmitForm)}>
-                <div className="grid grid-cols-2 gap-x-1">
+                <div className="grid gird-cols-1 md:grid-cols-2 gap-1">
                     <div className="bg-gray-900 border border-gray-800 rounded-xl px-3">
                         <input {...register('title')} type="text" className="h-10 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="عنوان درخواست"></input>
                     </div>

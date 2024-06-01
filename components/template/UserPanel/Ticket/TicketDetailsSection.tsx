@@ -8,6 +8,7 @@ const TicketDetailsSection = ({ ticket }: { ticket: ITicket }) => {
 
     const order = ticket.orderID as IOrder || null
     const section = ticket.sectionID as ISection;
+
     return (
         <div>
             <div className='h-12 bg-blue-light rounded-2xl flex items-center px-4 relative'>
@@ -15,22 +16,37 @@ const TicketDetailsSection = ({ ticket }: { ticket: ITicket }) => {
                     <p>تاریخ ایجاد : </p>
                     <p className='font-dana-bold -mb-0.5'>{ticket.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
-                <div className='flex text-gray-300 gap-x-1 text-sm px-2 border-x border-x-gray-700 mx-2'>
+                <div className='flex text-gray-300 gap-x-1 text-sm px-2 border-r lg:border-x border-x-gray-700 mx-2'>
                     <p>وضعیت تیکت : </p>
                     <p className={`${ticket.isAnswer ? 'text-green-500' : 'text-amber-500'}`}>{ticket.isAnswer ? 'پاسخ داده شد' : 'بدون پاسخ'}</p>
                 </div>
-                <div className='flex text-gray-300 gap-x-1 text-sm items-center'>
+                <div className='hidden lg:flex text-gray-300 gap-x-1 text-sm items-center'>
                     <p>شناسه تیکت : </p>
                     <p className='font-dana-bold -mb-0.5'>{ticket.code}</p>
                 </div>
                 {order && (
-                    <div className='flex text-gray-300 gap-x-1 text-sm border-r border-r-gray-700 pr-2 mr-2 '>
+                    <div className='hidden lg:flex text-gray-300 gap-x-1 text-sm border-r border-r-gray-700 pr-2 mr-2 '>
                         <p>پیگیری سفارش : </p>
                         <p className='text-green-500 font-dana-bold pt-0.5'>{order.code}</p>
                     </div>
                 )}
                 <BackButton bg={false} />
             </div>
+
+            <div className='flex lg:hidden bg-blue-light rounded-2xl px-4 py-2 mt-4 flex-col min-h-12 gap-2'>
+                <div className='flex text-gray-300 gap-x-1 text-sm items-center '>
+                    <p>شناسه تیکت : </p>
+                    <p className='font-dana-bold -mb-0.5'>{ticket.code}</p>
+                </div>
+                {order && (
+                    <div className='text-gray-300 gap-x-1 text-sm flex'>
+                        <p>پیگیری سفارش : </p>
+                        <p className='text-green-500 font-dana-bold pt-0.5'>{order.code}</p>
+                    </div>
+                )}
+            </div>
+
+
             <div className='mt-4 bg-blue-light p-4 rounded-2xl'>
                 <div className='flex gap-x-2'>
                     <span className='flex-center shrink-0 w-12 h-12 rounded-full bg-gray-800/60 text-sm text-gray-400 border border-gray-700'>شما</span>

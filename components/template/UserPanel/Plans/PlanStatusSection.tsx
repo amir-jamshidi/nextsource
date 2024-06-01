@@ -11,15 +11,15 @@ const PlanStatusSection = async () => {
                 (
                     <div className="flex gap-x-4">
                         <div className='flex justify-between  items-end flex-col'>
-                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
-                            <span className='w-24 rounded h-[3px] flex bg-red-500'></span>
-                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-8 md:w-16 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-16 md:w-24 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-8 md:w-16 rounded h-[3px] flex bg-red-500'></span>
                         </div>
                         <p className='text-red-500 text-sm '>شما هیچ پلن فعالی ندارید</p>
                         <div className='flex justify-between  items-start flex-col'>
-                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
-                            <span className='w-24 rounded h-[3px] flex bg-red-500'></span>
-                            <span className='w-16 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-8 md:w-16 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-16 md:w-20 rounded h-[3px] flex bg-red-500'></span>
+                            <span className='w-8 md:w-16 rounded h-[3px] flex bg-red-500'></span>
                         </div>
                     </div>
                 )
@@ -27,9 +27,9 @@ const PlanStatusSection = async () => {
             {isHavPlanUser &&
                 <div className=' flex gap-x-4 '>
                     <div className='flex justify-between items-end flex-col'>
-                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
-                        <span className='w-24 rounded h-[3px] flex bg-amber-500'></span>
-                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-8 md:w-16 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-16 md:w-20 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-8 md:w-16 rounded h-[3px] flex bg-amber-500'></span>
                     </div>
                     <div className='flex gap-x-1 text-sm'>
                         <p className='text-amber-500'>شما تا تاریخ</p>
@@ -37,9 +37,9 @@ const PlanStatusSection = async () => {
                         <p className='text-amber-500'>پلن فعال دارید</p>
                     </div>
                     <div className='flex justify-between items-start flex-col'>
-                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
-                        <span className='w-24 rounded h-[3px] flex bg-amber-500'></span>
-                        <span className='w-16 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-8 md:w-16 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-16 md:w-20 rounded h-[3px] flex bg-amber-500'></span>
+                        <span className='w-8 md:w-16 rounded h-[3px] flex bg-amber-500'></span>
                     </div>
                 </div>
             }

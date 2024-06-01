@@ -10,13 +10,14 @@ const PlansSection = async () => {
     return (
         <div className='gap-y-2 flex flex-col'>
             {plans.map(plan => (
-                <div className={`${plan.color === 'GOLD' ? 'bg-amber-500/70' : plan.color === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} h-52 rounded-2xl flex px-4 py-4 relative`}>
+                <div key={plan._id} className={`${plan.color === 'GOLD' ? 'bg-amber-500/70' : plan.color === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'}  md:h-52 rounded-2xl flex  flex-col-reverse md:flex-row px-4 py-4 relative `}>
                     <div className='plan-background absolute inset-0 -z-10'></div>
-                    <div className='flex-1 flex flex-col items-start justify-between'>
-                        <div className='flex items-center gap-x-1.5 '>
-                            <h2 className='text-gray-200 text-xl'>{plan.title}</h2>
+
+                    <div className='flex-1 flex gap-y-2.5 md:gap-y-0 flex-col items-start justify-between md:text-right text-justify'>
+                        <div className='flex items-center w-full md:justify-start justify-center gap-x-1.5 '>
+                            <h2 className='text-gray-200'>{plan.title}</h2>
                             <p className='text-xl -mb-1.5'>{plan.color === 'GOLD' ? '🥇' : plan.color === "SILVER" ? '🥈' : '🥉'}</p>
-                            <p className='text-gray-200 text-xl'>{plan.time}</p>
+                            <p className='text-gray-200'>{plan.time}</p>
                         </div>
                         <p className='text-gray-300'>{plan.caption}</p>
                         <div className='flex items-center justify-between w-full'>
@@ -27,7 +28,8 @@ const PlansSection = async () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-80 flex-center'>
+
+                    <div className='w-full md:w-80 flex-center'>
                         <span>
                             <EmojiEventsRounded className={`${plan.color === 'GOLD' ? 'text-amber-500' : plan.color === "SILVER" ? 'text-neutral-400' : 'text-orange-600'}`} sx={{ width: 200, height: 200 }} />
                         </span>
