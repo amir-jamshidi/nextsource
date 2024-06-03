@@ -4,6 +4,7 @@ import connectToDB from "@/database/db"
 import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin";
 import depositModel from "@/models/deposit.module";
+import notificationModel from "@/models/notification.module";
 import userModel from "@/models/user.module";
 import { number } from "yup";
 
@@ -20,6 +21,11 @@ export const newDeposit = async (price: number) => {
             isSuccess: true
         });
         await userModel.findOneAndUpdate({ _id: isLoginUser._id }, { $inc: { money: +price } });
+        await notificationModel.create({
+            userID: isLoginUser._id,
+            title: 'واریز به کیف',
+            body: 'واریز به کیف پول انجام شد'
+        })
         return MessageCreator(true, 'واریز به کیف پول انجام شد')
     } catch (error) {
         throw new Error('خطای ناشناخته')

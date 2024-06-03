@@ -58,7 +58,7 @@
     }
 
     .bg-background {
-        @apply bg-gradient-to-br bg-no-repeat from-gray-900 to-gray-950
+        @apply bg-gradient-to-br bg-no-repeat dark:from-gray-900 dark:to-gray-950 from-gray-200 to-gray-200
     }
 
     .bg-button {
@@ -78,7 +78,7 @@
     }
 
     .bg-blue-light {
-        @apply bg-gradient-to-r bg-no-repeat from-cyan-950/35 to-blue-950/35
+        @apply bg-gradient-to-r bg-no-repeat dark:from-cyan-950/35 dark:to-blue-950/35 from-gray-100 to-gray-100
     }
 
     /* Amimations */

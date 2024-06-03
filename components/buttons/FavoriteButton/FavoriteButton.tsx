@@ -13,10 +13,12 @@ interface FavoriteButtonProps {
 const FavoriteButton = ({ productID, isHasToFav }: FavoriteButtonProps) => {
 
     const [isFav, setIsFav] = useState(isHasToFav);
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
     const handleAddToFavorite = async () => {
         try {
+            setIsLoading(true)
             const result = await addToFavorites(productID);
             if (!result.state) return toast.error(result.message);
             toast.success(result.message);
@@ -24,10 +26,13 @@ const FavoriteButton = ({ productID, isHasToFav }: FavoriteButtonProps) => {
             router.refresh();
         } catch (error) {
             toast.error('خطای ناشناخته')
+        } finally {
+            setIsLoading(false);
         }
     }
     const handleRemoveFavorite = async () => {
         try {
+            setIsLoading(true)
             const result = await removeFromFavorite(productID)
             if (!result.state) return toast.error(result.message);
             toast.success(result.message);
@@ -35,11 +40,13 @@ const FavoriteButton = ({ productID, isHasToFav }: FavoriteButtonProps) => {
             router.refresh();
         } catch (error) {
             toast.error('خطای ناشناخته')
+        } finally {
+            setIsLoading(false)
         }
     }
 
     return (
-        <button onClick={isHasToFav ? handleRemoveFavorite : handleAddToFavorite} className='bg-blue w-9 h-9 shrink-0 rounded-full flex-center'>
+        <button disabled={isLoading} onClick={isHasToFav ? handleRemoveFavorite : handleAddToFavorite} className='bg-blue w-9 h-9 shrink-0 rounded-full flex-center'>
             <FavoriteRounded className={`${(isFav) ? 'text-red-500' : 'text-gray-500'}`} />
         </button>
     )
