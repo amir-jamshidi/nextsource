@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 
 const DepositWalletSection = () => {
 
+    const [isLoading, setIsLoading] = useState(false);
     const [price, setPrice] = useState(0);
 
     const router = useRouter();
@@ -15,11 +16,18 @@ const DepositWalletSection = () => {
     const handleSubmitForm = async (e: React.FormEvent) => {
         e.preventDefault();
         if (price < 100000) return toast.error('حداقل مبلغ باید صدهزار تومان باشد')
-        const res = await newDeposit(price);
-        if (!res.state) return toast.error(res.message);
-        toast.success(res.message);
-        setPrice(0);
-        router.refresh();
+        try {
+            setIsLoading(true);
+            const res = await newDeposit(price);
+            if (!res.state) return toast.error(res.message);
+            toast.success(res.message);
+            setPrice(0);
+            router.refresh();
+        } catch (error) {
+            toast.error('خطای ناشناخته ای رخ داد')
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return (
@@ -33,7 +41,7 @@ const DepositWalletSection = () => {
                         <input value={Number(price)} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder='مبلغ واریزی شما' className={`h-12 font-dana-bold bg-gray-900 text-gray-300 border-none outline-none px-0.5 w-full`} />
 
                     </div>
-                    <button className="bg-green-500 h-10 px-4 text-sm rounded-xl text-gray-200">شارژ کیف پول</button>
+                    <button disabled={isLoading} className="bg-green-500 h-10 px-4 text-sm rounded-xl text-gray-200">{isLoading ? 'لطفا صبر کن' : 'شارژ کیف پول'}</button>
                 </div>
             </form>
             <div className='flex justify-center items-center gap-x-0.5 text-sm text-gray-400 px-3 mt-3'>

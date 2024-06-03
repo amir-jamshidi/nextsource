@@ -22,7 +22,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
             </div>
             <div className='flex justify-between mt-3 px-1.5'>
                 <div>
-                    <p className='text-sm text-gray-400'>{order.createdAt?.toLocaleDateString('fa-IR')}</p>
+                    <p className='text-sm text-gray-400 font-dana-bold'>{order.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
                 <div className="flex items-center gap-x-0.5">
                     <p className='font-dana-bold text-sm text-green-500'>{order.totalPrice ? order.totalPrice.toLocaleString() : 'رایگان'}</p>

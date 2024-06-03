@@ -15,14 +15,15 @@ const AddAccountSection = () => {
 
     const router = useRouter();
 
-    const { handleSubmit, formState: { errors }, register } = useForm({ resolver: yupResolver(AccountSchema) })
+    const { handleSubmit, reset, formState: { errors, isSubmitting, defaultValues }, register } = useForm({ resolver: yupResolver(AccountSchema) })
 
     const handleSubmitForm = async (values: { cardNumber: string, cardBank: string, cardShaba: string, cardName: string }) => {
         try {
             const res = await addNewAccount(values);
             if (!res.state) return toast.error(res.message);
-            toast.success(res.message);
             setIsShowModal(false);
+            reset(defaultValues)
+            toast.success(res.message);
             router.refresh();
         } catch (error) {
             throw new Error('خطای ناشناخته')
@@ -61,7 +62,7 @@ const AddAccountSection = () => {
                                 <div className='h-10 bg-gray-900 rounded-xl '>
                                     <input {...register('cardName')} type="text" placeholder='نام صاحب کارت' className='rounded-xl border-none outline-none text-gray-300 bg-gray-900 h-10 w-full text-center' />
                                 </div>
-                                <button className='h-10 mt-1 text-gray-200 bg-green-500 rounded-xl'>اضافه کن</button>
+                                <button disabled={isSubmitting} className='h-10 mt-1 text-gray-200 bg-green-500 rounded-xl'>{isSubmitting ? 'لطفا صبر کن ...' : 'اضافه کن'}</button>
                                 <button onClick={handleCloseModal} className='h-10 text-gray-200 bg-red-500 rounded-xl'>بیخیال</button>
                             </div>
                             <p className='text-amber-500 text-sm text-center py-2'>کارت بانکی باید متعلق به خود شما باشد</p>

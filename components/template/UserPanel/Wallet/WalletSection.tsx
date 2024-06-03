@@ -8,6 +8,7 @@ import accountModel from '@/models/account.module';
 import { getAccounts } from '@/actions/account.action';
 import WithdrawItem from '@/components/shared/WithdrawItem';
 import DepositItem from '@/components/shared/DepositItem';
+import NoTransAction from './NoTransAction';
 
 const WalletSection = async () => {
     const isLoginUser = await isLogin();
@@ -51,9 +52,7 @@ const WalletSection = async () => {
                                     ))}
                                 </>
                             ) : (
-                                <div className='bg-gray-900 py-4 rounded-2xl flex-center'>
-                                    <p className="text-sm text-gray-400">بدون تراکنش</p>
-                                </div>
+                                <NoTransAction text="بدون تراکنش" />
                             )}
 
                         </div>
@@ -80,9 +79,7 @@ const WalletSection = async () => {
                                     ))}
                                 </>
                             ) : (
-                                <div className='bg-gray-900 py-4 rounded-2xl flex-center'>
-                                    <p className="text-sm text-gray-400">بدون تراکنش</p>
-                                </div>
+                                <NoTransAction text="بدون تراکنش" />
                             )}
 
                         </div>

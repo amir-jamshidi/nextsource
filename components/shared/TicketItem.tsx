@@ -17,7 +17,7 @@ const TicketItem = ({ ticket }: TicketItemProps) => {
             <div className='mt-2 pt-2 border-t border-t-gray-800 flex justify-between items-center'>
                 <div className="flex text-sm gap-x-0.5 text-gray-300">
                     <p>ثبت شده در</p>
-                    <p>{ticket.createdAt?.toLocaleDateString('fa-IR')}</p>
+                    <p className='font-dana-bold'>{ticket.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
                 <div className="flex gap-1 items-center">
                     {ticket.isAnswer ? <p className='text-sm text-green-500'>پاسخ داده شد</p> : <p className='text-sm text-amber-500'>بدون پاسخ</p>}

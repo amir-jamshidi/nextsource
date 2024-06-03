@@ -33,7 +33,7 @@ const PlanStatusSection = async () => {
                     </div>
                     <div className='flex gap-x-1 text-sm'>
                         <p className='text-amber-500'>شما تا تاریخ</p>
-                        <p className='text-amber-500'>{new Date(isHavPlanUser.expireTime).toLocaleDateString('fa-IR')}</p>
+                        <p className='text-amber-500 font-dana-bold'>{new Date(isHavPlanUser.expireTime).toLocaleDateString('fa-IR')}</p>
                         <p className='text-amber-500'>پلن فعال دارید</p>
                     </div>
                     <div className='flex justify-between items-start flex-col'>
