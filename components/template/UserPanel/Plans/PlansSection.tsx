@@ -17,9 +17,9 @@ const PlansSection = async () => {
                         <div className='flex items-center w-full md:justify-start justify-center gap-x-1.5 '>
                             <h2 className='text-gray-200'>{plan.title}</h2>
                             <p className='text-xl -mb-1.5'>{plan.color === 'GOLD' ? '🥇' : plan.color === "SILVER" ? '🥈' : '🥉'}</p>
-                            <p className='text-gray-200'>{plan.time}</p>
+                            <p className='text-gray-200 pt-2'>{plan.time}</p>
                         </div>
-                        <p className='text-gray-300'>{plan.caption}</p>
+                        <p className='text-gray-300 text-sm md:text-base'>{plan.caption}</p>
                         <div className='flex items-center justify-between w-full'>
                             <BuyPlanButton planID={plan._id} isHavPlan={isHavPlanUser} />
                             <div className='flex items-center gap-x-1'>

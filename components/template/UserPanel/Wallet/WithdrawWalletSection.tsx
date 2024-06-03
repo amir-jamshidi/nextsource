@@ -32,16 +32,16 @@ const WithdrawWalletSection = ({ accounts, money }: WithdrawWalletSectionProps) 
         router.refresh()
     }
 
-
+ 
     return (
         <>
-            
+
             <div className='mt-4'>
-                <div className='bg-gray-900 rounded-xl px-2 gap-x-1 flex items-center'>
+                <div className='bg-gray-900 rounded-xl px-2 gap-x-1 flex items-center border border-gray-800'>
                     <span>
                         <AttachMoneyRounded className="text-gray-400" />
                     </span>
-                    <input type="number" value={price} onChange={(e) => setPrice(Number(e.target.value))} className='h-10 bg-gray-900 w-full border-none outline-none text-sm text-gray-300 font-dana-bold' />
+                    <input type="number" value={price} onChange={(e) => setPrice(Number(e.target.value))} className='bg-gray-900 w-full border-none outline-none text-sm text-gray-300 font-dana-bold h-12' />
                 </div>
                 <div className='flex items-center justify-center'>
                     <div className='border-l border-l-gray-800 pl-2 ml-2 text-sm text-green-500 flex items-center justify-center mt-3 gap-x-0.5'>
@@ -55,7 +55,7 @@ const WithdrawWalletSection = ({ accounts, money }: WithdrawWalletSectionProps) 
                         <p>تومـان</p>
                     </div>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-1'>
+                {accounts.length > 0 ? (<div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-1'>
                     {accounts.map(account => (
                         <div key={account._id} onClick={() => setAccountID(account._id)} className={`${accountID === account._id ? 'bg-green-500 text-gray-200' : 'bg-blue text-gray-300'} transition-colors cursor-pointer p-3 rounded-xl text-sm shadow-md flex flex-col items-center gap-y-1.5`}>
                             <p className=''>{account.cardBank}</p>
@@ -65,6 +65,12 @@ const WithdrawWalletSection = ({ accounts, money }: WithdrawWalletSectionProps) 
                         </div>
                     ))}
                 </div>
+                ) : (
+                    <div className='bg-gray-900 py-4 rounded-2xl flex-center mt-4'>
+                        <p className="text-sm text-gray-400">شماره کارتی ثبت نشده</p>
+                    </div>
+                )}
+
                 <div className='mt-4 flex items-center gap-x-1'>
                     <button onClick={handleWidthdraw} className='h-10 rounded-xl text-gray-200 bg-red-500 text-sm px-3'>برداشت از کیف</button>
                     <AddAccountSection />

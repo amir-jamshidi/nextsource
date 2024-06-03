@@ -47,10 +47,10 @@ const InsertRequestSection = () => {
             <form onSubmit={handleSubmit(handleSubmitForm)}>
                 <div className="grid gird-cols-1 md:grid-cols-2 gap-1">
                     <div className="bg-gray-900 border border-gray-800 rounded-xl px-3">
-                        <input {...register('title')} type="text" className="h-10 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="عنوان درخواست"></input>
+                        <input {...register('title')} type="text" className="h-12 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="عنوان درخواست"></input>
                     </div>
                     <div className="bg-gray-900 border border-gray-800 rounded-xl px-3 flex items-center gap-x-2">
-                        <input {...register('price')} type="number" className="h-10 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="مبلغ پیشنهادی"></input>
+                        <input {...register('price')} type="number" className="h-12 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="مبلغ پیشنهادی"></input>
                         <div className="text-sm flex items-center text-gray-400 gap-x-0.5 min-w-32 justify-end">
                             <p className="font-dana-bold">{watch('price') ? Number(watch('price')).toLocaleString() : '0'}</p>
                             <p>تومان</p>

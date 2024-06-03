@@ -21,7 +21,7 @@ const DashboardDetailsSection = async () => {
   const { orders, tickets, requests, orderCount, ticketCount, requestCount } = result
 
   return (
-    <div>
+    <div className="pb-2">
       <div className='h-12 flex items-center text-sm bg-blue-light rounded-xl flex-center text-gray-100 px-4'>
         <div className='flex-1 flex items-center justify-start gap-x-1'>
           <span className='w-2 h-2 rounded-full bg-green-500 flex'></span>

@@ -26,11 +26,11 @@ const DepositWalletSection = () => {
         <div className='mt-4'>
             <form action="" onSubmit={handleSubmitForm}>
                 <div className='flex items-center gap-x-2'>
-                    <div className='bg-gray-900 flex-1 text-sm rounded-xl flex items-center px-2 h-10 gap-x-1'>
+                    <div className='bg-gray-900 flex-1 text-sm rounded-xl flex items-center px-2 border border-gray-800 gap-x-1'>
                         <span className="rounded">
                             <AttachMoneyRounded className="text-gray-400" />
                         </span>
-                        <input value={Number(price)} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder='مبلغ واریزی شما' className={`font-dana-bold bg-gray-900 text-gray-300 border-none outline-none px-0.5 w-full`} />
+                        <input value={Number(price)} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder='مبلغ واریزی شما' className={`h-12 font-dana-bold bg-gray-900 text-gray-300 border-none outline-none px-0.5 w-full`} />
 
                     </div>
                     <button className="bg-green-500 h-10 px-4 text-sm rounded-xl text-gray-200">شارژ کیف پول</button>

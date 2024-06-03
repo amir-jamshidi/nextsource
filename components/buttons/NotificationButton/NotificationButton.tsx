@@ -22,20 +22,20 @@ const NotificationButton = async () => {
                         {notifications.length > 0 ? (
                             <>
                                 {notifications.map(notif => (
-                                    <div className='bg-blue-max p-2 rounded-xl'>
+                                    <div key={notif._id} className='bg-blue-max p-2 rounded-xl'>
                                         <div className='flex justify-between items-center'>
-                                            <p className='text-gray-200 text-sm'>{notif.title}</p>
+                                            <p className='text-gray-200 text-xs md:text-sm'>{notif.title}</p>
                                             <span className='flex-1 h-px bg-gray-700 mx-1 flex'></span>
-                                            <p className='text-gray-300 text-sm'>{notif.createdAt?.toLocaleTimeString('fa-IR')}</p>
+                                            <p className='text-gray-300 text-xs md:text-sm'>{notif.createdAt?.toLocaleTimeString('fa-IR')}</p>
                                         </div>
                                         <div className='mt-1.5'>
                                             <p className='text-sm text-gray-300'>{notif.body}</p>
                                         </div>
                                         <div className='text-sm flex items-center gap-x-1.5 mt-1.5 justify-between'>
                                             <div>
-                                                <p className='text-sm text-gray-300'>{notif.createdAt?.toLocaleDateString('fa-IR')}</p>
+                                                <p className='text-xs md:text-sm text-gray-300'>{notif.createdAt?.toLocaleDateString('fa-IR')}</p>
                                             </div>
-                                            <div className='flex gap-x-2'>
+                                            <div className='flex gap-x-2 text-xs md:text-sm'>
                                                 {notif.href && (<Link className='text-green-500' href={`${notif.href}`}>دیدن</Link>)}
                                                 <SeeNotificationButton notificationID={JSON.parse(JSON.stringify(notif._id))} />
                                             </div>
