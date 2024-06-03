@@ -22,16 +22,19 @@ const InsertTicketSection = () => {
     const {
         handleSubmit,
         register,
-        formState: { errors }
+        formState: { errors, isSubmitting },
+        reset
     } = useForm({
         resolver: yupResolver(TicketSchema)
     })
+
 
     const handleSubmitTicket = async ({ body, sectionID, orderID }: { body: string, sectionID: string, orderID: string }) => {
         try {
             const res = await addNewTicket(body, sectionID, orderID)
             if (!res.state) return toast.error(res.message);
             toast.success(res.message);
+            reset({ sectionID: '-1', body: '', orderID: '-1' })
             router.push('/p-user/tickets');
         } catch (error) {
             throw new Error('خطای ناشناخته')
@@ -80,7 +83,7 @@ const InsertTicketSection = () => {
                 <div className="mt-1 bg-gray-900 mb-1 border border-gray-800 rounded-xl">
                     <textarea {...register('body')} placeholder="متن تیکت شما ..." className="min-h-44 max-h-52 w-full bg-gray-900 rounded-xl text-sm outline-none border-none text-gray-200 p-3" />
                 </div>
-                <button className="bg-blue w-full rounded-xl py-2.5 text-gray-200">ارسال تیکت</button>
+                <input disabled={isSubmitting} type="submit" className={`h-12 w-full bg-blue mt-1 rounded-xl ${isSubmitting ? 'text-gray-500' : 'text-gray-200'} cursor-pointer transition-colors`} value={isSubmitting ? 'لطفا صبر کن ...' : 'ارسال تیکت'} />
             </form>
         </div>
     )

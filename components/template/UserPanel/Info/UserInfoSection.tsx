@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 
 const UserInfoSection = ({ user }: { user: IUser }) => {
 
+  const [isLoading, setIsLoading] = useState(false);
   const [fullname, setFullname] = useState(() => user.fullname);
   const [email, setEmail] = useState(() => user.email);
   const [phone, setPhone] = useState(() => user.phone);
@@ -22,12 +23,15 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
       if (email.trim().length < 8 || !email.includes('@')) return toast.error('لطفا ایمیل رو به درستی وارد کنید')
       if (bio.trim().length < 16) return toast.error('بیوگرافی شما حداقل باید 16 کاراکتر باشه')
 
+      setIsLoading(true)
       const res = await changeInfos(fullname, email, bio);
       if (!res.state) return toast.error(res.message);
       toast.success(res.message);
       router.refresh();
     } catch (error) {
       throw new Error('خطای ناشناخته')
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -56,7 +60,7 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
         <div className='w-full mt-1 rounded-2xl border bg-gray-900 border-gray-800'>
           <textarea onChange={(e) => setBio(e.target.value)} value={bio} placeholder='بیوگرافی شما' className=' bg-gray-900 border-gray-100 rounded-2xl p-3 border-none outline-none text-gray-200 text-sm min-h-44 max-h-52 w-full'></textarea>
         </div>
-        <input type="submit" className='h-12 w-full bg-blue mt-1 rounded-xl text-green-500 cursor-pointer' value='ثبت تغییــرات' />
+        <input disabled={isLoading} type="submit" className={`h-12 w-full bg-blue mt-1 rounded-xl ${isLoading ? 'text-gray-500' : 'text-gray-200'} cursor-pointer transition-colors`} value={isLoading ? 'لطفا صبر کن ...' : 'ثبت تغییــرات'} />
       </form>
     </div>
   )

@@ -15,7 +15,8 @@ const InsertRequestSection = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitting },
+        reset,
         watch
     } = useForm({ resolver: yupResolver(RequestSchema) })
 
@@ -24,6 +25,7 @@ const InsertRequestSection = () => {
             const res = await addNewRequest(values);
             if (!res.state) return toast.error(res.message);
             toast.success(res.message);
+            reset({ title: '', price: '', caption: '' })
             router.push('/p-user/requests');
         } catch (error) {
             throw new Error('خطای ناشناخته')
@@ -60,7 +62,7 @@ const InsertRequestSection = () => {
                 <div className="mt-1 bg-gray-900 mb-1 border border-gray-800 rounded-xl">
                     <textarea {...register('caption')} placeholder="توضیحات کامل سورس مدنظر ..." className="min-h-44 max-h-52 w-full bg-gray-900 rounded-xl text-sm outline-none border-none text-gray-200 p-3" />
                 </div>
-                <button className="bg-blue w-full rounded-xl py-2.5 text-gray-200">ارسال درخواست</button>
+                <input disabled={isSubmitting} type="submit" className={`h-12 w-full bg-blue mt-1 rounded-xl ${isSubmitting ? 'text-gray-500' : 'text-gray-200'} cursor-pointer transition-colors`} value={isSubmitting ? 'لطفا صبر کن ...' : 'ارسال درخواست'} />
             </form>
         </div>
     )
