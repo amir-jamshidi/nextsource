@@ -27,6 +27,7 @@ const InsertRequestSection = () => {
             toast.success(res.message);
             reset({ title: '', price: '', caption: '' })
             router.push('/p-user/requests');
+            router.refresh()
         } catch (error) {
             throw new Error('خطای ناشناخته')
         }

@@ -3,6 +3,7 @@ import connectToDB from "@/database/db";
 import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin";
 import accountModel from "@/models/account.module";
+import notificationModel from "@/models/notification.module";
 import { IAccount } from "@/types/Account";
 
 export const addNewAccount = async ({ cardNumber, cardBank, cardShaba, cardName }: { cardNumber: string, cardBank: string, cardShaba: string, cardName: string }) => {
@@ -16,6 +17,11 @@ export const addNewAccount = async ({ cardNumber, cardBank, cardShaba, cardName 
             cardShaba,
             cardName,
             isActive: true
+        })
+        await notificationModel.create({
+            userID: isLoginUser._id,
+            title: 'کارت بانکی',
+            body: 'کارت بانکی جدید اضافه شد'
         })
         return MessageCreator(true, 'کارت بانکی اضافه شد')
     } catch (error) {

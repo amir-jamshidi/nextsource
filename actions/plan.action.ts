@@ -4,10 +4,12 @@ import connectToDB from "@/database/db"
 import { MessageCreator } from "@/libs/MessageCreator";
 import isHavPlan from "@/middlewares/isHavPlan";
 import isLogin from "@/middlewares/isLogin";
+import notificationModel from "@/models/notification.module";
 import orderPlanModel from "@/models/orderPlan.module";
 import planModel from "@/models/plan.module";
 import userModel from "@/models/user.module";
 import { IPlan } from "@/types/plan";
+import { revalidatePath } from "next/cache";
 
 export const getPlans = async () => {
     try {
@@ -63,7 +65,12 @@ export const newOrderPlan = async (action: 'ONLINE' | 'WALLET', planID: string) 
             action,
             price: plan.price
         })
-
+        await notificationModel.create({
+            userID: isLoginUser._id,
+            title: 'خرید پلــن',
+            body: 'پلن ویژه شما فعال شد'
+        })
+        revalidatePath('/p-user/orders');
         return MessageCreator(true, 'پرداخت موفق')
 
     } catch (error) {

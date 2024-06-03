@@ -21,6 +21,7 @@ import { IVerify } from "@/types/verify";
 import { cookies } from "next/headers";
 import { MessageCreator } from '@/libs/MessageCreator';
 import productModel from "@/models/product.module";
+import notificationModel from "@/models/notification.module";
 
 
 export const LoginUser = async (phone: string) => {
@@ -148,6 +149,11 @@ export const changeInfos = async (fullname: string, email: string, bio: string) 
             bio,
             fullname,
             email
+        })
+        await notificationModel.create({
+            userID: isLoginUser._id,
+            title: 'تغییر مشخصات',
+            body: 'مشخصات شما با موفقیت تغییر کرد'
         })
         return MessageCreator(true, 'اطلاعات حساب شما ویرایش شد')
     } catch (error) {

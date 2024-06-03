@@ -2,6 +2,7 @@
 import connectToDB from "@/database/db"
 import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin";
+import notificationModel from "@/models/notification.module";
 import orderModel from "@/models/order.module";
 import sectionModel from "@/models/section.module";
 import ticketModel from "@/models/ticket.module";
@@ -49,6 +50,11 @@ export const addNewTicket = async (body: string, sectionID: string, order: strin
             sectionID,
             userID: isLoginUser._id,
             orderID
+        });
+        await notificationModel.create({
+            userID: isLoginUser._id,
+            title: 'ارسال تیکت',
+            body: 'تیکت شما ارسال شد و به زودی پاسخ میدیم'
         })
         return MessageCreator(true, 'تیکت شما ارسال شد');
     } catch (error) {

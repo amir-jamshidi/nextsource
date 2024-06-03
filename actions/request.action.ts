@@ -2,6 +2,7 @@
 import connectToDB from "@/database/db";
 import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin"
+import notificationModel from "@/models/notification.module";
 import requestModel from "@/models/request.module";
 import { IRequest } from "@/types/request";
 import { Schema, Types } from "mongoose";
@@ -55,7 +56,11 @@ export const addNewRequest = async (values: { caption: string, price: string, ti
             caption: values.caption,
             price: Number(values.price)
         })
-
+        await notificationModel.create({
+            userID: isLoginUser._id,
+            title: 'ارسال درخواست',
+            body: 'درخواست سورس شما ثبت شد و به زودی پاسخ میدیم'
+        })
         return MessageCreator(true, 'درخواست شما ثبت شد')
     } catch (error) {
         throw new Error('خطای ناشناخته')

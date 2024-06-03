@@ -36,6 +36,7 @@ const InsertTicketSection = () => {
             toast.success(res.message);
             reset({ sectionID: '-1', body: '', orderID: '-1' })
             router.push('/p-user/tickets');
+            router.refresh();
         } catch (error) {
             throw new Error('خطای ناشناخته')
         }
