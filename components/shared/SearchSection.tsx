@@ -25,7 +25,7 @@ const SearchSection = () => {
             router.push(newUrl, { scroll: false });
         }, 600);
         return () => clearTimeout(timer);
-    }, [search, searchQuery])
+    }, [search, searchQuery, searchParams, router])
 
 
     const handleClearInput = () => {
@@ -34,11 +34,11 @@ const SearchSection = () => {
 
     return (
         <div className="h-20 bg-blue rounded-xl mt-8 flex-center">
-            <div className="bg-gray-800/50 rounded-xl w-2/3 flex items-center">
+            <div className="bg-gray-900 border border-gray-800 rounded-xl w-4/5 md:w-2/3 flex items-center">
                 <span className="w-10 flex-center">
                     <SearchRounded className="text-gray-400" />
                 </span>
-                <input className="py-3 text-gray-300 rounded-xl bg-transparent border-none outline-none flex-1 pl-2.5" placeholder="دنبال چی هستی ؟ برام بنویس" onChange={(e) => setSearch(e.target.value)} value={search}></input>
+                <input className="py-3 text-sm md:text-lg text-gray-300 rounded-xl bg-transparent border-none outline-none flex-1 pl-2.5" placeholder="دنبال چی هستی ؟ برام بنویس" onChange={(e) => setSearch(e.target.value)} value={search}></input>
                 <span className="w-10 flex-center cursor-pointer" onClick={handleClearInput}>
                     <CloseRounded className="text-gray-400" />
                 </span>

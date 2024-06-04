@@ -23,7 +23,7 @@ const ShowMoreButton = ({ productCount }: ShowMoreButtonProps) => {
             value: page ? String(page) : null
         });
         router.push(newUrl, { scroll: false });
-    }, [page])
+    }, [page, router, searchParams])
 
     useEffect(() => { setPage(pageParam) }, [pageParam])
 
@@ -37,8 +37,8 @@ const ShowMoreButton = ({ productCount }: ShowMoreButtonProps) => {
         <>
             {(pageP * PRODUCTS_LIMIT) < productCount && (
                 <div className="flex justify-center mt-6">
-                    <button onClick={handlePageNavigate} className="bg-blue rounded-full px-3 py-2 text-gray-300 mt-5">مشاهده بیشتر</button>
-                </div>
+                    <button onClick={handlePageNavigate} className="text-sm bg-blue rounded-full px-5 py-2.5 text-gray-300 mt-5">مشاهده بیشتر</button>
+                </div> 
             )}
         </>
     )

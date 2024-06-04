@@ -27,7 +27,7 @@ const Search = async ({ searchParams: { q = '', filter = '', page = 1 } }: Searc
             </div>
             {products.length > 0 ? (<SourceContainer>
                 {products.map(product => (
-                    <SourceItem product={product} />
+                    <SourceItem key={product._id} product={product} />
                 ))}
             </SourceContainer>) : (
                 <NoItemSection />
