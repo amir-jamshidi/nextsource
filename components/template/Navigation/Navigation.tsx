@@ -8,6 +8,7 @@ import { ArrowDropDown, ArrowLeftRounded, DarkModeRounded, SearchRounded } from 
 import { useState } from "react";
 import Link from "next/link";
 import { IProduct } from "@/types/product";
+import NavigationSearchSection from "./NavigationSearchSection";
 
 const Navigation = () => {
 
@@ -23,16 +24,11 @@ const Navigation = () => {
                     <CloseSidebarButton />
                 </div>
                 <div className="mx-4 mt-6">
-                    <div className="px-2 bg-gray-900 rounded-xl flex items-center gap-x-1.5">
-                        <span className="">
-                            <SearchRounded className="text-gray-300" />
-                        </span>
-                        <input type="text" className="py-2 w-full rounded-xl bg-gray-900 border-none outline-none text-gray-300" autoComplete="off" placeholder="دنبال چی میگردی ؟" />
-                    </div>
+                    <NavigationSearchSection />
                 </div>
                 <div className="flex flex-col my-4 px-3 mx-2 divide-y divide-gray-700/40">
                     {menus.map((menu, i) => (
-                        <div className="flex flex-col">
+                        <div key={menu._id} className="flex flex-col">
                             <div className="flex justify-between items-center">
                                 <Link href={menu.href}>
                                     <p key={String(menu._id)} className="text-700-300  px-3 py-2">{menu.title}</p>
@@ -47,7 +43,7 @@ const Navigation = () => {
 
                                 <div className={`${i === isOpen ? '' : 'invisible h-0'} flex flex-col px-2 gap-y-1 pb-4`}>
                                     {menu.products.map((product: IProduct) => (
-                                        <Link href={product.href} className="text-sm text-gray-300">
+                                        <Link key={product._id} href={product.href} className="text-sm text-gray-300">
                                             <span>
                                                 <ArrowLeftRounded />
                                             </span>
