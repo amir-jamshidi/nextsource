@@ -31,7 +31,7 @@ const MobileHeader = async () => {
                                     <VpnKeyOutlined className='text-gray-300' />
                                 </span>
                             </Link>) : (
-                            <Link href={'/panel'} className='flex'>
+                            <Link href={'/p-user/dashboard'} className='flex'>
                                 <span className='flex flex-center h-10 w-10 bg-gray-700 bg-blue border border-gray-300/10  rounded-full p-2'>
                                     <PersonRounded className='text-gray-300' />
                                 </span>

@@ -28,7 +28,7 @@ const Category = async ({ params: { categoryHref }, searchParams: { filter, page
                 <>
                     <SourceContainer>
                         {products.map((product: IProduct) => (
-                            <SourceItem product={product} />
+                            <SourceItem key={product._id} product={product} />
                         ))}
                     </SourceContainer>
                     <ShowMoreButton productCount={productsCount} />

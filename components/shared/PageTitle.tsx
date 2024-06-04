@@ -8,9 +8,9 @@ interface PageTitleProps {
 const PageTitle = ({ title, titleEn }: PageTitleProps) => {
     return (
         <div className="pt-8 flex flex-center gap-y-1 flex-col">
-            <h1 className="text-gray-200 text-2xl">{title}</h1>
+            <h1 className="text-gray-200 text-lg lg:text-2xl">{title}</h1>
             {titleEn && (
-                <h2 className="text-gray-400 text-lg">{titleEn}</h2>
+                <h2 className="text-gray-400 text-base lg:text-lg">{titleEn}</h2>
             )}
         </div>
     )
