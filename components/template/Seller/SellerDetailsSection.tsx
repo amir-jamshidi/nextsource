@@ -13,7 +13,7 @@ const SellerDetailsSection = ({ seller }: SellerDetailsSectionProps) => {
 
     return (
         <div>
-            <div className='bg-blue-light pb-4 px-2 rounded-xl flex flex-col  items-center w-80'>
+            <div className='bg-blue-light pb-4 px-2 rounded-xl flex flex-col  items-center flex-1 lg:w-80'>
                 <div className='h-56 w-full relative shrink-0'>
                     <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-2xl -mt-6" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>

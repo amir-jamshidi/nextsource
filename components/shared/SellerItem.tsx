@@ -14,7 +14,7 @@ const SellerItem = ({ seller }: SellerItemProps) => {
 
     return (
         <Link href={`/seller/${seller.href}`}>
-            <div className="h-44 bg-blue-light rounded-xl flex-center flex-col">
+            <div className="h-44 bg-blue-light rounded-xl flex-center flex-col text-sm">
                 <div className="w-16 h-16 relative">
                     <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-full" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>

@@ -4,7 +4,6 @@ import FilterSection from "@/components/shared/FilterSection";
 import NoItemSection from "@/components/shared/NoItemSection";
 import PageTitle from "@/components/shared/PageTitle";
 import PopularTagSection from "@/components/shared/PopularTagSection";
-import SearchSection from "@/components/shared/SearchSection";
 import SourceContainer from "@/components/shared/SourceContainer";
 import SourceItem from "@/components/shared/SourceItem";
 import { IProduct } from "@/types/product";
