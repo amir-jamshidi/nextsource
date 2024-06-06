@@ -40,8 +40,6 @@ const SellerDetailsSection = ({ seller }: SellerDetailsSectionProps) => {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     )
