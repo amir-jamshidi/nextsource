@@ -3,18 +3,18 @@ export const socailMediaData = [
         id: 1,
         title: 'یوتیوب',
         src: './assets/youtube.svg',
-        href: '/youtube',
+        href: 'http://youtube.com/AmirDeveloper',
     },
     {
         id: 2,
         title: 'تلگرام',
         src: './assets/telegram.svg',
-        href: '/telegram',
+        href: 'http://telegram.me/DevAmir_ir',
     },
     {
         id: 3,
         title: 'ایکس',
         src: './assets/x.svg',
-        href: '/x',
+        href: 'http://www.x.com/devAmir_ir',
     }
 ]

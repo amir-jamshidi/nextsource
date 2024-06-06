@@ -45,7 +45,7 @@ const FilterSection = ({ productCount, margin = true }: FilterSectionProps) => {
                     <button key={fil.id} onClick={() => setFilter(prev => prev === fil.value ? '' : fil.value)} className={`${(filter === fil.value) ? 'text-amber-500' : 'text-gray-400'} text-sm  bg-blue-light w-[76px] md:w-24 py-1.5 md:py-1 rounded-xl`}>{fil.title}</button>
                 ))}
             </div>
-            <div className="w-32"></div>
+            <div className="hidden md:flex w-32"></div>
         </div>
     )
 }
