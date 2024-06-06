@@ -1,12 +1,16 @@
 'use client'
 
+
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules'
 import { useQuery } from 'react-query';
 import { getRelatedProducts } from '@/actions/product.action';
 import SectionTitle from '@/components/shared/SectionTitle'
 import SourceItem from '@/components/shared/SourceItem';
+
 import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+
 
 const ProductRelatedSection = ({ productID }: { productID: string }) => {
 
@@ -36,11 +40,14 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
                         spaceBetween: 8
                     }
                 }}
-                spaceBetween={8}
-                pagination={{
-                    clickable: true,
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false
                 }}
+                spaceBetween={8}
+                modules={[Autoplay]}
                 className="mySwiper"
+                loop={true}
             >
                 {products?.map((product) => (
                     <SwiperSlide key={product._id} className='overflow-auto'>

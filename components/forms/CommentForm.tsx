@@ -5,7 +5,6 @@ import { Rating } from '@mui/material'
 import toast from 'react-hot-toast'
 import { addNewComment } from '@/actions/comment.action'
 import { IUser } from '@/types/user'
-import { useRouter } from 'next/navigation'
 
 interface CommentFormProps {
     productID: string,
@@ -16,12 +15,14 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
 
     const [body, setBody] = useState('')
     const [rate, setRate] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmitForm = async (e: React.FormEvent) => {
         e.preventDefault();
         if (body.trim().length < 3) return toast.error('متن نظر حداقل سه کاراکتر باید باشه')
         if (rate === 0 || rate > 5) return toast.error('لطفا امتیاز به سورس رو مشخص کن')
         try {
+            setIsLoading(true)
             const result = await addNewComment(body, rate, productID)
             if (!result.state) return toast.error(result.message);
             toast.success(result.message);
@@ -29,6 +30,8 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
             setRate(0);
         } catch (error) {
             toast.error('خطای ناشناخته')
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -41,7 +44,7 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
                     <div dir='ltr' className='w-full bg-gray-800/30 flex-center py-3 rounded-xl'>
                         <Rating name="text-feedback" value={rate} onChange={(e, value) => setRate(Number(value))} />
                     </div>
-                    <input disabled={!isLoginUser} type="submit" value={!isLoginUser ? 'لطفا وارد حساب شو' : 'فرستادن'} className={`${!isLoginUser ? 'cursor-not-allowed' : 'cursor-pointer'} w-full py-3 bg-blue rounded-xl text-gray-300`} />
+                    <input disabled={!isLoginUser || isLoading} type="submit" value={!isLoginUser ? 'لطفا وارد حساب شو' : 'فرستادن'} className={`disabled:cursor-not-allowed cursor-pointer w-full py-3 bg-blue rounded-xl text-gray-300`} />
                 </form>
             </div>
         </section>

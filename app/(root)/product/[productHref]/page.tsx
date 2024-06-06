@@ -30,13 +30,13 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
 
     const category = product.categoryID as ICategory
     const addresses = [{ title: category.title, href: `/category/${category.href}` }, { title: product.title, href: `/product/${product.href}` }]
-    
+
 
     return (
         <section>
             <div className='container px-3 md:px-6'>
                 <BreadCrump addresses={addresses} />
-                <ProductDetailsSection commentsCount={commentsCount} isHasToFav={isHasToFav} product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
+                <ProductDetailsSection isLoginUser={JSON.parse(JSON.stringify(isLoginUser))} commentsCount={commentsCount} isHasToFav={isHasToFav} product={product} isHavPlanUser={isHavPlanUser} isAccessToSourceUser={accessToSource} />
                 <ProductDetailsCarts commentsCount={commentsCount} product={product} />
                 {(isHavPlanUser && product.isPlan) || accessToSource && (<ProductLinksSection product={product} />)}
                 <ProductMoreDetailsSection product={product} />
