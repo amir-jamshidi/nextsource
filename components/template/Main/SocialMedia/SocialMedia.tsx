@@ -2,7 +2,7 @@ import SectionTitle from "@/components/shared/SectionTitle"
 import SocialMediaItem from "@/components/shared/SocialMediaItem"
 import { socailMediaData } from "@/constants/socialMediaData"
 
-const SocialMedia = () => {
+const SocialMedia = () => { 
     return (
         <section className="mt-16">
             <SectionTitle isShowMore={false} title="شبکه های اجتماعی" />
