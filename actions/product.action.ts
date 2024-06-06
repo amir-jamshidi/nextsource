@@ -9,6 +9,7 @@ import { IProduct } from "@/types/product";
 import mongoose from "mongoose";
 import { ICategory } from './../types/category.d';
 import { PRODUCTS_LIMIT } from "@/constants/productsLimitCount";
+import sellerModel from "@/models/seller.module";
 
 /* Main Page */
 
@@ -72,7 +73,7 @@ export const getPopularBackProducts = async () => {
 export const getProductByHref = async (href: string) => {
     try {
         await connectToDB();
-        const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).populate({ path: 'creatorID', model: userModel, select: 'fullname' }).lean() as IProduct
+        const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).populate({ path: 'creatorID', model: userModel, select: 'fullname' }).populate({ path: 'sellerID', model: sellerModel }).lean() as IProduct
         if (!product) return false;
         return product
     } catch (error) {

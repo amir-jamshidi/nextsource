@@ -77,6 +77,11 @@ const productSchema = new Schema<IProduct>({
     cashBack: {
         type: Number,
         required: true
+    },
+    sellerID: {
+        type: Schema.Types.ObjectId,
+        ref: 'Seller',
+        required: true
     }
 }, { timestamps: true })
 

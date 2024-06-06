@@ -5,6 +5,7 @@ import isLogin from "@/middlewares/isLogin";
 import notificationModel from "@/models/notification.module";
 import orderModel from "@/models/order.module"
 import productModel from "@/models/product.module";
+import sellerModel from "@/models/seller.module";
 import userModel from "@/models/user.module";
 import { IOrder } from "@/types/order";
 import { IProduct } from "@/types/product";
@@ -73,6 +74,13 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
             title: 'خرید سورس',
             body: 'سفارش شما با موفقیت ثبت شد'
         });
+
+        //Set Score For Seller
+
+        await sellerModel.findOneAndUpdate({ _id: product.sellerID }, {
+            $inc: { score: price > 0 ? +Math.floor(price / 1000) : +0, sellCount: +1 }
+        })
+
 
         //Response
         return { state: true, message: 'پرداخت موفق' }

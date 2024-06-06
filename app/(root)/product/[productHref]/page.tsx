@@ -30,6 +30,7 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
 
     const category = product.categoryID as ICategory
     const addresses = [{ title: category.title, href: `/category/${category.href}` }, { title: product.title, href: `/product/${product.href}` }]
+    
 
     return (
         <section>

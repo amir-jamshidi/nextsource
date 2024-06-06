@@ -1,6 +1,7 @@
 import { Document, Types } from "mongoose";
 import { ICategory } from "./category";
 import { IUser } from "./user";
+import { ISeller } from "./seller";
 
 export interface IProduct extends Document {
     title: string,
@@ -20,7 +21,8 @@ export interface IProduct extends Document {
     preView: string,
     tags: [],
     rate: number,
-    cashBack: number
+    cashBack: number,
+    sellerID: ISeller | Types.ObjectId
     readonly createdAt?: Date
     readonly updatedAt?: Date
 }
