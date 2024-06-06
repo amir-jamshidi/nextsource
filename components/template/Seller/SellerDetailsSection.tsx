@@ -2,7 +2,6 @@ import { ISeller } from '@/types/seller';
 import Image from 'next/image';
 import { IUser } from '@/types/user';
 
-
 interface SellerDetailsSectionProps {
     seller: ISeller
 }
