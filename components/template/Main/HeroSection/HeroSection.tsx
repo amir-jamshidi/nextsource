@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import RequestButton from "./RequestButton"
+import RequestButton from "../../../shared/RequestButton"
 import isLogin from "@/middlewares/isLogin"
 
 const HeroSection = async () => {
@@ -15,7 +15,7 @@ const HeroSection = async () => {
                     <p className="text-base lg:text-lg font-morabba-bold text-700-300 text-center">نکست سورس منبع سورس کد در هر زمینه ای هستش ، کافیه هرچیزی رو که میخوای فقط سرچ کنی که پیداش کنی ولذتشو ببری ، به همین راحتی</p>
                     <div className="flex mt-4 gap-x-1">
                         <Link href={`/about-us`} className="bg-button px-4 py-2.5 rounded-full text-gray-200 text-sm">درباره ما</Link>
-                        <RequestButton isLoginUser={isLoginUser} />
+                        <RequestButton title="درخواست سورس" href="/p-user/requests" isLoginUser={isLoginUser} />
                     </div>
                 </div>
                 <div className="order-1 md:order-2">
