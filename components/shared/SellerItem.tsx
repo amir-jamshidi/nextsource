@@ -19,14 +19,16 @@ const SellerItem = ({ seller }: SellerItemProps) => {
                     <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-full" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>
                 <p className="text-gray-200 mt-3">{user.fullname}</p>
-                <div className="flex gap-x-1 mt-1">
-                    <p className="font-dana-bold text-amber-500">{seller.score}</p>
-                    <p className="text-amber-500">امتیاز</p>
+                <div className='flex justify-between bg-blue-light rounded-xl w-3/5 py-2 mt-3'>
+                    <div className="flex w-full justify-center gap-x-1">
+                        <p className="font-dana-bold text-amber-500">{seller.score}</p>
+                        <p className="text-amber-500">امتیاز</p>
+                    </div>
+                    <p className="w-full flex justify-center border-r border-r-gray-800  text-green-500">
+                        {user.role === 'ADMIN' && 'مدیر'}
+                        {user.role === 'SELLER' && 'فروشنده'}
+                    </p>
                 </div>
-                <p className="bg-gray-800/30 px-3 rounded-lg mt-1 text-green-500">
-                    {user.role === 'ADMIN' && 'مدیر'}
-                    {user.role === 'SELLER' && 'فروشنده'}
-                </p>
             </div>
         </Link>
     )
