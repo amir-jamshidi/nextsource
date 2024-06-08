@@ -42,14 +42,14 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money 
                     </div>
                 </div>
                 {!product.isFree && (
-                    <div className='flex justify-between mt-2 bg-gray-800/30 py-2 px-2.5 rounded-xl items-center h-11'>
+                    <div className='flex relative justify-between mt-2 bg-gray-800/30 py-2 px-2.5 rounded-xl items-center h-11'>
                         <p className='text-gray-300'>کد تخفیف داری ؟</p>
-                        <div>
-                            <form action="" className='flex gap-x-1'>
-                                <button className='w-7 h-7 bg-blue rounded'>
+                        <div className=''>
+                            <form action="" className='flex items-center gap-x-1'>
+                                <button className='w-7 h-7 bg-blue rounded-full'>
                                     <CheckRounded className='text-gray-100' />
                                 </button>
-                                <input type="text" className='bg-gray-800 rounded-md px-2 text-gray-300 text-sm text-center border-none outline-none' placeholder='کد تخفیف رو بزن' />
+                                <input type="text" className='bg-gray-900 border border-gray-800 rounded-2xl px-2 text-gray-300 text-sm text-center outline-none py-1.5' placeholder='کد تخفیف رو بزن' />
                             </form>
                         </div>
                     </div>

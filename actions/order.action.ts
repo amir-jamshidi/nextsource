@@ -11,6 +11,7 @@ import { IOrder } from "@/types/order";
 import { IProduct } from "@/types/product";
 import { IUser } from "@/types/user";
 import mongoose from "mongoose";
+import { revalidatePath } from "next/cache";
 
 export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') => {
     try {
@@ -81,6 +82,8 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
             $inc: { score: price > 0 ? +Math.floor(price / 1000) : +0, sellCount: +1 }
         })
 
+        //Revalidate Page
+        revalidatePath('/product/[productHref]')
 
         //Response
         return { state: true, message: 'پرداخت موفق' }
