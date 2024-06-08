@@ -42,7 +42,7 @@ const LoginForm = ({ handleChangeState }: LoginFormProps) => {
     }
 
     return (
-        <div className='w-96 bg-blue px-4 py-6 rounded-xl flex-center flex-col'>
+        <div className='w-96 bg-blue px-4 py-6 rounded-2xl flex-center flex-col'>
             <h1 className='text-800-200 font-morabba text-xl mb-2'>ورود یا ثبت نام</h1>
             <div>
                 {Object.entries(errors).map(error => (
@@ -50,7 +50,7 @@ const LoginForm = ({ handleChangeState }: LoginFormProps) => {
                 ))}
             </div>
             <form className='w-full mt-3 flex flex-col gap-1' onSubmit={handleSubmit(handleLoginForm)}>
-                <div className='bg-gray-900 rounded-xl px-2 flex items-center gap-x-1.5'>
+                <div className='bg-gray-900 border border-gray-800 rounded-xl px-2 flex items-center gap-x-1.5'>
                     <span>
                         <PhoneRounded className='text-700-300' />
                     </span>

@@ -34,7 +34,6 @@ const Search = async ({ searchParams: { q = '', filter = '', page = 1 } }: Searc
             )}
 
             <ShowMoreButton productCount={productsCount} />
-
         </div>
     )
 }

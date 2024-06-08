@@ -20,9 +20,9 @@ const SellerDetailsSection = ({ seller }: SellerDetailsSectionProps) => {
                     <h3 className='text-gray-200'>{user.fullname}</h3>
                     <h3 className='text-gray-400 text-justify text-sm'>{user.bio}</h3>
                 </div>
-                <div className='w-full flex flex-col gap-y-1 mt-4 px-1'>
+                <div className='w-full grid grid-cols-2 gap-1 mt-4 px-1'>
                     {user.technologies.map((tec, i) => (
-                        <p className='w-full bg-blue-light px-3 font-morabba-light py-1.5 rounded-lg text-gray-300 text-sm text-center' key={i}>{tec}</p>
+                        <p className='bg-blue-light px-3 font-morabba-light py-1.5 rounded-lg text-gray-300 text-sm text-center' key={i}>{tec}</p>
                     ))}
                 </div>
                 <div className='w-full px-1.5'>

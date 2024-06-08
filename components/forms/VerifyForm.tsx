@@ -41,7 +41,7 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
   }
 
   return (
-    <div className='w-96 bg-blue px-4 py-6 rounded-xl flex-center flex-col'>
+    <div className='w-96 bg-blue px-4 py-6 rounded-2xl flex-center flex-col'>
       <h1 className='text-800-200 font-morabba text-xl mb-2'>تایید شماره همراه</h1>
       <div>
         {Object.entries(errors).map(error => (
@@ -49,7 +49,7 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
         ))}
       </div>
       <form className='w-full mt-3 flex flex-col gap-1' onSubmit={handleSubmit(handleVerifyForm)}>
-        <div className='bg-gray-900 rounded-xl px-2 flex items-center gap-x-1.5'>
+        <div className='bg-gray-900 border border-gray-800 rounded-xl px-2 flex items-center gap-x-1.5'>
           <span>
             <FingerprintRounded className='text-700-300' />
           </span>
