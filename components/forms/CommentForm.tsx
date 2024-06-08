@@ -5,6 +5,7 @@ import { Rating } from '@mui/material'
 import toast from 'react-hot-toast'
 import { addNewComment } from '@/actions/comment.action'
 import { IUser } from '@/types/user'
+import { StarRounded } from '@mui/icons-material'
 
 interface CommentFormProps {
     productID: string,
@@ -40,9 +41,11 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
             <ProductSectionTitle title='ارسال نظر' />
             <div className='w-full mt-4'>
                 <form onSubmit={handleSubmitForm} className='flex flex-col gap-1'>
-                    <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder='نظرتو اینجا بنویس ...' name="" id="" className='w-full outline-none border-none rounded-xl bg-gray-800/30 px-2 py-2 text-gray-300 min-h-40 max-h-44' />
-                    <div dir='ltr' className='w-full bg-gray-800/30 flex-center py-3 rounded-xl'>
-                        <Rating name="text-feedback" value={rate} onChange={(e, value) => setRate(Number(value))} />
+                    <div className='border rounded-xl border-gray-800 bg-gray-900'>
+                        <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder='نظرتو اینجا بنویس ...' name="" id="" className='w-full outline-none bg-gray-800/30 rounded-xl px-2 py-2 text-gray-300 min-h-40 max-h-44 bg-gray-900' />
+                    </div>
+                    <div dir='ltr' className='w-full bg-gray-900 border border-gray-800 flex-center py-3 rounded-xl'>
+                        <Rating sx={{ border: 'red' }} name="hover-feedback" value={rate} onChange={(e, value) => setRate(Number(value))} emptyIcon={<StarRounded className='text-gray-400' style={{ opacity: 0.55 }} fontSize="inherit" />} />
                     </div>
                     <input disabled={!isLoginUser || isLoading} type="submit" value={!isLoginUser ? 'لطفا وارد حساب شو' : 'فرستادن'} className={`disabled:cursor-not-allowed cursor-pointer w-full py-3 bg-blue rounded-xl text-gray-300`} />
                 </form>

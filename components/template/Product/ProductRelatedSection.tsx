@@ -10,11 +10,12 @@ import SourceItem from '@/components/shared/SourceItem';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import NoItemSection from '@/components/shared/NoItemSection';
 
 
 const ProductRelatedSection = ({ productID }: { productID: string }) => {
 
-    const { data: products } = useQuery(['relatedProduct', productID], () => getRelatedProducts(productID));
+    const { data: products = [] } = useQuery(['relatedProduct', productID], () => getRelatedProducts(productID));
 
     return (
         <div className='w-full mt-6'>
@@ -49,13 +50,26 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
                 className="mySwiper"
                 loop={true}
             >
-                {products?.map((product) => (
-                    <SwiperSlide key={product._id} className='overflow-auto'>
-                        <div className='pt-12'>
-                            <SourceItem product={product} />
+                {products.length > 0 ? (
+                    <>
+                        {products?.map((product) => (
+                            <SwiperSlide key={product._id} className='overflow-auto'>
+                                <div className='pt-12'>
+                                    <SourceItem product={product} />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </>
+                )
+                    :
+                    (
+                        <div className='w-full py-20 md:py-14 px-4 bg-blue-light rounded-2xl mt-6'>
+                            <p className='text-sm text-center text-gray-400'>
+                                سورس مرتبطی به سورس فعلی پیدا نشد
+                            </p>
                         </div>
-                    </SwiperSlide>
-                ))}
+                    )}
+
             </Swiper>
         </div >
     );
