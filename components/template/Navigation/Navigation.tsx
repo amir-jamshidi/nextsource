@@ -30,11 +30,11 @@ const Navigation = () => {
                     {menus.map((menu, i) => (
                         <div key={menu._id} className="flex flex-col">
                             <div className="flex justify-between items-center">
-                                <Link href={menu.href}>
+                                <Link href={menu.href} onClick={() => themeContext?.handleSetIsOpenSidebar(false)}>
                                     <p key={String(menu._id)} className="text-700-300  px-3 py-2">{menu.title}</p>
                                 </Link>
                                 {menu.products.length > 0 && (
-                                    <span className="bg-gray-800/30 rounded-full" onClick={() => setIsOpen(prev => prev === i ? -1 : i)}>
+                                    <span className="bg-gray-900 rounded-full cursor-pointer" onClick={() => setIsOpen(prev => prev === i ? -1 : i)}>
                                         <ArrowDropDown className="text-gray-300" />
                                     </span>
                                 )}
@@ -43,7 +43,7 @@ const Navigation = () => {
 
                                 <div className={`${i === isOpen ? '' : 'invisible h-0'} flex flex-col px-2 gap-y-1 pb-4`}>
                                     {menu.products.map((product: IProduct) => (
-                                        <Link key={product._id} href={product.href} className="text-sm text-gray-300">
+                                        <Link key={product._id} onClick={() => themeContext?.handleSetIsOpenSidebar(false)} href={`/product/${product.href}`} className="text-sm text-gray-300">
                                             <span>
                                                 <ArrowLeftRounded />
                                             </span>

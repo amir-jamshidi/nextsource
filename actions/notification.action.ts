@@ -11,7 +11,7 @@ export const getMyNotifications = async () => {
         await connectToDB();
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false
-        const notifications: INotification[] = await notificationModel.find({ userID: isLoginUser._id, isSeen: false }).sort({ _id: -1 }).lean();
+        const notifications: INotification[] = await notificationModel.find({ userID: isLoginUser._id, isSeen: false }).sort({ _id: -1 }).limit(6).lean();
         return notifications
     } catch (error) {
         throw new Error('خطای ناشناخته')

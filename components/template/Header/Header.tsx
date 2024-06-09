@@ -53,7 +53,7 @@ const Header = async () => {
                                     <div className="group-hover:visible invisible top-0 mt-8 absolute pt-4">
                                         <div className='bg-blue-max flex flex-col text-gray-300 gap-y-1.5 backdrop-blur-2xl w-60 rounded-xl px-3 py-3'>
                                             {menu.products.map((product: IProduct) =>
-                                                <Link key={String(product._id)} href={product.href} className='z-10'>
+                                                <Link key={String(product._id)} href={`/product/${product.href}`} className='z-10'>
                                                     {product.title}
                                                 </Link>
                                             )}

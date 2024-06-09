@@ -15,7 +15,7 @@ const About = () => {
                     <h1 className="text-xl text-gray-200 text-center">نکستــــ ســـورس</h1>
                     <div className="flex flex-col text-gray-300 mt-8 divide-y divide-gray-800 text-sm">
                         <div className="flex items-start gap-x-2 py-2">
-                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1.5 shrink-0"></span>
+                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1 shrink-0"></span>
                             <p className="text-justify">نکست سورس یه بستر رو اماده کرده که شما به هر سورسی که دلتون میخواد دسترسی داشته باشید . نکست سورس این تضمین رو میده که از جدید ترین تکنولوژی ها استفاده میکنه و شما به راحتی متونید روش حساب باز کنید</p>
                         </div>
 
@@ -25,19 +25,25 @@ const About = () => {
                         </div>
 
                         <div className="flex items-start gap-x-2 py-2">
-                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full  shrink-0"></span>
+                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1 shrink-0"></span>
                             <p className="text-justify">اگه فکر میکنی کارت خوبه و توی کارت تخصص داری میتونی از طریق پنل کاربری یه درخواست فروشنده شدن رو بفرستی و سورس کد های خودتو با نظارت بفروشی . بعد از ثبت درخواست ما خیلی زود بهت زنگ میزنیم </p>
                         </div>
 
                         <div className="flex items-start gap-x-2 py-2">
-                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full  shrink-0"></span>
+                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1 shrink-0"></span>
                             <p className="text-justify">اگه سورسی رو تهیه کردید و به هر شکلی مشکل داشت میتونید با پشتیبانی درمیون بزارید و مشکلتون رو بلافاصله حل کنید یا درغیر این صورت میتونید تمام هزینه خودتونو پس بگیرید</p>
                         </div>
 
                         <div className="flex items-start gap-x-2 py-2">
-                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full  shrink-0"></span>
+                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1 shrink-0"></span>
                             <p className="text-justify">توجه داشته باشید این اپلیکیشن فعلا در مرحله تست و آزمایشه و احتمالا باگ هایی داره ، درصورتی که باگی رو دیدید میتونید اونو از طریق تیکت گزارش بدید و مبلغی رو به عنوان هدیه به کیف پولتون واریز میکنیم </p>
                         </div>
+
+                        <div className="flex items-start gap-x-2 py-2">
+                            <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1 shrink-0"></span>
+                            <p className="text-justify">برای ارتباط با ما میتونید سوشال مدیا های مارو دنبال کنید و اگه تخفیفی هم باشه اونجا قرار میگیره یا میتونید از طریق پنل کاربری با ارسال تیکت با ما در ارتباط باشید</p>
+                        </div>
+                   
                     </div>
                 </div>
             </div>
