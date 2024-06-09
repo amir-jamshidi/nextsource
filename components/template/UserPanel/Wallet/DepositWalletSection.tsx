@@ -15,6 +15,8 @@ const DepositWalletSection = () => {
 
     const handleSubmitForm = async (e: React.FormEvent) => {
         e.preventDefault();
+        //Manual Return
+        return toast.error('در حال پیاده سازی درگاه هستیم')
         if (price < 100000) return toast.error('حداقل مبلغ باید صدهزار تومان باشد')
         try {
             setIsLoading(true);

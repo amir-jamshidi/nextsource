@@ -56,11 +56,11 @@ const Navigation = () => {
                     ))}
                 </div>
                 <div className="border-t border-t-gray-700/40 flex-center pt-3">
-                    <div>
+                    {/* <div>
                         <span className="w-10 h-10 flex-center bg-blue border border-gray-300/10  rounded-full">
                             <DarkModeRounded className="text-gray-300" />
                         </span>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="flex-1 h-screen" onClick={() => themeContext?.handleSetIsOpenSidebar(false)}>

@@ -10,7 +10,7 @@ const UserPanelFooter = () => {
                     <span>
                         <FavoriteRounded fontSize='small' className='text-red-500' />
                     </span>
-                    <p>توسط امیر حسین</p>
+                    <p>توسط امیر حسین جمشیدی</p>
                 </div>
             </div>
         </div>

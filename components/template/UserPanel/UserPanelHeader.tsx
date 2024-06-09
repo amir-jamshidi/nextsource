@@ -29,7 +29,7 @@ const UserPanelHeader = async () => {
                 </div>
                 <div className='flex-1 flex justify-end items-center gap-x-1'>
                     <NotificationButton />
-                    <ToggleThemeButton />
+                    {/* <ToggleThemeButton /> */}
                     <Link href={`/`} className='w-9 h-9 md:w-10 md:h-10 rounded-full flex-center bg-blue border border-gray-300/10 cursor-pointer'>
                         <HomeRounded className='text-gray-300' />
                     </Link>

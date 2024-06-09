@@ -124,7 +124,7 @@ export const getProductByQuery = async (query: string, filter?: string, page: nu
         await connectToDB();
         var regex = new RegExp(query.replace(/([.\*+?^${}()|[\]\\])/g, '\\$1'), 'g');
         const productsCount = await productModel.find({ title: regex }).countDocuments();
-        const products = await productModel.find({ title: regex }).limit(page * PRODUCTS_LIMIT).sort(sort).lean() as IProduct[];
+        const products = await productModel.find({ title: regex }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).limit(page * PRODUCTS_LIMIT).sort(sort).lean() as IProduct[];
         return { products, productsCount }
     } catch (error) {
         throw new Error('خطای ناشناخته');
@@ -144,7 +144,7 @@ export const getProductsByTagHref = async (tagHref: string, filter: string) => {
         if (filter === 'bestseller') sort['buyCount'] = -1
         if (filter === 'popular') sort['buyCount'] = -1
 
-        const products = await tagModel.findOne({ href: tagHref }).populate({ path: 'products', model: 'Product', options: { sort } }).lean();
+        const products = await tagModel.findOne({ href: tagHref }).populate({ path: 'products', model: 'Product', populate: { path: 'categoryID', model: categoryModel }, options: { sort } }).lean();
 
         return products
 
@@ -169,7 +169,7 @@ export const getProductsByCategoryHref = async (ctaegoryHref: string, filter: st
         const category = await categoryModel.findOne({ href: ctaegoryHref }).lean() as ICategory;
         if (!category) return { products: null, category: null, productsCount: 0 };
         const productsCount = await productModel.find({ categoryID: category._id }).countDocuments() as number;
-        const products = await productModel.find({ categoryID: category._id }).limit(page * PRODUCTS_LIMIT).sort(sort).lean() as IProduct[];
+        const products = await productModel.find({ categoryID: category._id }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).limit(page * PRODUCTS_LIMIT).sort(sort).lean() as IProduct[];
         return { products, category, productsCount }
     } catch (error) {
         throw new Error('خطای ناشناخته')
