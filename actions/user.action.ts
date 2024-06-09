@@ -160,3 +160,12 @@ export const changeInfos = async (fullname: string, email: string, bio: string) 
         throw new Error('خطای ناشناخته')
     }
 }
+
+export const logout = async () => {
+    try {
+        cookies().delete('token');
+        return MessageCreator(true, 'از حساب کاربری خارج شدی')
+    } catch (error) {
+        throw new Error('خطای ناشناخته');
+    }
+}
