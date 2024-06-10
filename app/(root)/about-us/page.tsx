@@ -11,7 +11,7 @@ const About = () => {
                 <div className="relative md:h-80 h-44 flex-center w-full mt-8">
                     <Image src={AboutUSImg} alt="About Image" fill={true} />
                 </div>
-                <div className="bg-blue-light p-4 rounded-xl mt-8">
+                <div className="bg-blue-light p-4 rounded-xl mt-8 mb-4">
                     <h1 className="text-xl text-gray-200 text-center">نکستــــ ســـورس</h1>
                     <div className="flex flex-col text-gray-300 mt-8 divide-y divide-gray-800 text-sm">
                         <div className="flex items-start gap-x-2 py-2">

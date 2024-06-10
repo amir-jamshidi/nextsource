@@ -22,12 +22,13 @@ const SearchSection = () => {
                 key: 'q',
                 value: search ? search : null
             })
-            router.push(newUrl, { scroll: false });
+            router.replace(newUrl, { scroll: false });
         }, 600);
         return () => clearTimeout(timer);
     }, [search, searchQuery, searchParams, router])
 
 
+    
     const handleClearInput = () => {
         setSearch('');
     }

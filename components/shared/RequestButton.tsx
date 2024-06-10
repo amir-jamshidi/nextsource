@@ -16,7 +16,7 @@ const RequestButton = ({ isLoginUser, title, href }: RequestButtonProps) => {
     const router = useRouter()
 
     const handleRequest = () => {
-        if (!isLoginUser) return toast.error('برای درخواست سورس وارد حساب شو')
+        if (!isLoginUser) return toast.error(`برای ${title} باید وارد حساب بشی`)
         router.push(href);
     }
 

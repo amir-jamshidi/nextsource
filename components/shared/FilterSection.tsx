@@ -27,8 +27,8 @@ const FilterSection = ({ productCount, margin = true }: FilterSectionProps) => {
             key: 'filter',
             value: filter ? filter : null
         })
-        router.push(newUrl, { scroll: false })
-    }, [filter, filterParam ,router , searchParams])
+        router.replace(newUrl, { scroll: false })
+    }, [filter, filterParam, router, searchParams])
 
 
     if (productCount <= 0) return null
