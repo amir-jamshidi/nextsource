@@ -28,11 +28,12 @@ const SearchSection = () => {
     }, [search, searchQuery, searchParams, router])
 
 
-    
+
     const handleClearInput = () => {
         setSearch('');
     }
 
+    
     return (
         <div className="h-20 bg-blue rounded-xl mt-8 flex-center">
             <div className="bg-gray-900 border border-gray-800 rounded-xl w-4/5 md:w-2/3 flex items-center">
