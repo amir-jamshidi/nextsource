@@ -6,9 +6,13 @@ import SourceContainer from '@/components/shared/SourceContainer'
 import SourceItem from '@/components/shared/SourceItem'
 import { IProduct } from '@/types/product'
 import React from 'react'
-import { Suspense } from 'react'
+
 interface ProductsProps {
     searchParams: { page: number, filter: string }
+}
+
+export const metadata = {
+    title: 'نکست سورس | سورس هـا'
 }
 
 const Products = async ({ searchParams: { page, filter } }: ProductsProps) => {

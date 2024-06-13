@@ -1,11 +1,17 @@
 import { getRequest } from '@/actions/request.action'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import ShowRequestSection from '@/components/template/UserPanel/Request/ShowRequestSection'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
 interface ShowRequestProps {
   params: { requestID: string }
+}
+
+
+export const metadata: Metadata = {
+  title: 'نکست سورس | جزئیات درخواست'
 }
 
 const page = async ({ params: { requestID } }: ShowRequestProps) => {

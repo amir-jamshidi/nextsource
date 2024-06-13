@@ -7,6 +7,7 @@ import sellerModel from "@/models/seller.module"
 import userModel from "@/models/user.module"
 import { IProduct } from "@/types/product";
 import { ISeller } from "@/types/seller";
+import { IUser } from "@/types/user";
 
 export const getSellerByHref = async (sellerHref: string, page: number = 1) => {
     try {
@@ -26,6 +27,18 @@ export const getBestSellers = async () => {
         await connectToDB();
         const sellers = await sellerModel.find({}).sort({ score: -1 }).limit(5).populate({ path: 'userID', model: userModel }).lean()
         return sellers;
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
+export const getSellerFullname = async (href: string) => {
+    try {
+        await connectToDB();
+        const seller: ISeller | null = await sellerModel.findOne({ href }).select('userID').populate({ path: 'userID', model: userModel, select: 'fullname' }).lean();
+        if (!seller) throw new Error('خطای ناشناخته')
+        const user = seller.userID as IUser
+        return user.fullname
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

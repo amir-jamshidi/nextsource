@@ -4,9 +4,12 @@ import isAccessToSource from '@/middlewares/isAccessToSource';
 import isHavPlan from '@/middlewares/isHavPlan';
 import isLogin from '@/middlewares/isLogin';
 import { IProduct } from '@/types/product';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-
+export const metadata: Metadata = {
+    title: 'نکست سورس | خرید سورس'
+}
 
 const page = async ({ params: { productID } }: { params: { productID: string } }) => {
 

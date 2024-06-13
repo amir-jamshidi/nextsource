@@ -1,5 +1,5 @@
 import { getProductsByTagHref } from "@/actions/product.action"
-import { getPopularTags } from "@/actions/tag.action";
+import { getPopularTags, getTagTitleByHref } from "@/actions/tag.action";
 import FilterSection from "@/components/shared/FilterSection";
 import NoItemSection from "@/components/shared/NoItemSection";
 import PageTitle from "@/components/shared/PageTitle";
@@ -13,6 +13,13 @@ import { notFound } from "next/navigation";
 interface tagProps {
     params: { tagHref: string },
     searchParams: { filter: string }
+}
+
+export const generateMetadata = async ({ params }: { params: { tagHref: string } }) => {
+    const tagTitle = await getTagTitleByHref(params.tagHref);
+    return {
+        title: `نکست سورس | تگ ${tagTitle}`
+    }
 }
 
 const page = async ({ params: { tagHref }, searchParams: { filter = '' } }: tagProps) => {

@@ -1,6 +1,11 @@
 import FormParents from '@/components/template/Login/FormParents'
 import LoginBackButton from '@/components/template/Login/LoginBackButton'
+import { Metadata } from 'next'
 import React from 'react'
+
+export const metadata: Metadata = {
+    title: "نکست سورس | ورود یا ثبت نام"
+}
 
 const page = () => {
     return (

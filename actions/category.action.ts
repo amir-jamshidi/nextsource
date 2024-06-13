@@ -25,3 +25,14 @@ export const getCategories = async () => {
         throw new Error('خطای ناشناخته')
     }
 }
+
+export const getCategoryByHref = async (href: string = '') => {
+    try {
+        await connectToDB();
+        const category = await categoryModel.findOne({ href }).lean();
+        if (!category) throw new Error('خطای ناشناخته')
+        return category;
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}

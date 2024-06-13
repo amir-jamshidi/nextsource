@@ -7,6 +7,12 @@ import { ICategory } from '@/types/category';
 import { ITag } from '@/types/tag';
 import React from 'react'
 
+
+export const metadata = {
+    title: 'نکست سورس | دسته بندی ها'
+}
+
+
 const Categories = async () => {
     const categories = await getCategories() as ICategory[];
     const tags = await getPopularTags() as ITag[];

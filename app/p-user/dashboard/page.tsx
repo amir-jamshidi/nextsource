@@ -1,9 +1,12 @@
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import DashboardDetailsSection from '@/components/template/UserPanel/Dashboard/DashboardDetailsSection'
-import ticketModel from '@/models/ticket.module'
+import { Metadata } from 'next'
+
 
 import React from 'react'
-
+export const metadata: Metadata = {
+    title: 'نکست سورس | داشبورد'
+}
 const Dashboard = async () => {
 
     return (

@@ -20,6 +20,14 @@ import { ICategory } from '@/types/category';
 import ProductDetailsCarts from '@/components/template/Product/ProductDetailsCarts';
 
 
+export async function generateMetadata({ params }: { params: { productHref: string } }) {
+
+    const product = await getProductByHref(params.productHref) as IProduct
+
+    return {
+        title: `نکست سورس | ${product.title}`,
+    }
+}
 
 const Product = async ({ params: { productHref }, searchParams: { comments } }: { params: { productHref: string }, searchParams: { comments: string } }) => {
 

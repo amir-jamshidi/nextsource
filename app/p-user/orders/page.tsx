@@ -4,8 +4,14 @@ import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import OrdersDetailsSection from '@/components/template/UserPanel/Orders/OrdersDetailsSection'
 import { userPanelFilter } from '@/constants/userPanelFilter'
 import isLogin from '@/middlewares/isLogin'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import React from 'react'
+
+
+export const metadata: Metadata = {
+  title: 'نکست سورس | سفارش ها'
+}
 
 const page = async ({ searchParams: { filter = '' } }) => {
 
@@ -16,7 +22,7 @@ const page = async ({ searchParams: { filter = '' } }) => {
 
   return (
     <UserPanelPageContainer title='سفـــارش ها' >
-        <UserPanelFilterSection title='سفارش' filters={userPanelFilter} productsCount={orders.length > 0 ? orders.length : undefined} />    
+      <UserPanelFilterSection title='سفارش' filters={userPanelFilter} productsCount={orders.length > 0 ? orders.length : undefined} />
       <OrdersDetailsSection orders={orders} />
     </UserPanelPageContainer>
   )

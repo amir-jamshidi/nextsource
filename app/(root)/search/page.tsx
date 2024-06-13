@@ -11,7 +11,10 @@ import NoItemSection from '@/components/shared/NoItemSection';
 
 interface SearchProps {
     searchParams: { q: string, filter: string, page: number },
+}
 
+export const metadata = {
+    title: 'نکست سورس | جستجو سورس'
 }
 
 const Search = async ({ searchParams: { q = '', filter = '', page = 1 } }: SearchProps) => {

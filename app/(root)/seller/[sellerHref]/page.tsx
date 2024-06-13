@@ -1,4 +1,4 @@
-import { getBestSellers, getSellerByHref } from '@/actions/seller.action'
+import { getBestSellers, getSellerByHref, getSellerFullname } from '@/actions/seller.action'
 import PageTitle from '@/components/shared/PageTitle'
 import ShowMoreButton from '@/components/shared/ShowMoreButton'
 import SourceContainer from '@/components/shared/SourceContainer'
@@ -9,9 +9,17 @@ import { ISeller } from '@/types/seller'
 import { IUser } from '@/types/user'
 import { notFound } from 'next/navigation'
 
+
 interface SellerProps {
     params: { sellerHref: string },
     searchParams: { page: number }
+}
+
+export const generateMetadata = async ({ params }: { params: { sellerHref: string } }) => {
+    const sellerName = await getSellerFullname(params.sellerHref)
+    return {
+        title: `نکست سورس | فروشنده ${sellerName}`
+    }
 }
 
 const page = async ({ params: { sellerHref }, searchParams: { page } }: SellerProps) => {

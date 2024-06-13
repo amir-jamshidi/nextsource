@@ -5,7 +5,9 @@ import FavoritesSection from '@/components/template/UserPanel/Favorites/Favorite
 import { userPanelTicketFilter } from '@/constants/userPanelTicketsFilter'
 import { notFound } from 'next/navigation'
 import React from 'react'
-
+export const metadata: Metadata = {
+    title: 'نکست سورس | علاقه مندی ها'
+}
 const page = async ({ searchParams: { filter = '' } }) => {
 
     const favorites = await getMyFavorites(filter);

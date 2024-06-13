@@ -4,13 +4,22 @@ import UserPanelFilterSection from '@/components/shared/UserPanelFilterSection'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import TicketsSection from '@/components/template/UserPanel/Tickets/TicketsSection'
 import { userPanelTicketFilter } from '@/constants/userPanelTicketsFilter'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import React from 'react'
+
+
+
+export const metadata: Metadata = {
+  title: 'نکست سورس | تیکت ها'
+}
+
 
 const page = async ({ searchParams: { filter = '' } }) => {
 
   const tickets = await getMyTickets(filter);
   if (!tickets) return notFound();
+
 
   return (
     <UserPanelPageContainer title='تیکـــت ها'>

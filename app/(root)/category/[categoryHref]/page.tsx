@@ -1,3 +1,4 @@
+import { getCategoryByHref } from '@/actions/category.action';
 import { getProductsByCategoryHref } from '@/actions/product.action'
 import FilterSection from '@/components/shared/FilterSection';
 import NoItemSection from '@/components/shared/NoItemSection';
@@ -15,6 +16,15 @@ interface CategoryProps {
     params: { categoryHref: string },
     searchParams: { filter: string, page: number }
 }
+
+
+export const generateMetadata = async ({ params }: { params: { categoryHref: string } }) => {
+    const category = await getCategoryByHref(params.categoryHref) as ICategory;
+    return {
+        title: `نکست سورس | دسته بندی ${category.title}`
+    }
+}
+
 
 const Category = async ({ params: { categoryHref }, searchParams: { filter, page } }: CategoryProps) => {
     const { products, category, productsCount }: { products: IProduct[] | null, category: ICategory | null, productsCount: number } = await getProductsByCategoryHref(categoryHref, filter, page)

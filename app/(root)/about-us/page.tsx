@@ -2,7 +2,13 @@ import PageTitle from "@/components/shared/PageTitle"
 import AboutUSImg from '@/public/assets/about.svg'
 import Image from "next/image"
 
+
+export const metadata = {
+    title: 'نکست سورس | درباره ما'
+}
+
 const About = () => {
+
     return (
 
         <div className="container">
@@ -43,7 +49,7 @@ const About = () => {
                             <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1 shrink-0"></span>
                             <p className="text-justify">برای ارتباط با ما میتونید سوشال مدیا های مارو دنبال کنید و اگه تخفیفی هم باشه اونجا قرار میگیره یا میتونید از طریق پنل کاربری با ارسال تیکت با ما در ارتباط باشید</p>
                         </div>
-                   
+
                     </div>
                 </div>
             </div>

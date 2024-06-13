@@ -1,10 +1,15 @@
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import OrderDetails from '@/components/template/UserPanel/Order/OrderDetails'
+import { Metadata } from 'next'
 import React from 'react'
 
 
 interface OrderProps {
   params: { orderID: string }
+}
+
+export const metadata: Metadata = {
+  title: 'نکست سورس | جزئیات سفارش'
 }
 
 const page = ({ params: { orderID } }: OrderProps) => {
