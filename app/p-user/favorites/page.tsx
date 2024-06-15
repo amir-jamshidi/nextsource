@@ -3,8 +3,10 @@ import UserPanelFilterSection from '@/components/shared/UserPanelFilterSection'
 import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import FavoritesSection from '@/components/template/UserPanel/Favorites/FavoritesSection'
 import { userPanelTicketFilter } from '@/constants/userPanelTicketsFilter'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import React from 'react'
+
 export const metadata: Metadata = {
     title: 'نکست سورس | علاقه مندی ها'
 }

@@ -23,7 +23,6 @@ export const generateMetadata = async ({ params }: { params: { sellerHref: strin
 }
 
 const page = async ({ params: { sellerHref }, searchParams: { page } }: SellerProps) => {
-
     const { seller, products, productsCount } = await getSellerByHref(sellerHref, page)
     const bestSellers = await getBestSellers() as ISeller[]
     if (!seller || !products) notFound()
