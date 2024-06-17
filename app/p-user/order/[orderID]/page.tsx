@@ -20,7 +20,7 @@ const page = ({ params: { orderID } }: OrderProps) => {
       <OrderDetails orderID={orderID} />
     </UserPanelPageContainer>
   )
-}
+} 
 
 export default page
 
