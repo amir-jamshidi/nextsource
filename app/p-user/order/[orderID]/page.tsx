@@ -23,6 +23,7 @@ const page = ({ params: { orderID } }: OrderProps) => {
 }  
 
 
+
 export default page
 
 
