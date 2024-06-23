@@ -79,7 +79,9 @@ const WalletSection = async () => {
                                     ))}
                                 </>
                             ) : (
+                                <>
                                 <NoTransAction text="بدون تراکنش" />
+                                </>
                             )}
 
                         </div>

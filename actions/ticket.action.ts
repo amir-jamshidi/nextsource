@@ -21,7 +21,9 @@ export const getMyTickets = async (filter: string) => {
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false;
         const tickets = await ticketModel.find({ userID: isLoginUser._id }).sort(sort).lean() as ITicket[];
+
         return tickets
+
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

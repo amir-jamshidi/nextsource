@@ -22,6 +22,7 @@ import { cookies } from "next/headers";
 import { MessageCreator } from '@/libs/MessageCreator';
 import productModel from "@/models/product.module";
 import notificationModel from "@/models/notification.module";
+import { revalidatePath } from "next/cache";
 
 
 export const LoginUser = async (phone: string) => {
@@ -59,6 +60,7 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
                 , httpOnly: true
             })
             await verifyModel.deleteMany({ phone })
+            revalidatePath('/', 'layout');
             return { state: true, message: "ورود به حساب موفق بود" }
 
         } else {
@@ -74,6 +76,7 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
                 httpOnly: true
             })
             await verifyModel.deleteMany({ phone })
+            revalidatePath('/', 'layout');
             return { state: true, message: 'ثبت نام انجام شد' }
         }
 
@@ -108,7 +111,7 @@ export const getWalletDeposit = async () => {
         await connectToDB();
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false;
-        const cashBacks = (await orderModel.find({ userID: isLoginUser._id }).lean()).map(order => { return { title: 'کش بک', price: order.cashBack, createdAt: order.createdAt } });
+        const cashBacks = (await orderModel.find({ userID: isLoginUser._id, cashBack: { $gt: 0 } }).lean()).map(order => { return { title: 'کش بک', price: order.cashBack, createdAt: order.createdAt } });
         const deposits = (await depositModel.find({ userID: isLoginUser._id }).lean()).map(deposit => { return { title: 'واریز از کارت', price: deposit.price, createdAt: deposit.createdAt } });
         return [...cashBacks, ...deposits]
     } catch (error) {

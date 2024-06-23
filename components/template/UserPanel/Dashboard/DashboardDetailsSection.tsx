@@ -22,18 +22,17 @@ const DashboardDetailsSection = async () => {
 
   return (
     <div className="pb-2">
-      <div className='h-12 flex items-center text-sm bg-blue-light rounded-xl flex-center text-gray-100 px-4'>
-     
-        <div className='flex-1 flex items-center justify-start gap-x-1'>
+      <div className='h-12 grid grid-cols-[1fr,3fr,1fr] items-center text-sm bg-blue-light rounded-xl text-gray-100 px-4'>
+        <div className='flex items-center justify-start gap-x-1'>
           <span className='w-2 h-2 rounded-full bg-green-500 flex'></span>
           <p className='hidden md:flex'>امروز</p>
           <p className="text-xs md:text-sm">{new Date().toLocaleString('fa', { weekday: 'long' })}</p>
         </div>
-        <div className='flex-1 flex justify-center'>
+        <div className='flex justify-center'>
           <p className='line-clamp-1 hidden md:flex'>خوش اومـــدی {isLoginUser.fullname} جـــان</p>
           <p className='line-clamp-1 flex md:hidden'>خوش اومدی {isLoginUser.fullname}</p>
         </div>
-        <div className='flex-1 flex justify-end'>
+        <div className='flex justify-end'>
 
         </div>
       </div>

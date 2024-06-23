@@ -1,10 +1,16 @@
+import { getTicketByID } from '@/actions/ticket.action'
 import BackButton from '@/components/buttons/BackButton/BackButton'
 import { IOrder } from '@/types/order'
 import { ISection } from '@/types/section'
 import { ITicket } from '@/types/ticket'
+import { notFound } from 'next/navigation'
 import React from 'react'
 
-const TicketDetailsSection = ({ ticket }: { ticket: ITicket }) => {
+const TicketDetailsSection = async ({ ticketID }: { ticketID: string }) => {
+
+
+    const ticket = await getTicketByID(ticketID);
+    if (!ticket) return notFound();
 
     const order = ticket.orderID as IOrder || null
     const section = ticket.sectionID as ISection;

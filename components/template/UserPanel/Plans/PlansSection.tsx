@@ -10,7 +10,7 @@ const PlansSection = async () => {
     return (
         <div className='gap-y-2 flex flex-col'>
             {plans.map(plan => (
-                <div key={plan._id} className={`${plan.color === 'GOLD' ? 'bg-amber-500/70' : plan.color === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'}  md:h-52 rounded-2xl flex  flex-col-reverse md:flex-row px-4 py-4 relative `}>
+                <div key={plan._id} className={`${plan.color === 'GOLD' ? 'bg-amber-500/70' : plan.color === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'}  md:h-56 rounded-2xl flex flex-col-reverse md:flex-row px-4 py-4 relative `}>
                     <div className='plan-background absolute inset-0 -z-10'></div>
 
                     <div className='flex-1 flex gap-y-2.5 md:gap-y-0 flex-col items-start justify-between md:text-right text-justify'>
@@ -21,7 +21,7 @@ const PlansSection = async () => {
                         </div>
                         <p className='text-gray-300 text-sm md:text-base'>{plan.caption}</p>
                         <div className='flex items-center justify-between w-full'>
-                            <BuyPlanButton planID={plan._id} isHavPlan={isHavPlanUser} />
+                            <BuyPlanButton planID={JSON.parse(JSON.stringify(plan._id))} isHavPlan={JSON.parse(JSON.stringify(isHavPlanUser))} />
                             <div className='flex items-center gap-x-1'>
                                 <p className='font-dana-bold text-lg text-gray-200'>{plan.price.toLocaleString()}</p>
                                 <p className='text-gray-300'>تومــــــان</p>

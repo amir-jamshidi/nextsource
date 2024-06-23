@@ -14,6 +14,8 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
   const [phone, setPhone] = useState(() => user.phone);
   const [bio, setBio] = useState(() => user.bio);
 
+  const createdAt = user.createdAt || Date.now()
+
   const router = useRouter()
 
   const handleSubmitForm = async (e: React.FormEvent) => {
@@ -38,7 +40,7 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
   return (
     <div>
       <div className='h-12 bg-blue rounded-xl flex-center'>
-        <p className='text-gray-300 text-sm'>شما از تاریخ {user.createdAt?.toLocaleDateString('fa-IR')} و ساعت  {user.createdAt?.toLocaleTimeString('fa-IR')} کنار مایی :))</p>
+        <p className='text-gray-300 text-sm'>شما از تاریخ {new Date(createdAt).toLocaleDateString('fa-IR')} و ساعت  {new Date(createdAt).toLocaleTimeString('fa-IR')} کنار مایی :))</p>
       </div>
       <div className="flex-center mt-6 gap-x-3 mx-4">
         <span className='flex-1 h-px bg-gray-800'></span>

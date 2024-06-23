@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Modal = ({ children, isShow }: { children: React.ReactNode, isShow: boolean }) => {
 
     return (

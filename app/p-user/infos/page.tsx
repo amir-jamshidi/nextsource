@@ -1,21 +1,18 @@
-import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
-import UserInfoSection from '@/components/template/UserPanel/Info/UserInfoSection'
-import isLogin from '@/middlewares/isLogin'
+import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer';
+import UserInfoContainer from '@/components/template/UserPanel/Info/UserInfoContainer';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 export const metadata: Metadata = {
     title: 'نکست سورس | مشخصات من'
 }
-const page = async () => {
-    const isLoginUser = await isLogin();
-    if (!isLoginUser) return notFound();
+const page = () => {
+
     return (
         <UserPanelPageContainer title='مشخصــات مــن'>
-            <UserInfoSection user={isLoginUser} />
+            <UserInfoContainer />
         </UserPanelPageContainer>
     )
 }
 
- 
+
 export default page
 

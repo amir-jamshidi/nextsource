@@ -15,8 +15,6 @@ interface PlanBuyButtonsProps {
 
 const PlanBuyButtons = ({ money, planID, isHavPlan, planColor }: PlanBuyButtonsProps) => {
 
-    console.log(isHavPlan);
-
     const [isShowModal, setIsShowModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
