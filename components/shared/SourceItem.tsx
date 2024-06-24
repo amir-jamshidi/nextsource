@@ -19,7 +19,7 @@ const SourceItem = ({ product }: { product: IProduct }) => {
                     {product.isOff && (
                         <OffItem precent={product.precentOff} />
                     )}
-                    <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
+                    <Image src={'https://i.postimg.cc/5tW56JvN/istockphoto-1488105061-612x612.jpg'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>
                 <div className="flex-center mt-2">
                     <p className="text-800-200 text-sm">{product.title}</p>
