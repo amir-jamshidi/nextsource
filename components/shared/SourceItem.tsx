@@ -6,6 +6,7 @@ import OffItem from "./OffItem";
 import { ITag } from "@/types/tag";
 
 const SourceItem = ({ product }: { product: IProduct }) => {
+   
     return (
         <Link href={`/product/${product.href}`}>
             <div className="bg-blue rounded-xl px-2 py-2">
