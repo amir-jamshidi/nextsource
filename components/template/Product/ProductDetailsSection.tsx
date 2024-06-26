@@ -18,6 +18,7 @@ interface ProductDetailsSectionProps {
     isLoginUser: IUser | boolean
 }
 
+
 const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav, commentsCount, isLoginUser }: ProductDetailsSectionProps) => {
 
     return (
