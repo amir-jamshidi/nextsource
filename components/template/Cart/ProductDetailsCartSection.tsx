@@ -17,7 +17,7 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money 
             <div className='w-96 bg-blue rounded-xl py-2 px-4 mt-8'>
                 <div className='h-44 -mt-10 relative'>
                     {product.isOff && <OffItem precent={product.precentOff} />}
-                    <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} alt="" />
+                    <Image src={product.photo} className="rounded-xl" fill={true} alt="" />
                 </div>
                 <div className='mt-2'>
                     <p className='text-gray-200 flex-center'>{product.title}</p>

@@ -17,7 +17,7 @@ const SectionTitle = ({ title, isShowMore = true, href }: SectionTitleProps) => 
 
             {isShowMore && (
                 <div className='absolute left-0'>
-                    <Link href={`${href}`} className='p-3 rounded-full inline-block bg-blue'>
+                    <Link href={`${href}`} className='p-3 flex justify-center items-center w-11 h-11 md:h-12 md:w-12 rounded-full bg-blue'>
                         <ArrowLeftRounded className='text-gray-200' />
                     </Link>
                 </div>)}

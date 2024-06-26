@@ -40,9 +40,9 @@ const FilterSection = ({ productCount, margin = true }: FilterSectionProps) => {
                 <span className="font-dana-bold text-gray-300">{productCount}</span>
                 <span className="text-gray-300">محصول</span>
             </div>
-            <div className="flex justify-center flex-1 gap-x-1 md:gap-x-2">
+            <div className="flex justify-center flex-1 gap-x-0.5 sm:gap-1 md:gap-x-2">
                 {filters.map(fil => (
-                    <button key={fil.id} onClick={() => setFilter(prev => prev === fil.value ? '' : fil.value)} className={`${(filter === fil.value) ? 'text-amber-500' : 'text-gray-400'} text-sm  bg-blue-light w-[76px] md:w-24 py-1.5 md:py-1 rounded-xl`}>{fil.title}</button>
+                    <button key={fil.id} onClick={() => setFilter(prev => prev === fil.value ? '' : fil.value)} className={`${(filter === fil.value) ? 'text-amber-500' : 'text-gray-400'} text-xs sm:text-sm bg-blue-light w-[70px] md:w-24 py-1.5 md:py-1 rounded-xl`}>{fil.title}</button>
                 ))}
             </div>
             <div className="hidden md:flex w-32"></div>

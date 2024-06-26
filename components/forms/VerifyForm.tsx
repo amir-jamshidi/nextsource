@@ -34,6 +34,7 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
       .then(result => {
         if (!result.state) return toast.error(result.message);
         toast.success('ورود به حساب موفق')
+        router.refresh();
         router.push('/');
       })
       .catch(_ => { toast.error('خطای ناشناخته') })
