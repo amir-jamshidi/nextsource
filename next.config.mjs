@@ -4,6 +4,9 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: 'sabzlearn.ir',
+            },
+            {
+                hostname : 'i.postimg.cc'
             }
         ]
     }

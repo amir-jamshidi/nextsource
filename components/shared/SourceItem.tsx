@@ -6,7 +6,7 @@ import OffItem from "./OffItem";
 import { ITag } from "@/types/tag";
 
 const SourceItem = ({ product }: { product: IProduct }) => {
-   
+
     return (
         <Link href={`/product/${product.href}`}>
             <div className="bg-blue rounded-xl px-2 py-2">
@@ -20,7 +20,7 @@ const SourceItem = ({ product }: { product: IProduct }) => {
                     {product.isOff && (
                         <OffItem precent={product.precentOff} />
                     )}
-                    <Image src={'https://i.postimg.cc/5tW56JvN/istockphoto-1488105061-612x612.jpg'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
+                    <Image src={product.photo} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>
                 <div className="flex-center mt-2">
                     <p className="text-800-200 text-sm">{product.title}</p>

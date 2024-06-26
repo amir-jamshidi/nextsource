@@ -72,7 +72,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     </div>
                 </div>
                 <div className='flex-center relative rounded-xl order-1 lg:order-2 h-72 lg:h-auto'>
-                    <Image className='w-full rounded-xl' style={{ objectFit: 'cover' }} src={'https://sabzlearn.ir/wp-content/uploads/2024/01/IMAGE-1402-10-21-20_14_43-1-768x432.webp'} fill={true} alt='Photo' />
+                    <Image className='w-full rounded-xl' style={{ objectFit: 'cover' }} src={product.photo} fill={true} alt='Photo' />
                     <BackButton bg={true} />
                     {product.isOff && <OffItem pos='right-1 top-1' precent={product.precentOff} />}
                     {commentsCount > 0 && (
