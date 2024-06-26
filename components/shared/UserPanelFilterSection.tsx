@@ -40,9 +40,9 @@ const UserPanelFilterSection = ({ productsCount, filters, title = "سورس", ch
                     </>
                 )}
             </div>
-            <div className='flex-1 flex-center gap-x-1'>
+            <div className='flex-1 flex-center gap-x-0.5 md:gap-x-1'>
                 {filters.map(fil => (
-                    <p key={fil.id} onClick={() => setFilter(prev => prev === fil.href ? '' : fil.href)} className={`${filter === fil.href ? 'text-amber-500' : 'text-gray-300'} text-sm w-14 md:w-20 bg-blue-light text-center py-1 rounded-xl cursor-pointer`}>{fil.title}</p>
+                    <p key={fil.id} onClick={() => setFilter(prev => prev === fil.href ? '' : fil.href)} className={`${filter === fil.href ? 'text-amber-500' : 'text-gray-300'} text-xs sm:text-sm w-[50px] md:w-20 bg-blue-light text-center py-1.5 rounded-xl cursor-pointer`}>{fil.title}</p>
                 ))}
             </div>
             <div className="w-32">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const page = ({ params: { requestID } }: ShowRequestProps) => {
   
   return (
-    <UserPanelPageContainer title='جزئیات سفارش'>
+    <UserPanelPageContainer title='جزئیات درخواست'>
       <RequestContainer requestID={requestID} />
     </UserPanelPageContainer>
   )

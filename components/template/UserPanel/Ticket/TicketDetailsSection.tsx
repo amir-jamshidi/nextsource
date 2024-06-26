@@ -39,7 +39,7 @@ const TicketDetailsSection = async ({ ticketID }: { ticketID: string }) => {
                 <BackButton bg={false} />
             </div>
 
-            <div className='flex lg:hidden bg-blue-light rounded-2xl px-4 py-2 mt-4 flex-col min-h-12 gap-2'>
+            <div className='flex lg:hidden bg-blue-light rounded-2xl px-4 py-2 mt-2 flex-col min-h-12 gap-2'>
                 <div className='flex text-gray-300 gap-x-1 text-sm items-center '>
                     <p>شناسه تیکت : </p>
                     <p className='font-dana-bold -mb-0.5'>{ticket.code}</p>
@@ -53,7 +53,7 @@ const TicketDetailsSection = async ({ ticketID }: { ticketID: string }) => {
             </div>
 
 
-            <div className='mt-4 bg-blue-light p-4 rounded-2xl'>
+            <div className='mt-2 bg-blue-light p-4 rounded-2xl'>
                 <div className='flex gap-x-2'>
                     <span className='flex-center shrink-0 w-12 h-12 rounded-full bg-gray-800/60 text-sm text-gray-400 border border-gray-700'>شما</span>
                     <div className='flex-1 bg-gray-800/60 rounded-2xl px-4 py-3'>

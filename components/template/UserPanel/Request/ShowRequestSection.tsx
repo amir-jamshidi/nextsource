@@ -27,14 +27,14 @@ const ShowRequestSection = ({ request }: ShowRequestSectionProps) => {
                 <BackButton bg={false} />
             </div>
 
-            <div className='flex md:hidden h-12 bg-blue-light rounded-2xl mt-4 px-4'>
+            <div className='flex md:hidden h-12 bg-blue-light rounded-2xl mt-2 px-4'>
                 <div className='flex text-gray-300 gap-x-1 text-sm items-center'>
                     <p>شناسه درخواست : </p>
                     <p className='font-dana-bold -mb-0.5'>{request.code}</p>
                 </div>
             </div>
 
-            <div className='mt-4 bg-blue-light p-4 rounded-2xl'>
+            <div className='mt-2 bg-blue-light p-4 rounded-2xl'>
                 <div className='flex gap-x-2'>
                     <span className='flex-center shrink-0 w-12 h-12 rounded-full bg-gray-800/60 text-sm text-gray-400 border border-gray-700'>شما</span>
                     <div className='flex-1 bg-gray-800/60 rounded-2xl px-4 py-3'>

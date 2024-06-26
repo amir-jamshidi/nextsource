@@ -9,7 +9,7 @@ interface AddSectionUserPanelProps {
 const AddSectionUserPanel = ({ href, title }: AddSectionUserPanelProps) => {
     return (
         <div className='flex justify-end items-center h-full pl-4'>
-            <Link href={`${href}`} className="flex items-center text-green-500 py-1.5  px-1.5 md:px-3">
+            <Link href={`${href}`} className="flex items-center text-green-500 py-1.5  md:px-3">
                 <span className='md:text-sm text-xs'>{title}</span>
             </Link>
         </div>

@@ -23,6 +23,8 @@ import { MessageCreator } from '@/libs/MessageCreator';
 import productModel from "@/models/product.module";
 import notificationModel from "@/models/notification.module";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+
 
 
 export const LoginUser = async (phone: string) => {
@@ -165,10 +167,7 @@ export const changeInfos = async (fullname: string, email: string, bio: string) 
 }
 
 export const logout = async () => {
-    try {
-        cookies().delete('token');
-        return MessageCreator(true, 'از حساب کاربری خارج شدی')
-    } catch (error) {
-        throw new Error('خطای ناشناخته');
-    }
+    cookies().delete('token');
+    revalidatePath('/', 'layout');
+    redirect('/');
 }

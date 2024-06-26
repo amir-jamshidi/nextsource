@@ -17,31 +17,43 @@ const OrderDetails = async ({ orderID }: OrderDetailsProps) => {
     const product = order.productID as IProduct;
 
     return (
-        <div >
-            <div className='h-12 bg-blue-light rounded-2xl flex items-center px-4 relative'>
+        <div>
+            <div className=' h-12 bg-blue-light rounded-2xl flex items-center px-4 relative'>
                 <div className='flex text-gray-300 gap-x-1 text-sm items-center'>
                     <p>تاریخ خرید : </p>
                     <p className='font-dana-bold -mb-0.5'>{order.createdAt?.toLocaleDateString('fa-IR')}</p>
                 </div>
-                <div className='flex text-gray-300 gap-x-1 text-sm px-2 border-x border-x-gray-700 mx-2'>
+                <div className='flex text-gray-300 gap-x-1 text-sm px-2 border-r lg:border-x border-x-gray-700 mx-2'>
                     <p>روش پرداخت : </p>
                     <p className='text-green-500'>{order.action === 'ONLINE' ? 'پرداخت آنلاین' : 'کیف پول'}</p>
                 </div>
-                <div className='flex text-gray-300 gap-x-1 text-sm items-center'>
+                <div className='lg:flex hidden text-gray-300 gap-x-1 text-sm items-center'>
                     <p>شناسه پرداخت : </p>
                     <p className='font-dana-bold -mb-0.5'>{order.code}</p>
                 </div>
-                <div className='flex text-gray-300 gap-x-1 text-sm border-r border-r-gray-700 pr-2 mr-2 '>
+                <div className='lg:flex hidden text-gray-300 gap-x-1 text-sm border-r border-r-gray-700 pr-2 mr-2 '>
                     <p>وضعیت سفارش : </p>
                     <p className='text-green-500'>تکمیل شده</p>
                 </div>
                 <BackButton bg={false} />
             </div>
-            <div className='bg-gray-800/40 mt-2 p-3 rounded-2xl flex items-center gap-x-3'>
-                <div className='w-72 h-44 relative'>
+            <div className='lg:hidden py-2 gap-y-1 bg-blue-light rounded-2xl flex justify-center px-4 relative mt-2 flex-col'>
+                <div className='flex text-sm text-gray-300 gap-x-1 items-center'>
+                    <p>شناسه پرداخت : </p>
+                    <p className='font-dana-bold -mb-0.5'>{order.code}</p>
+                </div>
+                <div className='flex text-gray-300 gap-x-1 text-sm '>
+                    <p>وضعیت سفارش : </p>
+                    <p className='text-green-500'>تکمیل شده</p>
+                </div>
+            </div>
+
+
+            <div className='bg-gray-800/40 mt-2 p-3 gap-y-3 md:gap-y-0 rounded-2xl flex items-center flex-col md:flex-row gap-x-3'>
+                <div className='w-full md:w-72 h-44 relative'>
                     <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>
-                <div className='gap-y-1 flex flex-col text-sm'>
+                <div className='gap-y-1 px-1.5 pb-1 md:pb-0 justify-start w-full md:w-auto flex flex-col text-sm'>
                     <p className='text-gray-200'>{product.title}</p>
                     <div className='flex items-center text-gray-300 gap-x-1'>
                         <p>مبلغ سورس : </p>
