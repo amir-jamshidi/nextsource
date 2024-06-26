@@ -8,7 +8,7 @@ const CartSection = async () => {
 
     return (
         <section className="mt-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-2">
                 <div className="h-32 bg-blue rounded-xl flex-center flex-col gap-y-1">
                     <h1 className="text-lg text-700-300">سورس مد نظرتو پیدا نمیکنی ؟</h1>
                     <p className="text-600-400 text-sm">نگران نباش ، اگه پیداش نمیکنی میتونی درخواست ثبت کنی</p>
