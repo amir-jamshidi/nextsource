@@ -81,7 +81,6 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                             <StarRounded className='text-amber-500' />
                         </div>
                     )}
-                    
                     {product.preView && (
                         <div className='absolute bottom-1 right-1 w-10 h-10 rounded-full bg-green-500 flex-center'>
                             <a href={product.preView} target='_blank'>
@@ -94,5 +93,6 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
         </section >
     )
 }
+
 
 export default ProductDetailsSection
