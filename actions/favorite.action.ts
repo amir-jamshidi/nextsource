@@ -16,7 +16,7 @@ export const addToFavorites = async (productID: string) => {
         if (!isLoginUser) return { state: false, message: 'شما لاگین نیستید' };
         if (!Types.ObjectId.isValid(productID)) return { state: false, message: 'مقادیر ارسالی نامعتبره' };
         //Check Is Has Before
-        const isHasBefore = await favoriteModel.findOne({ productID }).lean();
+        const isHasBefore = await favoriteModel.findOne({ productID, userID: isLoginUser._id }).lean();
         if (isHasBefore) return MessageCreator(false, 'این سورس قبلا به علاقه مندی اضافه شده')
         await favoriteModel.create({
             userID: isLoginUser._id,

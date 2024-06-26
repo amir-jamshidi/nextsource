@@ -14,7 +14,7 @@ const SellerDetailsSection = ({ seller }: SellerDetailsSectionProps) => {
         <div>
             <div className='bg-blue-light pb-4 px-2 rounded-xl flex flex-col items-center flex-1 lg:w-80'>
                 <div className='h-56 w-full relative shrink-0'>
-                    <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-2xl -mt-6" fill={true} style={{ objectFit: 'cover' }} alt="" />
+                    <Image src={user.profile} className="rounded-2xl -mt-6" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>
                 <div className='flex flex-col gap-y-1 items-center px-2 -mt-2'>
                     <h3 className='text-gray-200'>{user.fullname}</h3>
@@ -22,7 +22,7 @@ const SellerDetailsSection = ({ seller }: SellerDetailsSectionProps) => {
                 </div>
                 <div className='w-full grid grid-cols-2 gap-1 mt-4 px-1'>
                     {user.technologies.map((tec, i) => (
-                        <p className='bg-blue-light px-3 font-morabba-light py-1.5 rounded-lg text-gray-300 text-sm text-center' key={i}>{tec}</p>
+                        <p className='bg-blue-light px-3 font-morabba-light py-2 rounded-lg text-gray-300 text-sm text-center' key={i}>{tec}</p>
                     ))}
                 </div>
                 <div className='w-full px-1.5'>

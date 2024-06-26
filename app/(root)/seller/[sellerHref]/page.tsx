@@ -1,7 +1,6 @@
 import { getBestSellers, getSellerByHref, getSellerFullname } from '@/actions/seller.action'
 import PageTitle from '@/components/shared/PageTitle'
 import ShowMoreButton from '@/components/shared/ShowMoreButton'
-import SourceContainer from '@/components/shared/SourceContainer'
 import SourceItem from '@/components/shared/SourceItem'
 import BestSellersSection from '@/components/template/Seller/BestSellersSection'
 import SellerDetailsSection from '@/components/template/Seller/SellerDetailsSection'

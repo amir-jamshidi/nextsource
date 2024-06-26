@@ -19,7 +19,7 @@ const SellerItem = ({ seller }: SellerItemProps) => {
                     <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-full" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>
                 <p className="text-gray-200 mt-3">{user.fullname}</p>
-                <div className='flex justify-between bg-blue-light rounded-xl w-4/5 py-2 mt-3'>
+                <div className='grid grid-cols-[3fr,2fr] bg-blue-light rounded-xl w-4/5 py-2 mt-3'>
                     <div className="flex w-full items-center justify-center gap-x-1">
                         <p className="font-dana-bold text-amber-500 text-xs">{seller.score}</p>
                         <p className="text-amber-500 text-xs">امتیاز</p>
