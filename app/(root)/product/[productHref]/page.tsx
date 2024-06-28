@@ -51,8 +51,8 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
                 <ProductCommentsSection productID={JSON.parse(JSON.stringify(product._id))} comment={commentPage} rate={product.rate} commnetsCount={commentsCount} >
                     <CommentMoreButton commentsCount={commentsCount} params={productHref} commentPage={Number(commentPage)} />
                 </ProductCommentsSection>
-                <CommentForm isLoginUser={isLoginUser} productID={JSON.parse(JSON.stringify(product._id))} />
-                <ProductRelatedSection productID={JSON.parse(JSON.stringify(product._id))} />
+                <CommentForm isLoginUser={JSON.parse(JSON.stringify(isLoginUser))} productID={JSON.parse(JSON.stringify(product._id))} />
+                <ProductRelatedSection productID={JSON.parse(JSON.stringify(product._id))} /> 
             </div>
         </section >
     )

@@ -77,6 +77,12 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
             httpOnly: true
         })
         await verifyModel.deleteMany({ phone })
+        await notificationModel.create({
+            userID: registerUser._id,
+            title: 'کاربر گرامی',
+            body: 'لطفا مشخصات خود را بروز کنید',
+            href: '/p-user/infos'
+        })
         //return { state: true, message: 'ثبت نام انجام شد' }
     }
     revalidatePath('/', 'layout');

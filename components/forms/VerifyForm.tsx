@@ -37,7 +37,7 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
   }
 
   return (
-    <div className='w-[350px] bg-blue px-4 py-6 rounded-2xl flex-center flex-col'>
+    <div className='w-[350px] md:w-[380px] bg-blue px-4 py-6 rounded-2xl flex-center flex-col'>
       <h1 className='text-800-200 font-morabba text-xl mb-2'>تایید شماره همراه</h1>
       <div>
         {Object.entries(errors).map(error => (

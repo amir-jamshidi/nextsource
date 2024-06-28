@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const page = async () => {
 
     const isLoginUser = await isLogin();
-
+ 
     return (
         <div className='h-screen flex-center flex-col '>
             {!isLoginUser ?
