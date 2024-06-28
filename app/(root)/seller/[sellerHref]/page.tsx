@@ -16,12 +16,14 @@ interface SellerProps {
 
 export const generateMetadata = async ({ params }: { params: { sellerHref: string } }) => {
     const sellerName = await getSellerFullname(params.sellerHref)
+    
     return {
         title: `نکست سورس | فروشنده ${sellerName}`
     }
 }
 
 const page = async ({ params: { sellerHref }, searchParams: { page } }: SellerProps) => {
+   
     const { seller, products, productsCount } = await getSellerByHref(sellerHref, page)
     const bestSellers = await getBestSellers() as ISeller[]
     if (!seller || !products) notFound()

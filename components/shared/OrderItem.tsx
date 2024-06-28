@@ -14,8 +14,8 @@ const OrderItem = ({ order }: OrderItemProps) => {
 
     return (
         <div className='bg-blue-light py-2 px-2 rounded-xl'>
-            <div className='w-full h-36 relative'>
-                <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
+            <div className='w-full h-40 relative'>
+                <Image src={product.photo} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
             </div>
             <div className='flex-center mt-3'>
                 <p className='text-sm text-gray-300'>{product.title}</p>
@@ -33,11 +33,14 @@ const OrderItem = ({ order }: OrderItemProps) => {
             </div>
             <div className="mt-3">
                 <Link href={`/p-user/order/${order._id}`}>
-                    <button className='w-full bg-blue-max text-sm rounded-xl text-gray-300 py-2'>جزئیات</button>
+                    <button className='w-full bg-blue-light text-sm rounded-xl text-gray-300 py-3 mb-1'>جزئیات</button>
                 </Link>
             </div>
         </div>
     )
 }
+
+const a = 10 ;
+
 
 export default OrderItem

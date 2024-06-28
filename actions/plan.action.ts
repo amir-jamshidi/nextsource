@@ -9,6 +9,7 @@ import orderPlanModel from "@/models/orderPlan.module";
 import planModel from "@/models/plan.module";
 import userModel from "@/models/user.module";
 import { IPlan } from "@/types/plan";
+import mongoose from "mongoose";
 import { revalidatePath } from "next/cache";
 
 export const getPlans = async () => {
@@ -24,6 +25,11 @@ export const getPlans = async () => {
 export const getPlanByID = async (planID: string) => {
     try {
         await connectToDB();
+
+        //Check Valid ID
+        const isValidID = mongoose.Types.ObjectId.isValid(planID);
+        if (!isValidID) return false
+
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false;
         const plan = await planModel.findOne({ _id: planID }).lean() as IPlan;
@@ -70,7 +76,7 @@ export const newOrderPlan = async (action: 'ONLINE' | 'WALLET', planID: string) 
             title: 'خرید پلــن',
             body: 'پلن ویژه شما فعال شد'
         })
-        revalidatePath('/p-user/orders');
+        revalidatePath('/p-user', 'layout');
         return MessageCreator(true, 'پرداخت موفق')
 
     } catch (error) {

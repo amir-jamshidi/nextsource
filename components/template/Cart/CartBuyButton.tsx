@@ -41,16 +41,16 @@ const CartBuyButton = ({ productID, isAccessToSourceUser, money, isFree }: { pro
 
             <div className="flex flex-col">
                 {isAccessToSourceUser ? (
-                    <span className={`bg-blue w-96 inline-block cursor-not-allowed text-center rounded-xl py-2.5 text-gray-200 mt-1`}>
+                    <span className={`bg-blue w-full inline-block cursor-not-allowed text-center rounded-xl py-2.5 text-gray-200 mt-1`}>
                         شما به این سورس دسترسی دارید
                     </span>) : (
-                    <button disabled={isLoading} onClick={() => handleBuyProduct('ONLINE')} className={`${isLoading ? 'bg-gray-800' : 'bg-blue'} w-96 rounded-xl py-2.5 text-gray-200 mt-1`}>
+                    <button disabled={isLoading} onClick={() => handleBuyProduct('ONLINE')} className={`${isLoading ? 'bg-gray-800' : 'bg-blue'} rounded-xl py-2.5 text-gray-200 mt-1`}>
                         {isLoading ? 'لطفا صبر کنید ...' : 'پرداخت آنلاین'}
                     </button>)}
                 {isAccessToSourceUser || isFree ? (
                     null) : (
                     <div className="flex justify-center flex-col items-center">
-                        <button disabled={isLoading} onClick={() => setIsShowModal(true)} className={`${isLoading ? 'bg-gray-800' : 'bg-blue'} w-96 rounded-xl py-2.5 text-gray-200 mt-1`}>
+                        <button disabled={isLoading} onClick={() => setIsShowModal(true)} className={`${isLoading ? 'bg-gray-800' : 'bg-blue'} w-full rounded-xl py-2.5 text-gray-200 mt-1`}>
                             {isLoading ? 'لطفا صبر کنید ...' : 'پرداخت با کیف پول'}
                         </button>
                         <div className="h-10 bg-gray-900 w-2/3 rounded-br-3xl rounded-bl-3xl -mt-px flex text-sm gap-x-0.5 items-center justify-center">

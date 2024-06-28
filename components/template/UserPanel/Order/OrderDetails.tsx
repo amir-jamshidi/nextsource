@@ -51,7 +51,7 @@ const OrderDetails = async ({ orderID }: OrderDetailsProps) => {
 
             <div className='bg-gray-800/40 mt-2 p-3 gap-y-3 md:gap-y-0 rounded-2xl flex items-center flex-col md:flex-row gap-x-3'>
                 <div className='w-full md:w-72 h-44 relative'>
-                    <Image src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
+                    <Image src={product.photo} className="rounded-xl" fill={true} style={{ objectFit: 'cover' }} alt="" />
                 </div>
                 <div className='gap-y-1 px-1.5 pb-1 md:pb-0 justify-start w-full md:w-auto flex flex-col text-sm'>
                     <p className='text-gray-200'>{product.title}</p>

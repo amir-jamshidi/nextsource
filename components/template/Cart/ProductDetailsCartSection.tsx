@@ -13,8 +13,8 @@ interface ProductDetailsCartSectionProps {
 const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money }: ProductDetailsCartSectionProps) => {
 
     return (
-        <div className='flex flex-col'>
-            <div className='w-96 bg-blue rounded-xl py-2 px-4 mt-8'>
+        <div className='flex flex-col w-96'>
+            <div className='bg-blue rounded-xl py-2 px-4 mt-8'>
                 <div className='h-44 -mt-10 relative'>
                     {product.isOff && <OffItem precent={product.precentOff} />}
                     <Image src={product.photo} className="rounded-xl" fill={true} alt="" />
@@ -42,7 +42,7 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money 
                     </div>
                 </div>
                 {!product.isFree && (
-                    <div className='flex relative justify-between mt-2 bg-gray-800/30 py-2 px-2.5 rounded-xl items-center h-11'>
+                    <div className='hidden relative justify-between mt-2 bg-gray-800/30 py-2 px-2.5 rounded-xl items-center h-11'>
                         <p className='text-gray-300'>کد تخفیف داری ؟</p>
                         <div className=''>
                             <form action="" className='flex items-center gap-x-1'>

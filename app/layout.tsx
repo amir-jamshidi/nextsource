@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" dir="rtl" className={`dark`}>
-      <body className="bg-background min-h-screen">
+      <body className="bg-background">
         <ThemeProvider>
           {children}
           <Toaster />

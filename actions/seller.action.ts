@@ -36,7 +36,7 @@ export const getSellerFullname = async (href: string) => {
     try {
         await connectToDB();
         const seller: ISeller | null = await sellerModel.findOne({ href }).select('userID').populate({ path: 'userID', model: userModel, select: 'fullname' }).lean();
-        if (!seller) throw new Error('خطای ناشناخته')
+        if (!seller) return ''
         const user = seller.userID as IUser
         return user.fullname
     } catch (error) {

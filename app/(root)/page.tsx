@@ -20,7 +20,7 @@ const page = async () => {
         <PopularProductsSection />
         <SocialMedia />
         <PopularFrontProductsSection />
-        <PopularBackProductsSection />
+        <PopularBackProductsSection />  
       </div>
     </>
   )

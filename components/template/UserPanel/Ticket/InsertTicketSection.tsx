@@ -1,6 +1,6 @@
 'use client'
 
-import { getMyOrders } from "@/actions/order.action";
+import { getMyOrders, getMyOrdersFromClient } from "@/actions/order.action";
 import { getSections } from "@/actions/section.action"
 import { addNewTicket } from "@/actions/ticket.action";
 import { TicketSchema } from "@/libs/Schemas";
@@ -11,11 +11,12 @@ import { useQuery } from "react-query"
 import OrderInputItem from "./OrderInputItem";
 import BackButton from "@/components/buttons/BackButton/BackButton";
 import { useRouter } from "next/navigation";
+import { ISection } from "@/types/section";
 
 const InsertTicketSection = () => {
 
-    const { data = [] } = useQuery(['sections'], () => getSections());
-    const { data: orders = [] } = useQuery(['orders'], () => getMyOrders(''));
+    const { data: sections = [] } = useQuery(['sections'], () => getSections());
+    const { data: orders = [] } = useQuery(['orders'], () => getMyOrdersFromClient());
 
     const router = useRouter();
 
@@ -42,6 +43,7 @@ const InsertTicketSection = () => {
         }
     }
 
+
     return (
         <div>
             <div className="h-12 rounded-2xl mb-4 bg-blue-light relative flex items-center px-4">
@@ -61,7 +63,7 @@ const InsertTicketSection = () => {
                     <div className="bg-gray-900 border border-gray-800 rounded-xl px-3">
                         <select {...register('sectionID')} className='w-full outline-none border-none py-3.5 text-gray-200 bg-gray-900 text-sm rounded-xl'>
                             <option value={'-1'}>بخش ارسالی</option>
-                            {data.map(section => (
+                            {sections.map(section => (
                                 <option key={String(section._id)} value={String(section._id)}>{section.title}</option>
                             ))}
                         </select>

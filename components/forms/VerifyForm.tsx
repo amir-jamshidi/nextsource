@@ -17,8 +17,6 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const router = useRouter();
-
   const {
     register,
     handleSubmit,
@@ -33,16 +31,13 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
     VerifyCodeUser(phone, Number(code))
       .then(result => {
         if (!result.state) return toast.error(result.message);
-        toast.success('ورود به حساب موفق')
-        router.refresh();
-        router.push('/');
       })
-      .catch(_ => { toast.error('خطای ناشناخته') })
+      .catch(_ => { toast.success('ورود انجام شد') })
       .finally(() => { setIsLoading(false) })
   }
 
   return (
-    <div className='w-96 bg-blue px-4 py-6 rounded-2xl flex-center flex-col'>
+    <div className='w-[350px] bg-blue px-4 py-6 rounded-2xl flex-center flex-col'>
       <h1 className='text-800-200 font-morabba text-xl mb-2'>تایید شماره همراه</h1>
       <div>
         {Object.entries(errors).map(error => (
@@ -57,15 +52,15 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
           <input {...register('code')}
             autoComplete='off'
             type="text"
-            className='w-full py-2 bg-gray-900  rounded-xl border-none outline-none text-700-300'
+            className='w-full py-2 bg-gray-900 h-[50px]  rounded-xl border-none outline-none text-700-300'
             placeholder='کد تایید پنچ رقمی' />
         </div>
         <input
           type="submit"
           disabled={isLoading}
-          className={`${isLoading ? 'bg-gray-500' : 'bg-button'} transition-colors w-full py-2 cursor-pointer rounded-xl text-center text-gray-200 outline-none border-none`} value={isLoading ? 'لطفا صبر کنید ...' : 'تایید کد'} />
+          className={`${isLoading ? 'bg-gray-500' : 'bg-button'} transition-colors w-full h-[50px] py-2 cursor-pointer rounded-xl text-center text-gray-200 outline-none border-none`} value={isLoading ? 'لطفا صبر کنید ...' : 'تایید کد'} />
       </form>
-      <span className="font-morabba mt-4 text-blue-500 text-sm">به راهنمایی نیاز داری ؟</span>
+      <span className="font-morabba mt-5 mb-1 text-blue-500 text-sm">به راهنمایی نیاز داری ؟</span>
     </div>
   )
 }

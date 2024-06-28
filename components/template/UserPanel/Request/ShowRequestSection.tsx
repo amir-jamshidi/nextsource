@@ -1,7 +1,5 @@
 import BackButton from '@/components/buttons/BackButton/BackButton'
-import UserPanelPageContainer from '@/components/shared/UserPanelPageContainer'
 import { IRequest } from '@/types/request'
-import React from 'react'
 
 interface ShowRequestSectionProps {
     request: IRequest

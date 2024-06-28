@@ -58,7 +58,7 @@
     }
 
     .bg-background {
-        @apply bg-gradient-to-br bg-no-repeat dark:from-gray-900 dark:to-gray-950 from-gray-200 to-gray-200
+        @apply bg-slate-950
     }
 
     .bg-button {

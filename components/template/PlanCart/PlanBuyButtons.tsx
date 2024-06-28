@@ -28,6 +28,7 @@ const PlanBuyButtons = ({ money, planID, isHavPlan, planColor }: PlanBuyButtonsP
             if (!res.state) return toast.error(res.message)
             toast.success(res.message)
             router.push(`/p-user/plans`);
+            router.refresh();
         } catch (error) {
             throw new Error('خطای ناشناخته')
         } finally {
@@ -51,18 +52,18 @@ const PlanBuyButtons = ({ money, planID, isHavPlan, planColor }: PlanBuyButtonsP
 
                 {isHavPlan ? (<>
 
-                    <span className={`${planColor === 'GOLD' ? 'bg-amber-500/70' : planColor === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} w-96 inline-block cursor-not-allowed text-center rounded-2xl py-2.5 text-gray-200 mt-1`}>
+                    <span className={`${planColor === 'GOLD' ? 'bg-amber-500/70' : planColor === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} w-full inline-block cursor-not-allowed text-center rounded-2xl py-2.5 text-gray-200 mt-1`}>
                         شما یک پلن فعال دارید
                     </span>
 
                 </>) : (<>
 
-                    <button disabled={isLoading} onClick={() => handleBuyPlan('ONLINE')} className={`${planColor === 'GOLD' ? 'bg-amber-500/70' : planColor === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} w-96 rounded-2xl py-2.5 text-gray-200 mt-1`}>
+                    <button disabled={isLoading} onClick={() => handleBuyPlan('ONLINE')} className={`${planColor === 'GOLD' ? 'bg-amber-500/70' : planColor === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} w-full rounded-2xl py-2.5 text-gray-200 mt-1`}>
                         {isLoading ? 'لطفا صبر کنید ...' : 'پرداخت آنلاین'}
                     </button>
 
                     <div className="flex justify-center flex-col items-center">
-                        <button disabled={isLoading} onClick={() => setIsShowModal(true)} className={`${planColor === 'GOLD' ? 'bg-amber-500/70' : planColor === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} w-96 rounded-2xl py-2.5 text-gray-200 mt-1`}>
+                        <button disabled={isLoading} onClick={() => setIsShowModal(true)} className={`${planColor === 'GOLD' ? 'bg-amber-500/70' : planColor === "SILVER" ? 'bg-neutral-400/70' : 'bg-orange-600/70'} w-full rounded-2xl py-2.5 text-gray-200 mt-1`}>
                             {isLoading ? 'لطفا صبر کنید ...' : 'پرداخت با کیف پول'}
                         </button>
                         <div className={`h-10 ${planColor === 'GOLD' ? 'bg-amber-500/50' : planColor === "SILVER" ? 'bg-neutral-400/50' : 'bg-orange-600/50'} w-2/3 rounded-br-3xl rounded-bl-3xl  flex text-sm gap-x-0.5 items-center justify-center -z-10`}>

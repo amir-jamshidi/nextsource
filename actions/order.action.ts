@@ -84,7 +84,7 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
 
         //Revalidate Page
         revalidatePath('/product/[productHref]')
-        
+
         //Response
         return { state: true, message: 'پرداخت موفق' }
 
@@ -110,7 +110,21 @@ export const getMyOrders = async (filter: string) => {
         if (filter === 'inexpensive') sort['totalPrice'] = 1;
 
         const orders = await orderModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel }).sort(sort).lean() as IOrder[];
-        return orders;
+        return orders
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+
+export const getMyOrdersFromClient = async () => {
+    try {
+        await connectToDB();
+        const isLoginUser = await isLogin();
+        if (!isLoginUser) return false
+        const orders = await orderModel.find({ userID: isLoginUser._id }).populate({ path: 'productID', model: productModel, select: 'title' }).select('productID').sort({ _id: -1 }).lean() as IOrder[];
+        const ordersArr = JSON.parse(JSON.stringify(orders)) as IOrder[]
+        return ordersArr
+
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }
@@ -119,6 +133,7 @@ export const getMyOrders = async (filter: string) => {
 export const getOrder = async (orderID: string) => {
     try {
         await connectToDB();
+        if (!mongoose.Types.ObjectId.isValid(orderID)) return false
         const isLoginUser = await isLogin();
         if (!isLoginUser) return false
         const order = await orderModel.findOne({ _id: orderID, userID: isLoginUser._id }).populate({ path: 'productID', model: productModel }) as IOrder

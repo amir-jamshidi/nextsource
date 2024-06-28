@@ -3,7 +3,7 @@ export const socailMediaData = [
         id: 1,
         title: 'یوتیوب',
         src: './assets/youtube.svg',
-        href: 'http://youtube.com/AmirDeveloper',
+        href: 'http://youtube.com/@amirdeveloper',
     },
     {
         id: 2,

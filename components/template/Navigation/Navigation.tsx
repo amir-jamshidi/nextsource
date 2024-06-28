@@ -34,7 +34,7 @@ const Navigation = () => {
                                     <p key={String(menu._id)} className="text-700-300  px-3 py-2">{menu.title}</p>
                                 </Link>
                                 {menu.products.length > 0 && (
-                                    <span className="bg-gray-900 rounded-full cursor-pointer" onClick={() => setIsOpen(prev => prev === i ? -1 : i)}>
+                                    <span className="bg-gray-900 w-7 h-7 flex items-center justify-center rounded-full cursor-pointer" onClick={() => setIsOpen(prev => prev === i ? -1 : i)}>
                                         <ArrowDropDown className="text-gray-300" />
                                     </span>
                                 )}
