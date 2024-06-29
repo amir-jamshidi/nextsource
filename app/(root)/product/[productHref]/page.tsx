@@ -1,4 +1,4 @@
-import { getCommentsRate } from '@/actions/comment.action';
+import { getCommentsCount, getCommentsRate } from '@/actions/comment.action';
 import { getProductByHref } from '@/actions/product.action'
 import CommentForm from '@/components/forms/CommentForm';
 import BreadCrump from '@/components/shared/BreadCrump';
@@ -33,7 +33,7 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
 
     const [product, isLoginUser, isHavPlanUser]: [product: IProduct | boolean, isLoginUser: boolean | IUser, isHavPlanUser: boolean | IUser] = await Promise.all([getProductByHref(productHref), isLogin(), isHavPlan()])
     if (!product) return notFound();
-    const [accessToSource, isHasToFav, commentRate]: [accessToSource: boolean, isHasToFav: boolean, commentsCount: number] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id), getCommentsRate(product._id)]);
+    const [accessToSource, isHasToFav, commentRate, commentsCount]: [accessToSource: boolean, isHasToFav: boolean, commentRate: number, commentsCount: number] = await Promise.all([isAccessToSource(product._id), isHasToFavorite(product._id), getCommentsRate(product._id), getCommentsCount(product._id)]);
     const commentPage = comments || '1'
 
     const category = product.categoryID as ICategory
@@ -48,8 +48,8 @@ const Product = async ({ params: { productHref }, searchParams: { comments } }: 
                 <ProductDetailsCarts commentRate={commentRate} product={product} />
                 {(isHavPlanUser && product.isPlan) || accessToSource && (<ProductLinksSection product={product} />)}
                 <ProductMoreDetailsSection product={product} />
-                <ProductCommentsSection productID={JSON.parse(JSON.stringify(product._id))} comment={commentPage} rate={product.rate} commentRate={50} >
-                    <CommentMoreButton commentRate={commentRate} params={productHref} commentPage={Number(commentPage)} />
+                <ProductCommentsSection productID={JSON.parse(JSON.stringify(product._id))} comment={commentPage} commentsRate={commentRate} commentsCount={commentsCount} >
+                    <CommentMoreButton commentsCount={commentsCount} params={productHref} commentPage={Number(commentPage)} />
                 </ProductCommentsSection>
                 <CommentForm isLoginUser={JSON.parse(JSON.stringify(isLoginUser))} productID={JSON.parse(JSON.stringify(product._id))} />
                 <ProductRelatedSection productID={JSON.parse(JSON.stringify(product._id))} />
