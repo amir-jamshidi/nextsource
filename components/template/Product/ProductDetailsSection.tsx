@@ -78,7 +78,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     {product.isOff && <OffItem pos='right-1 top-1' precent={product.precentOff} />}
                     {commentsCount > 0 && (
                         <div className='absolute bottom-1 left-1 bg-gray-800/30 rounded px-1 flex items-center'>
-                            <span className='font-dana-bold text-amber-500 pt-0.5'>{Number(product.rate / commentsCount).toFixed(1)}</span>
+                            <span className='font-dana-bold text-amber-500 pt-0.5'>{Number(commentsCount).toFixed(1)}</span>
                             <StarRounded className='text-amber-500' />
                         </div>
                     )}

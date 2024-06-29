@@ -24,7 +24,7 @@ import productModel from "@/models/product.module";
 import notificationModel from "@/models/notification.module";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-
+import request from 'request'
 
 
 export const LoginUser = async (phone: string) => {
@@ -34,6 +34,23 @@ export const LoginUser = async (phone: string) => {
         const code = codeGenerator();
         const expireTime = timeGenerator(5);
         const verify = await verifyModel.create({ phone, code, expireTime });
+
+        request.post(
+            {
+                url: "http://ippanel.com/api/select",
+                body: {
+                    op: "pattern",
+                    user: "u09928168447",
+                    pass: "Faraz@1402546340042007",
+                    fromNum: "3000505",
+                    toNum: phone,
+                    patternCode: "ls41ct0qdyjrfed",
+                    inputData: [{ "verification-code": code }],
+                },
+                json: true,
+            }
+        );
+
         if (!verify) throw new Error('خطای ناشناخته')
         return { state: true, message: "کد تایید ارسال شد" }
     } catch (error) {

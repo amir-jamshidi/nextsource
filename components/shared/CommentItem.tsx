@@ -13,7 +13,7 @@ const CommentItem = ({ comment }: { comment: IComment }) => {
         <div className='py-3 bg-gray-800/30 rounded-xl flex text-sm md:text-base'>
             <div className='gap-2 border-l border-l-gray-800 ml-2 flex flex-col md:flex-row items-center px-2'>
                 <div className='w-12 h-12 relative'>
-                    <Image className='rounded-full' style={{ objectFit: 'cover' }} src={'https://sabzlearn.ir/wp-content/uploads/2024/03/Docker1-1-1-768x432.webp'} fill={true} alt='' />
+                    <Image className='rounded-full' style={{ objectFit: 'cover' }} src={user.profile} fill={true} alt='' />
                 </div>
                 <div>
                     <p className='text-sm text-gray-400 line-clamp-1 text-center'>{user.fullname}</p>

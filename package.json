@@ -25,7 +25,9 @@
     "react-loader-spinner": "^6.1.6",
     "react-query": "^3.39.3",
     "react-spinners": "^0.13.8",
+    "request": "^2.88.2",
     "swiper": "^11.1.1",
+    "uuid": "^7.0.3",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -33,6 +35,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/request": "^2.48.12",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "postcss": "^8",

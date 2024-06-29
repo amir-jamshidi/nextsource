@@ -47,7 +47,7 @@ const CommentForm = ({ productID, isLoginUser }: CommentFormProps) => {
                     <div dir='ltr' className='w-full bg-gray-900 border border-gray-800 flex-center py-3 rounded-xl'>
                         <Rating sx={{ border: 'red' }} name="hover-feedback" value={rate} onChange={(e, value) => setRate(Number(value))} emptyIcon={<StarRounded className='text-gray-400' style={{ opacity: 0.55 }} fontSize="inherit" />} />
                     </div>
-                    <input disabled={!isLoginUser || isLoading} type="submit" value={!isLoginUser ? 'لطفا وارد حساب شو' : 'فرستادن'} className={`disabled:cursor-not-allowed cursor-pointer w-full py-3 bg-blue rounded-xl text-gray-300`} />
+                    <input disabled={!isLoginUser || isLoading} type="submit" value={!isLoginUser ? 'لطفا وارد حساب شو' : isLoading ? 'لطفا صبر کنید ...' : 'فرستادن'} className={`disabled:cursor-not-allowed cursor-pointer w-full py-3 bg-blue rounded-xl text-gray-300`} />
                 </form>
             </div>
         </section>
