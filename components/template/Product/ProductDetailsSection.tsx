@@ -14,12 +14,12 @@ interface ProductDetailsSectionProps {
     isHavPlanUser: boolean | IUser,
     isAccessToSourceUser: boolean,
     isHasToFav: boolean,
-    commentsCount: number,
+    commentRate: number,
     isLoginUser: IUser | boolean
 }
 
 
-const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav, commentsCount, isLoginUser }: ProductDetailsSectionProps) => {
+const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, isHasToFav, commentRate, isLoginUser }: ProductDetailsSectionProps) => {
 
     return (
         <section className='bg-blue md:px-6 md:py-6 px-3 py-3 rounded-xl mt-2'>
@@ -76,9 +76,9 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     <Image className='w-full rounded-xl' style={{ objectFit: 'cover' }} src={product.photo} fill={true} alt='Photo' />
                     <BackButton bg={true} />
                     {product.isOff && <OffItem pos='right-1 top-1' precent={product.precentOff} />}
-                    {commentsCount > 0 && (
+                    {commentRate > 0 && (
                         <div className='absolute bottom-1 left-1 bg-gray-800/30 rounded px-1 flex items-center'>
-                            <span className='font-dana-bold text-amber-500 pt-0.5'>{Number(commentsCount).toFixed(1)}</span>
+                            <span className='font-dana-bold text-amber-500 pt-0.5'>{Number(commentRate).toFixed(1)}</span>
                             <StarRounded className='text-amber-500' />
                         </div>
                     )}

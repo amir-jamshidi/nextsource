@@ -39,12 +39,20 @@ export const addNewComment = async (body: string, rate: number, productID: strin
     }
 }
 
-export const getCommentsCount = async (productID: string) => {
+export const getCommentsRate = async (productID: string) => {
     try {
         const comments = await commentModel.find({ productID, isAccept: true }).select('rate');
         const commentsCount = comments.length;
         const totalRate = comments.reduce((total, comment) => total + Number(comment.rate), 0);
         return (totalRate / commentsCount)
+    } catch (error) {
+        throw new Error('خطای ناشناخته')
+    }
+}
+export const getCommentsCount = async (productID: string) => {
+    try {
+        const commentsCount = await commentModel.find({ productID, isAccept: true }).select('rate').countDocuments();
+        return commentsCount
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }
