@@ -10,3 +10,4 @@ export default function TokenGenerator(_id: string) {
         throw new Error('Token Generator')
     }
 }
+ 
