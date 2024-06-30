@@ -83,7 +83,7 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
         })
 
         //Revalidate Page
-        revalidatePath('/product/[productHref]')
+        revalidatePath(`/product/${product.href}`)
 
         //Response
         return { state: true, message: 'پرداخت موفق' }

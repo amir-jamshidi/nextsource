@@ -2,6 +2,7 @@
 
 import { seenNotification } from "@/actions/notification.action"
 import { useRouter } from "next/navigation"
+import { useTransition } from "react"
 import toast from "react-hot-toast"
 
 interface SeeNotificationButtonProps {
@@ -10,20 +11,16 @@ interface SeeNotificationButtonProps {
 
 const SeeNotificationButton = ({ notificationID }: SeeNotificationButtonProps) => {
 
-    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
 
-    const handleSeenNotification = async () => {
-        try {
-            const res = await seenNotification(notificationID);
-            if (!res.state) return toast.error(res.message)
-            router.refresh();
-        } catch (error) {
-            throw new Error('خطای ناشناخته')
-        }
+    const handleSeenNotification = () => {
+        startTransition(() => seenNotification(notificationID))
     }
 
     return (
-        <button onClick={handleSeenNotification} className='text-amber-500'>باشه</button>
+        <button disabled={isPending} onClick={handleSeenNotification} className='text-amber-500'>
+            {isPending ? <div className="donut-small"></div> : 'باشه'}
+        </button>
     )
 }
 

@@ -222,6 +222,21 @@ html {
     }
 }
 
+.donut-small {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+    border-radius: 50%;
+    border: 2px solid rgb(151, 159, 208, 0.3);
+    border-top-color: #979fd0;
+    animation: 1s spin infinite linear;
+
+    &.multi {
+        border-bottom-color: red;
+    }
+}
+
 .notification-icon {
     animation: notification 2s infinite;
 }

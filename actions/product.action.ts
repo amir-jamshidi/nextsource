@@ -10,6 +10,7 @@ import mongoose from "mongoose";
 import { ICategory } from './../types/category.d';
 import { PRODUCTS_LIMIT } from "@/constants/productsLimitCount";
 import sellerModel from "@/models/seller.module";
+import orderModel from "@/models/order.module";
 
 /* Main Page */
 
@@ -75,7 +76,9 @@ export const getProductByHref = async (href: string) => {
         await connectToDB();
         const product = await productModel.findOne({ href }).populate({ path: 'categoryID', model: categoryModel }).populate({ path: 'tags', model: tagModel }).populate({ path: 'creatorID', model: userModel, select: 'fullname' }).populate({ path: 'sellerID', model: sellerModel }).lean() as IProduct
         if (!product) return false;
-        return product
+        const productSellCount = await orderModel.find({ productID: product._id }).countDocuments();
+        const productDetails = { ...product, buyCount: productSellCount } as IProduct
+        return productDetails
     } catch (error) {
         throw new Error('خطای ناشناخته')
     }

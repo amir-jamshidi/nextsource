@@ -5,6 +5,7 @@ import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin";
 import notificationModel from "@/models/notification.module";
 import { INotification } from "@/types/notification";
+import { revalidatePath } from "next/cache";
 
 export const getMyNotifications = async () => {
     try {
@@ -19,18 +20,14 @@ export const getMyNotifications = async () => {
 }
 
 export const seenNotification = async (notificationID: string) => {
-    try {
-        await connectToDB();
-        const isLoginUser = await isLogin();
-        if (!isLoginUser) return MessageCreator(false, 'دسترسی غیرمجاز');
-        await notificationModel.findOneAndUpdate({
-            _id: notificationID,
-            userID: isLoginUser._id
-        }, {
-            isSeen: true
-        });
-        return MessageCreator(true, '')
-    } catch (error) {
-        throw new Error('خطای ناشناخته')
-    }
+    await connectToDB();
+    const isLoginUser = await isLogin();
+    if (!isLoginUser) throw new Error('خطای ناشناخته')
+    await notificationModel.findOneAndUpdate({
+        _id: notificationID,
+        userID: isLoginUser._id
+    }, {
+        isSeen: true
+    });
+    revalidatePath('/p-user', 'layout');
 }
