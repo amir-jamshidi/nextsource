@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const mongoAddress = process.env.MONGO_URL as string
-// const mongoAddress = 'mongodb+srv://devamir:amir.h.j@cluster0.oo6uzll.mongodb.net/next-source'
+// const mongoAddress = process.env.MONGO_URL as string
+const mongoAddress = 'mongodb+srv://devamir:amir.h.j@cluster0.oo6uzll.mongodb.net/next-source'
 
 const connectToDB = async () => {
     try {

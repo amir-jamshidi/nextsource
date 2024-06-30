@@ -5,16 +5,17 @@ import React from 'react'
 const AlertSection = async () => {
 
     const alerts = await getAlerts();
-
+    if (!alerts.length) return null
+    
     return (
         <section>
             <div className='grid grid-cols-1 md:grid-cols-2'>
-                <div className='px-2 mt-8 flex flex-col gap-y-1 '>
+                <div className='px-2 lg:px-8 mt-10 flex flex-col gap-y-1 '>
                     {alerts.map((item) => (
                         <div key={item._id} className={`
-                        ${item.type === 'SUCCESS' ? 'bg-green-500/10 border border-green-900' :
-                                item.type === 'ERROR' ? 'bg-red-500/10 border border-red-900' :
-                                    'bg-amber-500/10 border border-amber-800'} rounded-2xl py-2 px-1.5 gap-x-0.5 text-sm flex items-center`}>
+                        ${item.type === 'SUCCESS' ? 'bg-green-500/5 border border-green-900' :
+                                item.type === 'ERROR' ? 'bg-red-500/5 border border-red-900' :
+                                    'bg-amber-500/5 border border-amber-800'} rounded-2xl py-2 px-1.5 gap-x-0.5 text-sm flex items-center`}>
 
                             <div>
                                 <span>
