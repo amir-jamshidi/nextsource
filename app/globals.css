@@ -58,7 +58,7 @@
     }
 
     .bg-background {
-        @apply bg-slate-950
+        @apply bg-gray-900
     }
 
     .bg-button {

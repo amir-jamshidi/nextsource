@@ -26,7 +26,7 @@ const userSchema = new Schema<IUser>({
     },
     profile: {
         type: String,
-        default: ''
+        default: 'https://i.postimg.cc/Y9VKvST9/icons8-male-user-100.png'
     },
     bio: {
         type: String,
