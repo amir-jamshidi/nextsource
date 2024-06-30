@@ -29,6 +29,9 @@ const ThemeProvider = ({ children }: IThemeContextProvider) => {
 
     const handleSetIsOpenSidebar = (status: boolean) => {
         setIsOpenSidebar(status)
+        if (status) document.body.style.overflow = 'hidden';
+        if (!status) document.body.style.overflow = 'auto';
+
     }
 
     useEffect(() => {
