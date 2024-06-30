@@ -8,17 +8,9 @@ import PopularCategoriesSection from '@/components/template/Main/PopularCategori
 import PopularFrontProductsSection from '@/components/template/Main/PopularFrontProductsSection/PopularFrontProductsSection'
 import PopularProductsSection from '@/components/template/Main/PopularProductsSection/PopularProductsSection'
 import SocialMedia from '@/components/template/Main/SocialMedia/SocialMedia'
-import alertModel from '@/models/alert.module'
 
 
 const page = async () => {
-
-  // await alertModel.create({
-  //   title: 'توجه : ',
-  //   body: 'به زودی حالت روز و سایر امکانات در دسترس قرار میگیرد',
-  //   isShow: true,
-  //   type: 'SUCCESS'
-  // })
 
   return (
     <>

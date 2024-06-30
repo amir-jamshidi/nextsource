@@ -1,5 +1,4 @@
 import { getAlerts } from '@/actions/alert.action'
-import { IAlert } from '@/types/alert';
 import { InfoRounded } from '@mui/icons-material';
 import React from 'react'
 
@@ -19,7 +18,7 @@ const AlertSection = async () => {
 
                             <div>
                                 <span>
-                                    <InfoRounded className='text-gray-300' />
+                                    <InfoRounded className='notification-icon' />
                                 </span>
                             </div>
                             <div className='flex items-center gap-x-0.5 flex-wrap'>

@@ -213,11 +213,29 @@ html {
     height: 3rem;
     margin: 2rem;
     border-radius: 50%;
-    border: 0.4rem solid rgb(151, 159, 208 , 0.3) ;
+    border: 0.4rem solid rgb(151, 159, 208, 0.3);
     border-top-color: #979fd0;
-    animation: 1.5s spin infinite linear;
+    animation: 1s spin infinite linear;
 
     &.multi {
         border-bottom-color: red;
+    }
+}
+
+.notification-icon {
+    animation: notification 2s infinite;
+}
+
+@keyframes notification {
+    0% {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    100% {
+        color: rgba(255, 255, 255, 0.8);
     }
 }
