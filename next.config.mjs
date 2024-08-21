@@ -6,7 +6,11 @@ const nextConfig = {
                 hostname: 'sabzlearn.ir',
             },
             {
-                hostname : 'i.postimg.cc'
+                hostname: 'i.postimg.cc'
+            },
+            {
+                protocol: 'https',
+                hostname: 'dysayodpvtzawkbectlu.supabase.co'
             }
         ]
     }

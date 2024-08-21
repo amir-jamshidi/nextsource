@@ -2,12 +2,13 @@
 import connectToDB from "@/database/db"
 import { MessageCreator } from "@/libs/MessageCreator";
 import isLogin from "@/middlewares/isLogin";
+import adminNotificationModel from "@/models/adminNotifications.model";
 import notificationModel from "@/models/notification.module";
 import orderModel from "@/models/order.module";
 import sectionModel from "@/models/section.module";
 import ticketModel from "@/models/ticket.module";
 import { ITicket } from "@/types/ticket";
-import mongoose, { Schema, Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 export const getMyTickets = async (filter: string) => {
     try {
@@ -59,6 +60,7 @@ export const addNewTicket = async (body: string, sectionID: string, order: strin
             title: 'ارسال تیکت',
             body: 'تیکت شما ارسال شد و به زودی پاسخ میدیم'
         })
+        await adminNotificationModel.create({ type: 'TICKET' })
         return MessageCreator(true, 'تیکت شما ارسال شد');
     } catch (error) {
         throw new Error('خطای ناشناخته');
