@@ -100,6 +100,7 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
             body: 'لطفا مشخصات خود را بروز کنید',
             href: '/p-user/infos'
         })
+        await adminNotificationModel.create({ type: 'TICKET' })
         //return { state: true, message: 'ثبت نام انجام شد' }
     }
     revalidatePath('/', 'layout');

@@ -2,6 +2,7 @@
 
 import connectToDB from "@/database/db"
 import isLogin from "@/middlewares/isLogin";
+import adminNotificationModel from "@/models/adminNotifications.model";
 import notificationModel from "@/models/notification.module";
 import orderModel from "@/models/order.module"
 import productModel from "@/models/product.module";
@@ -81,6 +82,9 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
         await sellerModel.findOneAndUpdate({ _id: product.sellerID }, {
             $inc: { score: price > 0 ? +Math.floor(price / 1000) : +0, sellCount: +1 }
         })
+
+        await adminNotificationModel.create({ type: 'ORDER' })
+
 
         //Revalidate Page
         revalidatePath(`/product/${product.href}`)
