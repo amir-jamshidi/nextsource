@@ -25,6 +25,7 @@ import notificationModel from "@/models/notification.module";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import request from 'request'
+import adminNotificationModel from "@/models/adminNotifications.model";
 
 
 export const LoginUser = async (phone: string) => {
@@ -100,7 +101,7 @@ export const VerifyCodeUser = async (phone: string, code: number) => {
             body: 'لطفا مشخصات خود را بروز کنید',
             href: '/p-user/infos'
         })
-        await adminNotificationModel.create({ type: 'TICKET' })
+        await adminNotificationModel.create({ type: 'USER' })
         //return { state: true, message: 'ثبت نام انجام شد' }
     }
     revalidatePath('/', 'layout');
