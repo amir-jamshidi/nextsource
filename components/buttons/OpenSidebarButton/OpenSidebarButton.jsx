@@ -8,8 +8,8 @@ const OpenSidebarButton = () => {
 
   return (
     <button className="block lg:hidden" onClick={() => themeProviser.handleSetIsOpenSidebar(true)}>
-      <span className="flex flex-center bg-blue border border-gray-300/10 rounded-full h-10 w-10">
-        <MenuRounded className="text-gray-200" />
+      <span className="flex flex-center bg-blue border border-gray-200 dark:border-gray-300/10 rounded-full h-10 w-10">
+        <MenuRounded className="dark:text-gray-200 text-gray-700" />
       </span>
     </button>
   );

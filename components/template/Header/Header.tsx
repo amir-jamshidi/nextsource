@@ -22,7 +22,7 @@ const Header = async () => {
                     <div className='h-20 bg-blue rounded-3xl flex px-8'>
                         <div className='flex-1 flex justify-start items-center'>
                             <Link href={'/'}>
-                                <h1 className='text-gray-200 text-xl font-morabba-bold'>
+                                <h1 className='dark:text-gray-200 text-gray-800 text-xl font-morabba-bold'>
                                     نکستــ
                                     {" "}
                                     سورس
