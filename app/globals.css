@@ -81,6 +81,15 @@
         @apply bg-gradient-to-r bg-no-repeat dark:from-cyan-950/35 dark:to-blue-950/35 from-gray-100 to-gray-100
     }
 
+    .bg-items {
+        @apply bg-gradient-to-r bg-no-repeat from-white/30 to-white/30 dark:from-cyan-950/50 dark:to-blue-950/50 backdrop-blur-sm
+    }
+
+    .bg-btns {
+        @apply bg-gradient-to-r bg-no-repeat from-green-400 to-green-500 dark:from-cyan-950/50 dark:to-blue-950/50 backdrop-blur-sm
+
+    }
+
     /* Amimations */
     .hover-btn {
         @apply transition-all scale-105

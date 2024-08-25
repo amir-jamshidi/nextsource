@@ -21,7 +21,7 @@ const RequestButton = ({ isLoginUser, title, href }: RequestButtonProps) => {
     }
 
     return (
-        <button onClick={handleRequest} className="bg-blue px-4 py-2.5 rounded-full text-gray-200 text-sm">{title}</button>
+        <button onClick={handleRequest} className="bg-btns px-4 py-2.5 rounded-full text-white dark:text-gray-200 text-sm">{title}</button>
     )
 }
 

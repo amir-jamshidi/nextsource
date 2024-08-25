@@ -33,7 +33,7 @@ const Header = async () => {
                             <SearchSection />
                         </div>
                         <div className='flex-1 flex justify-end items-center gap-x-1 '>
-                            {/* <ToggleThemeButton /> */}
+                            <ToggleThemeButton />
                             {!isLoginUser ? (
                                 <Link href={'/login'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>ورود یا عضویت</Link>
                             ) : (
