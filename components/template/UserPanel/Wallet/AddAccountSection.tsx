@@ -50,17 +50,17 @@ const AddAccountSection = () => {
                     <div className='w-full'>
                         <form onSubmit={handleSubmit(handleSubmitForm)}>
                             <div className='flex flex-col gap-y-1 text-sm'>
-                                <div className='h-10 bg-gray-900 rounded-xl '>
-                                    <input {...register('cardNumber')} type="text" placeholder='شماره کارت' className='rounded-xl border-none outline-none text-gray-300 bg-gray-900 h-10 w-full text-center' />
+                                <div className='h-10 bg-input-container rounded-xl '>
+                                    <input {...register('cardNumber')} type="text" placeholder='شماره کارت' className='rounded-xl border-none outline-none text-gray-300 bg-input h-10 w-full text-center' />
                                 </div>
-                                <div className='h-10 bg-gray-900 rounded-xl '>
-                                    <input {...register('cardBank')} type="text" placeholder='نام بانک' className='rounded-xl border-none outline-none text-gray-300 bg-gray-900 h-10 w-full text-center' />
+                                <div className='h-10 bg-input-container rounded-xl '>
+                                    <input {...register('cardBank')} type="text" placeholder='نام بانک' className='rounded-xl border-none outline-none text-gray-300 bg-input h-10 w-full text-center' />
                                 </div>
-                                <div className='h-10 bg-gray-900 rounded-xl '>
-                                    <input {...register('cardShaba')} type="text" placeholder='شماره شبا' className='rounded-xl border-none outline-none text-gray-300 bg-gray-900 h-10 w-full text-center' />
+                                <div className='h-10 bg-input-container rounded-xl '>
+                                    <input {...register('cardShaba')} type="text" placeholder='شماره شبا' className='rounded-xl border-none outline-none text-gray-300 bg-input h-10 w-full text-center' />
                                 </div>
-                                <div className='h-10 bg-gray-900 rounded-xl '>
-                                    <input {...register('cardName')} type="text" placeholder='نام صاحب کارت' className='rounded-xl border-none outline-none text-gray-300 bg-gray-900 h-10 w-full text-center' />
+                                <div className='h-10 bg-input-container rounded-xl '>
+                                    <input {...register('cardName')} type="text" placeholder='نام صاحب کارت' className='rounded-xl border-none outline-none text-gray-300 bg-input h-10 w-full text-center' />
                                 </div>
                                 <button disabled={isSubmitting} className='h-10 mt-1 text-gray-200 bg-green-500 rounded-xl'>{isSubmitting ? 'لطفا صبر کن ...' : 'اضافه کن'}</button>
                                 <button onClick={handleCloseModal} className='h-10 text-gray-200 bg-red-500 rounded-xl'>بیخیال</button>
@@ -70,7 +70,7 @@ const AddAccountSection = () => {
                     </div>
                 </div>
             </Modal>
-            <button onClick={() => setIsShowModal(true)} className='h-10 rounded-xl text-gray-200 bg-blue text-sm px-3'>اضافه کردن کارت بانکی</button>
+            <button onClick={() => setIsShowModal(true)} className='h-10 rounded-xl text-gray-100 dark:text-gray-300 bg-btns text-sm px-3'>اضافه کردن کارت بانکی</button>
         </>
     )
 }

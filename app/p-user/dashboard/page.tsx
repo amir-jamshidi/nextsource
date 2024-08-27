@@ -10,12 +10,6 @@ export const metadata: Metadata = {
 const Dashboard = () => {
 
     return (
-        // <div>
-        //     <h1 className='text-2xl text-gray-100 text-center'>Dashboard</h1>
-        //     <Suspense fallback={<p>Loading ...</p>}>
-        //         <DashboardDetailsSection />
-        //     </Suspense>
-        // </div>
         <UserPanelPageContainer title='داشبـــورد'>
             <DashboardDetailsSection />
         </UserPanelPageContainer>

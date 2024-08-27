@@ -10,8 +10,8 @@ interface NoItemProps {
 
 const NoItemUserPanel = ({ title, margin = true, href, buttonTitle }: NoItemProps) => {
     return (
-        <div className={`py-12 flex-center bg-blue-600/10 rounded-2xl flex-col gap-y-3 ${margin ? 'mt-5 md:mt-6' : ''}`} >
-            <p className='text-sm text-amber-500/80'>{title}</p>
+        <div className={`py-12 flex-center bg-gray-100  dark:bg-blue-600/10 rounded-2xl flex-col gap-y-3 ${margin ? 'mt-5 md:mt-6' : ''}`} >
+            <p className='text-sm text-amber-500 dark:text-amber-500/80'>{title}</p>
             {href && (
                 <div className="flex text-sm bg-green-500/60 rounded-xl py-1.5 px-4 gap-x-1">
                     <Link href={`${href}`}>

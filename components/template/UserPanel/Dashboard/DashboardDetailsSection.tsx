@@ -22,7 +22,7 @@ const DashboardDetailsSection = async () => {
 
   return (
     <div className="pb-2">
-      <div className='h-12 grid grid-cols-[1fr,3fr,1fr] items-center text-sm bg-blue-light rounded-xl text-gray-100 px-4'>
+      <div className='h-12 grid grid-cols-[1fr,3fr,1fr] items-center text-sm bg-blue-light rounded-xl text-gray-700 dark:text-gray-100 px-4'>
         <div className='flex items-center justify-start gap-x-1'>
           <span className='w-2 h-2 rounded-full bg-green-500 flex'></span>
           <p className='hidden md:flex'>امروز</p>
@@ -38,13 +38,13 @@ const DashboardDetailsSection = async () => {
       </div>
 
       <div className='mt-5 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-2 text-sm'>
-        <div className='h-24 md:h-32 bg-blue-light flex-center rounded-2xl text-gray-200'>
+        <div className='h-24 md:h-32 bg-blue-light flex-center rounded-2xl text-700-300'>
           <p >شما تا الان <span className='font-dana-bold mx-0.5'>{orderCount.toLocaleString('fa')}</span> سورس تهیه کردید </p>
         </div>
-        <div className='h-24 md:h-32 bg-blue-light flex-center rounded-2xl text-gray-200'>
+        <div className='h-24 md:h-32 bg-blue-light flex-center rounded-2xl text-700-300'>
           <p >شما تا الان <span className='font-dana-bold mx-0.5'>{ticketCount.toLocaleString('fa')} </span>تیکت ارسال کردید </p>
         </div>
-        <div className='h-24 md:h-32 bg-blue-light flex-center rounded-2xl text-gray-200'>
+        <div className='h-24 md:h-32 bg-blue-light flex-center rounded-2xl text-700-300'>
           <p >شما تا الان <span className='font-dana-bold mx-0.5'>{requestCount.toLocaleString('fa')}</span> درخواست ارسال کردید </p>
         </div>
       </div>

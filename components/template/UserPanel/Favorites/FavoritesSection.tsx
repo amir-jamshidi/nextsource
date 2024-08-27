@@ -14,7 +14,7 @@ const FavoritesSection = async ({ favorites }: { favorites: IFavorite[] }) => {
             {favorites.length > 0 ? (
                 <SourceContainer margin={false}>
                     {favorites.map(fav => (
-                        <SourceItem key={fav._id} product={fav.productID as IProduct} />
+                        <SourceItem inFav={true} key={fav._id} product={fav.productID as IProduct} />
                     ))}
                 </SourceContainer>
             ) : (

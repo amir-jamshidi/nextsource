@@ -19,7 +19,8 @@ const HeroSection = async () => {
                     </div>
                 </div>
                 <div className="order-1 md:order-2">
-                    <Image src={'./assets/hero-img.svg'} width={600} height={600} alt="" priority />
+                    <Image className="dark:flex hidden" src={'./assets/hero-img.svg'} width={600} height={600} alt="" priority />
+                    <Image className="dark:hidden flex" src={'./assets/hero-light.svg'} width={600} height={600} alt="" priority />
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ const LogoutButton = () => {
     }
 
     return (
-        <span onClick={handleLogout} className='w-10 h-10 rounded-full flex-center bg-blue border border-gray-300/10 cursor-pointer'>
+        <span onClick={handleLogout} className='border-red-100 w-10 h-10 rounded-full flex-center bg-blue border dark:border-gray-300/10 cursor-pointer'>
             <PowerSettingsNewRounded className='text-red-500 transition-colors hover:text-red-600' />
         </span>
     )

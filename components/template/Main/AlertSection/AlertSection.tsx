@@ -13,9 +13,9 @@ const AlertSection = async () => {
                 <div className='px-2 lg:px-8 mt-10 flex flex-col gap-y-1 '>
                     {alerts.map((item) => (
                         <div key={item._id} className={`
-                        ${item.type === 'SUCCESS' ? 'dark:bg-green-500/5 border dark:border-green-900 bg-green-500/70' :
-                                item.type === 'ERROR' ? 'dark:bg-red-500/5 border dark:border-red-900 bg-red-500/70' :
-                                    'dark:bg-amber-500/5 border dark:border-amber-800 bg-amber-500/70'} rounded-2xl py-2 px-1.5 gap-x-0.5 text-sm flex items-center`}>
+                        ${item.type === 'SUCCESS' ?     'dark:bg-green-500/5 border dark:border-green-900 bg-green-500 border-green-600' :
+                                item.type === 'ERROR' ? 'dark:bg-red-500/5 border dark:border-red-900 bg-red-500 border-red-600' :
+                                                        'dark:bg-amber-500/5 border dark:border-amber-800 bg-amber-500 border-amber-600 '} rounded-2xl py-2 px-1.5 gap-x-0.5 text-sm flex items-center`}>
 
                             <div>
                                 <span>
@@ -23,10 +23,10 @@ const AlertSection = async () => {
                                 </span>
                             </div>
                             <div className='flex items-center gap-x-0.5 flex-wrap'>
-                                <p className='dark:text-gray-200 text-gray-800'>
+                                <p className='dark:text-gray-200 text-gray-900'>
                                     {item.title}
                                 </p>
-                                <p className='dark:text-gray-300 text-gray-700'>
+                                <p className='dark:text-gray-300 text-gray-800'>
                                     {item.body}
                                 </p>
                             </div>

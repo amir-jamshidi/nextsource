@@ -7,8 +7,8 @@ interface NoTransActionProps {
 
 const NoTransAction = ({ text, extranClass = '' }: NoTransActionProps) => {
     return (
-        <div className={`bg-gray-900 py-8 rounded-2xl flex-center ${extranClass}`}>
-            <p className="text-sm text-gray-400">{text}</p>
+        <div className={`bg-white dark:bg-gray-900 py-8 rounded-2xl flex-center ${extranClass}`}>
+            <p className="text-sm text-600-400">{text}</p>
         </div>
     )
 }
