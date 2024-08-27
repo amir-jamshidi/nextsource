@@ -37,6 +37,7 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
     }
   }
 
+  
   return (
     <div>
       <div className='h-12 bg-blue rounded-xl flex-center'>
