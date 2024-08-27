@@ -9,7 +9,7 @@ const SourceItem = ({ product }: { product: IProduct }) => {
 
     return (
         <Link href={`/product/${product.href}`}>
-            <div className="bg-blue rounded-xl px-2 py-2 border border-gray-200 dark:border-none">
+            <div className="bg-blue rounded-xl px-2 py-2 shadow-sm dark:shadow-none">
                 <div className="rounded-xl overflow-hidden -mt-8 relative h-44">
                     {product.isPlan && (
                         <span className="absolute flex items-center justify-center bg-items top-1 right-1 rounded px-2 text-gray-300 z-[4]">

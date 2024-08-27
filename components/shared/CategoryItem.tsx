@@ -11,9 +11,9 @@ const CategoryItem = ({ title, href, titleEn }: CategoryItemProps) => {
     return (
 
         <Link href={`/category/${href}`}>
-            <div className='h-24 bg-blue rounded-xl flex-center flex flex-col'>
-                <p className='text-base lg:text-lg text-gray-300'>{title}</p>
-                <p className='text-gray-400 text-sm'>{titleEn}</p>
+            <div className='h-24 bg-blue rounded-xl flex-center flex flex-col shadow-sm dark:shadow-none'>
+                <p className='text-base lg:text-lg text-700-300'>{title}</p>
+                <p className='text-600-400 text-sm'>{titleEn}</p>
             </div>
         </Link>
 

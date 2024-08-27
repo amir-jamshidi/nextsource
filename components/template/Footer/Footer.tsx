@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="flex bg-blue w-full h-20 rounded-3xl px-4">
                     <div className="flex-1"></div>
                     <div className=" flex-center flex-col gap-1">
-                        <p className="text-gray-300 text-sm">تمامی حقوق این سایت متعلق دِوامیر می باشد</p>
+                        <p className="text-600-400 text-sm">تمامی حقوق این سایت متعلق دِوامیر می باشد</p>
                         <p className="text-sm text-gray-400">طراحی شده توسط امیرحسین جمشیدی</p>
                     </div>
                     <div className="flex-1 flex items-center justify-end">

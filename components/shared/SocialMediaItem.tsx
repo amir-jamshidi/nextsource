@@ -9,9 +9,9 @@ interface SocailMediaItemProps {
 const SocialMediaItem = ({ src, title, href }: SocailMediaItemProps) => {
     return (
         <a target='_blank' href={href}>
-            <div className="h-32 rounded-xl bg-blue flex-center flex-col gap-0.5" >
+            <div className="h-32 rounded-xl bg-blue flex-center flex-col gap-0.5 shadow-sm dark:shadow-none">
                 <Image src={src} alt="" width={50} height={50} />
-                <p className="text-gray-300">{title}</p>
+                <p className="text-700-300">{title}</p>
             </div>
         </a>
     )

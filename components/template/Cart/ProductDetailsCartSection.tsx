@@ -20,10 +20,10 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money 
                     <Image src={product.photo} className="rounded-xl" fill={true} alt="" />
                 </div>
                 <div className='mt-2'>
-                    <p className='text-gray-200 flex-center'>{product.title}</p>
+                    <p className='text-800-200 flex-center'>{product.title}</p>
                 </div>
-                <div className='flex justify-between mt-2 bg-gray-800/30 py-2 px-2.5 rounded-xl h-11 items-center'>
-                    <p className='text-gray-300'>قیمت سورس کد</p>
+                <div className='flex justify-between mt-2 bg-gray-100 border-transparent dark:bg-gray-800/30 border dark:border-gray-700/30 py-2 px-2.5 rounded-xl h-11 items-center'>
+                    <p className='text-700-300'>قیمت سورس کد</p>
                     <div className='flex gap-x-0.5 items-center'>
                         {product.isFree && <p className='text-green-500 text-sm'>رایگـان</p>}
                         {!product.isFree && !product.isOff && (
@@ -42,7 +42,7 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money 
                     </div>
                 </div>
                 {!product.isFree && (
-                    <div className='hidden relative justify-between mt-2 bg-gray-800/30 py-2 px-2.5 rounded-xl items-center h-11'>
+                    <div className='hidden relative justify-between mt-2 border border-gray-700/30 bg-gray-800/30 py-2 px-2.5 rounded-xl items-center h-11'>
                         <p className='text-gray-300'>کد تخفیف داری ؟</p>
                         <div className=''>
                             <form action="" className='flex items-center gap-x-1'>
@@ -54,8 +54,8 @@ const ProductDetailsCartSection = async ({ product, isAccessToSourceUser, money 
                         </div>
                     </div>
                 )}
-                <div className='flex justify-between mt-2 bg-gray-800/30 py-2 px-2.5 rounded-xl items-center h-11 mb-3'>
-                    <p className='text-gray-300'>مبلغ پرداختی</p>
+                <div className='flex justify-between mt-2 bg-gray-100 border-transparent dark:bg-gray-800/30 border dark:border-gray-700/30 py-2 px-2.5 rounded-xl items-center h-11 mb-3'>
+                    <p className='text-700-300'>مبلغ پرداختی</p>
                     <div className='flex gap-x-0.5 items-center'>
                         {product.isFree && <p className='text-sm text-gray-500'>رایگـان</p>}
                         {!product.isFree && !product.isOff && (

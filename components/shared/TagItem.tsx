@@ -8,7 +8,7 @@ interface TagItemProps {
 const TagItem = ({ tag }: TagItemProps) => {
     return (
         <Link href={`/tag/${tag.href}`}>
-            <span className='bg-gray-300 text-gray-800 text-sm rounded px-2'>{tag.title}</span>
+            <span className='dark:bg-gray-300 bg-green-400 font-morabba-light text-sm text-white dark:text-gray-800  rounded px-2'>{tag.title}</span>
         </Link>
     )
 }

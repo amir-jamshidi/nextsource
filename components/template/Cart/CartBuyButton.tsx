@@ -31,32 +31,32 @@ const CartBuyButton = ({ productID, isAccessToSourceUser, money, isFree }: { pro
     return (
         <>
             <Modal isShow={isShowModal}>
-                <h3 className="text-center text-xl text-gray-200">پرداخت با کیف پول انجام بشه ؟</h3>
-                <p className="text-center mt-4 text-gray-300">مطمئنی که میخوای این سورس رو با موجودی کیف پولت پرداخت کنی ؟ به این نکته دقت کن اگه با کیف پول پرداخت کنی دیگه کش بک بهت تعلق نمیگیره</p>
+                <h3 className="text-center text-xl text-800-200">پرداخت با کیف پول انجام بشه ؟</h3>
+                <p className="text-center mt-4 text-700-300">مطمئنی که میخوای این سورس رو با موجودی کیف پولت پرداخت کنی ؟ به این نکته دقت کن اگه با کیف پول پرداخت کنی دیگه کش بک بهت تعلق نمیگیره</p>
                 <div className="flex-center mt-4 gap-x-1">
-                    <button onClick={() => handleBuyProduct('WALLET')} className="bg-green-500/60 rounded-full text-sm text-gray-100 px-2 py-1.5">اره پرداخت میکنم</button>
-                    <button onClick={() => setIsShowModal(false)} className="bg-red-500/60 rounded-full text-sm text-gray-100 px-2 py-1.5">نه نمیخوام</button>
+                    <button onClick={() => handleBuyProduct('WALLET')} className="dark:bg-green-500/60 bg-green-500 rounded-full text-sm text-gray-100 px-2 py-1.5">اره پرداخت میکنم</button>
+                    <button onClick={() => setIsShowModal(false)} className="dark:bg-red-500/60 bg-red-500 rounded-full text-sm text-gray-100 px-2 py-1.5">نه نمیخوام</button>
                 </div>
             </Modal>
 
             <div className="flex flex-col">
                 {isAccessToSourceUser ? (
-                    <span className={`bg-blue w-full inline-block cursor-not-allowed text-center rounded-xl py-2.5 text-gray-200 mt-1`}>
+                    <span className={`bg-btns w-full inline-block cursor-not-allowed text-center rounded-xl py-2.5 text-gray-200 mt-1`}>
                         شما به این سورس دسترسی دارید
                     </span>) : (
-                    <button disabled={isLoading} onClick={() => handleBuyProduct('ONLINE')} className={`${isLoading ? 'bg-gray-800' : 'bg-blue'} rounded-xl py-2.5 text-gray-200 mt-1`}>
+                    <button disabled={isLoading} onClick={() => handleBuyProduct('ONLINE')} className={`${isLoading ? 'dark:bg-gray-800 bg-gray-300' : 'bg-btns'} rounded-xl py-2.5 text-gray-100 dark:text-gray-200 mt-1`}>
                         {isLoading ? 'لطفا صبر کنید ...' : 'پرداخت آنلاین'}
                     </button>)}
                 {isAccessToSourceUser || isFree ? (
                     null) : (
                     <div className="flex justify-center flex-col items-center">
-                        <button disabled={isLoading} onClick={() => setIsShowModal(true)} className={`${isLoading ? 'bg-gray-800' : 'bg-blue'} w-full rounded-xl py-2.5 text-gray-200 mt-1`}>
+                        <button disabled={isLoading} onClick={() => setIsShowModal(true)} className={`${isLoading ? 'dark:bg-gray-800 bg-gray-300' : 'bg-btns'} w-full rounded-xl py-2.5 text-gray-100 dark:text-gray-200 mt-1`}>
                             {isLoading ? 'لطفا صبر کنید ...' : 'پرداخت با کیف پول'}
                         </button>
-                        <div className="h-10 bg-gray-900 w-2/3 rounded-br-3xl rounded-bl-3xl -mt-px flex text-sm gap-x-0.5 items-center justify-center">
-                            <p className="text-gray-300">موجودی کیف پول</p>
-                            <p className="font-dana-bold text-gray-300">{Math.floor(money).toLocaleString()}</p>
-                            <p className="text-gray-300">تومان</p>
+                        <div className="h-10 bg-green-400 dark:bg-gray-900 w-2/3 rounded-br-3xl rounded-bl-3xl -mt-px flex text-sm gap-x-0.5 items-center justify-center">
+                            <p className="text-gray-100 dark:text-gray-300">موجودی کیف پول</p>
+                            <p className="font-dana-bold text-gray-100 dark:text-gray-300">{Math.floor(money).toLocaleString()}</p>
+                            <p className="text-gray-100 dark:text-gray-300">تومان</p>
                         </div>
                     </div>
                 )}

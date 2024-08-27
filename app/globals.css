@@ -87,7 +87,6 @@
 
     .bg-btns {
         @apply bg-gradient-to-r bg-no-repeat from-green-400 to-green-500 dark:from-cyan-950/50 dark:to-blue-950/50 backdrop-blur-sm
-
     }
 
     /* Amimations */
@@ -102,6 +101,24 @@
 
     .h-cart {
         height: calc((100vh - 168px));
+    }
+
+    /* Borders  */
+
+    .border-section {
+        @apply border border-gray-200/50 dark:border-none
+    }
+
+    .bg-comment {
+        @apply bg-gradient-to-r bg-no-repeat from-gray-200 to-gray-200 dark:from-cyan-950/50 dark:to-blue-950/50 backdrop-blur-sm
+    }
+
+    .bg-input-container {
+        @apply border dark:border-gray-800 dark:bg-gray-900 bg-gray-100 border-gray-200
+    }
+
+    .bg-input {
+        @apply dark:bg-gray-900 bg-gray-100 text-gray-700 dark:text-gray-300
     }
 
 }

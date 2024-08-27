@@ -46,8 +46,8 @@ const FavoriteButton = ({ productID, isHasToFav }: FavoriteButtonProps) => {
     }
 
     return (
-        <button disabled={isLoading} onClick={isHasToFav ? handleRemoveFavorite : handleAddToFavorite} className='bg-blue w-9 h-9 shrink-0 rounded-full flex-center'>
-            <FavoriteRounded className={`${(isFav) ? 'text-red-500' : 'text-gray-500'}`} />
+        <button disabled={isLoading} onClick={isHasToFav ? handleRemoveFavorite : handleAddToFavorite} className='bg-btns w-9 h-9 shrink-0 rounded-full flex-center'>
+            <FavoriteRounded className={`${(isFav) ? 'text-red-500' : 'dark:text-gray-500 text-gray-200'}`} />
         </button>
     )
 }
