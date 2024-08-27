@@ -48,7 +48,7 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
         <span className='flex-1 h-px bg-gray-200 dark:bg-gray-800'></span>
       </div>
       <form className="mt-6" onSubmit={handleSubmitForm}>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-1'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-1'> 
           <div className='bg-input-container rounded-xl border border-gray-800'>
             <input onChange={(e) => setFullname(e.target.value)} value={fullname} type="text" className='h-12 w-full text-sm bg-input outline-none border-none text-gray-200 px-2 rounded-xl' placeholder='نام کامل شما' />
           </div>
