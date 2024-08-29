@@ -12,9 +12,9 @@ const error = () => {
                 <div className='flex flex-col justify-center - items-center gap-y-4'>
                     <Image alt="Not Found" height={200} width={200} src={notFoundImg} />
                 </div>
-                <h2 className='text-gray-200 text-xl'>خطای ناشناخته ای رخ داد</h2>
+                <h2 className='text-800-200 text-xl'>خطای ناشناخته ای رخ داد</h2>
                 <Link href={'/'}>
-                    <p className='text-gray-200'>بازگشت</p>
+                    <p className='text-800-200'>بازگشت</p>
                 </Link>
             </div>
         </div>
