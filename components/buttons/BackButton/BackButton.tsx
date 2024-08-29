@@ -8,7 +8,7 @@ const BackButton = ({ bg }: { bg?: boolean }) => {
 
     return (
         <button onClick={() => router.back()} className={`top-1 left-1 flex justify-center items-center absolute w-10 h-10 rounded-full ${bg && 'bg-items dark:bg-blue'} `}>
-            <ArrowBackIosRounded fontSize='small' className='text-gray-300 mr-1' />
+            <ArrowBackIosRounded fontSize='small' className="text-gray-600 dark:text-gray-300 mr-1" />
         </button >
     )
 }

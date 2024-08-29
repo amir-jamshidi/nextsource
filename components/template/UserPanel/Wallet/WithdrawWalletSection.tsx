@@ -53,7 +53,7 @@ const WithdrawWalletSection = ({ accounts, money }: WithdrawWalletSectionProps) 
                     <input type="number" value={price} onChange={(e) => setPrice(Number(e.target.value))} className='bg-input w-full border-none outline-none text-sm text-gray-300 font-dana-bold h-12' />
                 </div>
                 <div className='flex items-center justify-center'>
-                    <div className='border-l border-l-gray-800 pl-2 ml-2 text-sm text-green-500 flex items-center justify-center mt-3 gap-x-0.5'>
+                    <div className='border-l border-l-gray-200 dark:border-l-gray-800 pl-2 ml-2 text-sm text-green-500 flex items-center justify-center mt-3 gap-x-0.5'>
                         <p>مبلغ قابل برداشت</p>
                         <p className='font-dana-bold'>{money.toLocaleString()}</p>
                         <p>تومـان</p>

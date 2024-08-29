@@ -62,7 +62,7 @@
     }
 
     .bg-button {
-        @apply bg-gradient-to-br bg-no-repeat from-green-500 to-emerald-500
+        @apply text-gray-600 dark:text-gray-100 bg-gradient-to-br bg-no-repeat from-white to-white dark:from-green-400 dark:to-green-500
     }
 
     .bg-blue {

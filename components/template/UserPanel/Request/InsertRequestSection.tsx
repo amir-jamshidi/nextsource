@@ -49,21 +49,21 @@ const InsertRequestSection = () => {
             </div>
             <form onSubmit={handleSubmit(handleSubmitForm)}>
                 <div className="grid gird-cols-1 md:grid-cols-2 gap-1">
-                    <div className="bg-gray-900 border border-gray-800 rounded-xl px-3">
-                        <input {...register('title')} type="text" className="h-12 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="عنوان درخواست"></input>
+                    <div className="bg-input-container rounded-xl px-3">
+                        <input {...register('title')} type="text" className="h-12 w-full bg-input outline-none border-none text-gray-200 text-sm" placeholder="عنوان درخواست"></input>
                     </div>
-                    <div className="bg-gray-900 border border-gray-800 rounded-xl px-3 flex items-center gap-x-2">
-                        <input {...register('price')} type="number" className="h-12 w-full bg-gray-900 outline-none border-none text-gray-200 text-sm" placeholder="مبلغ پیشنهادی"></input>
+                    <div className="bg-input-container rounded-xl px-3 flex items-center gap-x-2">
+                        <input {...register('price')} type="number" className="h-12 w-full bg-input outline-none border-none text-gray-200 text-sm" placeholder="مبلغ پیشنهادی"></input>
                         <div className="text-sm flex items-center text-gray-400 gap-x-0.5 min-w-32 justify-end">
                             <p className="font-dana-bold">{watch('price') ? Number(watch('price')).toLocaleString() : '0'}</p>
                             <p>تومان</p>
                         </div>
                     </div>
                 </div>
-                <div className="mt-1 bg-gray-900 mb-1 border border-gray-800 rounded-xl">
-                    <textarea {...register('caption')} placeholder="توضیحات کامل سورس مدنظر ..." className="min-h-44 max-h-52 w-full bg-gray-900 rounded-xl text-sm outline-none border-none text-gray-200 p-3" />
+                <div className="mt-1 bg-input-container mb-1 rounded-xl">
+                    <textarea {...register('caption')} placeholder="توضیحات کامل سورس مدنظر ..." className="min-h-44 max-h-52 w-full bg-input rounded-xl text-sm outline-none border-none text-gray-200 p-3" />
                 </div>
-                <input disabled={isSubmitting} type="submit" className={`h-12 w-full bg-blue mt-1 rounded-xl ${isSubmitting ? 'text-gray-500' : 'text-gray-200'} cursor-pointer transition-colors`} value={isSubmitting ? 'لطفا صبر کن ...' : 'ارسال درخواست'} />
+                <input disabled={isSubmitting} type="submit" className={`h-12 w-full bg-btns mt-1 rounded-xl ${isSubmitting ? 'text-gray-500' : 'text-gray-100 dark:text-gray-300'} cursor-pointer transition-colors`} value={isSubmitting ? 'لطفا صبر کن ...' : 'ارسال درخواست'} />
             </form>
         </div>
     )

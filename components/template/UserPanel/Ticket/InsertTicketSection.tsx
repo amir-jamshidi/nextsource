@@ -60,16 +60,16 @@ const InsertTicketSection = () => {
             </div>
             <form onSubmit={handleSubmit(handleSubmitTicket)}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-                    <div className="bg-gray-900 border border-gray-800 rounded-xl px-3">
-                        <select {...register('sectionID')} className='w-full outline-none border-none py-3.5 text-gray-200 bg-gray-900 text-sm rounded-xl'>
+                    <div className="bg-input-container rounded-xl px-3">
+                        <select {...register('sectionID')} className='w-full outline-none border-none py-3.5 text-gray-200 bg-input text-sm rounded-xl'>
                             <option value={'-1'}>بخش ارسالی</option>
                             {sections.map(section => (
                                 <option key={String(section._id)} value={String(section._id)}>{section.title}</option>
                             ))}
                         </select>
                     </div>
-                    <div className="bg-gray-900 border border-gray-800 rounded-xl px-3">
-                        <select {...register('orderID')} className='w-full outline-none border-none py-3.5 text-gray-200 bg-gray-900 text-sm rounded-xl'>
+                    <div className="bg-input-container rounded-xl px-3">
+                        <select {...register('orderID')} className='w-full outline-none border-none py-3.5 text-gray-200 bg-input text-sm rounded-xl'>
                             <option value={'-1'}>پیگیری خرید</option>
                             <>
                                 {orders && (
@@ -83,10 +83,10 @@ const InsertTicketSection = () => {
                         </select>
                     </div>
                 </div>
-                <div className="mt-1 bg-gray-900 mb-1 border border-gray-800 rounded-xl">
-                    <textarea {...register('body')} placeholder="متن تیکت شما ..." className="min-h-44 max-h-52 w-full bg-gray-900 rounded-xl text-sm outline-none border-none text-gray-200 p-3" />
+                <div className="mt-1 bg-input-container mb-1  rounded-xl">
+                    <textarea {...register('body')} placeholder="متن تیکت شما ..." className="min-h-44 max-h-52 w-full bg-input rounded-xl text-sm outline-none border-none text-gray-200 p-3" />
                 </div>
-                <input disabled={isSubmitting} type="submit" className={`h-12 w-full bg-blue mt-1 rounded-xl ${isSubmitting ? 'text-gray-500' : 'text-gray-200'} cursor-pointer transition-colors`} value={isSubmitting ? 'لطفا صبر کن ...' : 'ارسال تیکت'} />
+                <input disabled={isSubmitting} type="submit" className={`h-12 w-full bg-btns mt-1 rounded-xl ${isSubmitting ? 'text-gray-500' : 'text-gray-100 dark:text-gray-300'} cursor-pointer transition-colors`} value={isSubmitting ? 'لطفا صبر کن ...' : 'ارسال تیکت'} />
             </form>
         </div>
     )

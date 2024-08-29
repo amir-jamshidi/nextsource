@@ -37,10 +37,9 @@ const UserInfoSection = ({ user }: { user: IUser }) => {
     }
   }
 
-  
   return (
     <div>
-      <div className='h-12 bg-blue rounded-xl flex-center'>
+      <div className='h-12 bg-blue-light rounded-xl flex-center'>
         <p className='text-700-300 text-sm'>شما از تاریخ {new Date(createdAt).toLocaleDateString('fa-IR')} و ساعت  {new Date(createdAt).toLocaleTimeString('fa-IR')} کنار مایی :))</p>
       </div>
       <div className="flex-center mt-6 gap-x-3 mx-4">
