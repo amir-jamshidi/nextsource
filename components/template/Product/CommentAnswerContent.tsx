@@ -21,7 +21,7 @@ const CommentAnswerContent = ({ answerUser, comment }: CommentAnswerContentProps
                     </div>
                 </div>
                 <div className='flex-1'>
-                    <p className='text-600-400 text-sm text-justify '>{comment.answerContent}</p>
+                    <p className='text-600-400 text-sm'>{comment.answerContent}</p>
                 </div>
             </div>
         </div>

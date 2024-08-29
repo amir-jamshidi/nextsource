@@ -36,21 +36,21 @@ export const LoginUser = async (phone: string) => {
         const expireTime = timeGenerator(5);
         const verify = await verifyModel.create({ phone, code, expireTime });
 
-        request.post(
-            {
-                url: "http://ippanel.com/api/select",
-                body: {
-                    op: "pattern",
-                    user: "u09928168447",
-                    pass: "Faraz@1402546340042007",
-                    fromNum: "3000505",
-                    toNum: phone,
-                    patternCode: "ls41ct0qdyjrfed",
-                    inputData: [{ "verification-code": code }],
-                },
-                json: true,
-            }
-        );
+        // request.post(
+        //     {
+        //         url: "http://ippanel.com/api/select",
+        //         body: {
+        //             op: "pattern",
+        //             user: "u09928168447",
+        //             pass: "Faraz@1402546340042007",
+        //             fromNum: "3000505",
+        //             toNum: phone,
+        //             patternCode: "ls41ct0qdyjrfed",
+        //             inputData: [{ "verification-code": code }],
+        //         },
+        //         json: true,
+        //     }
+        // );
 
         if (!verify) throw new Error('خطای ناشناخته')
         return { state: true, message: "کد تایید ارسال شد" }

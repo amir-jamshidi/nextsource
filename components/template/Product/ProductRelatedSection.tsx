@@ -63,8 +63,8 @@ const ProductRelatedSection = ({ productID }: { productID: string }) => {
                 )
                     :
                     (
-                        <div className='w-full py-20 md:py-14 px-4 bg-blue-light rounded-2xl mt-6'>
-                            <p className='text-sm text-center text-gray-400'>
+                        <div className='w-full py-20 md:py-14 px-4 bg-blue border-section rounded-2xl mt-6'>
+                            <p className='text-sm text-center text-600-400'>
                                 سورس مرتبطی به سورس فعلی پیدا نشد
                             </p>
                         </div>

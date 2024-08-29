@@ -10,7 +10,7 @@ const CategorySmalItem = ({ category }: CategorySmalItemProps) => {
     return (
         <Link href={`/category/${category.href}`} className='flex items-center mt-4 gap-x-1 px-2'>
             <p className='text-600-400 text-sm'>دسته بندی : </p>
-            <p className="text-xs font-morabba-light bg-amber-500 rounded px-2 text-white">{category.title}</p>
+            <p className="text-sm font-morabba-light bg-amber-500 rounded px-2 text-white">{category.title}</p>
         </Link>
     )
 }

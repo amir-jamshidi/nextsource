@@ -28,7 +28,7 @@ const CommentItem = ({ comment }: { comment: IComment }) => {
                 </div>
             </div>
             <div className='flex-1 pl-2'>
-                <p className='text-700-300 text-justify'>
+                <p className='text-700-300'>
                     {comment.body}
                 </p>
                 {comment.isAnswer && (
