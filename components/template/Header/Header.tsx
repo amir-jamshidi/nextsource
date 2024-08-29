@@ -35,9 +35,9 @@ const Header = async () => {
                         <div className='flex-1 flex justify-end items-center gap-x-1 '>
                             <ToggleThemeButton />
                             {!isLoginUser ? (
-                                <Link href={'/login'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>ورود یا عضویت</Link>
+                                <Link href={'/login'} className='dark:text-gray-200 text-gray-100 text-sm rounded-3xl px-4 py-2.5 bg-btns border border-green-500 dark:border-gray-300/10'>ورود یا عضویت</Link>
                             ) : (
-                                <Link href={'/p-user/dashboard'} className='text-gray-200 text-sm rounded-3xl px-4 py-2.5 bg-blue border border-gray-300/10'>پنل کاربری</Link>
+                                <Link href={'/p-user/dashboard'} className='dark:text-gray-200 text-gray-100 text-sm rounded-3xl px-4 py-2.5 bg-btns border border-green-500 dark:border-gray-300/10'>پنل کاربری</Link>
                             )}
                         </div>
                     </div>
@@ -47,11 +47,11 @@ const Header = async () => {
                         {menus.map(menu => (
                             <div key={menu._id} className='relative group cursor-pointer'>
                                 <Link href={menu.href}>
-                                    <p key={JSON.stringify(menu._id)} className='text-gray-300 px-2 py-1 rounded-lg' > {menu.title}</p>
+                                    <p key={JSON.stringify(menu._id)} className='text-700-300 px-2 py-1 rounded-lg' > {menu.title}</p>
                                 </Link>
                                 {menu.products.length > 0 && (
                                     <div className="group-hover:visible invisible top-0 mt-8 absolute pt-4">
-                                        <div className='bg-blue-max flex flex-col text-gray-300 gap-y-1.5 backdrop-blur-2xl w-60 rounded-xl px-3 py-3'>
+                                        <div className='bg-blue flex flex-col text-gray-600 dark:text-gray-300 gap-y-1.5 backdrop-blur-2xl w-60 rounded-xl px-3 py-3'>
                                             {menu.products.map((product: IProduct) =>
                                                 <Link key={String(product._id)} href={`/product/${product.href}`} className='z-10'>
                                                     {product.title}

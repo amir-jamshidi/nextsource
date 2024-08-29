@@ -106,7 +106,7 @@
     /* Borders  */
 
     .border-section {
-        @apply border border-gray-200/50 dark:border-none
+        @apply border border-gray-200/50 dark:border-transparent
     }
 
     .bg-comment {
