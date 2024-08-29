@@ -46,7 +46,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                             )}
                             {(!product.isPlan || !isHavPlanUser) && !isAccessToSourceUser && isLoginUser && (
                                 <Link href={`/cart/${product._id}`}>
-                                    <button className='bg-button text-sm md:text-base py-1.5 px-3 md:px-6 lg:px-12 rounded-full text-gray-100'>خرید سورس کد</button>
+                                    <button className='bg-gradient-to-r from-green-400 to-green-500 text-sm md:text-base py-1.5 px-3 md:px-6 lg:px-12 rounded-full text-gray-100'>خرید سورس کد</button>
                                 </Link>
                             )}
                         </div>
@@ -84,8 +84,8 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                     )}
                     {product.preView && (
                         <div className='absolute bottom-1 right-1 w-10 h-10 flex rounded-full bg-green-500 items-center justify-center'>
-                            <a href={product.preView} target='_blank' className='block'>
-                                <InsertLinkRounded className='text-gray-300' />
+                            <a href={product.preView} target='_blank' className='flex items-center justify-center'>
+                                <InsertLinkRounded className='text-gray-100 dark:text-gray-300' />
                             </a>
                         </div>
                     )}

@@ -70,7 +70,7 @@
     }
 
     .bg-blue-full {
-        @apply bg-gradient-to-r bg-no-repeat from-cyan-950/80 to-blue-950/80
+        @apply bg-gradient-to-r from-white to-white bg-no-repeat dark:from-cyan-950/80 dark:to-blue-950/80
     }
 
     .bg-blue-max {
@@ -80,6 +80,11 @@
     .bg-blue-light {
         @apply bg-gradient-to-r bg-no-repeat dark:from-cyan-950/35 dark:to-blue-950/35 from-gray-100 to-gray-100
     }
+
+    .bg-blue-menu {
+        @apply bg-gradient-to-r from-white to-white dark:from-cyan-950/50 dark:to-blue-950/50
+    }
+
 
     .bg-items {
         @apply bg-gradient-to-r bg-no-repeat from-white/30 to-white/30 dark:from-cyan-950/50 dark:to-blue-950/50 backdrop-blur-sm

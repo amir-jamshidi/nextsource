@@ -24,11 +24,11 @@ const NavigationSearchSection = () => {
     }
 
     return (
-        <div className="px-2 bg-gray-900 rounded-xl flex items-center gap-x-1.5">
+        <div className="px-2 bg-input-container rounded-xl flex items-center gap-x-1.5">
             <span onClick={handleSearch} className="cursor-pointer">
-                <SearchRounded className="text-gray-300 " />
+                <SearchRounded className="text-600-400 " />
             </span>
-            <input value={search} onKeyDown={handleChangeSearch} onChange={(e) => setSearch(e.target.value)} type="text" className="py-2 w-full rounded-xl bg-gray-900 border-none outline-none text-gray-300" autoComplete="off" placeholder="دنبال چی میگردی ؟" />
+            <input value={search} onKeyDown={handleChangeSearch} onChange={(e) => setSearch(e.target.value)} type="text" className="py-2 w-full rounded-xl bg-input border-none outline-none text-gray-300" autoComplete="off" placeholder="دنبال چی میگردی ؟" />
         </div>
     )
 }

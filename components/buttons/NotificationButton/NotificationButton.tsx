@@ -9,7 +9,7 @@ const NotificationButton = async () => {
     const notifications = await getMyNotifications();
     if (!notifications) return notFound();
     return (
-        <div className="relative group">
+        <div className="relative group z-[9999]">
             <span className='border-gray-100 w-9 h-9 md:w-10 md:h-10 rounded-full flex-center bg-blue border dark:border-gray-300/10 cursor-pointer'>
                 <NotificationsRounded className='text-gray-600 dark:text-gray-300' />
                 {notifications.length > 0 && (

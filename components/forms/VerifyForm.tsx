@@ -45,20 +45,20 @@ const VerifyForm = ({ phone }: VerifyFormProps) => {
         ))}
       </div>
       <form className='w-full mt-3 flex flex-col gap-1' onSubmit={handleSubmit(handleVerifyForm)}>
-        <div className='bg-gray-900 border border-gray-800 rounded-xl px-2 flex items-center gap-x-1.5'>
+        <div className='bg-input-container rounded-xl px-2 flex items-center gap-x-1.5'>
           <span>
             <FingerprintRounded className='text-700-300' />
           </span>
           <input {...register('code')}
             autoComplete='off'
             type="text"
-            className='w-full py-2 bg-gray-900 h-[50px]  rounded-xl border-none outline-none text-700-300'
+            className='w-full py-2 bg-input h-[50px]  rounded-xl border-none outline-none text-700-300'
             placeholder='کد تایید پنچ رقمی' />
         </div>
         <input
           type="submit"
           disabled={isLoading}
-          className={`${isLoading ? 'bg-gray-500' : 'bg-button'} transition-colors w-full h-[50px] py-2 cursor-pointer rounded-xl text-center text-gray-200 outline-none border-none`} value={isLoading ? 'لطفا صبر کنید ...' : 'تایید کد'} />
+          className={`${isLoading ? 'bg-gray-500' : 'bg-gradient-to-r from-green-400 to-green-500'} transition-colors w-full h-[50px] py-2 cursor-pointer rounded-xl text-center text-gray-100 dark:text-gray-200 outline-none border-none`} value={isLoading ? 'لطفا صبر کنید ...' : 'تایید کد'} />
       </form>
       <span className="font-morabba mt-5 mb-1 text-blue-500 text-sm">به راهنمایی نیاز داری ؟</span>
     </div>

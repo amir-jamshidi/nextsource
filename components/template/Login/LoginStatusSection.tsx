@@ -7,10 +7,10 @@ const LoginStatusSection = ({ isShowVerify }: { isShowVerify: boolean }) => {
             <div className="flex flex-col items-center relative">
                 <div className={`w-16 h-16 rounded-full bg-blue flex flex-center border border-amber-500/50`}>
                     <div className="w-14 h-14 rounded-full bg-blue flex-center">
-                        <span className="font-dana-bold text-lg text-gray-300">2</span>
+                        <span className="font-dana-bold text-lg text-700-300">2</span>
                     </div>
                 </div>
-                <p className="text-gray-400 text-sm">
+                <p className="text-600-400 text-sm">
                     کد تایید
                 </p>
                 <span className="absolute left-0 top-0">
@@ -21,10 +21,10 @@ const LoginStatusSection = ({ isShowVerify }: { isShowVerify: boolean }) => {
             <div className={`transition-all flex flex-col items-center relative`}>
                 <div className={`${!isShowVerify ? 'border-amber-500/50' : 'border-green-500/50'} border w-16 h-16 rounded-full bg-blue flex flex-center`}>
                     <div className="w-14 h-14 rounded-full bg-blue flex-center">
-                        <span className="font-dana-bold text-lg text-gray-300">1</span>
+                        <span className="font-dana-bold text-lg text-700-300">1</span>
                     </div>
                 </div>
-                <p className="text-gray-400 text-sm">
+                <p className="text-600-400 text-sm">
                     شماره
                 </p>
                 {isShowVerify ? (

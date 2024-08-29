@@ -7,8 +7,8 @@ const CloseSidebarButton = () => {
   const themeProvider = useThemeProvider();
   return (
     <button onClick={() => themeProvider?.handleSetIsOpenSidebar(false)}>
-      <span className="w-9 h-9 flex-center bg-gray-700 rounded-full">
-        <CloseRounded className="text-gray-300" />
+      <span className="w-9 h-9 flex-center bg-gray-300 dark:bg-gray-700 rounded-full">
+        <CloseRounded className="text-700-300" />
       </span>
     </button>
   );

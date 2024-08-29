@@ -7,7 +7,7 @@ const UserPanelPageContainer = ({ children, title }: { children: React.ReactNode
         <div className='container'>
             <UserPanelTitle title={title} />
             <Suspense fallback={<UserPanelLoading />}>
-                <section className='px-4 py-4 bg-blue border-section rounded-2xl'>
+                <section className='px-4 py-4 bg-blue-menu border-section rounded-2xl'>
                     {children}
                 </section>
             </Suspense>
