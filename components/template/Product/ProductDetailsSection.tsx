@@ -35,7 +35,7 @@ const ProductDetailsSection = ({ product, isHavPlanUser, isAccessToSourceUser, i
                         <div className='flex items-center gap-x-1'>
                             <FavoriteButton productID={JSON.parse(JSON.stringify(product._id))} isHasToFav={isHasToFav} />
                             {!isLoginUser && (
-                                <button className='bg-btns cursor-not-allowed text-sm md:text-base py-1.5 px-3 md:px-6 lg:px-12 rounded-full text-gray-100'>لطفا وارد حساب شو</button>
+                                <button className='bg-btns cursor-not-allowed text-sm md:text-base py-1.5 px-3 md:px-6 lg:px-12 rounded-full text-gray-100'>لطفا لاگین کنید</button>
 
                             )}
                             {((product.isPlan && isHavPlanUser) || isAccessToSourceUser) && (

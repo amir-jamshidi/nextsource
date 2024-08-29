@@ -18,7 +18,7 @@ const ProductMoreDetailsSection = ({ product }: ProductMoreDetailsSectionProps) 
             <ProductSectionTitle title="جزئیات بیشتر" />
             <div className="bg-gray-100 dark:bg-gray-800/30 border border-transparent dark:border-gray-700/30 mt-4 px-4 py-4 rounded-xl">
                 <div className="">
-                    <p className="text-600-400 text-justify text-sm md:text-base">{product.description}</p>
+                    <p className="text-600-400 text-sm md:text-base">{product.description}</p>
                 </div>
             </div>
             <div className='flex items-center mt-4 gap-x-1 px-2'>

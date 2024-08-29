@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Navigation from '../Navigation/Navigation'
-import { SearchRounded } from '@mui/icons-material';
+import { ArrowLeftRounded, SearchRounded } from '@mui/icons-material';
 import isLogin from '@/middlewares/isLogin';
 import { getMenus } from '@/actions/menu.action';
 import { IProduct } from '@/types/product';
@@ -51,10 +51,15 @@ const Header = async () => {
                                 </Link>
                                 {menu.products.length > 0 && (
                                     <div className="group-hover:visible invisible top-0 mt-8 absolute pt-4">
-                                        <div className='bg-blue flex flex-col text-gray-600 dark:text-gray-300 gap-y-1.5 backdrop-blur-2xl w-60 rounded-xl px-3 py-3'>
+                                        <div className='border-section bg-gradient-to-r from-white to-white dark:from-cyan-950 dark:to-blue-950 flex flex-col text-gray-600 dark:text-gray-300 gap-y-1.5 backdrop-blur-2xl w-60 rounded-xl px-3 py-3'>
                                             {menu.products.map((product: IProduct) =>
-                                                <Link key={String(product._id)} href={`/product/${product.href}`} className='z-10'>
-                                                    {product.title}
+                                                <Link key={String(product._id)} href={`/product/${product.href}`} className='z-10 flex items-center hover:text-amber-500 transition-colors'>
+                                                    <span className='flex justify-center items-center'>
+                                                        <ArrowLeftRounded />
+                                                    </span>
+                                                    <p>
+                                                        {product.title}
+                                                    </p>
                                                 </Link>
                                             )}
                                         </div>
