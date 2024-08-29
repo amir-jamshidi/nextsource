@@ -16,17 +16,19 @@ interface SellerProps {
 
 export const generateMetadata = async ({ params }: { params: { sellerHref: string } }) => {
     const sellerName = await getSellerFullname(params.sellerHref)
-
+    if (!sellerName) return notFound();
     return {
         title: `نکست سورس | فروشنده ${sellerName}`
     }
 }
 
-const page = async ({ params: { sellerHref }, searchParams: { page } }: SellerProps) => {
+const SellerPage = async ({ params: { sellerHref = '' }, searchParams: { page = 1 } }: SellerProps) => {
 
-    const { seller, products, productsCount } = await getSellerByHref(sellerHref, page)
+    const sellerDetails = await getSellerByHref(sellerHref, page)
+    if (!sellerDetails) return notFound();
+    const { seller, products, productsCount } = sellerDetails
+
     const bestSellers = await getBestSellers() as ISeller[]
-    if (!seller || !products) notFound()
     const user = seller.userID as IUser;
 
     return (
@@ -47,4 +49,4 @@ const page = async ({ params: { sellerHref }, searchParams: { page } }: SellerPr
     )
 }
 
-export default page
+export default SellerPage

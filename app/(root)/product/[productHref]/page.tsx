@@ -23,7 +23,7 @@ import ProductDetailsCarts from '@/components/template/Product/ProductDetailsCar
 export async function generateMetadata({ params }: { params: { productHref: string } }) {
 
     const product = await getProductByHref(params.productHref) as IProduct
-
+    if (!product) return notFound();
     return {
         title: `نکست سورس | ${product.title}`,
     }

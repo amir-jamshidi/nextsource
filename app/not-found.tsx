@@ -1,9 +1,6 @@
-import { SearchOffRounded } from '@mui/icons-material'
-import { Metadata } from 'next'
-import React from 'react'
 import notFoundImg from '@/public/assets/not-found.svg'
+import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 
 export const metadata: Metadata = {
     title: 'صفحه پیدا نشد 404'
@@ -17,9 +14,9 @@ const NotFound = () => {
                     <Image alt="Not Found" height={200} width={200} src={notFoundImg} />
                 </div>
                 <h2 className='text-800-200 text-xl'>صفحه مورد نظر پیدا نشد</h2>
-                <Link href={'/'}>
-                    <p className='text-800-200'>بازگشت</p>
-                </Link>
+                <a href={'/'}>
+                    <p className='text-amber-600 dark:text-amber-500'>بازگشت</p>
+                </a>
             </div>
         </div>
     )

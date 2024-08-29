@@ -79,9 +79,10 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
 
         //Set Score For Seller
 
-        await sellerModel.findOneAndUpdate({ _id: product.sellerID }, {
+        const seller = await sellerModel.findOneAndUpdate({ _id: product.sellerID }, {
             $inc: { score: price > 0 ? +Math.floor(price / 1000) : +0, sellCount: +1 }
         })
+
 
         await adminNotificationModel.create({ type: 'ORDER' })
 
@@ -93,6 +94,7 @@ export const newOrder = async (productID: string, action: 'ONLINE' | 'WALLET') =
         return { state: true, message: 'پرداخت موفق' }
 
     } catch (error) {
+        console.log(error)
         throw new Error('خطای ناشناخته')
     }
 }

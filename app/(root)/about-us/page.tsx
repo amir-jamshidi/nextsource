@@ -12,13 +12,13 @@ const About = () => {
     return (
         <div className="container">
             <PageTitle title="دربــاره ما" titleEn="About Us" />
-            <div className="w-full bg-blue p-4 rounded-xl mt-8">
+            <div className="w-full bg-blue border-section p-4 rounded-xl mt-8">
                 <div className="relative md:h-80 h-44 flex-center w-full mt-8">
                     <Image src={AboutUSImg} alt="About Image" fill={true} />
                 </div>
                 <div className="bg-blue-light border border-transparent dark:border-gray-700/30 p-4 rounded-xl mt-8 mb-4">
                     <h1 className="text-xl text-700-300 text-center">نکستــــ ســـورس</h1>
-                    <div className="flex flex-col text-gray-300 mt-8 divide-y divide-gray-200 dark:divide-gray-800 text-sm">
+                    <div className="flex flex-col text-gray-300 mt-8 divide-y divide-gray-200 dark:divide-gray-700/30 text-sm">
                         <div className="flex items-start gap-x-2 py-2">
                             <span className="bg-amber-500 w-2.5 h-2.5 inline-block rounded-full mt-1 shrink-0"></span>
                             <p className="text-justify text-600-400">نکست سورس یه بستر رو اماده کرده که شما به هر سورسی که دلتون میخواد دسترسی داشته باشید . نکست سورس این تضمین رو میده که از جدید ترین تکنولوژی ها استفاده میکنه و شما به راحتی متونید روش حساب باز کنید</p>

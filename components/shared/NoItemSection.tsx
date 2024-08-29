@@ -8,7 +8,7 @@ const NoItemSection = async () => {
   return (
     <div className='bg-blue rounded-xl h-64 flex-center mt-8'>
       <div className='flex-center justify-center flex-col gap-y-2.5'>
-        <p className='text-xl text-600-400'>سورســی پیدا نـشــد</p>
+        <p className='text-xl text-700-300'>سورســی پیدا نـشــد</p>
         <RequestButton isLoginUser={JSON.parse(JSON.stringify(isLoginUser))} title='درخواست سورس' href='/p-user/requests' />
       </div>
     </div>

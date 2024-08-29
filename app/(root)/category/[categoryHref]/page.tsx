@@ -20,6 +20,7 @@ interface CategoryProps {
 
 export const generateMetadata = async ({ params }: { params: { categoryHref: string } }) => {
     const category = await getCategoryByHref(params.categoryHref) as ICategory;
+    if (!category) return notFound();
     return {
         title: `نکست سورس | دسته بندی ${category.title}`
     }

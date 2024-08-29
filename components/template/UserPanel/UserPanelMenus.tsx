@@ -28,7 +28,7 @@ const UserPanelMenus = () => {
                 <div className='md:hidden py-4 px-3 gap-1 grid grid-cols-2 grid-rows-2 bg-blue-menu border-section  lg:h-12 mx-2 mt-2 rounded-xl'>
                     {userPanelMenus.map(menu => (
                         <Link key={menu.id} href={`/p-user${menu.href}`}>
-                            <div className='flex-center border-gray-200 bg-gray-100 dark:border-gray-800 border gap-x-1 dark:bg-gray-800/40 py-1.5 rounded-xl'>
+                            <div className='flex-center border-gray-200 bg-gray-100 dark:border-gray-800 border gap-x-1 dark:bg-gray-800/40 py-2 rounded-xl'>
                                 <p className={`${pathName.includes(menu.href) ? 'text-amber-500' : 'dark:text-gray-300 text-gray-700'} text-xs md:text-sm`}>{menu.title}</p>
                                 <span className={`${pathName.includes(menu.href) ? 'text-amber-500' : 'dark:text-gray-400 text-gray-600'} flex justify-center items-center`}>
                                     {menu.icon}

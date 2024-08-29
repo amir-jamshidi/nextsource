@@ -13,7 +13,7 @@ export const getSellerByHref = async (sellerHref: string, page: number = 1) => {
     try {
         await connectToDB();
         const seller = await sellerModel.findOne({ href: sellerHref }).populate({ path: 'userID', model: userModel }).lean() as ISeller;
-        if (!seller) return { seller: null, products: null, productsCount: 0 }
+        if (!seller) return false
         const productsCount = await productModel.find({ creatorID: seller.userID._id }).countDocuments();
         const products = await productModel.find({ creatorID: seller.userID._id }).limit(page * PRODUCTS_LIMIT).lean() as IProduct[];
         return { seller, products, productsCount }
@@ -36,7 +36,7 @@ export const getSellerFullname = async (href: string) => {
     try {
         await connectToDB();
         const seller: ISeller | null = await sellerModel.findOne({ href }).select('userID').populate({ path: 'userID', model: userModel, select: 'fullname' }).lean();
-        if (!seller) return ''
+        if (!seller) return false
         const user = seller.userID as IUser
         return user.fullname
     } catch (error) {
