@@ -6,4 +6,4 @@ export const urlCreator = ({ params, key, value }: { params: string, key: string
         url: location.pathname,
         query: currentUrl
     }, { skipNull: true })
-}   
+}
