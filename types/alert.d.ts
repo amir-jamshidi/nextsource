@@ -1,6 +1,7 @@
 
 import { Document } from "mongoose"
 
+
 export interface IAlert extends Document{
     title: string,
     body: string,
