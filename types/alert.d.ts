@@ -11,3 +11,4 @@ export interface IAlert extends Document{
     createdAt?: Date,
     updatedAt?: Date
 }
+
