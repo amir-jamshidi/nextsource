@@ -3,7 +3,6 @@ import { ArrowBackIosRounded } from '@mui/icons-material';
 import { useRouter } from 'next/navigation'
 
 const BackButton = ({ bg }: { bg?: boolean }) => {
-
     const router = useRouter();
 
     return (
