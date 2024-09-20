@@ -10,5 +10,4 @@ const BackButton = ({ bg }: { bg?: boolean }) => {
         </button >
     )
 }
-
 export default BackButton
