@@ -5,6 +5,7 @@ import Link from "next/link"
 import notFoundImg from '@/public/assets/not-found.svg';
 import { Metadata } from "next";
 
+
 const error = () => {
     return (
         <div className='h-screen flex-center'>
